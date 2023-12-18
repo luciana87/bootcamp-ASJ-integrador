@@ -1,4 +1,4 @@
-<section>
+<section class="container w-100">
 
     <div class="justify-content-end ">
         <button class="btn text-center  bg-primary text-white" routerLink="/form-supplier">Agregar <i
@@ -16,13 +16,13 @@
                 <th scope="col">ACCIONES</th>
             </tr>
         </thead>
-        <tbody *ngFor="let supplier of supplierList" id="supplier-table-container">
-            <th scope="row">{{ supplier.code }}</th>
-            <td>{{ supplier.business_name }}</td>
-            <td>{{ supplier.category }}</td>
-            <td>{{ supplier.cuit }}</td>
-            <td>{{ supplier.address.city }}</td>
-            <td>
+        <tbody *ngFor="let supplier of supplierList" id="supplier-table-container" class="align-middle">
+            <th scope="row" class="border-bottom">{{ supplier.code }}</th>
+            <td class="border-bottom py-2">{{ supplier.business_name }}</td>
+            <td class="border-bottom py-2">{{ supplier.category }}</td>
+            <td class="border-bottom py-2">{{ supplier.cuit }}</td>
+            <td class="border-bottom py-2">{{ supplier.address.city }}</td>
+            <td class="border-bottom py-2">
                 <button class="btn bg-success text-white" id="edit-button{{ supplier.code }}"><i
                         class="fa-regular fa-pen-to-square fa-sm"></i></button>
                 <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>

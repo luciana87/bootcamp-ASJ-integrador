@@ -8,12 +8,13 @@ import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.c
 import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-list/purchase-order-list.component';
 
 const routes: Routes = [
-  // { path: 'form-product', component: FormProductComponent},
-  {
-    path: 'product-list',
-    children: [{ path: '', component: ProductListComponent },
-    { path: 'form-product', component: FormProductComponent }]
-  },
+  // {
+  //   path: 'product-list',
+  //   children: [{ path: '', component: ProductListComponent },
+  //   { path: 'form-product', component: FormProductComponent }]
+  // },
+  { path: 'form-product', component: FormProductComponent},
+  { path: 'product-list', component: ProductListComponent},
   { path: 'form-supplier', component: FormSupplierComponent },
   { path: 'form-purchase-order', component: FormPurchaseOrderComponent },
   { path: 'supplier-list', component: SupplierListComponent },

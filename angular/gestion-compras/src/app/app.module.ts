@@ -14,16 +14,26 @@ import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.c
 import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-list/purchase-order-list.component';
 import { FormPurchaseOrderComponent } from './purchase-orders/form-purchase-order/form-purchase-order.component';
 
+import { ProductServiceService } from './services/product-service/product-service.service';
+import { SupplierServiceService } from './services/supplier-service/supplier-service.service';
+import { PurchaseOrderServiceService } from './services/purchase-order-service/purchase-order-service.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     FooterComponent,
     NavbarComponent,
+
+    //Productos
     FormProductComponent,
     ProductListComponent,
+
+    //Proveedores
     FormSupplierComponent,
     SupplierListComponent,
+
+    //Ordenes de compra
     PurchaseOrderListComponent,
     FormPurchaseOrderComponent
   ],
@@ -32,7 +42,7 @@ import { FormPurchaseOrderComponent } from './purchase-orders/form-purchase-orde
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [ProductServiceService,SupplierServiceService,PurchaseOrderServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

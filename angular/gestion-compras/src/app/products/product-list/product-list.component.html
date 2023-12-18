@@ -1,7 +1,7 @@
 <div class="container mt-5 w-100 ">
     <section class="w-100 ">
         <div class=" ">
-            <button class="btn text-center bg-primary text-white" routerLink="/product-list/form-product">Agregar<i
+            <button class="btn text-center bg-primary text-white" routerLink="/form-product">Agregar<i
                     class="fa-solid fa-plus fa-xs"></i></button>
         </div>
 
@@ -15,12 +15,12 @@
                     <th scope="col">ACCIONES</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let product of productList" id="product-table-container">
-                <th scope="row">{{ product.sku }}</th>
-                <td>{{ product.category }}</td>
-                <td>{{ product.name }}</td>
-                <td>$ {{ product.price }}</td>
-                <td>
+            <tbody *ngFor="let product of productList" id="product-table-container" class="align-middle">
+                <th scope="row" class="border-bottom">{{ product.sku }}</th>
+                <td class="border-bottom py-2">{{ product.category }}</td>
+                <td class="border-bottom py-2">{{ product.name }}</td>
+                <td class="border-bottom py-2">$ {{ product.price }}</td>
+                <td class="border-bottom py-2">
                     <button class="btn bg-success text-white" id="edit-button{{ product.sku }}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
                     <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
                 </td>

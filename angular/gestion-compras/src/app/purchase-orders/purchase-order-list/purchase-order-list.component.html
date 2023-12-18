@@ -1,1 +1,43 @@
-<p>purchase-order-list works!</p>
+<section>
+
+    <div class="justify-content-end ">
+        <button class="btn text-center  bg-primary text-white" routerLink="/form-purchase-order">Agregar <i
+                class="fa-solid fa-plus fa-xs"></i></button>
+    </div>
+
+    <table class="table mt-3">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nro Orden</th>
+                <th scope="col">Fecha emisión</th>
+                <th scope="col">Fecha entrega (esperada)</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let order of orderList" id="order-table-container">
+            <th scope="row">{{order.order_num}}</th>
+            <td>{{order.issue_date}}</td>
+            <td>{{order.deadline}}</td>
+            <td>{{order.information}}</td>
+            <td>{{order.product_sku}}</td>
+            <td>{{order.supplier_id}}</td>
+            <td>{{order.count}}</td>
+            <td>{{order.total}}</td>
+            <td>
+                <button class="btn bg-success text-white" id="edit-button{{order.id}}"><i
+                        class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+            </td>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" class="text-right"><strong>TOTAL:</strong></td>
+                <td id="total-carrito">0.00</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</section>
