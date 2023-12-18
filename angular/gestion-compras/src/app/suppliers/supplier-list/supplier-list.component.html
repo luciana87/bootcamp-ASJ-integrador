@@ -1,0 +1,33 @@
+<section>
+
+    <div class="justify-content-end ">
+        <button class="btn text-center  bg-primary text-white" routerLink="/form-supplier">Agregar <i
+                class="fa-solid fa-plus fa-xs"></i></button>
+    </div>
+
+    <table class="table mt-3">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">CODE</th>
+                <th scope="col">RAZÓN SOCIAL</th>
+                <th scope="col">CATEGORÍA</th>
+                <th scope="col">CUIT</th>
+                <th scope="col">CIUDAD</th>
+                <th scope="col">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let supplier of supplierList" id="supplier-table-container">
+            <th scope="row">{{ supplier.code }}</th>
+            <td>{{ supplier.business_name }}</td>
+            <td>{{ supplier.category }}</td>
+            <td>{{ supplier.cuit }}</td>
+            <td>{{ supplier.address.city }}</td>
+            <td>
+                <button class="btn bg-success text-white" id="edit-button{{ supplier.code }}"><i
+                        class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+            </td>
+        </tbody>
+    </table>
+
+</section>

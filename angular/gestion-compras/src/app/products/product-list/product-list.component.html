@@ -1,0 +1,31 @@
+<div class="container mt-5 w-100 ">
+    <section class="w-100 ">
+        <div class=" ">
+            <button class="btn text-center bg-primary text-white" routerLink="/product-list/form-product">Agregar<i
+                    class="fa-solid fa-plus fa-xs"></i></button>
+        </div>
+
+        <table class="table mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">SKU</th>
+                    <th scope="col">CATEGORÍA</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let product of productList" id="product-table-container">
+                <th scope="row">{{ product.sku }}</th>
+                <td>{{ product.category }}</td>
+                <td>{{ product.name }}</td>
+                <td>$ {{ product.price }}</td>
+                <td>
+                    <button class="btn bg-success text-white" id="edit-button{{ product.sku }}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                    <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                </td>
+            </tbody>
+        </table>
+
+    </section>
+</div>
