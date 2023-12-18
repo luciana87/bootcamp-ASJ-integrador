@@ -1,0 +1,36 @@
+<div class="container ">
+    <h3 class="h3 mt-4 text-secondary ">Cargar producto</h3>
+    <!-- <form class="form-control mt-2 mb-5" id="product-form" action=""> -->
+        <div class="mb-3">
+            <label for="proveedor-input" class="form-label">Proveedor</label>
+            <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example">
+                <option selected>Proveedor</option>
+                <option value="1">Fravega</option>
+                <option value="2">Arredo</option>
+                <option value="3">Zara</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="sku-input" class="form-label">SKU</label>
+            <input type="text" class="form-control" name="sku" id="sku-input">
+        </div>
+        <div class="mb-3">
+            <label for="name-input" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="product_name" id="name-input">
+        </div>
+        <div class="mb-3">
+            <label for="category-input" class="form-label">Categoría</label>
+            <input type="text" class="form-control" name="category" id="category-input">
+        </div>
+        <div class="mb-3">
+            <label for="price-input" class="form-label">Precio</label>
+            <input type="number" class="form-control" name="price" id="price-input">
+        </div>
+        <div class="mb-3">
+            <label for="description-input" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description-input" rows="3" name="description"></textarea>
+        </div>
+        <button type="" class="btn btn-primary" routerLink="/product-list">Submit</button>
+    <!-- </form> -->
+</div>

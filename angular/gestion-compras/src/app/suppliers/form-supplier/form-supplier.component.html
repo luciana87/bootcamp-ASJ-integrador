@@ -1,0 +1,84 @@
+<div class="container ">
+    <form class="form-control mt-3 mb-5" id="supplier-form" action="">
+        <div class="container mt-1">
+            <h3 class="h3 mt-2 mb-2 text-secondary ">Cargar proveedor</h3>
+            <!-- Código -->
+            <div class="mb-3">
+                <label for="code-input">Código:</label>
+                <input type="text" class="form-control" id="code-input" name="code">
+            </div>
+
+            <!-- Razón social -->
+            <div class="mb-3">
+                <label for="business-input">Razón social:</label>
+                <input type="text" class="form-control" id="business-input" name="businessInput">
+            </div>
+
+            <!-- Categoría -->
+            <div class="mb-3">
+                <label for="category-input">Categoría:</label>
+                <input type="text" class="form-control" id="category" name="categoryInput">
+            </div>
+
+            <!-- Sitio web -->
+            <div class="mb-3">
+                <label for="website-input">Sitio web:</label>
+                <input type="url" class="form-control" id="website" name="websiteInput">
+            </div>
+
+            <!-- Dirección -->
+            <div class="mb-3">
+                <label for="address-street-input">Calle:</label>
+                <input type="text" class="form-control" id="address-street-input" name="street">
+            </div>
+            <div class="mb-3">
+                <label for="postal-code-input">Código Postal:</label>
+                <input type="text" class="form-control" id="postal-code-input" name="postalCode">
+            </div>
+            <div class="mb-3">
+                <label for="city-input">Ciudad:</label>
+                <input type="text" class="form-control" id="city-input" name="city">
+            </div>
+            <div class="mb-3">
+                <label for="departament-input">Provincia:</label>
+                <input type="text" class="form-control" id="departament-input" name="departament">
+            </div>
+            <div class="mb-3">
+                <label for="country-input">País:</label>
+                <input type="text" class="form-control" id="country-input" name="country">
+            </div>
+
+            <!-- CUIT -->
+            <div class="mb-3">
+                <label for="cuit-input">CUIT:</label>
+                <input type="text" class="form-control" id="cuit-input" name="cuit">
+            </div>
+
+            <!-- Información de contacto -->
+            <div class="mb-3">
+                <label for="contact-name">Nombre de contacto:</label>
+                <input type="text" class="form-control" id="contact-name" name="contactName">
+            </div>
+            <div class="mb-3">
+                <label for="contact-lastname">Apellido de contacto:</label>
+                <input type="text" class="form-control" id="contact-lastname" name="contactLastname">
+            </div>
+            <div class="mb-3">
+                <label for="phone-number">Número de teléfono:</label>
+                <input type="tel" class="form-control" id="phone-number" name="phoneNumber">
+            </div>
+            <div class="mb-3">
+                <label for="email-input">Correo electrónico:</label>
+                <input type="email" class="form-control" id="email-input" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="rol-input">Rol:</label>
+                <input type="text" class="form-control" id="rol-input" name="rol">
+            </div>
+
+            <!-- Botón de agregar -->
+            <button type="" class="btn btn-primary" routerLink="/supplier-list">Agregar</button>
+
+        </div>
+    </form>
+</div>

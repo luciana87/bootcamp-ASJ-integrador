@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Products form</title>
+</head>
+
+<body>
+    <div class="container ">
+
+        <header>
+
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="../img/logo3.png" alt="Logo" width="15%" height="15%">
+                    </a>
+                </div>
+                <div class="container-fluid">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./index.html">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./products.html">PRODUCTOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./suppliers.html">PROVEEDORES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./purchase -orders.html">COMPRAS</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container ">
+                <h3 class="h3 mt-4 text-secondary ">Cargar orden de compra</h3>
+                <form class="form-control mt-2" id="product-form" action="">
+                    <div class="d-flex justify-content-evenly  ">
+                        <div class="mb-3 mr-5">
+                            <label for="proveedor-input" class="form-label">Proveedor</label>
+                            <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example">
+                                <option selected>Proveedor</option>
+                                <option value="1">Fravega</option>
+                                <option value="2">Arredo</option>
+                                <option value="3">Zara</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="proveedor-input" class="form-label">Productos</label>
+                            <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example">
+                                <option selected>Productos</option>
+                                <option value="1">Cardigan</option>
+                                <option value="2">Juego de sábanas</option>
+                                <option value="3">Pista de autitos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nro-input" class="form-label">Nro. de orden:</label>
+                        <input type="text" class="form-control" name="nro" id="nro-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="issue-date-input" class="form-label">Fecha de Emisión:</label>
+                        <input type="date" class="form-control" name="issueDate" id="issue-date-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="deadline-input" class="form-label">Fecha de entrega:</label>
+                        <input type="date" class="form-control" name="deadline" id="deadline-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address-input" class="form-label">Dirección:</label>
+                        <input type="text" class="form-control" name="address" id="address-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="count-input" class="form-label">Cantidad:</label>
+                        <input type="number" class="form-control" name="count" id="count-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="subtotal-input" class="form-label">Subtotal</label>
+                        <input type="number" class="form-control" name="subtotal" id="subtotal-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="info-input" class="form-label">Información adicional:</label>
+                        <textarea class="form-control" id="info-input" rows="3" name="info"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+    <script type="module" src="../js/purchase-order-form-js"></script>
+</body>
+
+</html>
