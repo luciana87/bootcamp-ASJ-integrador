@@ -1,8 +1,8 @@
 export interface Product {
-    sku: string;
+    sku: number;
     supplier_id: String;
     category: String;
     name: String;
     description: String;
-    price: string;
+    price: number;
 }

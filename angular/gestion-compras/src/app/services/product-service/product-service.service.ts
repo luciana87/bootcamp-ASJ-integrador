@@ -11,8 +11,6 @@ const dataProducts: Product[] = products; //le asigno el json a una variable
 
 export class ProductServiceService {
 
-  products: Product[]= products;
-
   constructor() { }
   
   mostrarData (){

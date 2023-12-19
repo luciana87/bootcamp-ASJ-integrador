@@ -3,7 +3,7 @@
     <!-- <form class="form-control mt-2 mb-5" id="product-form" action=""> -->
     <div class="mb-3">
         <label for="proveedor-input" class="form-label">Proveedor</label>
-        <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3" #supplier_id>
+        <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3" [(ngModel)]="product.supplier_id">
             <option selected>Proveedor</option>
             <option value="1">Fravega</option>
             <option value="2">Arredo</option>
@@ -12,25 +12,25 @@
     </div>
     <div class="mb-3">
         <label for="sku-input" class="form-label">SKU</label>
-        <input type="text" class="form-control" name="sku" id="sku-input" #sku />
+        <input type="number" class="form-control" name="sku" id="sku-input" [(ngModel)]="product.sku" />
     </div>
     <div class="mb-3">
         <label for="name-input" class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="product_name" id="name-input" #name>
+        <input type="text" class="form-control" name="product_name" id="name-input" [(ngModel)]="product.name">
     </div>
     <div class="mb-3">
         <label for="category-input" class="form-label">Categoría</label>
-        <input type="text" class="form-control" name="category" id="category-input" #category>
+        <input type="text" class="form-control" name="category" id="category-input" [(ngModel)]="product.category">
     </div>
     <div class="mb-3">
         <label for="price-input" class="form-label">Precio</label>
-        <input type="string" class="form-control" name="price" id="price-input" #price>
+        <input type="number" class="form-control" name="price" id="price-input" [(ngModel)]="product.price">
     </div>
     <div class="mb-3">
         <label for="description-input" class="form-label">Descripción</label>
         <textarea class="form-control" id="description-input" rows="3" name="description"
-            #description></textarea>
+            [(ngModel)]="product.description"></textarea>
     </div>
-    <button type="" class="btn btn-primary" routerLink="/product-list" (click)="setValue(supplier_id.value, sku.value,name.value,category.value,price.value,description.value)">Agregar</button>
+    <button type="" class="btn btn-primary" routerLink="/product-list" (click)="setValue(product)">Agregar</button>
     <!-- </form> -->
 </div>
