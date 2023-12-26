@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Supplier } from 'src/app/models/supplier';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 
 @Component({
@@ -9,13 +10,17 @@ import { SupplierServiceService } from 'src/app/services/supplier-service/suppli
 })
 export class SupplierListComponent implements OnInit{
 
-  // supplierList: {code:String, business_name: String, category: String, cuit: String, address: {street: String, num: number, postal_code: String, city: String, departament: String, country: String}}[]=[];
 
-  supplierList: any[] = [];
+  supplierList: Supplier[] = [];
   
   constructor(public service: SupplierServiceService){}
 
   ngOnInit(): void {
-    this.supplierList = this.service.getSupplier();
+    this.supplierList = this.service.getSuppliers();
+  }
+
+  delete(supplier: Supplier){
+    this.service.deleteSupplier(supplier);
+    this.supplierList = this.service.getSuppliers();
   }
 }

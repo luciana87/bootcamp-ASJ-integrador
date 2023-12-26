@@ -8,24 +8,21 @@
     <table class="table mt-3">
         <thead class="thead-light">
             <tr>
-                <th scope="col">CODE</th>
-                <th scope="col">RAZÓN SOCIAL</th>
-                <th scope="col">CATEGORÍA</th>
-                <th scope="col">CUIT</th>
-                <th scope="col">CIUDAD</th>
+                <th scope="col">Código</th>
+                <th scope="col">Razón Social</th>
+                <th scope="col">Información</th>
+                <th scope="col">Contacto</th>
                 <th scope="col">ACCIONES</th>
             </tr>
         </thead>
         <tbody *ngFor="let supplier of supplierList" id="supplier-table-container" class="align-middle">
             <th scope="row" class="border-bottom">{{ supplier.code }}</th>
             <td class="border-bottom py-2">{{ supplier.business_name }}</td>
-            <td class="border-bottom py-2">{{ supplier.category }}</td>
-            <td class="border-bottom py-2">{{ supplier.cuit }}</td>
-            <td class="border-bottom py-2">{{ supplier.address.city }}</td>
+            <td class="border-bottom py-2">{{ supplier.website }} | {{supplier.phone_number}} | {{ supplier.email}}</td>
+            <td class="border-bottom py-2">{{ supplier.contact.name }} {{ supplier.contact.lastname }}</td>
             <td class="border-bottom py-2">
-                <button class="btn bg-success text-white" id="edit-button{{ supplier.code }}"><i
-                        class="fa-regular fa-pen-to-square fa-sm"></i></button>
-                <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                <button class="btn bg-success text-white" id="edit-button{{ supplier.code }}" routerLink="/form-supplier/{{supplier.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                <button class="btn bg-danger text-white" (click)="delete(supplier)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
             </td>
         </tbody>
     </table>
