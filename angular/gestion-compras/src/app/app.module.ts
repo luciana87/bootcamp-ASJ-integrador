@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { MainComponent } from './components/main/main.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { MainComponent } from './components/shared/main/main.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FormProductComponent } from './products/form-product/form-product.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { FormSupplierComponent } from './suppliers/form-supplier/form-supplier.component';
