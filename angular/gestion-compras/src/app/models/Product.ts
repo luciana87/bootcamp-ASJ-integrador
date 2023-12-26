@@ -1,8 +1,13 @@
+import { Category } from "./category";
+import { Supplier } from "./supplier";
+
 export interface Product {
-    sku: number;
-    supplier_id: String;
-    category: String;
+    id: number;
+    sku: string;
+    supplier: Supplier;
+    category: Category;
     name: String;
     description: String;
     price: number;
+    image: String;
 }
