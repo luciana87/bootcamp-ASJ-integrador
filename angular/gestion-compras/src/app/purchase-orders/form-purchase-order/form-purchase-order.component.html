@@ -1,55 +1,62 @@
-<div class="container ">
-    <h3 class="h3 mt-4 text-secondary ">Cargar orden de compra</h3>
-    <!-- <form class="form-control mt-2" id="product-form" action=""> -->
-        <div class="d-flex justify-content-evenly  ">
-            <div class="mb-3 mr-5">
-                <label for="proveedor-input" class="form-label">Proveedor</label>
-                <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3" #supplierSelected>
-                    <option selected>Proveedor</option>
-                    <option value="1">Fravega</option>
-                    <option value="2">Arredo</option>
-                    <option value="3">Zara</option>
-                </select>
+<div class="container d-flex flex-column w-50 ">
+    <form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control mt-2 " id="product-form"
+        action="">
+        <fieldset>
+            <legend>
+                <h4 class="h4 mt-2 fw-light text-secondary ">Órden de compra</h4>
+            </legend>
+            <div class="flex-row row justify-content-evenly">
+                <div class="mb-3 col-4">
+                    <label for="proveedor-input" class="form-label fw-light">Proveedor:</label>
+                    <select id="proveedor-input" name="supplier" class="form-select form-select-sm mb-3"
+                        [(ngModel)]="order.supplier" (ngModelChange)="onSupplierChange($event)">
+                        <option selected>Proveedor</option>
+                        <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{ supplier.business_name
+                            }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-8">
+                    <label for="product-input" class="form-label fw-light">Productos:</label>
+                    <select id="product-input" name="product" class="form-select form-select-sm mb-3"
+                        [(ngModel)]="order.product" [disabled]="!order.supplier">
+                        <option selected>Productos</option>
+                        <option *ngFor="let product of filteredProducts" value="{{product.id}}">{{ product.name }}
+                        </option>
+                    </select>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="proveedor-input" class="form-label">Productos</label>
-                <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3"
-                    aria-label=".form-select-lg example">
-                    <option selected>Productos</option>
-                    <option value="1">Cardigan</option>
-                    <option value="2">Juego de sábanas</option>
-                    <option value="3">Pista de autitos</option>
-                </select>
+            <div class="mb-3 col-4 input-group-sm ">
+                <label for="count-input" class="form-label fw-light">Cantidad:</label>
+                <input type="number" class="form-control " name="count" id="count-input">
             </div>
-        </div>
-        <div class="mb-3">
-            <label for="nro-input" class="form-label">Nro. de orden:</label>
-            <input type="text" class="form-control" name="nro" id="nro-input">
-        </div>
-        <div class="mb-3">
-            <label for="issue-date-input" class="form-label">Fecha de Emisión:</label>
-            <input type="date" class="form-control" name="issueDate" id="issue-date-input">
-        </div>
-        <div class="mb-3">
-            <label for="deadline-input" class="form-label">Fecha de entrega:</label>
-            <input type="date" class="form-control" name="deadline" id="deadline-input">
-        </div>
-        <div class="mb-3">
-            <label for="address-input" class="form-label">Dirección:</label>
-            <input type="text" class="form-control" name="address" id="address-input">
-        </div>
-        <div class="mb-3">
-            <label for="count-input" class="form-label">Cantidad:</label>
-            <input type="number" class="form-control" name="count" id="count-input">
-        </div>
-        <div class="mb-3">
+
+            <div class="mb-3  input-group-sm">
+                <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
+                <input type="number" class="form-control " name="nro" id="nro-input">
+            </div>
+
+            <div class="flex-row row justify-content-evenly">
+                <div class="mb-3 col-6  input-group-sm">
+                    <label for="issue-date-input" class="form-label fw-light">Fecha de Emisión:</label>
+                    <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input">
+                </div>
+                <div class="mb-3 col-6  input-group-sm">
+                    <label for="deadline-input" class="form-label fw-light">Fecha de entrega:</label>
+                    <input type="date" class="form-control fw-light" name="deadline" id="deadline-input">
+                </div>
+            </div>
+
+
+            <!-- <div class="mb-3">
             <label for="subtotal-input" class="form-label">Subtotal</label>
             <input type="number" class="form-control" name="subtotal" id="subtotal-input">
-        </div>
-        <div class="mb-3">
-            <label for="info-input" class="form-label">Información adicional:</label>
-            <textarea class="form-control" id="info-input" rows="3" name="info"></textarea>
-        </div>
-        <button type="" class="btn btn-primary" routerLink="/purchase-order-list">Submit</button>
-    <!-- </form> -->
+        </div> -->
+            <div class="mb-3">
+                <label for="info-input" class="form-label fw-light">Información adicional:</label>
+                <textarea class="form-control" id="info-input" rows="3" name="info"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" routerLink="/purchase-order-list">Submit</button>
+        </fieldset>
+    </form>
 </div>
