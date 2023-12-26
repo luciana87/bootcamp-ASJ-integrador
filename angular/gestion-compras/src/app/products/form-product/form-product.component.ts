@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/Product';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Product } from 'src/app/models/product';
+import { Supplier } from 'src/app/models/supplier';
+import { ProductUtils } from 'src/app/utils/product';
+
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
+import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
+import { Category } from 'src/app/models/category';
+import { categories } from 'src/app/data/categories';
 
 
 @Component({
@@ -11,35 +20,56 @@ import { ProductServiceService } from 'src/app/services/product-service/product-
 })
 export class FormProductComponent implements OnInit {
 
-  
-  product: Product = {
 
-    supplier_id: '',
-    sku:0,
-    name:'',
-    category: '',
-    price: 0,
-    description: ''
-}
+  product: Product = ProductUtils.initializeProduct();
+  suppliers: Supplier[] = [];
+  categoryList: Category[] = categories;
 
-  constructor(public service: ProductServiceService){ }
-//supplier_id: string, sku: number, name: string, category: string, description: string, price: number
-  setValue (producto: Product) {
-    this.product = {
-      supplier_id: producto.supplier_id,
-      sku: producto.sku,
-      name: producto.name,
-      category: producto.category,
-      description: producto.description,
-      price: producto.price
-    };
-    console.log(this.product);
-    this.service.addProduct(this.product);
-
-
-  }
+  constructor(public service: ProductServiceService, public serviceSupplier: SupplierServiceService, private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
+    this.suppliers = this.serviceSupplier.getSuppliers();
+    this.route.paramMap.subscribe((param: any) => {
+      const id = param.get('id');
+      if (id == null) { //Si es null es un nuevo producto
+        this.product = ProductUtils.initializeProduct(); //Lo inicializo
+      } else { //Si no es null lo edito
+        this.product = this.service.getProductById(id) || ProductUtils.initializeProduct(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
+      }
+
+    });
+  }
+
+
+
+  createProduct(form: NgForm) {
+    console.log(form.value);
+    if (!form.valid) {
+      console.log("Formulario inválido.");
+      return;
+    }
+    console.log(this.product);
+
+    if (this.product.id != -1) {
+      // Lo actualizo
+      this.service.updateProduct(this.product);
+    } else {
+      let supplier = this.suppliers.find(supplier => supplier.id == form.value.supplier);
+      let category = this.categoryList.find(c => c.id == form.value.category);
+
+      this.product = {
+        supplier: supplier!,
+        sku: form.value.sku,
+        name: form.value.name,
+        category: category!,
+        description: form.value.description,
+        price: form.value.price,
+        image: form.value.image,
+        id: -1
+      };
+      this.service.createProduct(this.product);
+    }
+    this.router.navigate(['/product-list'])
   }
 }

@@ -8,21 +8,27 @@
         <table class="table mt-3">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">SKU</th>
-                    <th scope="col">CATEGORÍA</th>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">PRECIO</th>
+                    <th scope="col">Img</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Precio</th>
                     <th scope="col">ACCIONES</th>
                 </tr>
             </thead>
             <tbody *ngFor="let product of productList" id="product-table-container" class="align-middle">
-                <th scope="row" class="border-bottom">{{ product.sku }}</th>
-                <td class="border-bottom py-2">{{ product.category }}</td>
-                <td class="border-bottom py-2">{{ product.name }}</td>
+                <td class="tdImg">
+                    <div class="imgContainer">
+                        <img src="{{product.image}}">
+                    </div>
+                <td scope="row" class="border-bottom">{{ product.name }}</td>
+                <td class="border-bottom py-2">{{ product.category.name }}</td>
+                <td class="border-bottom py-2">{{ product.supplier.business_name }}</td>
                 <td class="border-bottom py-2">$ {{ product.price }}</td>
                 <td class="border-bottom py-2">
-                    <button class="btn bg-success text-white" id="edit-button{{ product.sku }}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
-                    <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                    <button class="btn bg-success text-white " id="edit-button{{ product.id }}" routerLink="/form-product"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                    <button class="btn bg-danger  text-white" (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                    <button class="btn btn-outline-warning text-dark">Ver detalle</button>
                 </td>
             </tbody>
         </table>
