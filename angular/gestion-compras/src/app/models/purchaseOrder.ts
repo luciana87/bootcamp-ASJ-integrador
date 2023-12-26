@@ -3,6 +3,7 @@ import { Supplier } from "./supplier";
 
 export interface PurchaseOrder {
 
+    id: number
     num_order: number,
     supplier: Supplier,
     product: Product,
@@ -10,6 +11,7 @@ export interface PurchaseOrder {
     deadline: Date,
     price: number,
     amount: number,
-    subtotal: number
+    subtotal: number,
+    description: String
 
 }

@@ -1,14 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PurchaseOrder } from 'src/app/models/purchaseOrder';
+import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 
 @Component({
   selector: 'app-purchase-order-list',
   templateUrl: './purchase-order-list.component.html',
   styleUrls: ['./purchase-order-list.component.css']
 })
-export class PurchaseOrderListComponent {
+export class PurchaseOrderListComponent implements OnInit{
 
-  orderList: { id: number, order_num: number, issue_date: Date, deadline: Date, 
-    information: String,product_sku: number, supplier_id: number, count: number, total: number }[] = [];
+  orderList: PurchaseOrder[] = [];
+  
+  constructor(public service: PurchaseOrderServiceService) {}
 
+  ngOnInit(): void {
+    this.orderList = this.service.getPurchaseOrders();
+  }
 
+  delete(order: PurchaseOrder){
+    this.service.deleteOrder(order);
+    this.orderList = this.service.getPurchaseOrders();
+
+  }
 }

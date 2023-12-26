@@ -33,7 +33,7 @@ export class SupplierServiceService {
 
   getSupplierById(id: number) {
     let suppliers = this.getSuppliers()
-    return suppliers.find((supplier) => supplier.id == id);
+    return suppliers.find((supplier) => supplier.id === id);
   }
 
   createSupplier(supplier: Supplier) {
@@ -47,7 +47,7 @@ export class SupplierServiceService {
 
   updateSupplier(supplier: Supplier) {
     let suppliers = this.getSuppliers();
-    let index = suppliers.findIndex(sup => sup.id == supplier.id);
+    let index = suppliers.findIndex(sup => sup.id === supplier.id);
     suppliers[index] = supplier;
     localStorage.setItem('suppliers', JSON.stringify(suppliers));
 
@@ -56,7 +56,7 @@ export class SupplierServiceService {
 
   deleteSupplier(supplier: Supplier) {
     let suppliers = this.getSuppliers();
-    const index = suppliers.findIndex(sup => sup.id == supplier.id);
+    const index = suppliers.findIndex(sup => sup.id === supplier.id);
     if (index > -1) {
       suppliers.splice(index, 1);
       localStorage.setItem('suppliers', JSON.stringify(suppliers)); 

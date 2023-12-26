@@ -35,7 +35,7 @@ export class FormProductComponent implements OnInit {
       if (id == null) { //Si es null es un nuevo producto
         this.product = ProductUtils.initializeProduct(); //Lo inicializo
       } else { //Si no es null lo edito
-        this.product = this.service.getProductById(id) || ProductUtils.initializeProduct(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
+        this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
       }
 
     });
@@ -51,23 +51,27 @@ export class FormProductComponent implements OnInit {
     }
     console.log(this.product);
 
+    let supplier = this.suppliers.find(supplier => supplier.id == form.value.supplier);
+    let category = this.categoryList.find(c => c.id == form.value.category);
+    this.product.supplier = supplier!;
+    this.product.category = category!;
+
     if (this.product.id != -1) {
       // Lo actualizo
       this.service.updateProduct(this.product);
     } else {
-      let supplier = this.suppliers.find(supplier => supplier.id == form.value.supplier);
-      let category = this.categoryList.find(c => c.id == form.value.category);
 
-      this.product = {
-        supplier: supplier!,
-        sku: form.value.sku,
-        name: form.value.name,
-        category: category!,
-        description: form.value.description,
-        price: form.value.price,
-        image: form.value.image,
-        id: -1
-      };
+      // this.product = {
+      //   supplier: supplier!,
+      //   sku: form.value.sku,
+      //   name: form.value.name,
+      //   category: category!,
+      //   description: form.value.description,
+      //   price: form.value.price,
+      //   image: form.value.image,
+      //   id: -1
+      // };
+
       this.service.createProduct(this.product);
     }
     this.router.navigate(['/product-list'])

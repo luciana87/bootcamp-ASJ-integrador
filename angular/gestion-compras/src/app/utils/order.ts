@@ -5,6 +5,7 @@ export class OrderUtils {
 
     static initializeOrder(): PurchaseOrder {
         return {
+            id: -1,
             num_order: 0,
             supplier: {
                 id: -1,
@@ -78,7 +79,8 @@ export class OrderUtils {
             deadline: new Date,
             price: 0,
             amount: 0,
-            subtotal: 0
+            subtotal: 0,
+            description: ''
         }
     }
 }

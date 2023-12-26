@@ -5,6 +5,10 @@
             <legend>
                 <h4 class="h4 mt-2 fw-light text-secondary ">Órden de compra</h4>
             </legend>
+            <div class="mb-3  input-group-sm">
+                <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
+                <input type="number" class="form-control " name="nro" id="nro-input" [(ngModel)]="order.num_order">
+            </div>
             <div class="flex-row row justify-content-evenly">
                 <div class="mb-3 col-4">
                     <label for="proveedor-input" class="form-label fw-light">Proveedor:</label>
@@ -27,23 +31,18 @@
                 </div>
             </div>
             <div class="mb-3 col-4 input-group-sm ">
-                <label for="count-input" class="form-label fw-light">Cantidad:</label>
-                <input type="number" class="form-control " name="count" id="count-input">
-            </div>
-
-            <div class="mb-3  input-group-sm">
-                <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
-                <input type="number" class="form-control " name="nro" id="nro-input">
+                <label for="amount-input" class="form-label fw-light">Cantidad:</label>
+                <input type="number" class="form-control " name="amount" id="amount-input" [(ngModel)]="order.amount">
             </div>
 
             <div class="flex-row row justify-content-evenly">
                 <div class="mb-3 col-6  input-group-sm">
                     <label for="issue-date-input" class="form-label fw-light">Fecha de Emisión:</label>
-                    <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input">
+                    <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input" [(ngModel)]="order.issue_date">
                 </div>
                 <div class="mb-3 col-6  input-group-sm">
                     <label for="deadline-input" class="form-label fw-light">Fecha de entrega:</label>
-                    <input type="date" class="form-control fw-light" name="deadline" id="deadline-input">
+                    <input type="date" class="form-control fw-light" name="deadline" id="deadline-input" [(ngModel)]="order.deadline">
                 </div>
             </div>
 
@@ -54,9 +53,9 @@
         </div> -->
             <div class="mb-3">
                 <label for="info-input" class="form-label fw-light">Información adicional:</label>
-                <textarea class="form-control" id="info-input" rows="3" name="info"></textarea>
+                <textarea class="form-control" id="info-input" rows="3" name="info" [(ngModel)]="order.description"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" routerLink="/purchase-order-list">Submit</button>
+            <button type="submit" class="btn btn-primary">Agregar</button>
         </fieldset>
     </form>
 </div>

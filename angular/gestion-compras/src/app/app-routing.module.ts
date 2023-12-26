@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'form-supplier', component: FormSupplierComponent },
   { path: 'form-supplier/:id', component: FormSupplierComponent },
   { path: 'form-purchase-order', component: FormPurchaseOrderComponent },
+  { path: 'form-purchase-order/:id', component: FormPurchaseOrderComponent },
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }

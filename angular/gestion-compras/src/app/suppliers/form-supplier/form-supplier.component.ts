@@ -30,7 +30,7 @@ export class FormSupplierComponent implements OnInit{
       if (id == null) { //Si es null es un nuevo Supplier
         this.supplier = SupplierUtils.initializeSupplier(); //Lo inicializo
       } else { //Si no es null lo edito
-        this.supplier = this.service.getSupplierById(id) ||  SupplierUtils.initializeSupplier(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
+        this.supplier = this.service.getSupplierById(parseInt(id)) ||  SupplierUtils.initializeSupplier(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
       }
       
     });
