@@ -1,0 +1,22 @@
+<div class="container">
+    <section class="card mx-auto my-5 w-75">
+
+        <div class=" d-flex ">
+            <div class="bg-image hover-overlay ripple " data-mdb-ripple-color="light">
+                <img src="{{product.image}}" class="img-fluid" />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold"><a>{{product.name}}</a></h5>
+                <div class="d-flex align-items-center ">
+                    <p class="lead me-3">{{ product.supplier.business_name }}</p>
+                    <p class="lead fs-6">{{ product.category.name }}</p>
+                </div>
+                <p class="mb-2">{{product.price | currency: '$'}}</p>
+                <p class="card-text">{{ product.description }}</p>
+                <hr class="my-4" />
+
+            </div>
+        </div>
+
+    </section>
+</div>

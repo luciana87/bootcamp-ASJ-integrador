@@ -12,7 +12,6 @@ import { OrderUtils } from 'src/app/utils/order';
 export class DetailOrderComponent implements OnInit {
 
   order!: PurchaseOrder;
-  id_order: number = -1;
 
   constructor(public service: PurchaseOrderServiceService, private route: ActivatedRoute) {
 
@@ -21,7 +20,7 @@ export class DetailOrderComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: any) => {
       const id = param.get('id');
-      // this.id_order = id;
+
 
 
       if (id) {

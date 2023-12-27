@@ -29,7 +29,7 @@
                 <td class="border-bottom py-2">
                     <button class="btn bg-success text-white " id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
                     <button class="btn bg-danger  text-white" (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
-                    <button class="btn btn-outline-warning text-dark">Ver detalle</button>
+                    <button class="btn btn-outline-warning text-dark" routerLink="/detail-product/{{product.id}}">Ver detalle</button>
                 </td>
             </tbody>
         </table>

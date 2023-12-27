@@ -8,6 +8,7 @@ import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.c
 import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-list/purchase-order-list.component';
 import { ListComponent } from './purchase-orders/list/list.component';
 import { DetailOrderComponent } from './purchase-orders/detail-order/detail-order.component';
+import { DetailProductComponent } from './products/detail-product/detail-product.component';
 
 const routes: Routes = [
   // {
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'form-purchase-order/:id', component: FormPurchaseOrderComponent },
   { path: 'list', component: ListComponent},
   { path: 'detail-order/:id', component: DetailOrderComponent},
+  { path: 'detail-product/:id', component: DetailProductComponent},
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }

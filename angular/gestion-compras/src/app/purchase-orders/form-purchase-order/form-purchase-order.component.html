@@ -12,7 +12,7 @@
                 <input type="number" class="form-control " name="nro" id="nro-input" [(ngModel)]="order.num_order">
             </div>
 
-            <div class="flex-row row justify-content-evenly">
+            <div class="">
                 <div class="mb-3 col-4">
                     <label for="proveedor-input" class="form-label fw-light">Proveedor:</label>
                     <select id="proveedor-input" name="supplier" class="form-select form-select-sm mb-3"
@@ -24,7 +24,7 @@
                         </option>
                     </select>
                 </div>
-                <div class="col-8">
+                <div class="col-4">
                     <label for="product-input" class="form-label fw-light">Productos:</label>
                     <select id="product-input" name="product" class="form-select form-select-sm mb-3"
                         [(ngModel)]="product" [disabled]="!order.supplier">
