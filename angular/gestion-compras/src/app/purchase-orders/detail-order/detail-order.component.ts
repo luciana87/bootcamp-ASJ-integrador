@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 import { OrderUtils } from 'src/app/utils/order';
@@ -13,7 +13,7 @@ export class DetailOrderComponent implements OnInit {
 
   order!: PurchaseOrder;
 
-  constructor(public service: PurchaseOrderServiceService, private route: ActivatedRoute) {
+  constructor(public service: PurchaseOrderServiceService, private route: ActivatedRoute, private router: Router) {
 
   }
 
@@ -33,6 +33,10 @@ export class DetailOrderComponent implements OnInit {
 
     });
   }
+
+  goBack() {
+    this.router.navigate(['/purchase-order-list']);
+    }
 
 
 }

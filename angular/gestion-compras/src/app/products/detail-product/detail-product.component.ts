@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
 import { ProductUtils } from 'src/app/utils/product';
@@ -13,7 +13,7 @@ export class DetailProductComponent implements OnInit{
 
   product!: Product;
 
-  constructor(public service: ProductServiceService, private route: ActivatedRoute){}
+  constructor(public service: ProductServiceService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: any) => {
@@ -25,5 +25,9 @@ export class DetailProductComponent implements OnInit{
 
     })
   }
+
+  goBack() {
+    this.router.navigate(['/product-list']);
+    }
 
 }
