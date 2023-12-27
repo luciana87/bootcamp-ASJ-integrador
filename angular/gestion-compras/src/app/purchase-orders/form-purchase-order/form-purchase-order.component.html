@@ -2,20 +2,24 @@
     <form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control mt-2 " id="product-form"
         action="">
         <fieldset>
+
             <legend>
                 <h4 class="h4 mt-2 fw-light text-secondary ">Órden de compra</h4>
             </legend>
-            <div class="mb-3  input-group-sm">
+
+            <div class="mb-3 input-group-sm">
                 <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
                 <input type="number" class="form-control " name="nro" id="nro-input" [(ngModel)]="order.num_order">
             </div>
+
             <div class="flex-row row justify-content-evenly">
                 <div class="mb-3 col-4">
                     <label for="proveedor-input" class="form-label fw-light">Proveedor:</label>
                     <select id="proveedor-input" name="supplier" class="form-select form-select-sm mb-3"
                         [(ngModel)]="order.supplier" (ngModelChange)="onSupplierChange($event)">
                         <option selected>Proveedor</option>
-                        <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{ supplier.business_name
+                        <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{
+                            supplier.business_name
                             }}
                         </option>
                     </select>
@@ -23,39 +27,75 @@
                 <div class="col-8">
                     <label for="product-input" class="form-label fw-light">Productos:</label>
                     <select id="product-input" name="product" class="form-select form-select-sm mb-3"
-                        [(ngModel)]="order.product" [disabled]="!order.supplier">
+                        [(ngModel)]="product" [disabled]="!order.supplier">
                         <option selected>Productos</option>
                         <option *ngFor="let product of filteredProducts" value="{{product.id}}">{{ product.name }}
                         </option>
                     </select>
                 </div>
             </div>
+
             <div class="mb-3 col-4 input-group-sm ">
                 <label for="amount-input" class="form-label fw-light">Cantidad:</label>
-                <input type="number" class="form-control " name="amount" id="amount-input" [(ngModel)]="order.amount">
+                <input type="number" class="form-control " name="amount" id="amount-input" [(ngModel)]="amount">
             </div>
 
             <div class="flex-row row justify-content-evenly">
                 <div class="mb-3 col-6  input-group-sm">
                     <label for="issue-date-input" class="form-label fw-light">Fecha de Emisión:</label>
-                    <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input" [(ngModel)]="order.issue_date">
+                    <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input"
+                        [(ngModel)]="order.issue_date">
                 </div>
                 <div class="mb-3 col-6  input-group-sm">
                     <label for="deadline-input" class="form-label fw-light">Fecha de entrega:</label>
-                    <input type="date" class="form-control fw-light" name="deadline" id="deadline-input" [(ngModel)]="order.deadline">
+                    <input type="date" class="form-control fw-light" name="deadline" id="deadline-input"
+                        [(ngModel)]="order.deadline">
                 </div>
             </div>
 
-
-            <!-- <div class="mb-3">
-            <label for="subtotal-input" class="form-label">Subtotal</label>
-            <input type="number" class="form-control" name="subtotal" id="subtotal-input">
-        </div> -->
             <div class="mb-3">
                 <label for="info-input" class="form-label fw-light">Información adicional:</label>
-                <textarea class="form-control" id="info-input" rows="3" name="info" [(ngModel)]="order.description"></textarea>
+                <textarea class="form-control" id="info-input" rows="3" name="info"
+                    [(ngModel)]="order.description"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" (click)="addProduct(formOrder)">Agregar</button>
         </fieldset>
     </form>
 </div>
+
+<!-- 
+    <section class=" mt-4 m-3 ">
+        <table class=" table table-warning  table-striped text-center ">
+            <thead>
+                <tr>
+                    <th scope="col">Imágen</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Fecha entrega</th>
+                    <th scope="col">Precio unit.</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Subtotal</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let order of orderList">
+                    <td tdImg>
+                        <div class="imgContainer">
+                            <img src="{{order.product.image}}">
+                        </div>
+                    </td>
+                    <td>{{ order.product.name }}</td>
+                    <td>{{ order.supplier.business_name }}</td>
+                    <td>{{ order.issue_date | date:'shortDate' }}</td>
+                    <td>{{ order.product.price }}</td>
+                    <td>{{ order.amount}}</td>
+                    <td>{{ order.subtotal }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section> -->
+
+
+<app-list [datoEnviado]="items"></app-list>

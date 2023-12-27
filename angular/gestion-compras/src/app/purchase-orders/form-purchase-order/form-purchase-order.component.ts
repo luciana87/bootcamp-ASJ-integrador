@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ItemPurchaseOrder } from 'src/app/models/itemPurchaseOrder';
 import { Product } from 'src/app/models/product';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { Supplier } from 'src/app/models/supplier';
@@ -8,6 +9,7 @@ import { ProductServiceService } from 'src/app/services/product-service/product-
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 import { OrderUtils } from 'src/app/utils/order';
+import { ProductUtils } from 'src/app/utils/product';
 
 @Component({
   selector: 'app-form-purchase-order',
@@ -21,14 +23,20 @@ export class FormPurchaseOrderComponent implements OnInit {
   supplierList!: Supplier[];
   productList!: Product[];
   filteredProducts: Product[] = [];
+  orderList!: PurchaseOrder[];
+  items: ItemPurchaseOrder[] = [];
+  id_item: number = 0;
+  amount: number = 0;
+  product: Product = ProductUtils.initializeProduct();
 
   constructor(public service: PurchaseOrderServiceService, public serviceSupplier: SupplierServiceService,
-              public serviceProduct: ProductServiceService, private route: ActivatedRoute,
-                private router: Router) { }
+    public serviceProduct: ProductServiceService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.supplierList = this.serviceSupplier.getSuppliers();
     this.productList = this.serviceProduct.getProducts();
+    this.orderList = this.service.getPurchaseOrders();
 
     this.route.paramMap.subscribe((param: any) => {
       const id = param.get('id');
@@ -61,9 +69,10 @@ export class FormPurchaseOrderComponent implements OnInit {
     let supplierFound = this.supplierList.find(supplier => supplier.id === parseInt(form.value.supplier));
     let productFound = this.productList.find((product) => product.id === parseInt(form.value.product));
 
-    this.order.product = productFound!;
-    this.order.subtotal =  form.value.amount * productFound!.price;
-    this.order.price = productFound!.price;
+    this.order.items = this.items;
+    this.order.total = this.items.reduce(function(a, b){
+      return a + b.total;
+  }, 0);
     this.order.supplier = supplierFound!;
     this.order.issue_date = new Date(form.value.issueDate);
     this.order.deadline = new Date(form.value.deadline);
@@ -75,7 +84,27 @@ export class FormPurchaseOrderComponent implements OnInit {
       this.service.createOrder(this.order);
     }
     this.router.navigate(['/purchase-order-list'])
+    // this.orderList.push(this.order);
+
+
     // this.filteredProducts = this.filterProductsBySupplier();
     // console.log(this.filteredProducts);
+  }
+
+  addProduct(form: NgForm) {
+    this.id_item ++;
+    let productFound = this.productList.find((product) => product.id === parseInt(form.value.product));    
+    let item: ItemPurchaseOrder = {
+      id: this.id_item,
+      product: productFound!,
+      amount: this.amount,
+      total: productFound!.price * this.amount
+    }
+    this.amount = 0;
+    this.product = ProductUtils.initializeProduct();
+
+
+    this.items.push(item);
+
   }
 }

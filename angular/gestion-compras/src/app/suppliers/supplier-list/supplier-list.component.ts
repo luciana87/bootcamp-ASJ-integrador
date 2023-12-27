@@ -20,7 +20,10 @@ export class SupplierListComponent implements OnInit{
   }
 
   delete(supplier: Supplier){
+    let confirmacion = confirm(`¿Desea eliminar el proveedor ${supplier.business_name}?`)
+    if (confirmacion) {
     this.service.deleteSupplier(supplier);
     this.supplierList = this.service.getSuppliers();
+    }
   }
 }

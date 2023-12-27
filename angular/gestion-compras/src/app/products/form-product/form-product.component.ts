@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Product } from 'src/app/models/product';
@@ -26,7 +26,7 @@ export class FormProductComponent implements OnInit {
   categoryList: Category[] = categories;
 
   constructor(public service: ProductServiceService, public serviceSupplier: SupplierServiceService, private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, public builder: FormBuilder) { }
 
   ngOnInit() {
     this.suppliers = this.serviceSupplier.getSuppliers();

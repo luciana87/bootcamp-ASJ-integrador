@@ -6,6 +6,7 @@ import { FormPurchaseOrderComponent } from './purchase-orders/form-purchase-orde
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { SupplierListComponent } from './suppliers/supplier-list/supplier-list.component';
 import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-list/purchase-order-list.component';
+import { ListComponent } from './purchase-orders/list/list.component';
 
 const routes: Routes = [
   // {
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'form-supplier/:id', component: FormSupplierComponent },
   { path: 'form-purchase-order', component: FormPurchaseOrderComponent },
   { path: 'form-purchase-order/:id', component: FormPurchaseOrderComponent },
+  { path: 'list', component: ListComponent},
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }

@@ -12,7 +12,7 @@
 
         <div class="mb-3">
             <label for="proveedor-input" class="form-label">Proveedor</label>
-            <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3" [(ngModel)]="product.supplier.id">
+            <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3"  [(ngModel)]="product.supplier.id" >
                 <option value="selected" selected>Proveedor</option>
                 <option *ngFor="let supplier of suppliers" value="{{supplier.id}}" >{{ supplier.business_name }}</option>
             </select>

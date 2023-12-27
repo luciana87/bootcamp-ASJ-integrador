@@ -12,7 +12,7 @@
                     <th class="">Fecha emisión</th>
                     <th class="">Fecha entrega</th>
                     <th class="">Proveedor</th>
-                    <th class="">Producto</th>
+                    <th class="">Total</th>
                     <th class="">Acciones</th>
                 </tr>
             </thead>
@@ -22,7 +22,7 @@
                 <td class="">{{order.issue_date | date: "shortDate"}}</td>
                 <td class="">{{order.deadline | date: "shortDate"}}</td>
                 <td class="">{{order.supplier.business_name}}</td>
-                <td class="">{{order.product.name}}</td>
+                <td class="">{{order.total}}</td>
                 <td class="">
                     <button class="btn bg-success text-white" id="edit-button{{order.id}}" routerLink="/form-purchase-order/{{order.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
                     <button class="btn bg-danger text-white" (click)="delete(order)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
