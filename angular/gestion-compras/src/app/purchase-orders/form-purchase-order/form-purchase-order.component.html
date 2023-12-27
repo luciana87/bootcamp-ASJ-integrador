@@ -64,38 +64,4 @@
     </form>
 </div>
 
-<!-- 
-    <section class=" mt-4 m-3 ">
-        <table class=" table table-warning  table-striped text-center ">
-            <thead>
-                <tr>
-                    <th scope="col">Imágen</th>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Proveedor</th>
-                    <th scope="col">Fecha entrega</th>
-                    <th scope="col">Precio unit.</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Subtotal</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngFor="let order of orderList">
-                    <td tdImg>
-                        <div class="imgContainer">
-                            <img src="{{order.product.image}}">
-                        </div>
-                    </td>
-                    <td>{{ order.product.name }}</td>
-                    <td>{{ order.supplier.business_name }}</td>
-                    <td>{{ order.issue_date | date:'shortDate' }}</td>
-                    <td>{{ order.product.price }}</td>
-                    <td>{{ order.amount}}</td>
-                    <td>{{ order.subtotal }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </section> -->
-
-
 <app-list [datoEnviado]="items"></app-list>

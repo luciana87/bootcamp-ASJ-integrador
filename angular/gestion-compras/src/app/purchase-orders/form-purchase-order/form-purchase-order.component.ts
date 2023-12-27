@@ -40,7 +40,7 @@ export class FormPurchaseOrderComponent implements OnInit {
 
     this.route.paramMap.subscribe((param: any) => {
       const id = param.get('id');
-      if (id === null) { //Si es null es un nuevo Supplier
+      if (id === null) { //Si es null es un nuevo
         this.order = OrderUtils.initializeOrder(); //Lo inicializo
       } else { //Si no es null lo edito
         this.order = this.service.getOrderById(parseInt(id)) || OrderUtils.initializeOrder(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo

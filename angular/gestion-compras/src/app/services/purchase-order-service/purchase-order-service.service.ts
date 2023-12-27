@@ -30,7 +30,7 @@ export class PurchaseOrderServiceService {
 
   getOrderById(id: number) {
     let orders = this.getPurchaseOrders();
-    return orders.find((o) => o.id === id);
+    return orders.find((order) => order.id === id);
   }
 
   createOrder(order: PurchaseOrder) {
