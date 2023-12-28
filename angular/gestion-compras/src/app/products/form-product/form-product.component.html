@@ -1,4 +1,5 @@
-<form #formProduct="ngForm" (ngSubmit)="createProduct(formProduct)" class="form-control mt-2 mb-5 container w-50" id="product-form" action="">
+<form #formProduct="ngForm" (ngSubmit)="createProduct(formProduct)" class="form-control mt-2 mb-5 container w-50"
+    id="product-form" action="">
     <div class="container ">
         <h3 class="h3 mt-4 text-secondary ">Cargar producto</h3>
 
@@ -10,26 +11,61 @@
             </div>
         </div>
 
-        <div class="mb-3">
-            <label for="proveedor-input" class="form-label">Proveedor</label>
-            <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3"  [(ngModel)]="product.supplier.id" >
-                <option value="selected" selected>Proveedor</option>
-                <option *ngFor="let supplier of suppliers" value="{{supplier.id}}" >{{ supplier.business_name }}</option>
-            </select>
+        <div>
+
+            <div class="mb-3">
+                <label for="proveedor-input" class="form-label">Proveedor</label>
+                <select id="proveedor-input" name="supplier" class="form-select form-select-lg mb-3" required
+                    [(ngModel)]="product.supplier.id">
+                    <option [ngValue]="null" selected>Proveedor</option>
+                    <option *ngFor="let supplier of suppliers" value="{{supplier.id}}">{{ supplier.business_name }}
+                    </option>
+                </select>
+            </div>
+            <div *ngIf="formProduct.controls['sku']?.invalid && (formProduct.controls['sku']?.dirty || formProduct.controls['sku']?.touched)"
+                class="text-danger">
+                <small *ngIf="formProduct.controls['supplier']?.errors?.['required']">Este campo es obligatorio.</small>
+            </div>
         </div>
 
-        <div class="mb-3">
-            <label for="sku-input" class="form-label">SKU</label>
-            <input type="text" name="sku" class="form-control" id="sku-input" [(ngModel)]="product.sku" />
+
+        <div>
+            <div class="mb-3">
+                <label for="sku-input" class="form-label">SKU</label>
+                <input type="text" name="sku" class="form-control" id="sku-input" placeholder="Sku" minlength="3"
+                    maxlength="8" required [(ngModel)]="product.sku" />
+            </div>
+            <div *ngIf="formProduct.controls['sku']?.invalid && (formProduct.controls['sku']?.dirty || formProduct.controls['sku']?.touched)"
+                class="text-danger">
+                <small *ngIf="formProduct.controls['sku']?.errors?.['required']">Este campo es obligatorio.</small>
+                <small *ngIf="formProduct.controls['sku']?.errors?.['minlength']">El sku debe tener al menos 3
+                    caracteres.</small>
+                <small *ngIf="formProduct.controls['sku']?.errors?.['maxlength']">El sku debe tener como máximo 8
+                    caracteres.</small>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="name-input" class="form-label">Nombre</label>
-            <input type="text" name="name" class="form-control" id="name-input" [(ngModel)]="product.name">
+
+        <div>
+            <div class="mb-3">
+                <label for="name-input" class="form-label">Nombre</label>
+                <input type="text" name="name" class="form-control" id="name-input" placeholder="Nombre" required minlength="4"
+                maxlength="20"
+                    [(ngModel)]="product.name">
+            </div>
+            <div *ngIf="formProduct.controls['name']?.invalid && (formProduct.controls['sku']?.dirty || formProduct.controls['sku']?.touched)"
+                class="text-danger">
+                <small *ngIf="formProduct.controls['name']?.errors?.['required']">Este campo es obligatorio.</small>
+                <small *ngIf="formProduct.controls['name']?.errors?.['minlength']">El nombre debe tener al menos 4
+                    caracteres.</small>
+                <small *ngIf="formProduct.controls['name']?.errors?.['maxlength']">El nombre debe tener como máximo 20
+                    caracteres.</small>
+            </div>
         </div>
 
         <div class="mb-3">
             <label for="category-input" class="form-label">Categoría</label>
-            <select id="category-input" name="category" class="form-select form-select-lg mb-3" [(ngModel)]="product.category.id">
+            <select id="category-input" name="category" class="form-select form-select-lg mb-3"
+                [(ngModel)]="product.category.id">
                 <option selected>Seleccione una Categoría</option>
                 <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
             </select>
@@ -37,14 +73,18 @@
 
         <div class="mb-3">
             <label for="price-input" class="form-label">Precio</label>
-            <input type="number" name="price" class="form-control" id="price-input" [(ngModel)]="product.price">
+            <input type="number" name="price" class="form-control" id="price-input" placeholder="Precio"
+                [(ngModel)]="product.price">
         </div>
 
         <div class="mb-3">
             <label for="description-input" class="form-label">Descripción</label>
-            <textarea class="form-control" name="description" id="description-input" rows="3" [(ngModel)]="product.description"></textarea>
+            <textarea class="form-control" name="description" id="description-input" rows="3"
+                [(ngModel)]="product.description"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button [disabled]=" !formProduct.valid" type="submit" class="btn btn-primary">Agregar</button>
+        <button type="button" (click)="formProduct.reset()" routerLink="/product-list"
+            class="btn btn-light ">Cancelar</button>
     </div>
 </form>

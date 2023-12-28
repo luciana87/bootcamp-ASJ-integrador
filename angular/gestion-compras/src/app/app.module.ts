@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -24,6 +25,7 @@ import { DetailOrderComponent } from './purchase-orders/detail-order/detail-orde
 import { DetailProductComponent } from './products/detail-product/detail-product.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supp
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [ProductServiceService,SupplierServiceService,PurchaseOrderServiceService],
   bootstrap: [AppComponent]

@@ -37,5 +37,8 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  cambiarImagen(event: Event) {
+    this.service.defaultImage(event);
+  }
 
 }

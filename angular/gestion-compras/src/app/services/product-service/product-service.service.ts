@@ -70,5 +70,8 @@ export class ProductServiceService {
     this.mostrarData();
   }
 
+  defaultImage(event: Event) {
+    (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
+  }
   
 }

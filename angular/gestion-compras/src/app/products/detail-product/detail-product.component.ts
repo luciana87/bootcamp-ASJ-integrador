@@ -29,5 +29,8 @@ export class DetailProductComponent implements OnInit{
   goBack() {
     this.router.navigate(['/product-list']);
     }
-
+    
+    cambiarImagen(event: Event) {
+      this.service.defaultImage(event);
+    }
 }

@@ -1,67 +1,78 @@
-<div class="container d-flex flex-column w-50 ">
-    <form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control mt-2 " id="product-form"
-        action="">
-        <fieldset>
-
-            <legend>
-                <h4 class="h4 mt-2 fw-light text-secondary ">Órden de compra</h4>
-            </legend>
-
-            <div class="mb-3 input-group-sm">
-                <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
-                <input type="number" class="form-control " name="nro" id="nro-input" [(ngModel)]="order.num_order">
-            </div>
-
-            <div class="">
-                <div class="mb-3 col-4">
-                    <label for="proveedor-input" class="form-label fw-light">Proveedor:</label>
-                    <select id="proveedor-input" name="supplier" class="form-select form-select-sm mb-3"
-                        [(ngModel)]="order.supplier" (ngModelChange)="onSupplierChange($event)">
-                        <option selected>Proveedor</option>
-                        <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{
-                            supplier.business_name
-                            }}
-                        </option>
-                    </select>
+<div class="container d-flex justify-content-between row mt-4 mb-4">
+    <div class=" d-flex flex-column col-5">
+        <form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control mt-2 " id="product-form"
+            action="">
+            <fieldset>
+    
+                <legend>
+                    <h4 class="h4 mt-2 fw-light text-secondary ">Órden de compra</h4>
+                </legend>
+    
+                <div class="mb-3 input-group-sm">
+                    <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
+                    <input type="number" class="form-control " name="nro" id="nro-input" [(ngModel)]="order.num_order">
                 </div>
-                <div class="col-4">
-                    <label for="product-input" class="form-label fw-light">Productos:</label>
-                    <select id="product-input" name="product" class="form-select form-select-sm mb-3"
-                        [(ngModel)]="product" [disabled]="!order.supplier">
-                        <option selected>Productos</option>
-                        <option *ngFor="let product of filteredProducts" value="{{product.id}}">{{ product.name }}
-                        </option>
-                    </select>
+    
+                <div class="flex-row row justify-content-evenly">
+                    <div class="mb-3 col-6  input-group-sm">
+                        <label for="issue-date-input" class="form-label fw-light">Fecha de Emisión:</label>
+                        <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input"
+                            [(ngModel)]="order.issue_date">
+                    </div>
+                    <div class="mb-3 col-6  input-group-sm">
+                        <label for="deadline-input" class="form-label fw-light">Fecha de entrega:</label>
+                        <input type="date" class="form-control fw-light" name="deadline" id="deadline-input"
+                            [(ngModel)]="order.deadline">
+                    </div>
                 </div>
-            </div>
-
-            <div class="mb-3 col-4 input-group-sm ">
-                <label for="amount-input" class="form-label fw-light">Cantidad:</label>
-                <input type="number" class="form-control " name="amount" id="amount-input" [(ngModel)]="amount">
-            </div>
-
-            <div class="flex-row row justify-content-evenly">
-                <div class="mb-3 col-6  input-group-sm">
-                    <label for="issue-date-input" class="form-label fw-light">Fecha de Emisión:</label>
-                    <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input"
-                        [(ngModel)]="order.issue_date">
+    
+                <div class="mb-4">
+                    <label for="info-input" class="form-label fw-light">Información adicional:</label>
+                    <textarea class="form-control" id="info-input" rows="3" name="info"
+                        [(ngModel)]="order.description"></textarea>
                 </div>
-                <div class="mb-3 col-6  input-group-sm">
-                    <label for="deadline-input" class="form-label fw-light">Fecha de entrega:</label>
-                    <input type="date" class="form-control fw-light" name="deadline" id="deadline-input"
-                        [(ngModel)]="order.deadline">
+                <hr class="mt-5">
+    
+                <p class="fs-5 fw-light">Agregar productos:</p>
+                <div class="d-flex justify-content-between ">
+                    <div class="mb-3 col-4">
+                        <label for="proveedor-input" class="form-label fw-light">Proveedor:</label>
+                        <select id="proveedor-input" name="supplier" class="form-select form-select-sm mb-3"
+                            [(ngModel)]="order.supplier" (ngModelChange)="onSupplierChange($event)">
+                            <option selected>Proveedor</option>
+                            <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{
+                                supplier.business_name
+                                }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-7">
+                        <label for="product-input" class="form-label fw-light">Productos:</label>
+                        <select id="product-input" name="product" class="form-select form-select-sm mb-3"
+                            [(ngModel)]="product" [disabled]="!order.supplier">
+                            <option selected>Productos</option>
+                            <option *ngFor="let product of filteredProducts" value="{{product.id}}">{{ product.name }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="info-input" class="form-label fw-light">Información adicional:</label>
-                <textarea class="form-control" id="info-input" rows="3" name="info"
-                    [(ngModel)]="order.description"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="button" (click)="addProduct(formOrder)">Agregar</button>
-        </fieldset>
-    </form>
+    
+                <div class="mb-3 col-4 input-group-sm mt-3">
+                    <label for="amount-input" class="form-label fw-light">Cantidad:</label>
+                    <input type="number" class="form-control " name="amount" id="amount-input" [(ngModel)]="amount">
+                </div>
+    
+                <button class="btn btn-primary btn-sm  " type="button" (click)="addProduct(formOrder)">Agregar</button>
+                <hr>
+                <div class="d-flex justify-content-end ">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" (click)="formOrder.reset()" routerLink="/product-list"
+                    class="btn btn-light ">Cancelar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-7 ">
+        <app-list  [datoEnviado]="items"></app-list>
+    </div>
 </div>
-
-<app-list [datoEnviado]="items"></app-list>

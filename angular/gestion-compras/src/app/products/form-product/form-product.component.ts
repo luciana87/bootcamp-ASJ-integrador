@@ -76,4 +76,7 @@ export class FormProductComponent implements OnInit {
     }
     this.router.navigate(['/product-list'])
   }
+  cambiarImagen(event: Event) {
+    this.service.defaultImage(event);
+  }
 }
