@@ -1,19 +1,20 @@
 <section class="w-100">
 
-    <div class="justify-content-end ">
-        <button class="btn text-center  bg-primary text-white" routerLink="/form-purchase-order">Agregar <i
+    <div class="m-3 mt-5 d-flex justify-content-between  ">
+        <h4 class="h4">Órdenes de compra</h4>
+        <button class="btn text-center bg-success btn-sm text-white" routerLink="/form-purchase-order">Agregar <i
                 class="fa-solid fa-plus fa-xs"></i></button>
     </div>
     <div class="container mt-4">
         <table class="table table-striped text-center mt-3">
-            <thead class="thead-light">
+            <thead  class="">
                 <tr class="">
-                    <th class="fs-lig">Nro</th>
+                    <th class="">Nro</th>
                     <th class="">Fecha emisión</th>
-                    <th class="">Fecha entrega</th>
-                    <th class="">Proveedor</th>
-                    <th class="">Total</th>
-                    <th class="">Acciones</th>
+                    <th class=" ">Fecha entrega</th>
+                    <th class=" ">Proveedor</th>
+                    <th class=" ">Total</th>
+                    <th class=" ">Acciones</th>
                 </tr>
             </thead>
             <tbody *ngFor="let order of orderList" id="order-table-container">
@@ -23,9 +24,9 @@
                 <td class="">{{order.deadline | date: "dd/MM/yyy"}}</td>
                 <td class="">{{order.supplier.business_name}}</td>
                 <td class="">{{order.total | currency:'$'}}</td>
-                <td class="justify-content-evenly ">
-                    <button class="btn btn-outline-warning me-3 " id="detail-button{{order.id}}" routerLink="/detail-order/{{order.id}}">Ver...</button>
-                    <button class="btn btn-outline-danger " (click)="delete(order)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                <td class="d-flex justify-content-end me-2  ">
+                    <button class="btn btn-outline-warning me-3 btn-sm" id="detail-button{{order.id}}" routerLink="/detail-order/{{order.id}}">Ver...</button>
+                    <button class="btnbtn bg-danger text-white btn-sm" (click)="delete(order)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
                 </td>
             </tbody>
         </table>

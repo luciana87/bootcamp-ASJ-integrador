@@ -12,3 +12,9 @@ img {
     width: 5vw;
     object-fit: cover;
 }
+
+table th {
+    background-color: #d8d8d8d2;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}

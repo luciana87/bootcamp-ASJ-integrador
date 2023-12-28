@@ -18,8 +18,11 @@ export class PurchaseOrderListComponent implements OnInit{
   }
 
   delete(order: PurchaseOrder){
-    this.service.deleteOrder(order);
-    this.orderList = this.service.getPurchaseOrders();
-
+    let confirmacion = confirm(`¿Desea cancelar la orden de compra #${order.num_order}?`);
+    if (confirmacion) {
+      this.service.deleteOrder(order);
+      this.orderList = this.service.getPurchaseOrders();
+    
+    }
   }
 }

@@ -1,12 +1,14 @@
 <div class="container mt-5 w-100 ">
+
     <section class="w-100 ">
-        <div class=" ">
-            <button class="btn text-center bg-primary text-white" routerLink="/form-product">Agregar<i
+        <div class="m-3 mt-5 d-flex justify-content-between ">
+            <h4 class="h4">Productos</h4>
+            <button class="btn text-center bg-success btn-sm text-white" routerLink="/form-product">Agregar<i
                     class="fa-solid fa-plus fa-xs"></i></button>
         </div>
 
         <table class="table mt-3">
-            <thead class="thead-light">
+            <thead class="">
                 <tr>
                     <th scope="col">Img</th>
                     <th scope="col">Nombre</th>
@@ -27,9 +29,9 @@
                 <td class="border-bottom py-2">{{ product.supplier.business_name }}</td>
                 <td class="border-bottom py-2">{{ product.price | currency: '$'}}</td>
                 <td class="border-bottom py-2">
-                    <button class="btn bg-success text-white me-2" id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
-                    <button class="btn bg-danger  text-white me-2" (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
-                    <button class="btn btn-outline-warning text-dark" routerLink="/detail-product/{{product.id}}">Ver detalle</button>
+                    <button class="btn bg-success text-white btn-sm me-2" id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                    <button class="btn bg-danger  text-white btn-sm me-2" (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                    <button class="btn btn-outline-warning btn-sm text-dark" routerLink="/detail-product/{{product.id}}">Ver detalle</button>
                 </td>
             </tbody>
         </table>
