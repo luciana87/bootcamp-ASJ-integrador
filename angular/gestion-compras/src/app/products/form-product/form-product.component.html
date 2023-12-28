@@ -22,7 +22,7 @@
                     </option>
                 </select>
             </div>
-            <div *ngIf="formProduct.controls['sku']?.invalid && (formProduct.controls['sku']?.dirty || formProduct.controls['sku']?.touched)"
+            <div *ngIf="formProduct.controls['supplier']?.invalid && (formProduct.controls['supplier']?.dirty || formProduct.controls['supplier']?.touched)"
                 class="text-danger">
                 <small *ngIf="formProduct.controls['supplier']?.errors?.['required']">Este campo es obligatorio.</small>
             </div>
@@ -48,33 +48,45 @@
         <div>
             <div class="mb-3">
                 <label for="name-input" class="form-label">Nombre</label>
-                <input type="text" name="name" class="form-control" id="name-input" placeholder="Nombre" required minlength="4"
-                maxlength="20"
-                    [(ngModel)]="product.name">
+                <input type="text" name="name" class="form-control" id="name-input" placeholder="Nombre" required
+                    minlength="4" maxlength="30" [(ngModel)]="product.name">
             </div>
-            <div *ngIf="formProduct.controls['name']?.invalid && (formProduct.controls['sku']?.dirty || formProduct.controls['sku']?.touched)"
+            <div *ngIf="formProduct.controls['name']?.invalid && (formProduct.controls['name']?.dirty || formProduct.controls['name']?.touched)"
                 class="text-danger">
                 <small *ngIf="formProduct.controls['name']?.errors?.['required']">Este campo es obligatorio.</small>
                 <small *ngIf="formProduct.controls['name']?.errors?.['minlength']">El nombre debe tener al menos 4
                     caracteres.</small>
-                <small *ngIf="formProduct.controls['name']?.errors?.['maxlength']">El nombre debe tener como máximo 20
+                <small *ngIf="formProduct.controls['name']?.errors?.['maxlength']">El nombre debe tener como máximo 30
                     caracteres.</small>
             </div>
         </div>
 
-        <div class="mb-3">
-            <label for="category-input" class="form-label">Categoría</label>
-            <select id="category-input" name="category" class="form-select form-select-lg mb-3"
-                [(ngModel)]="product.category.id">
-                <option selected>Seleccione una Categoría</option>
-                <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
-            </select>
+        <div>
+            <div class="mb-3">
+                <label for="category-input" class="form-label">Categoría</label>
+                <select id="category-input" name="category" class="form-select form-select-lg mb-3" required
+                    [(ngModel)]="product.category.id">
+                    <option [ngValue]="null" selected>Seleccione una Categoría</option>
+                    <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
+                </select>
+            </div>
+            <div *ngIf="formProduct.controls['category']?.invalid && (formProduct.controls['category']?.dirty || formProduct.controls['category']?.touched)"
+                class="text-danger">
+                <small *ngIf="formProduct.controls['category']?.errors?.['required']">Este campo es obligatorio.</small>
+            </div>
         </div>
 
-        <div class="mb-3">
-            <label for="price-input" class="form-label">Precio</label>
-            <input type="number" name="price" class="form-control" id="price-input" placeholder="Precio"
-                [(ngModel)]="product.price">
+        <div>
+            <div class="mb-3">
+                <label for="price-input" class="form-label">Precio</label>
+                <input type="number" name="price" class="form-control" id="price-input" placeholder="Precio" min="1"
+                    [(ngModel)]="product.price">
+            </div>
+            <div *ngIf="formProduct.controls['price']?.invalid && (formProduct.controls['price']?.dirty || formProduct.controls['price']?.touched)"
+                class="text-danger">
+                <small *ngIf="formProduct.controls['price']?.errors?.['required']">Este campo es obligatorio.</small>
+                <small *ngIf="formProduct.controls['price']?.hasError('min')">Precio debe ser mayor a 0.</small>
+            </div>
         </div>
 
         <div class="mb-3">

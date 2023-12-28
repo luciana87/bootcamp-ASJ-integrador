@@ -19,7 +19,7 @@ export class SupplierUtils {
                 country: ''
             },
             tax_data: {
-                cuit: 0,
+                cuit: '',
                 responsible_registered: ''
             },
             contact: {

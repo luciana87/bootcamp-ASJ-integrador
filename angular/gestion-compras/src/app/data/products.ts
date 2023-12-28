@@ -18,7 +18,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "IVA Responsable Inscripto"
             },
             contact: {
@@ -58,7 +58,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "IVA Responsable Inscripto"
             },
             contact: {
@@ -98,7 +98,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "IVA Responsable Inscripto"
             },
             contact: {
@@ -138,7 +138,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "IVA Responsable Inscripto"
             },
             contact: {
@@ -178,7 +178,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "Responsable Monotributo"
             },
             contact: {
@@ -218,7 +218,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "Responsable Monotributo"
             },
             contact: {
@@ -258,7 +258,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "IVA no Responsable"
             },
             contact: {
@@ -298,7 +298,7 @@ export const products = [
                 country: 'Argentina'
             },
             tax_data: {
-                cuit: 3012345678,
+                cuit: '30-1234567-8',
                 responsible_registered: "IVA no Responsable"
             },
             contact: {

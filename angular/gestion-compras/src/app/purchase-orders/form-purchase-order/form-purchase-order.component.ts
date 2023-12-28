@@ -26,7 +26,7 @@ export class FormPurchaseOrderComponent implements OnInit {
   orderList!: PurchaseOrder[];
   items: ItemPurchaseOrder[] = [];
   id_item: number = 0;
-  amount: number = 0;
+  amount: number = 1;
   product: Product = ProductUtils.initializeProduct();
 
   constructor(public service: PurchaseOrderServiceService, public serviceSupplier: SupplierServiceService,
@@ -82,7 +82,7 @@ export class FormPurchaseOrderComponent implements OnInit {
     }
 
     let supplierFound = this.supplierList.find(supplier => supplier.id === parseInt(form.value.supplier));
-    let productFound = this.productList.find((product) => product.id === parseInt(form.value.product));
+    // let productFound = this.productList.find((product) => product.id === parseInt(form.value.product));
 
     this.order.items = this.items;
     this.order.total = this.items.reduce(function(a, b){

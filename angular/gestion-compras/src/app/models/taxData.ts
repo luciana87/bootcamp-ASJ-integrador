@@ -1,4 +1,4 @@
 export interface TaxData {
-    cuit: number,
+    cuit: String,
     responsible_registered: String
 }

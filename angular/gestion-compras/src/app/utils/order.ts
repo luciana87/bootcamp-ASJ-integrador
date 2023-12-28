@@ -23,7 +23,7 @@ export class OrderUtils {
                     country: ''
                 },
                 tax_data: {
-                    cuit: 0,
+                    cuit: '',
                     responsible_registered: ''
                 },
                 contact: {
