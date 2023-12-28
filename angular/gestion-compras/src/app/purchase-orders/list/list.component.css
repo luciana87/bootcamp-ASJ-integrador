@@ -1,0 +1,13 @@
+.tdImg {
+    width: 5vw;
+}
+.imgContainer {
+    width: 5vw;
+    height: 5vw;
+    overflow: hidden;
+    border-radius: 5px;
+}
+img {
+    width: 5vw;
+    object-fit: cover;
+}
