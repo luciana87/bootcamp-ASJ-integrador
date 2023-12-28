@@ -23,7 +23,7 @@
                 <tr *ngFor="let item of order.items">
                     <td class="tdImg">
                         <div class="imgContainer">
-                            <img src="{{item.product.image}}">
+                            <img src="{{item.product.image}}" (error)="cambiarImagen($event)" />
                         </div>
                     </td>
                     <td class="">{{ item.product.name }}</td>

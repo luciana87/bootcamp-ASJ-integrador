@@ -115,11 +115,13 @@ export class FormPurchaseOrderComponent implements OnInit {
       amount: this.amount,
       total: productFound!.price * this.amount
     }
-    this.amount = 0;
+    this.amount = 1;
     this.product = ProductUtils.initializeProduct();
 
 
     this.items.push(item);
 
   }
+
+
 }
