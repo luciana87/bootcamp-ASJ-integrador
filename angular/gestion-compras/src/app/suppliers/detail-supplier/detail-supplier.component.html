@@ -1,11 +1,11 @@
 <div class="container ">
-    <button class="btn btn-outline-primary mt-4" (click)="goBack()">Volver</button>
-    <section class="card mx-auto my-5 w-75">
+    <button class="btn btn-sm btn-primary mt-4" (click)="goBack()">Volver</button>
+    <section class="card mx-auto my-5 w-100">
 
         <div class="">
             <div class="tdImg w-50 ">
                 <div class="imgContainer ms-3 bg-image hover-overlay ripple " data-mdb-ripple-color="light">
-                    <img src="{{supplier.logo}}" class="img-fluid" />
+                    <img src="{{supplier.logo}}" class="img-fluid" (error)="cambiarImagen($event)"/>
                 </div>
             </div>
             

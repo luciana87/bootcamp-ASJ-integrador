@@ -30,5 +30,8 @@ export class DetailSupplierComponent implements OnInit {
     this.router.navigate(['/supplier-list']);
     }
 
+    cambiarImagen(event: Event) {
+      this.service.defaultImage(event);
+    }
 
 }
