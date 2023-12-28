@@ -19,8 +19,7 @@ const routes: Routes = [
   // },
   { path: 'form-product', component: FormProductComponent},
   { path: 'form-product/:id', component: FormProductComponent},
-  { path: 'product-list', component: ProductListComponent, data: {
-    breadcrumb: 'Productos'}},
+  { path: 'product-list', component: ProductListComponent},
   { path: 'form-supplier', component: FormSupplierComponent },
   { path: 'form-supplier/:id', component: FormSupplierComponent },
   { path: 'form-purchase-order', component: FormPurchaseOrderComponent },
@@ -30,8 +29,7 @@ const routes: Routes = [
   { path: 'detail-product/:id', component: DetailProductComponent},
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
-  { path: '', component: HomeComponent, data: {
-    breadcrumb: 'Home'}},
+  { path: '', component: HomeComponent},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 

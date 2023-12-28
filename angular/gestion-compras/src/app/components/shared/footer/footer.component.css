@@ -1,15 +1,18 @@
 #bg-text-footer {
-    background-color: #542f4dd3;
+    background-color: #f4a8a7;
 }
 
-footer div section a {
-    color:#f8beaf;
-    border-color: #f8beaf;
+footer div a {
+    color: #211ca1;
+    border-color: #211ca1;
 }
-footer div section a:hover {
-    color: #7a425b;
+
+footer div a:hover {
+    /* color: #7a425b; */
+    color: #6474e7;
 }
 
 .texto {
-    color:#f8beaf;
+    color: #211ca1;
+    font-size: 1em;
 }
