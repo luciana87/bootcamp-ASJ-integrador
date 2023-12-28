@@ -1,28 +1,37 @@
 <div class="container mt-5 w-100 ">
+
     <section class="w-100 ">
-        <div class=" ">
-            <button class="btn text-center bg-primary text-white" routerLink="/product-list/form-product">Agregar<i
+        <div class="m-3 mt-5 d-flex justify-content-between ">
+            <h4 class="h4">Productos</h4>
+            <button class="btn text-center bg-success btn-sm text-white" routerLink="/form-product">Agregar<i
                     class="fa-solid fa-plus fa-xs"></i></button>
         </div>
 
         <table class="table mt-3">
-            <thead class="thead-light">
+            <thead class="">
                 <tr>
-                    <th scope="col">SKU</th>
-                    <th scope="col">CATEGORÍA</th>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">PRECIO</th>
+                    <th scope="col">Img</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Precio</th>
                     <th scope="col">ACCIONES</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let product of productList" id="product-table-container">
-                <th scope="row">{{ product.sku }}</th>
-                <td>{{ product.category }}</td>
-                <td>{{ product.name }}</td>
-                <td>$ {{ product.price }}</td>
-                <td>
-                    <button class="btn bg-success text-white" id="edit-button{{ product.sku }}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
-                    <button class="btn bg-danger text-white"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+            <tbody *ngFor="let product of productList" id="product-table-container" class="align-middle">
+                <td class="tdImg">
+                    <div class="imgContainer">
+                        <img src="{{product.image}}" (error)="cambiarImagen($event)">
+                    </div>
+                </td>
+                <td scope="row" class="border-bottom">{{ product.name }}</td>
+                <td class="border-bottom py-2">{{ product.category.name }}</td>
+                <td class="border-bottom py-2">{{ product.supplier.business_name }}</td>
+                <td class="border-bottom py-2">{{ product.price | currency: '$'}}</td>
+                <td class="border-bottom py-2">
+                    <button class="btn bg-success text-white btn-sm me-2" id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
+                    <button class="btn bg-danger  text-white btn-sm me-2" (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                    <button class="btn btn-outline-warning btn-sm text-dark" routerLink="/detail-product/{{product.id}}">Ver detalle</button>
                 </td>
             </tbody>
         </table>

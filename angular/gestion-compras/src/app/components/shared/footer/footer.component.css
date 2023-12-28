@@ -1,0 +1,18 @@
+#bg-text-footer {
+    background-color: #f4a8a7;
+}
+
+footer div a {
+    color: #211ca1;
+    border-color: #211ca1;
+}
+
+footer div a:hover {
+    /* color: #7a425b; */
+    color: #6474e7;
+}
+
+.texto {
+    color: #211ca1;
+    font-size: 1em;
+}

@@ -1,0 +1,27 @@
+<div class="container">
+    <section class="card mx-auto my-5 w-75">
+
+        <div class=" d-flex ">
+            <div class="tdImg w-50">
+                <div class="imgContainer bg-image hover-overlay ripple " data-mdb-ripple-color="light">
+                    <img src="{{product.image}}" (error)="cambiarImagen($event)" class="img-fluid" />
+                </div>
+            </div>
+
+            <div class="card-body w-50">
+                <h5 class="card-title font-weight-bold mt-2"><a>{{product.name}}</a></h5>
+                <!-- <hr class="my-4" /> -->
+                <p class="mb-2">{{product.price | currency: '$'}}</p>
+                <p class="card-text">{{ product.description }}</p>
+                <div class="d-flex flex-column ">
+                    <p class="lead mb-0 me-3">Proveedor: {{ product.supplier.business_name }}</p>
+                    <p class="lead mt-0 fs-6">Categoría: {{ product.category.name }}</p>
+                </div>
+
+            </div>
+        </div>
+
+        
+    </section>
+    <button class="btn btn-outline-primary" (click)="goBack()">Volver</button>
+</div>
