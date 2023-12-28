@@ -22,6 +22,7 @@ import { PurchaseOrderServiceService } from './services/purchase-order-service/p
 import { ListComponent } from './purchase-orders/list/list.component';
 import { DetailOrderComponent } from './purchase-orders/detail-order/detail-order.component';
 import { DetailProductComponent } from './products/detail-product/detail-product.component';
+import { HomeComponent } from './components/shared/home/home.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DetailProductComponent } from './products/detail-product/detail-product
     FormPurchaseOrderComponent,
     ListComponent,
     DetailOrderComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { PurchaseOrderListComponent } from './purchase-orders/purchase-order-lis
 import { ListComponent } from './purchase-orders/list/list.component';
 import { DetailOrderComponent } from './purchase-orders/detail-order/detail-order.component';
 import { DetailProductComponent } from './products/detail-product/detail-product.component';
+import { HomeComponent } from './components/shared/home/home.component';
 
 const routes: Routes = [
   // {
@@ -18,7 +19,8 @@ const routes: Routes = [
   // },
   { path: 'form-product', component: FormProductComponent},
   { path: 'form-product/:id', component: FormProductComponent},
-  { path: 'product-list', component: ProductListComponent},
+  { path: 'product-list', component: ProductListComponent, data: {
+    breadcrumb: 'Productos'}},
   { path: 'form-supplier', component: FormSupplierComponent },
   { path: 'form-supplier/:id', component: FormSupplierComponent },
   { path: 'form-purchase-order', component: FormPurchaseOrderComponent },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'detail-product/:id', component: DetailProductComponent},
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
+  { path: '', component: HomeComponent, data: {
+    breadcrumb: 'Home'}},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
