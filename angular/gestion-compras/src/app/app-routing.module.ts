@@ -10,6 +10,7 @@ import { ListComponent } from './purchase-orders/list/list.component';
 import { DetailOrderComponent } from './purchase-orders/detail-order/detail-order.component';
 import { DetailProductComponent } from './products/detail-product/detail-product.component';
 import { HomeComponent } from './components/shared/home/home.component';
+import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
 
 const routes: Routes = [
   // {
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'list', component: ListComponent},
   { path: 'detail-order/:id', component: DetailOrderComponent},
   { path: 'detail-product/:id', component: DetailProductComponent},
+  { path: 'detail-supplier/:id', component: DetailSupplierComponent},
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
   { path: '', component: HomeComponent},
