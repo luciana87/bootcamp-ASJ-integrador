@@ -50,11 +50,11 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   onSupplierChange(value: any) {
     // Realiza el filtrado de productos cada vez que cambie el proveedor
-    if(value !== null){
+    // if(value !== null){
 
-    }else {
-      let confirmacion = confirm("Desea realmente modificar el proveedor? En ese caso se eliminaran los productos agregados.")
-    }   
+    // }else {
+    //   let confirmacion = confirm("Desea realmente modificar el proveedor? En ese caso se eliminaran los productos agregados.")
+    // }   
 
    // obtengo el valor previo
    // si el valor previo es distinto de null y distinto al nuevo valor

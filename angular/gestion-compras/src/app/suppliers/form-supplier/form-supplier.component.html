@@ -42,7 +42,7 @@
                     <div class="mb-3">
                         <label for="business-input">Razón social:</label>
                         <input type="text" class="form-control" id="business-input" name="business_name" required
-                            minlength="4" maxlength="40" placeholder="Razón social"
+                            minlength="4" maxlength="60" placeholder="Razón social"
                             [(ngModel)]="supplier.business_name">
                     </div>
                     <div *ngIf="formSupplier.controls['business_name']?.invalid && (formSupplier.controls['business_name']?.dirty || formSupplier.controls['business_name']?.touched)"
@@ -56,7 +56,7 @@
                         <small *ngIf="formSupplier.controls['business_name']?.errors?.['maxlength']">El razón social
                             debe tener
                             como máximo
-                            40
+                            60
                             caracteres.</small>
 
                     </div>
@@ -67,7 +67,7 @@
                     <div class="mb-3">
                         <label for="category-input">Rubro:</label>
                         <input type="text" class="form-control" id="category-input" name="category" placeholder="Rubro"
-                            required minlength="3" maxlength="20" required [(ngModel)]="supplier.category">
+                            required minlength="3" maxlength="60" required [(ngModel)]="supplier.category">
                     </div>
                     <div *ngIf="formSupplier.controls['category']?.invalid && (formSupplier.controls['category']?.dirty || formSupplier.controls['category']?.touched)"
                         class="text-danger">
@@ -80,7 +80,7 @@
                         <small *ngIf="formSupplier.controls['category']?.errors?.['maxlength']">El rubro
                             debe tener
                             como máximo
-                            20
+                            60
                             caracteres.</small>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                     <input type="tel" class="form-control" id="phone" name="phone_number"
                         placeholder="(Código de área) Número" pattern="[1-9]{4}+[0-9]"
                         title="Un número válido consiste en hasta 4 dígitos para el código de área sin 0(cero) + el número"
-                        minlength="10" maxlength="20" required [(ngModel)]="supplier.phone_number">
+                        minlength="10" maxlength="25" required [(ngModel)]="supplier.phone_number">
                 </div>
                 <div *ngIf="formSupplier.controls['phone_number']?.invalid && (formSupplier.controls['phone_number']?.dirty || formSupplier.controls['phone_number']?.touched)"
                     class="text-danger">
@@ -123,7 +123,7 @@
                     <small *ngIf="formSupplier.controls['phone_number']?.errors?.['maxlength']">El número debe tener
                         como
                         máximo
-                        20 caracteres.</small>
+                        25 caracteres.</small>
                     <small *ngIf="formSupplier.controls['phone_number']?.hasError('pattern')"></small>
                 </div>
 
@@ -149,7 +149,7 @@
                     <div class="mb-3">
                         <label for="address-street-input">Calle:</label>
                         <input type="text" class="form-control" id="address-street-input" name="street"
-                            placeholder="Calle..." required minlength="5" maxlength="30" required
+                            placeholder="Calle..." required minlength="5" maxlength="100" required
                             [(ngModel)]="supplier.address.street">
                     </div>
                     <div *ngIf="formSupplier.controls['street']?.invalid && (formSupplier.controls['street']?.dirty || formSupplier.controls['street']?.touched)"
@@ -163,7 +163,7 @@
                         <small *ngIf="formSupplier.controls['street']?.errors?.['maxlength']">El campo ingresado
                             debe tener
                             como máximo
-                            30
+                            100
                             caracteres.</small>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
                     <div class="mb-3">
                         <label for="city-input">Ciudad:</label>
                         <input type="text" class="form-control" id="city-input" name="city" placeholder="Ciudad..."
-                            required minlength="4" maxlength="20" required [(ngModel)]="supplier.address.city">
+                            required minlength="4" maxlength="60" required [(ngModel)]="supplier.address.city">
                     </div>
                     <div *ngIf="formSupplier.controls['city']?.invalid && (formSupplier.controls['city']?.dirty || formSupplier.controls['city']?.touched)"
                         class="text-danger">
@@ -208,7 +208,7 @@
                         <small *ngIf="formSupplier.controls['city']?.errors?.['maxlength']">El campo ingresado
                             debe tener
                             como máximo
-                            20
+                            60
                             caracteres.</small>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                     <div class="mb-3">
                         <label for="departament-input">Provincia:</label>
                         <input type="text" class="form-control" id="departament-input" name="departament"
-                            placeholder="Provincia..." required minlength="4" maxlength="25" required
+                            placeholder="Provincia..." required minlength="4" maxlength="60" required
                             [(ngModel)]="supplier.address.departament">
                     </div>
                     <div *ngIf="formSupplier.controls['departament']?.invalid && (formSupplier.controls['departament']?.dirty || formSupplier.controls['departament']?.touched)"
@@ -231,7 +231,7 @@
                         <small *ngIf="formSupplier.controls['departament']?.errors?.['maxlength']">El campo ingresado
                             debe tener
                             como máximo
-                            25
+                            60
                             caracteres.</small>
                     </div>
                 </div>
@@ -239,7 +239,7 @@
                 <div>
                     <div class="mb-3">
                         <label for="country-input">País:</label>
-                        <input type="text" class="form-control" id="country-input" name="country" placeholder="País..." required minlength="4" maxlength="25" required
+                        <input type="text" class="form-control" id="country-input" name="country" placeholder="País..." required minlength="4" maxlength="60" required
                             [(ngModel)]="supplier.address.country">
                     </div>
                     <div *ngIf="formSupplier.controls['country']?.invalid && (formSupplier.controls['country']?.dirty || formSupplier.controls['country']?.touched)"
@@ -253,7 +253,7 @@
                         <small *ngIf="formSupplier.controls['country']?.errors?.['maxlength']">El campo ingresado
                             debe tener
                             como máximo
-                            25
+                            60
                             caracteres.</small>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                         <div class="mb-3">
                             <label for="contact-name">Nombre:</label>
                             <input type="text" class="form-control" id="contact-name" name="name" placeholder="Nombre" minlength="3"
-                                maxlength="30" pattern="[a-zA-Z ]+" required [(ngModel)]="supplier.contact.name">
+                                maxlength="60" required [(ngModel)]="supplier.contact.name">
                         </div>
                         <div *ngIf="formSupplier.controls['name']?.invalid && (formSupplier.controls['name']?.dirty || formSupplier.controls['name']?.touched)"
                             class="text-danger">
@@ -333,18 +333,16 @@
                                 caracteres.</small>
                             <small *ngIf="formSupplier.controls['name']?.errors?.['maxlength']">El nombre debe tener
                                 como máximo
-                                30
+                                60
                                 caracteres.</small>
-                            <small *ngIf="formSupplier.controls['name']?.hasError('pattern')">El nombre no puedo
-                                contener
-                                números.</small>
+
                         </div>
                     </div>
                     <div class=" ">
                         <div class="mb-3">
                             <label for="contact-lastname">Apellido:</label>
                             <input type="text" class="form-control" id="contact-lastname" name="lastname" placeholder="Apellido" minlength="3"
-                                maxlength="30" pattern="[a-zA-Z ]+" required [(ngModel)]="supplier.contact.lastname">
+                                maxlength="60" required [(ngModel)]="supplier.contact.lastname">
                         </div>
                         <div *ngIf="formSupplier.controls['lastname']?.invalid && (formSupplier.controls['lastname']?.dirty || formSupplier.controls['lastname']?.touched)"
                             class="text-danger mt-1">
@@ -356,11 +354,9 @@
                                 caracteres.</small>
                             <small *ngIf="formSupplier.controls['lastname']?.errors?.['maxlength']">El apellido debe
                                 tener como
-                                máximo 30
+                                máximo 60
                                 caracteres.</small>
-                            <small *ngIf="formSupplier.controls['lastname']?.hasError('pattern')">El apellido no puedo
-                                contener
-                                números.</small>
+
                         </div>
                     </div>
                 </div>
@@ -372,7 +368,7 @@
                             <input type="tel" class="form-control" id="phone-number" name="phone_number_Contact"
                                 placeholder="(Código de área) Número" pattern="[1-9]{4}+[0-9]"
                                 title="Un número válido consiste en hasta 4 dígitos para el código de área sin 0(cero) + el número"
-                                minlength="10" maxlength="20" required [(ngModel)]="supplier.contact.phone_number">
+                                minlength="10" maxlength="25" required [(ngModel)]="supplier.contact.phone_number">
                         </div>
                         <div *ngIf="formSupplier.controls['phone_number_Contact']?.invalid && (formSupplier.controls['phone_number_Contact']?.dirty || formSupplier.controls['phone_number_Contact']?.touched)"
                             class="text-danger">
@@ -386,7 +382,7 @@
                             <small *ngIf="formSupplier.controls['phone_number_Contact']?.errors?.['maxlength']">El
                                 número
                                 debe
-                                tener como máximo 20 caracteres.</small>
+                                tener como máximo 25 caracteres.</small>
                             <small *ngIf="formSupplier.controls['phone_number_Contact']?.hasError('pattern')"></small>
                         </div>
                     </div>
@@ -394,14 +390,12 @@
                     <div>
                         <div class="mb-3">
                             <label for="email-input">Email:</label>
-                            <input type="email" class="form-control" id="email-input" name="emailContact" requiered placeholder="Correo"
+                            <input type="email" class="form-control" id="email-input" name="emailContact"  placeholder="Correo"
                                 pattern="[a-zA-Z0-9_.]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
                                 [(ngModel)]="supplier.contact.email">
                         </div>
                         <div *ngIf="formSupplier.controls['emailContact']?.invalid && (formSupplier.controls['emailContact']?.dirty || formSupplier.controls['emailContact']?.touched)"
                             class="text-danger">
-                            <small *ngIf="formSupplier.controls['emailContact']?.hasError('required')">Correo es
-                                requerido.</small>
                             <small *ngIf="formSupplier.controls['emailContact']?.hasError('pattern')">Correo
                                 inválido.</small>
                         </div>
@@ -411,22 +405,13 @@
                     <div>
                         <div class="mb-3 ">
                             <label for="rol-input">Rol que desempeña:</label>
-                            <input type="text" class="form-control" id="rol-input" name="rol" required placeholder="Rol" minlength="3"
-                                maxlength="20" pattern="[a-zA-Z ]+" [(ngModel)]="supplier.contact.rol">
+                            <input type="text" class="form-control" id="rol-input" name="rol" placeholder="Rol" minlength="3" [(ngModel)]="supplier.contact.rol">
                         </div>
                         <div *ngIf="formSupplier.controls['rol']?.invalid && (formSupplier.controls['rol']?.dirty || formSupplier.controls['rol']?.touched)"
                             class="text-danger">
-                            <small *ngIf="formSupplier.controls['rol']?.errors?.['required']">Este campo es
-                                obligatorio.</small>
                             <small *ngIf="formSupplier.controls['rol']?.errors?.['minlength']">El rol debe tener al
                                 menos 3
                                 caracteres.</small>
-                            <small *ngIf="formSupplier.controls['rol']?.errors?.['maxlength']">El rol debe tener como
-                                máximo
-                                20
-                                caracteres.</small>
-                            <small *ngIf="formSupplier.controls['rol']?.hasError('pattern')">El rol no puedo contener
-                                números.</small>
                         </div>
                     </div>
                 </div>
@@ -437,7 +422,7 @@
         <section class="col-12 d-flex  justify-content-center mb-3">
             <button [disabled]=" !formSupplier.valid" type="submit"
                 class="btn btn-primary btn-sm  me-4">Agregar</button>
-            <button type="button" (click)="formSupplier.reset()" routerLink="/product-list"
+            <button type="button" (click)="formSupplier.reset()" routerLink="/supplier-list"
                 class="btn btn-light btn-sm  me-2">Cancelar</button>
         </section>
 
