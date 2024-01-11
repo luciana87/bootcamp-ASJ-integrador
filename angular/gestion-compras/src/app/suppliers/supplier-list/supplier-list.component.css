@@ -1,5 +1,23 @@
 table th {
-    background-color: #d8d8d8d2;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
+    /* background-color: #d8d8d8d2; */
+    /* background-color: #fda09f ; */
+    /* background-color: #95b2f6; */
+    background-color: #6e6ef4d3;
+    color: white;
+    font-weight: 600;
+}
+
+.button-add {
+    /* background-color: rgb(58, 171, 107); */
+    background-color: #4545e8d3;
+
+}
+
+.li-decoration {
+    list-style: none;
+}
+
+.button-circle {
+    height: 2rem;
+    width: 2rem;
 }

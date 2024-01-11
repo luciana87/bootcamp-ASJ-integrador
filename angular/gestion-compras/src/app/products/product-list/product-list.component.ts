@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -29,13 +30,27 @@ export class ProductListComponent implements OnInit {
   }
 
   delete(product: Product) {
-    let confirmacion = confirm(`¿Desea eliminar el product ${product.name}?`)
-    if (confirmacion) {
-      this.service.deleteProduct(product);
-      this.productList = this.service.getProducts();
 
-    }
-  }
+    Swal.fire({
+      title: `¿Desea eliminar el product ${product.name}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar!",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.deleteProduct(product);
+        this.productList = this.service.getProducts();
+        Swal.fire({
+          title: "Eliminado!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+  };
 
   cambiarImagen(event: Event) {
     this.service.defaultImage(event);

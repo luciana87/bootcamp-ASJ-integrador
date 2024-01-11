@@ -3,35 +3,43 @@
     <section class="w-100 ">
         <div class="m-3 mt-5 d-flex justify-content-between ">
             <h4 class="h4">Productos</h4>
-            <button class="btn text-center bg-success btn-sm text-white" routerLink="/form-product">Agregar<i
-                    class="fa-solid fa-plus fa-xs"></i></button>
+            <button class="button-add btn text-center btn-sm text-white" routerLink="/form-product">Agregar <i
+                    class="fa-solid fa-plus fa-sm"></i></button>
         </div>
 
-        <table class="table mt-3">
-            <thead class="">
+        <table class="table mt-3 border">
+            <thead class="row-12 align-middle ">
                 <tr>
-                    <th scope="col">Img</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Categoría</th>
-                    <th scope="col">Proveedor</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">ACCIONES</th>
+                    <th class="col-1">Img</th>
+                    <th class="col-5">Nombre</th>
+                    <th class="col-auto">Categoría</th>
+                    <th class="col-auto">Proveedor</th>
+                    <th class="col-auto">Precio</th>
+                    <th class="col-auto">ACCIONES</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let product of productList" id="product-table-container" class="align-middle">
-                <td class="tdImg">
+            <tbody *ngFor="let product of productList" id="product-table-container" class="row-12 align-middle">
+                <td class="col tdImg">
                     <div class="imgContainer">
-                        <img src="{{product.image}}" (error)="cambiarImagen($event)">
+                        <img class="img-fluid " src="{{product.image}}" (error)="cambiarImagen($event)">
                     </div>
                 </td>
-                <td scope="row" class="border-bottom">{{ product.name }}</td>
-                <td class="border-bottom py-2">{{ product.category.name }}</td>
-                <td class="border-bottom py-2">{{ product.supplier.business_name }}</td>
-                <td class="border-bottom py-2">{{ product.price | currency: '$'}}</td>
-                <td class="border-bottom py-2">
-                    <button class="btn bg-success text-white btn-sm me-2" id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
-                    <button class="btn bg-danger  text-white btn-sm me-2" (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
-                    <button class="btn btn-light btn-sm text-dark" routerLink="/detail-product/{{product.id}}"><i class="fa-solid fa-eye fa-xs"></i></button>
+                <td class="col" class="border-bottom">{{ product.name }}</td>
+                <td class="col border-bottom py-2">{{ product.category.name }}</td>
+                <td class="col border-bottom">{{ product.supplier.business_name }}</td>
+                <td class="col border-bottom">{{ product.price | currency: '$'}}</td>
+                <td class="d-flex align-items-center justify-content-end border-bottom" style="height: 72px;">
+                    <button class="btn text-white me-2 btn-sm button-circle"
+                        style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;"
+                        id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i
+                            class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
+                    <button class="btn text-white me-2 btn-sm button-circle"
+                        style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
+                        (click)="delete(product)"><i class="fa-regular fa-trash-can fa-sm d-flex  align-content-center justify-content-center"></i></button>
+                    <button class="btn me-2 btn-sm button-circle"
+                        style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
+                        routerLink="/detail-product/{{product.id}}"><i class="fa-solid fa-eye fa-sm d-flex  align-content-center justify-content-center"></i></button>
+                    <!-- <button class="btn-circle" routerLink="/detail-product/{{product.id}}"><i class="fa-solid fa-eye fa-xs"></i></button> -->
                 </td>
             </tbody>
         </table>
