@@ -25,6 +25,7 @@ import { DetailOrderComponent } from './purchase-orders/detail-order/detail-orde
 import { DetailProductComponent } from './products/detail-product/detail-product.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supp
     DetailOrderComponent,
     DetailProductComponent,
     HomeComponent,
-    DetailSupplierComponent
+    DetailSupplierComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,10 @@ table th {
 .button-add {
     /* background-color: rgb(58, 171, 107); */
     background-color: #4545e8d3;
+}
 
+.button-add:hover {
+    background-color: #7676f4d3;
 }
 
 .li-decoration {

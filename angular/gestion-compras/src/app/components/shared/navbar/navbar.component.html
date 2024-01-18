@@ -47,6 +47,9 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <button class="button-2 btn btn-xs " *ngIf="isLoggedIn" (click)="onLogout()" routerLink="/login">Cerrar sesión</button>
+            </li>
         </ul>
     </div>
 </nav>
