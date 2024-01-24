@@ -1,29 +1,13 @@
-package com.bootcamp.gestorApp.entities;
+package com.bootcamp.gestorApp.DTO.response;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-import org.hibernate.bytecode.internal.bytebuddy.PrivateAccessorException;
+import com.bootcamp.gestorApp.entities.Category;
+import com.bootcamp.gestorApp.entities.Supplier;
 
-import com.bootcamp.gestorApp.utils.Util;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+public class ProductResponseDTO {
 
-@Entity
-@Table(name = "product")
-public class Product {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
 	private String name;
 	private String sku;
 	private float price;
@@ -32,36 +16,22 @@ public class Product {
 	private LocalDateTime updatedAt;
 	private LocalDateTime createdAt;
 	private boolean deleted;
-	
-	@ManyToOne
-	@JoinColumn(name = "category_id")
 	private Category category;
-	
-	@ManyToOne
-	@JoinColumn(name = "supplier_id")
 	private Supplier supplier;
+	
+	public ProductResponseDTO(String name, String sku, float price, String description, String image,
+			LocalDateTime updatedAt, LocalDateTime createdAt, boolean deleted, Category category, Supplier supplier) {
 
-	
-	
-	public Product () {}
-	
-	
-	public Product(String name, String sku, float price, String description, String image,
-					Category category, Supplier supplier) {
 		this.name = name;
 		this.sku = sku;
 		this.price = price;
 		this.description = description;
 		this.image = image;
-		this.updatedAt = null;
-		this.createdAt = LocalDateTime.now();
-		this.setDeleted(false);
+		this.updatedAt = updatedAt;
+		this.createdAt = createdAt;
+		this.deleted = deleted;
 		this.category = category;
 		this.supplier = supplier;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public String getName() {
@@ -70,6 +40,14 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSku() {
+		return sku;
+	}
+
+	public void setSku(String sku) {
+		this.sku = sku;
 	}
 
 	public float getPrice() {
@@ -108,6 +86,18 @@ public class Product {
 		return createdAt;
 	}
 
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	public Category getCategory() {
 		return category;
 	}
@@ -123,27 +113,9 @@ public class Product {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-
-
-	public boolean getDeleted() {
-		return deleted;
-	}
-
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
-
-
-	public String getSku() {
-		return sku;
-	}
-
-
-	public void setSku(String sku) {
-		this.sku = sku;
-	}
 	
-
+	
+	
+	
 
 }

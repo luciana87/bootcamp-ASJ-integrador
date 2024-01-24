@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
+import com.bootcamp.gestorApp.DTO.response.ProductResponseDTO;
+import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.services.ProductService;
 
@@ -33,14 +36,26 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Optional<Product>> retriveById(@PathVariable Integer id) {
-		return new ResponseEntity<Optional<Product>>(productService.retriveById(id), HttpStatus.OK);
+	public ResponseEntity<ProductResponseDTO> retriveById(@PathVariable Integer id) {
+		return new ResponseEntity<ProductResponseDTO>(productService.retriveById(id), HttpStatus.OK);
 	}
 	
-	@PostMapping
-	public ResponseEntity<Product> create(@RequestBody Product product) {
-		return new ResponseEntity<Product>(productService.create(product),HttpStatus.CREATED);
-		
-	}
+	/*
+	 * @PostMapping public ResponseEntity<Product> create(@RequestBody Product
+	 * product) { return new
+	 * ResponseEntity<Product>(productService.create(product),HttpStatus.CREATED);
+	 * 
+	 * }
+	 */
+	 @PostMapping
+	 public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDTO productDTO) { 
+		 return new	ResponseEntity<Product>(productService.create(productDTO),HttpStatus.CREATED); 
+	 }
+
+	
+	
+	
+	
+	
 
 }

@@ -6,4 +6,6 @@ import com.bootcamp.gestorApp.entities.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 
+	boolean existsBySku(String sku);
+
 }

@@ -58,7 +58,7 @@ public class Supplier {
     @JoinColumn(name = "contact_id")
 	private Contact contact;
 	
-    @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER)
     private List<Product> products;
 	
 	public Supplier () {}
