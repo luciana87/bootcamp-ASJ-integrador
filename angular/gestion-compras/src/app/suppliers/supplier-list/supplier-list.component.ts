@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./supplier-list.component.css'],
   providers: [SupplierServiceService]
 })
+
 export class SupplierListComponent implements OnInit{
 
 
@@ -41,4 +42,8 @@ export class SupplierListComponent implements OnInit{
       }
     });
   };
+
+  cambiarImagen(event: Event) {
+    this.service.defaultImage(event);
+  }
 }

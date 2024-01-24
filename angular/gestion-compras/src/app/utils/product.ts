@@ -36,7 +36,10 @@ export class ProductUtils {
             },
             category: {
                 id: 0,
-                name: ''
+                name: '',
+                created_at: new Date("2024-01-10"),
+                updated_at: new Date("2024-01-10"),
+                isDeleted: false
             },
             name: '',
             description: '',

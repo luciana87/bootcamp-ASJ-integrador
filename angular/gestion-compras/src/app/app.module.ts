@@ -26,6 +26,7 @@ import { DetailProductComponent } from './products/detail-product/detail-product
 import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
 import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [ProductServiceService,SupplierServiceService,PurchaseOrderServiceService],
   bootstrap: [AppComponent]

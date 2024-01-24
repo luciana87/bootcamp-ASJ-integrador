@@ -12,13 +12,22 @@ import Swal from 'sweetalert2';
 })
 export class ProductListComponent implements OnInit {
 
-  productList: any[] = [];
+  productList: Product[] = [];
 
   constructor(public service: ProductServiceService) { }
 
   ngOnInit(): void {
-    this.productList = this.service.getProducts();
-    this.productList.sort(this.sortByName);
+    this.service.getProducts().subscribe(
+      (products) => {
+        this.productList = products;
+        console.log(this.productList);
+        
+        this.productList.sort(this.sortByName);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
   sortByName(productA: Product, productB: Product) {
@@ -31,25 +40,25 @@ export class ProductListComponent implements OnInit {
 
   delete(product: Product) {
 
-    Swal.fire({
-      title: `¿Desea eliminar el product ${product.name}?`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sí, eliminar!",
-      cancelButtonText: "Cancelar"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.service.deleteProduct(product);
-        this.productList = this.service.getProducts();
-        Swal.fire({
-          title: "Eliminado!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
-      }
-    });
+    // Swal.fire({
+    //   title: `¿Desea eliminar el product ${product.name}?`,
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Sí, eliminar!",
+    //   cancelButtonText: "Cancelar"
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     this.service.deleteProduct(product);
+    //     this.productList = this.service.getProducts();
+    //     Swal.fire({
+    //       title: "Eliminado!",
+    //       text: "Your file has been deleted.",
+    //       icon: "success"
+    //     });
+    //   }
+    // });
   };
 
   cambiarImagen(event: Event) {

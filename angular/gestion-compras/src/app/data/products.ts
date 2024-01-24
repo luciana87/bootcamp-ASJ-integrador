@@ -32,7 +32,10 @@ export const products = [
         },
         category: {
             id: 2,
-            name: "Ropa y calzado"
+            name: "Ropa y calzado",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "CARDIGAN STRASS BARCELONETA",
         description: "Cardigan de largo modular debajo de la cadera de calce recto y sin abotonadura en el acceso, con manga balloon. En hombros delanteros lleva piedras cosidas. Tajos laterales a modo de detalle. Material frio, sedoso, fino y elastico",
@@ -72,7 +75,10 @@ export const products = [
         },
         category: {
             id: 2,
-            name: "Ropa y calzado"
+            name: "Ropa y calzado",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "PANTALÓN PINZAS CREMALLERA",
         description: "Pantalón de tiro medio confeccionado con tejido en mezcla de viscosa. Cintura elástica. Detalle de pinzas en delantero. Cierre lateral con cremallera metálica",
@@ -112,7 +118,10 @@ export const products = [
         },
         category: {
             id: 1,
-            name: "Electrónica"
+            name: "Electrónica",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "Celular Samsung Galaxy A04s 128GB White",
         description: "El chip más rápido, potente e inteligente se encuentra en el Galaxy A04s. Cuenta con una batería de 5000 mAh que, junto con su pantalla y procesador de bajo consumo, te permitirá utilizar el smartphone durante todo el día.",
@@ -152,7 +161,10 @@ export const products = [
         },
         category: {
             id: 1,
-            name: "Electrónica"
+            name: "Electrónica",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "Parlante Bluetooth Noblex PSB1000",
         description: "El parlante Noblex PSB1000 dispone de una potencia de salida de 45 watts. Utilízalo mediante tecnología Bluetooth 5.0. También dispone de entrada auxiliar y alimentación por puerto USB. ",
@@ -192,7 +204,10 @@ export const products = [
         },
         category: {
             id: 3,
-            name: "Blanquería"
+            name: "Blanquería",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "Cubrecama Queen Size Damero Hoja",
         description: "Este cubrecama es ideal para quienes tienen poco tiempo y buscan practicidad, ya que son súper livianos y fáciles de limpiar, las manchas se eliminan rápidamente. Inspirate para vestir tu cama combinando los diseños y texturas que pensamos para vos esta temporada.",
@@ -232,7 +247,10 @@ export const products = [
         },
         category: {
             id: 3,
-            name: "Blanquería"
+            name: "Blanquería",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "Juego de Sábanas Twin Size Línea Biotextil Sustentable",
         description: "Este cubrecama es ideal para quienes tienen poco tiempo y buscan practicidad, ya que son súper livianos y fáciles de limpiar, las manchas se eliminan rápidamente. Inspirate para vestir tu cama combinando los diseños y texturas que pensamos para vos esta temporada.",
@@ -272,7 +290,10 @@ export const products = [
         },
         category: {
             id: 4,
-            name: "Juguetería"
+            name: "Juguetería",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "Ajedrez profesional Staunton Plastigal 160",
         description: "Sumérgete en el mundo del ajedrez con el Ajedrez profesional Staunton Plastigal 160, un juego de estrategia clásico y desafiante que pondrá a prueba tu ingenio y habilidades tácticas.",
@@ -312,7 +333,10 @@ export const products = [
         },
         category: {
             id: 4,
-            name: "Juguetería"
+            name: "Juguetería",
+            created_at: "2024-01-14",
+            updated_at: "2024-01-16",
+            isDeleted: false
         },
         name: "Juego De Memoria Con Luz Y Sonido Memo Star Duende Azul 7530",
         description: "¿Qué mejor plan para una tarde de lluvia que un juego de mesa? Con el Memo Disco Memo Star vas a crear divertidos recuerdos y pasar momentos inolvidables junto a tus amigos y amigas. Con este pasatiempo entretenido las risas están aseguradas.",

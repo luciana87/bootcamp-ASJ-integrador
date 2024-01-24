@@ -19,7 +19,7 @@ import { ProductUtils } from 'src/app/utils/product';
 
 export class FormPurchaseOrderComponent implements OnInit {
 
-  order!: PurchaseOrder;
+  order: PurchaseOrder = OrderUtils.initializeOrder();
   supplierList!: Supplier[];
   productList!: Product[];
   filteredProducts: Product[] = [];
@@ -34,21 +34,23 @@ export class FormPurchaseOrderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.supplierList = this.serviceSupplier.getSuppliers();
-    this.productList = this.serviceProduct.getProducts();
-    this.orderList = this.service.getPurchaseOrders();
+    // this.supplierList = this.serviceSupplier.getSuppliers();
+    // this.productList = this.serviceProduct.getProducts();
+    // this.orderList = this.service.getPurchaseOrders();
 
-    this.route.paramMap.subscribe((param: any) => {
-      const id = param.get('id');
-      if (id === null) { //Si es null es un nuevo
-        this.order = OrderUtils.initializeOrder(); //Lo inicializo
-      } else { //Si no es null lo edito
-        this.order = this.service.getOrderById(parseInt(id)) || OrderUtils.initializeOrder(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
-      }
-    });
+    // this.route.paramMap.subscribe((param: any) => {
+    //   const id = param.get('id');
+    //   if (id === null) { //Si es null es un nuevo
+    //     this.order = OrderUtils.initializeOrder(); //Lo inicializo
+    //   } else { //Si no es null lo edito
+    //     this.order = this.service.getOrderById(parseInt(id)) || OrderUtils.initializeOrder(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
+    //   }
+    // });
   }
 
   onSupplierChange(value: any) {
+
+    
     // Realiza el filtrado de productos cada vez que cambie el proveedor
     // if(value !== null){
 
@@ -65,10 +67,10 @@ export class FormPurchaseOrderComponent implements OnInit {
            // limpio la lista y sigo con el resto del codigo
 
 
-    let supplier_id = parseInt(value);
-    if (supplier_id) {
-      this.filteredProducts = this.filterProductsBySupplier(supplier_id);
-    }
+    // let supplier_id = parseInt(value);
+    // if (supplier_id) {
+    //   this.filteredProducts = this.filterProductsBySupplier(supplier_id);
+    // }
   }
 
   filterProductsBySupplier(supplier_id: number) {
@@ -107,6 +109,7 @@ export class FormPurchaseOrderComponent implements OnInit {
   }
 
   addProduct(form: NgForm) {
+    console.log(this.order.num_order);
     this.id_item ++;
     let productFound = this.productList.find((product) => product.id === parseInt(form.value.product));    
     let item: ItemPurchaseOrder = {

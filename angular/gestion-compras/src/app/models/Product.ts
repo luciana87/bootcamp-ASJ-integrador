@@ -5,9 +5,15 @@ export interface Product {
     id: number;
     sku: string;
     supplier: Supplier;
-    category: Category;
-    name: String;
-    description: String;
+    category: {
+        id: number;
+        name: string;
+        created_at: Date | string; // Puede ser Date o string
+        updated_at: Date | string; // Puede ser Date o string
+        isDeleted: boolean;
+    };
+    name: string;
+    description: string;
     price: number;
-    image: String;
+    image: string;
 }

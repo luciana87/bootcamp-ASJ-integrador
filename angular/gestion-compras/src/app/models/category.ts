@@ -1,4 +1,7 @@
 export interface Category {
     id: number,
-    name: String
+    name: string
+    created_at: Date,
+    updated_at: Date,
+    isDeleted: boolean
 }

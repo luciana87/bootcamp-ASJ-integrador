@@ -23,57 +23,59 @@ export class FormProductComponent implements OnInit {
 
   product: Product = ProductUtils.initializeProduct();
   suppliers: Supplier[] = [];
-  categoryList: Category[] = categories;
+
+  //categoryList: Category[] = categories;
+  categoryList!: Category[];
 
   constructor(public service: ProductServiceService, public serviceSupplier: SupplierServiceService, private router: Router,
     private route: ActivatedRoute, public builder: FormBuilder) { }
 
   ngOnInit() {
     this.suppliers = this.serviceSupplier.getSuppliers();
-    this.route.paramMap.subscribe((param: any) => {
-      const id = param.get('id');
-      if (id == null) { //Si es null es un nuevo producto
-        this.product = ProductUtils.initializeProduct(); //Lo inicializo
-      } else { //Si no es null lo edito
-        this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
-      }
+    // this.route.paramMap.subscribe((param: any) => {
+    //   const id = param.get('id');
+    //   if (id == null) { //Si es null es un nuevo producto
+    //     this.product = ProductUtils.initializeProduct(); //Lo inicializo
+    //   } else { //Si no es null lo edito
+    //     this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
+    //   }
 
-    });
+    // });
   }
 
 
 
   createProduct(form: NgForm) {
-    console.log(form.value);
-    if (!form.valid) {
-      console.log("Formulario inválido.");
-      return;
-    }
-    console.log(this.product);
+    //   console.log(form.value);
+    //   if (!form.valid) {
+    //     console.log("Formulario inválido.");
+    //     return;
+    //   }
+    //   console.log(this.product);
 
-    let supplier = this.suppliers.find(supplier => supplier.id == form.value.supplier);
-    let category = this.categoryList.find(c => c.id == form.value.category);
-    this.product.supplier = supplier!;
-    this.product.category = category!;
+    //   let supplier = this.suppliers.find(supplier => supplier.id == form.value.supplier);
+    //   let category = this.categoryList.find(c => c.id == form.value.category);
+    //   this.product.supplier = supplier!;
+    //   this.product.category = category!;
 
-    if (this.product.id != -1) {
-      // Lo actualizo
-      this.service.updateProduct(this.product);
-    } else {
+    //   if (this.product.id != -1) {
+    //     // Lo actualizo
+    //     this.service.updateProduct(this.product);
+    //   } else {
 
-      // this.product = {
-      //   supplier: supplier!,
-      //   sku: form.value.sku,
-      //   name: form.value.name,
-      //   category: category!,
-      //   description: form.value.description,
-      //   price: form.value.price,
-      //   image: form.value.image,
-      //   id: -1
-      // };
+    // this.product = {
+    //   supplier: supplier!,
+    //   sku: form.value.sku,
+    //   name: form.value.name,
+    //   category: category!,
+    //   description: form.value.description,
+    //   price: form.value.price,
+    //   image: form.value.image,
+    //   id: -1
+    // };
 
-      this.service.createProduct(this.product);
-    }
-    this.router.navigate(['/product-list'])
+    //     this.service.createProduct(this.product);
+    //   }
+    //   this.router.navigate(['/product-list'])
   }
 }

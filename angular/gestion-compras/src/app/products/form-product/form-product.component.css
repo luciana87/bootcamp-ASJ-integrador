@@ -1,3 +1,12 @@
 .btn-style { 
     text-align: center;
 }
+
+.button-add {
+    background-color: #4545e8d3;
+    text-align: center;
+}
+
+.button-add:hover {
+    background-color: #7676f4d3;
+}
