@@ -1,35 +1,51 @@
 import { Supplier } from "../models/supplier"
 
 export class SupplierUtils {
-    
+
     static initializeSupplier(): Supplier {
         return {
             id: -1,
             code: '',
-            business_name: '',
-            category: '',
+            businessName: '',
+            cuit: '',
+            field: {
+                id: -1,
+                name: ''
+            },
             website: '',
-            phone_number: 0,
+            phoneNumber: '',
             email: '',
             address: {
+                id: -1,
                 street: '',
-                postal_code: '',
+                num: -1,
+                postalCode: '',
                 city: '',
-                departament: '',
-                country: ''
+                province: {
+                    id: -1,
+                    name: '',
+                    country: {
+                        id: -1,
+                        name: ''
+                    }
+                }
             },
-            tax_data: {
-                cuit: '',
-                responsible_registered: ''
+            iva: {
+                id: -1,
+                name: ''
             },
             contact: {
-                name: '',
-                lastname: '',
-                phone_number: 0,
+                id: -1,
+                contactName: '',
+                contactLastname: '',
+                phoneNumber: 0,
                 email: '',
-                rol: ''
+                position: ''
             },
-            logo: ''
+            logo: '',
+            createdAt: new Date(),
+            updatedAt: new Date("2024-01-25"),
+            deleted: false
         }
     }
 }

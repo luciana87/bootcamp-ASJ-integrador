@@ -19,6 +19,8 @@ import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.services.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(path = "/products")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -48,7 +50,7 @@ public class ProductController {
 	 * }
 	 */
 	 @PostMapping
-	 public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDTO productDTO) { 
+	 public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductRequestDTO productDTO) { 
 		 return new	ResponseEntity<Product>(productService.create(productDTO),HttpStatus.CREATED); 
 	 }
 

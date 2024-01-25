@@ -6,37 +6,55 @@ export class OrderUtils {
     static initializeOrder(): PurchaseOrder {
         return {
             id: -1,
-            num_order: 0,
+            numOrder: 0,
             supplier: {
                 id: -1,
                 code: '',
-                business_name: '',
-                category: '',
+                businessName: '',
+                cuit: '',
+                field: {
+                    id: -1,
+                    name: ''
+                },
                 website: '',
-                phone_number: 0,
+                phoneNumber: '',
                 email: '',
                 address: {
+                    id: -1,
                     street: '',
-                    postal_code: '',
+                    num: -1,
+                    postalCode: '',
                     city: '',
-                    departament: '',
-                    country: ''
+                    province: {
+                        id: -1,
+                        name: '',
+                        country: {
+                            id: -1,
+                            name: ''
+                        }
+                    },
                 },
-                tax_data: {
-                    cuit: '',
-                    responsible_registered: ''
+                iva: {
+                    id: -1,
+                    name: ''
                 },
                 contact: {
-                    name: '',
-                    lastname: '',
-                    phone_number: 0,
+                    id: -1,
+                    contactName: '',
+                    contactLastname: '',
+                    phoneNumber: 0,
                     email: '',
-                    rol: ''
+                    position: ''
                 },
-                logo: ''
+                logo: '',
+                createdAt: new Date("2024-01-09"),
+                updatedAt: new Date("2024-01-25"),
+                deleted: false
             },
-            issue_date: new Date,
-            deadline: new Date,
+            createdAt: new Date("2024-01-18"),
+            updatedAt: new Date("2024-01-20"),
+            deadline: new Date("2024-01-28"),
+            canceled: false,
             items: [],
             total: 0,
             description: ''

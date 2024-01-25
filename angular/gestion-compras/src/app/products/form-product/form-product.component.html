@@ -20,7 +20,7 @@
                         <select id="proveedor-input" name="supplier" class="form-select" required
                             [(ngModel)]="product.supplier.id">
                             <option [ngValue]="null" selected>Seleccionar proveedor</option>
-                            <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{ supplier.business_name
+                            <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{ supplier.businessName
                                 }}</option>
                         </select>
                         <div *ngIf="formProduct.controls['supplier']?.invalid && (formProduct.controls['supplier']?.dirty || formProduct.controls['supplier']?.touched)"

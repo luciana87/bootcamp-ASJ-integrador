@@ -12,7 +12,7 @@
                         <div class="mb-3 input-group-sm">
                             <label for="nro-input" class="form-label fw-light">Nro. de orden:</label>
                             <input type="number" class="form-control " name="nro" id="nro-input" required min="1"
-                                [(ngModel)]="order.num_order">
+                                [(ngModel)]="order.numOrder">
                         </div>
                         <div *ngIf="formOrder.controls['nro']?.invalid && (formOrder.controls['nro']?.dirty || formOrder.controls['nro']?.touched)"
                             class="text-danger">
@@ -27,7 +27,7 @@
                         <div class="mb-3 col-6  input-group-sm">
                             <label for="issue-date-input" class="form-label fw-light">Fecha de Emisión:</label>
                             <input type="date" class="form-control fw-light" name="issueDate" id="issue-date-input" required
-                                [(ngModel)]="order.issue_date">
+                                [(ngModel)]="order.createdAt">
                         </div>
                         <small *ngIf="formOrder.controls['issueDate']?.errors?.['required']">Este campo es
                             obligatorio.</small>
@@ -60,7 +60,7 @@
                                 [(ngModel)]="order.supplier" (ngModelChange)="onSupplierChange($event)">
                                 <option [ngValue]="null" selected>Proveedor</option>
                                 <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{
-                                    supplier.business_name }}
+                                    supplier.businessName }}
                                 </option>
                             </select>
                             <div *ngIf="formOrder.controls['supplier']?.invalid && (formOrder.controls['supplier']?.dirty || formOrder.controls['supplier']?.touched)"
@@ -104,6 +104,7 @@
     
                     <button [disabled]="!formOrder.valid" class="btn btn-primary btn-sm  mt-3" type="button"
                         (click)="addProduct(formOrder)">Agregar</button>
+                        
 
                 </div>
 

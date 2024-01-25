@@ -1,14 +1,9 @@
 package com.bootcamp.gestorApp.entities;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-import org.hibernate.bytecode.internal.bytebuddy.PrivateAccessorException;
-
-import com.bootcamp.gestorApp.utils.Util;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,7 +32,7 @@ public class Product {
 	@JoinColumn(name = "category_id")
 	private Category category;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "supplier_id")
 	private Supplier supplier;
 

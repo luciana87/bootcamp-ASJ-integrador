@@ -1,18 +1,15 @@
 package com.bootcamp.gestorApp.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -36,7 +33,7 @@ public class Supplier {
 	
 	private String field;
 	private String website;
-	private String phone_number;
+	private String phoneNumber;
 	private String email;
 	private String logo;
 	
@@ -58,19 +55,21 @@ public class Supplier {
     @JoinColumn(name = "contact_id")
 	private Contact contact;
 	
-    @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER)
-    private List<Product> products;
+	/*
+	 * @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER) private
+	 * List<Product> products;
+	 */
 	
 	public Supplier () {}
 	
 	public Supplier (String code, String cuit, String field, String website, 
-			String phone_number, String email, String logo, Address address, 
+			String phoneNumber, String email, String logo, Address address, 
 			IvaType iva, Contact contact) {
 		this.code = code;
 		this.cuit = cuit;
 		this.field = field;
 		this.website = website;
-		this.phone_number = phone_number;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.logo = logo;
 		this.createdAt = LocalDateTime.now();
@@ -119,12 +118,12 @@ public class Supplier {
 		this.website = website;
 	}
 
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {

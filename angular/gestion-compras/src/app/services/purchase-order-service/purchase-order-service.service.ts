@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { orders } from 'src/app/data/purchase-orders';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 
 //const dataOrders: PurchaseOrder[] = orders;
@@ -12,7 +14,7 @@ export class PurchaseOrderServiceService {
 
   id!: number;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     // let purchaseOrders = this.getPurchaseOrders(); // Le asigno lo que venga del localStorage
     // if (purchaseOrders.length === 0) { // Si está vacío el [], no hay elementos en el localStorage
     //   purchaseOrders = dataOrders; //Le asigno mi JSON
@@ -27,6 +29,12 @@ export class PurchaseOrderServiceService {
   //   let orderList = localStorage.getItem('orders');
   //   return (orderList !== null) ? JSON.parse(orderList!) : [];
 //}
+
+getPurchaseOrders(): Observable<PurchaseOrder[]> {
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.get<PurchaseOrder[]>('http://localhost:8080/products', { headers })
+
+}
 
 getOrderById(id: number) {
   //   let orders = this.getPurchaseOrders();

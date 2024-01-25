@@ -3,7 +3,9 @@ package com.bootcamp.gestorApp.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.aspectj.weaver.bcel.FakeAnnotation;
 import org.hibernate.engine.transaction.jta.platform.internal.BitronixJtaPlatform;
+import org.modelmapper.internal.bytebuddy.asm.Advice.This;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,6 +32,8 @@ public class PurchaseOrder {
 	@Column(nullable = false)
 	private LocalDateTime createdAt;
 	
+	private LocalDateTime updatedAt;
+	private LocalDateTime deadline;
 	private float total;
 	private boolean canceled;
 	private String description;
@@ -47,6 +51,9 @@ public class PurchaseOrder {
 
 		this.numOrder = numOrder;
 		this.createdAt = LocalDateTime.now();
+		this.deadline = createdAt.plusDays(10);
+		this.updatedAt = null;
+		this.canceled= false;
 		this.total = total;
 		this.canceled = false;
 		this.description = description;

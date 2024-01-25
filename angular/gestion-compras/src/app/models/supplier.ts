@@ -1,17 +1,22 @@
 import { Address } from "./address"
 import { Contact } from "./contact"
-import { TaxData } from "./taxData"
+import { Field } from "./field"
+import { IvaType } from "./ivaType"
 
 export interface Supplier {
     id: number,
     code: String,
-    business_name: String,
-    category: string,
+    businessName: String,
+    cuit: String,
+    field: Field,
     website: String,
-    phone_number: number,
+    phoneNumber: String,
     email: String,
     address: Address,
-    tax_data: TaxData,
+    iva: IvaType,
     contact: Contact,
-    logo: String
+    logo: String,
+    createdAt: Date,
+	updatedAt: Date,
+    deleted: boolean
 }

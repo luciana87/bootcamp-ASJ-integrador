@@ -2,28 +2,28 @@ import { Injectable } from '@angular/core';
 import { suppliers } from 'src/app/data/suppliers';
 import { Supplier } from 'src/app/models/supplier';
 
-const dataSuppliers: Supplier[] = suppliers;
+//const dataSuppliers: Supplier[] = suppliers;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierServiceService {
 
-  id: number;
+  //id: number;
 
   constructor() {
-    let suppliers = this.getSuppliers(); // Le asigno lo que venga del localStorage
-    if (suppliers.length == 0) { // Si está vacío el [], no hay elementos en el localStorage
-      suppliers = dataSuppliers; //Le asigno mi JSON
-      localStorage.setItem("suppliers", JSON.stringify(dataSuppliers)) //Agrego al localStorage lo que tengo en mi JSON
-    }
-    let lastSupplier = suppliers[suppliers.length -1]
-    this.id = lastSupplier.id
+    // let suppliers = this.getSuppliers(); // Le asigno lo que venga del localStorage
+    // if (suppliers.length == 0) { // Si está vacío el [], no hay elementos en el localStorage
+    //   suppliers = dataSuppliers; //Le asigno mi JSON
+    //   localStorage.setItem("suppliers", JSON.stringify(dataSuppliers)) //Agrego al localStorage lo que tengo en mi JSON
+    // }
+    // let lastSupplier = suppliers[suppliers.length -1]
+    // this.id = lastSupplier.id
   }
 
-  mostrarData() {
-    console.log(dataSuppliers);
-  }
+  // mostrarData() {
+  //   console.log(dataSuppliers);
+  // }
 
   getSuppliers(): Supplier[] {
     let suppliers = localStorage.getItem('suppliers')
@@ -37,12 +37,12 @@ export class SupplierServiceService {
   }
 
   createSupplier(supplier: Supplier) {
-    this.id += 1;
-    supplier.id = this.id;
-    let suppliers = this.getSuppliers();
-    suppliers.push(supplier);
-    localStorage.setItem('suppliers', JSON.stringify(suppliers));
-    this.mostrarData();
+    // this.id += 1;
+    // supplier.id = this.id;
+    // let suppliers = this.getSuppliers();
+    // suppliers.push(supplier);
+    // localStorage.setItem('suppliers', JSON.stringify(suppliers));
+    //this.mostrarData();
   }
 
   updateSupplier(supplier: Supplier) {
@@ -51,7 +51,7 @@ export class SupplierServiceService {
     suppliers[index] = supplier;
     localStorage.setItem('suppliers', JSON.stringify(suppliers));
 
-    this.mostrarData();
+    //this.mostrarData();
   }
 
   deleteSupplier(supplier: Supplier) {
@@ -61,7 +61,7 @@ export class SupplierServiceService {
       suppliers.splice(index, 1);
       localStorage.setItem('suppliers', JSON.stringify(suppliers)); 
     }
-    this.mostrarData();
+    //this.mostrarData();
   }
   
   defaultImage(event: Event) {

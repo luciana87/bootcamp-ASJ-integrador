@@ -23,7 +23,7 @@ export class SupplierListComponent implements OnInit{
 
   delete(supplier: Supplier){
     Swal.fire({
-      title: `¿Desea eliminar el proveedor ${supplier.business_name}?`,
+      title: `¿Desea eliminar el proveedor ${supplier.businessName}?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

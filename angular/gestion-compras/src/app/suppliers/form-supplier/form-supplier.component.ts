@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from 'src/app/models/supplier';
+import { Country } from 'src/app/models/country';
+import { Field } from 'src/app/models/field';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 import { SupplierUtils } from 'src/app/utils/supplier';
 
@@ -13,6 +15,8 @@ import { SupplierUtils } from 'src/app/utils/supplier';
 export class FormSupplierComponent implements OnInit{
 
   supplier!: Supplier; 
+  countries: Country[] = [];
+  fields: Field[] = [];
   
   ivaList: String[] = ["IVA Responsable Inscripto", "IVA Responsable no Inscripto", "IVA no Responsable",
     "IVA sujeto Exento", "Consumidor Final", "Responsable Monotributo", "Sujeto no Categorizado",
@@ -25,6 +29,7 @@ export class FormSupplierComponent implements OnInit{
 
   constructor(public service: SupplierServiceService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
+    this.service.getSuppliers();
     this.route.paramMap.subscribe((param: any) => {
       const id = param.get('id');
       if (id == null) { //Si es null es un nuevo Supplier

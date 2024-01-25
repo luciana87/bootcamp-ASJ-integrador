@@ -1,27 +1,65 @@
 package com.bootcamp.gestorApp.DTO.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 public class SupplierRequestDTO {
 
 
+    @NotEmpty (message = "Code may not be empty")
+	@NotBlank(message = "Code is required.")
+    @Size (min = 4, max = 30, message = "Code must be more than 4 and must be less than 30 characters long")
 	private String code;
+    
+    @NotEmpty (message = "Code may not be empty")
+	@NotBlank(message = "Code is required.")
+    @Size (min = 4, max = 60, message = "Code must be more than 4 and must be less than 30 characters long")
 	private String businessName;
+    
+    @NotBlank(message = "CUIT is requiered.")
+    @Pattern(regexp = "\\d{2}-\\d{8}-\\d{1}", message = "Invalid CUIT.")
 	private String cuit;
+	
+    @NotEmpty (message = "Code may not be empty")
+	@NotBlank(message = "Code is required.")
+    @Size (min = 3, max = 60, message = "Code must be more than 4 and must be less than 30 characters long")
 	private String field;
+    
+    @Pattern(regexp = "^(http|https)://.*$", message = "Invalid URL.")
 	private String website;
+    
+    @NotEmpty (message = "Phone number may not be empty")
+	@NotBlank(message = "Phone number is required.")
+    @Size (min = 10, max = 25, message = "Phone number must be more than 10 and must be less than 25 characters long")
 	private String phone_number;
+    
+    @NotBlank(message = "Email is required.")
+    @Email(message = "Invalid email")
 	private String email;
+    
 	private String logo;
 	
-	private Integer addressId;
+	@NotBlank(message = "Address is required.")
+	private AddressRequestDTO addressDTO;
+	
+	@JsonProperty("iva_id")
+	@NotBlank(message = "Iva type is required.")
 	private Integer ivaId;
-	private Integer contactId;
+	
+	@NotBlank(message = "Contact is required.")
+	private ContactRequestDTO contactDTO;
 	
 	
 	public SupplierRequestDTO() {}
 
 
 	public SupplierRequestDTO(String code, String businessName, String cuit, String field, String website,
-			String phone_number, String email, String logo, Integer addressId, Integer ivaId, Integer contactId) {
+			String phone_number, String email, String logo, AddressRequestDTO addressDTO, Integer ivaId, ContactRequestDTO contactDTO) {
 		this.code = code;
 		this.businessName = businessName;
 		this.cuit = cuit;
@@ -30,9 +68,9 @@ public class SupplierRequestDTO {
 		this.phone_number = phone_number;
 		this.email = email;
 		this.logo = logo;
-		this.addressId = addressId;
+		this.addressDTO = addressDTO;
 		this.ivaId = ivaId;
-		this.contactId = contactId;
+		this.contactDTO = contactDTO;
 	}
 
 
@@ -116,13 +154,13 @@ public class SupplierRequestDTO {
 	}
 
 
-	public Integer getAddressId() {
-		return addressId;
+	public AddressRequestDTO getAddressDTO() {
+		return addressDTO;
 	}
 
 
-	public void setAddressId(Integer addressId) {
-		this.addressId = addressId;
+	public void setAddressDTO(AddressRequestDTO addressDTO) {
+		this.addressDTO = addressDTO;
 	}
 
 
@@ -136,18 +174,14 @@ public class SupplierRequestDTO {
 	}
 
 
-	public Integer getContactId() {
-		return contactId;
+	public ContactRequestDTO getContactDTO() {
+		return contactDTO;
 	}
 
 
-	public void setContactId(Integer contactId) {
-		this.contactId = contactId;
+	public void setContactDTO(ContactRequestDTO contactDTO) {
+		this.contactDTO = contactDTO;
 	}
-	
-	
-	
-	
 	
 	
 }

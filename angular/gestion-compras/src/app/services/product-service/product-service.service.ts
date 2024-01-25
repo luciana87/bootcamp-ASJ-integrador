@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
-const dataProducts: Product[] = products; //le asigno el json a una variable
+//const dataProducts: Product[] = products; //le asigno el json a una variable
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +40,8 @@ export class ProductServiceService {
           ...product,
           category: {
             ...product.category,
-            created_at: new Date(product.category.created_at),
-            updated_at: new Date(product.category.updated_at),
+            created_at: new Date(product.category.createdAt),
+            updated_at: new Date(product.category.updatedAt),
           },
         }));
       })

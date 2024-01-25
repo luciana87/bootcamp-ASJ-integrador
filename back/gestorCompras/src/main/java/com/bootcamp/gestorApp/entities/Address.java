@@ -1,16 +1,12 @@
 package com.bootcamp.gestorApp.entities;
 
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +17,7 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String street;
+	private int num;
 	private String postalCode;
 	private String city;
 
@@ -30,8 +27,9 @@ public class Address {
 	
 	public Address() {}
 
-	public Address (String street, String postalCode, String city, Province province) {
+	public Address (String street, Integer num, String postalCode, String city, Province province) {
 		this.street = street;
+		this.num = num;
 		this.postalCode = postalCode;
 		this.city = city;
 		this.province = province;
@@ -43,6 +41,15 @@ public class Address {
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+	
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public String getPostalCode() {
