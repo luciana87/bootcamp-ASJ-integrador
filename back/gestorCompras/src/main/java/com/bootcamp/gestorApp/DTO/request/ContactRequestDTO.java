@@ -1,5 +1,7 @@
 package com.bootcamp.gestorApp.DTO.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -10,16 +12,19 @@ public class ContactRequestDTO {
     @NotEmpty (message = "Contact name may not be empty")
 	@NotBlank(message = "Contact name is required.")
     @Size (min = 3, max = 60, message = "Contact name must be more than 3 and must be less than 30 characters long")
+	@JsonProperty("contact_name")
 	private String contactName;
     
     @NotEmpty (message = "Contact lastname may not be empty")
 	@NotBlank(message = "Contact lastname is required.")
     @Size (min = 3, max = 60, message = "Contact lastname must be more than 3 and must be less than 30 characters long")
+	@JsonProperty("contact_lastname")
 	private String contactLastname;
     
     @NotEmpty (message = "Contact phone number may not be empty")
 	@NotBlank(message = "Contact phone number is required.")
     @Size (min = 10, max = 25, message = "Contact phone number must be more than 10 and must be less than 25 characters long")
+	@JsonProperty("phone_number")
 	private String phoneNumber;
     
     @NotBlank(message = "Correo es requerido.")

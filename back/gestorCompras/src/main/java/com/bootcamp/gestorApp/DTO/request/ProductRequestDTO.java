@@ -29,11 +29,9 @@ public class ProductRequestDTO {
 	private String image;
 	
 	@JsonProperty("category_id")
-	@NotBlank(message = "Category is required.")
 	private Integer categoryId;
 	
 	@JsonProperty("supplier_id")
-	@NotBlank(message = "Supplier is required.")
 	private Integer supplierId;
 
 

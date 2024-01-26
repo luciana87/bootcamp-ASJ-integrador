@@ -50,7 +50,7 @@ public class ProductController {
 	 * }
 	 */
 	 @PostMapping
-	 public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductRequestDTO productDTO) { 
+	 public ResponseEntity<Product> create(@Valid @RequestBody ProductRequestDTO productDTO) { 
 		 return new	ResponseEntity<Product>(productService.create(productDTO),HttpStatus.CREATED); 
 	 }
 

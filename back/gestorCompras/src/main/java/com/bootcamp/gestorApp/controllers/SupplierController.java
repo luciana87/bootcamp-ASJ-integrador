@@ -43,7 +43,7 @@ public class SupplierController {
 	}
 	
 	 @PostMapping
-	 public ResponseEntity<Supplier> createProduct(@Valid @RequestBody SupplierRequestDTO supplierDTO) { 
+	 public ResponseEntity<Supplier> create(@Valid @RequestBody SupplierRequestDTO supplierDTO) { 
 		 return new	ResponseEntity<Supplier>(supplierService.create(supplierDTO),HttpStatus.CREATED); 
 	 }
 

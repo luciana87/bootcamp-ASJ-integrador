@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "supplier")
+@Table(name = "suppliers")
 public class Supplier {
 	
 	@Id
@@ -25,10 +25,10 @@ public class Supplier {
 	@Column(unique = true, nullable = false)
 	private String code;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
 	private String businessName;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
 	private String cuit;
 	
 	private String field;
@@ -60,7 +60,11 @@ public class Supplier {
 	 * List<Product> products;
 	 */
 	
-	public Supplier () {}
+	public Supplier () {
+		this.createdAt = LocalDateTime.now();
+		this.updatedAt = null;
+		this.deleted = false;
+	}
 	
 	public Supplier (String code, String cuit, String field, String website, 
 			String phoneNumber, String email, String logo, Address address, 
@@ -144,10 +148,6 @@ public class Supplier {
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
 	}
 
 	public LocalDateTime getUpdatedAt() {

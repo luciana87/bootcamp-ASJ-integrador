@@ -68,9 +68,9 @@ public class ProductService {
 		Category category = categoryService.retriveById(productDTO.getCategoryId());
 		Supplier supplier = supplierService.retriveById(productDTO.getSupplierId());
 		
-		Product productSavedProduct = mapToEntity(productDTO, category,supplier);
+		Product productSaved = mapToEntity(productDTO, category,supplier);
 		
-		return productRepository.save(productSavedProduct);
+		return productRepository.save(productSaved);
 	}
 	    
     private void checkForExistingProduct(String sku) {

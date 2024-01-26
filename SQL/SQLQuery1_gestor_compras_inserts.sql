@@ -23,6 +23,22 @@ VALUES
   ('Tucuman', 1),
   ('Salta', 1);
 
+
+
+
+    
+INSERT INTO address(id, num, street, postal_code, city, province_id)
+VALUES 
+  (1, 1234, 'Calle 123', '1900', 'La Plata', 1),
+  (2, 2345, 'Avenida XYZ', '5000', 'Carlos Paz', 2),
+  (3, 6789, 'Calle ABC', 'S3153', 'Rosario', 3), 
+  (4, 5487,  'Av. de las Flores', 'M5561', 'Tupungato', 4),
+  (5, 6541, 'Ruta 567', '4000', 'San Miguel de Tucumán', 5),
+  (6, 1648, 'Av. de los Andes', 'A4427', 'Cafayate', 6),
+  (7, 1674, 'Av. de los Andes2', 'A4427', 'Cafayate2', 6);
+
+
+
   INSERT INTO address(street, postal_code, city, province_id)
 VALUES 
   ('Calle 123', '1900', 'La Plata', 1),
@@ -32,6 +48,8 @@ VALUES
   ('Ruta 567', '4000', 'San Miguel de Tucumán', 5),
   ('Av. de los Andes', 'A4427', 'Cafayate', 6),
   ('Av. de los Andes2', 'A4427', 'Cafayate2', 6);
+
+
 
   INSERT INTO contact(contact_name, contact_lastname, phone_number, email, position)
 VALUES 
@@ -43,21 +61,42 @@ VALUES
   ('Juliana', 'Mendoza', 119888777, 'juliana.mendoza@gmail.com', 'Directora de ventas'),
   ('Victoria', 'García', 221458777, 'victoria.garcia@gmail.com', 'Coordinadora');
 
-  INSERT INTO iva_type(name)
+
+
+  INSERT INTO iva_type(id,name)
 VALUES 
-  ('IVA Responsable Inscripto'),
-  ('IVA Responsable No Inscripto'),
-  ('Monotributista'),
-  ('Exento'),
-  ('IVA no Responsable'),
-  ('Consumidor Final'),
-  ('Sujeto no Categorizado'),
-  ('Proveedor del Exterior'),
-  ('Cliente del Exterior'),
-  ('IVA Liberado'),
-  ('Pequeño Contribuyente Eventual'),
-  ('Monotributista Social'),
-  ('Pequeño Constribuyente Eventual Social');
+  (1, 'IVA Responsable Inscripto'),
+  (2, 'IVA Responsable No Inscripto'),
+  (3, 'Monotributista'),
+  (4, 'Exento'),
+  (5, 'IVA no Responsable'),
+  (6, 'Consumidor Final'),
+  (7, 'Sujeto no Categorizado'),
+  (8, 'Proveedor del Exterior'),
+  (9, 'Cliente del Exterior'),
+  (10, 'IVA Liberado'),
+  (11, 'Pequeño Contribuyente Eventual'),
+  (12, 'Monotributista Social'),
+  (13, 'Pequeño Constribuyente Eventual Social');
+
+
+
+    INSERT INTO category(id, name, created_at, updated_at, deleted)
+VALUES 
+  (1, 'Electrodomésticos pequeños', '2023-07-02T08:30:00', NULL, false),
+  (2, 'Electrónica', '2023-11-15T10:30:00', NULL, false),
+  (3, 'Ropa y calzado', '2024-01-14T15:45:00', NULL, false),
+  (4, 'Blanquería', '2015-06-01T12:00:00', NULL, false),
+  (5, 'Juguetería', '2021-04-15T09:20:00', NULL, false),
+  (6, 'Libros', '2018-07-20T17:00:00', NULL, false),
+  (7, 'Libreria y papeleria', '2018-07-20T17:00:00', NULL, false);
+
+
+
+
+
+
+
 
   INSERT INTO category(name, created_at, updated_at, deleted)
 VALUES 

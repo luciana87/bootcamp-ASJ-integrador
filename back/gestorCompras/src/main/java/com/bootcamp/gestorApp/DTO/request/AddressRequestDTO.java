@@ -1,5 +1,7 @@
 package com.bootcamp.gestorApp.DTO.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -19,6 +21,7 @@ public class AddressRequestDTO {
     @NotEmpty (message = "Postal code may not be empty")
 	@NotBlank(message = "Postal code is required.")
     @Size (min = 4, max = 6, message = "Postal code must be more than 4 and must be less than 6 characters long")
+	@JsonProperty("postal_code")
 	private String postalCode;
     
     @NotEmpty (message = "City may not be empty")

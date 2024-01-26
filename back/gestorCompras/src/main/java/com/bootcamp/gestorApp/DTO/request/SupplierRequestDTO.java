@@ -19,24 +19,24 @@ public class SupplierRequestDTO {
     @NotEmpty (message = "Code may not be empty")
 	@NotBlank(message = "Code is required.")
     @Size (min = 4, max = 60, message = "Code must be more than 4 and must be less than 30 characters long")
+	@JsonProperty("business_name")
 	private String businessName;
     
     @NotBlank(message = "CUIT is requiered.")
     @Pattern(regexp = "\\d{2}-\\d{8}-\\d{1}", message = "Invalid CUIT.")
 	private String cuit;
 	
-    @NotEmpty (message = "Code may not be empty")
-	@NotBlank(message = "Code is required.")
-    @Size (min = 3, max = 60, message = "Code must be more than 4 and must be less than 30 characters long")
-	private String field;
-    
+	@JsonProperty("field_id")
+	private Integer fieldId;
+
     @Pattern(regexp = "^(http|https)://.*$", message = "Invalid URL.")
 	private String website;
     
     @NotEmpty (message = "Phone number may not be empty")
 	@NotBlank(message = "Phone number is required.")
     @Size (min = 10, max = 25, message = "Phone number must be more than 10 and must be less than 25 characters long")
-	private String phone_number;
+	@JsonProperty("phone_number")
+	private String phoneNumber;
     
     @NotBlank(message = "Email is required.")
     @Email(message = "Invalid email")
@@ -44,28 +44,27 @@ public class SupplierRequestDTO {
     
 	private String logo;
 	
-	@NotBlank(message = "Address is required.")
+	@JsonProperty("address")
 	private AddressRequestDTO addressDTO;
 	
 	@JsonProperty("iva_id")
-	@NotBlank(message = "Iva type is required.")
 	private Integer ivaId;
 	
-	@NotBlank(message = "Contact is required.")
+	@JsonProperty("contact")
 	private ContactRequestDTO contactDTO;
 	
 	
 	public SupplierRequestDTO() {}
 
 
-	public SupplierRequestDTO(String code, String businessName, String cuit, String field, String website,
-			String phone_number, String email, String logo, AddressRequestDTO addressDTO, Integer ivaId, ContactRequestDTO contactDTO) {
+	public SupplierRequestDTO(String code, String businessName, String cuit, Integer fieldId, String website,
+			String phoneNumber, String email, String logo, AddressRequestDTO addressDTO, Integer ivaId, ContactRequestDTO contactDTO) {
 		this.code = code;
 		this.businessName = businessName;
 		this.cuit = cuit;
-		this.field = field;
+		this.fieldId = fieldId;
 		this.website = website;
-		this.phone_number = phone_number;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.logo = logo;
 		this.addressDTO = addressDTO;
@@ -104,13 +103,13 @@ public class SupplierRequestDTO {
 	}
 
 
-	public String getField() {
-		return field;
+	public Integer getFieldId() {
+		return fieldId;
 	}
 
 
-	public void setField(String field) {
-		this.field = field;
+	public void setFieldId(Integer fieldId) {
+		this.fieldId = fieldId;
 	}
 
 
@@ -124,13 +123,13 @@ public class SupplierRequestDTO {
 	}
 
 
-	public String getPhone_number() {
-		return phone_number;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
 
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 
