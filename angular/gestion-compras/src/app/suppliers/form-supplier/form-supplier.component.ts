@@ -29,16 +29,16 @@ export class FormSupplierComponent implements OnInit{
 
   constructor(public service: SupplierServiceService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    this.service.getSuppliers();
-    this.route.paramMap.subscribe((param: any) => {
-      const id = param.get('id');
-      if (id == null) { //Si es null es un nuevo Supplier
-        this.supplier = SupplierUtils.initializeSupplier(); //Lo inicializo
-      } else { //Si no es null lo edito
-        this.supplier = this.service.getSupplierById(parseInt(id)) ||  SupplierUtils.initializeSupplier(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
-      }
+    //this.service.getSuppliers();
+    // this.route.paramMap.subscribe((param: any) => {
+    //   const id = param.get('id');
+    //   if (id == null) { //Si es null es un nuevo Supplier
+    //     this.supplier = SupplierUtils.initializeSupplier(); //Lo inicializo
+    //   } else { //Si no es null lo edito
+    //     this.supplier = this.service.getSupplierById(parseInt(id)) ||  SupplierUtils.initializeSupplier(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
+    //   }
       
-    });
+    // });
   }
 
   createSupplier(form: NgForm) {

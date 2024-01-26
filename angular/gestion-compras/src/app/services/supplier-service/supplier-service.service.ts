@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { suppliers } from 'src/app/data/suppliers';
+import { Observable } from 'rxjs';
 import { Supplier } from 'src/app/models/supplier';
 
 //const dataSuppliers: Supplier[] = suppliers;
@@ -11,7 +12,7 @@ export class SupplierServiceService {
 
   //id: number;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     // let suppliers = this.getSuppliers(); // Le asigno lo que venga del localStorage
     // if (suppliers.length == 0) { // Si está vacío el [], no hay elementos en el localStorage
     //   suppliers = dataSuppliers; //Le asigno mi JSON
@@ -25,15 +26,18 @@ export class SupplierServiceService {
   //   console.log(dataSuppliers);
   // }
 
-  getSuppliers(): Supplier[] {
-    let suppliers = localStorage.getItem('suppliers')
-    return (suppliers !== null) ? JSON.parse(suppliers) : []; // Retorna lo que hay en localStorage o si no hay nada un []
-
+  getSuppliers(): Observable<Supplier[]> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.get<Supplier[]>('http://localhost:8080/suppliers', { headers });
   }
+    //let suppliers = localStorage.getItem('suppliers')
+    //return (suppliers !== null) ? JSON.parse(suppliers) : []; // Retorna lo que hay en localStorage o si no hay nada un []
+
+  //}
 
   getSupplierById(id: number) {
-    let suppliers = this.getSuppliers()
-    return suppliers.find((supplier) => supplier.id === id);
+    //let suppliers = this.getSuppliers()
+    //return suppliers.find((supplier) => supplier.id === id);
   }
 
   createSupplier(supplier: Supplier) {
@@ -46,21 +50,21 @@ export class SupplierServiceService {
   }
 
   updateSupplier(supplier: Supplier) {
-    let suppliers = this.getSuppliers();
-    let index = suppliers.findIndex(sup => sup.id === supplier.id);
-    suppliers[index] = supplier;
-    localStorage.setItem('suppliers', JSON.stringify(suppliers));
+    // let suppliers = this.getSuppliers();
+    // let index = suppliers.findIndex(sup => sup.id === supplier.id);
+    // suppliers[index] = supplier;
+    // localStorage.setItem('suppliers', JSON.stringify(suppliers));
 
     //this.mostrarData();
   }
 
   deleteSupplier(supplier: Supplier) {
-    let suppliers = this.getSuppliers();
-    const index = suppliers.findIndex(sup => sup.id === supplier.id);
-    if (index > -1) {
-      suppliers.splice(index, 1);
-      localStorage.setItem('suppliers', JSON.stringify(suppliers)); 
-    }
+    // let suppliers = this.getSuppliers();
+    // const index = suppliers.findIndex(sup => sup.id === supplier.id);
+    // if (index > -1) {
+    //   suppliers.splice(index, 1);
+    //   localStorage.setItem('suppliers', JSON.stringify(suppliers)); 
+    // }
     //this.mostrarData();
   }
   

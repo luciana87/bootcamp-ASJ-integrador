@@ -31,7 +31,7 @@ export class FormProductComponent implements OnInit {
     private route: ActivatedRoute, public builder: FormBuilder) { }
 
   ngOnInit() {
-    this.suppliers = this.serviceSupplier.getSuppliers();
+    //this.serviceSupplier.getSuppliers();
     // this.route.paramMap.subscribe((param: any) => {
     //   const id = param.get('id');
     //   if (id == null) { //Si es null es un nuevo producto

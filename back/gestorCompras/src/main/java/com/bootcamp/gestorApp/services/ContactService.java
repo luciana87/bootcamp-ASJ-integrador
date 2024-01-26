@@ -28,7 +28,6 @@ public class ContactService {
 	private Contact mapToEntity(ContactRequestDTO contactDTO) {
 		Contact contact = Util.getModelMapper().map(contactDTO, Contact.class);
 		return contact;
-	}
-
+	}	
 	
 }

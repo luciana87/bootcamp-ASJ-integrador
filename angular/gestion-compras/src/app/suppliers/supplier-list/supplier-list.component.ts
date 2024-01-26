@@ -18,7 +18,15 @@ export class SupplierListComponent implements OnInit{
   constructor(public service: SupplierServiceService){}
 
   ngOnInit(): void {
-    this.supplierList = this.service.getSuppliers();
+    this.service.getSuppliers().subscribe(
+      (suppliers) => {
+        this.supplierList = suppliers;
+        console.log(this.supplierList);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
   delete(supplier: Supplier){
@@ -33,7 +41,7 @@ export class SupplierListComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         this.service.deleteSupplier(supplier);
-        this.supplierList = this.service.getSuppliers();
+        this.service.getSuppliers();
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",

@@ -61,6 +61,11 @@ VALUES
   ('Juliana', 'Mendoza', 119888777, 'juliana.mendoza@gmail.com', 'Directora de ventas'),
   ('Victoria', 'García', 221458777, 'victoria.garcia@gmail.com', 'Coordinadora');
 
+    INSERT INTO fields(id,name)
+VALUES 
+  (1, 'Herramientas'),
+  (2, 'Juegos'),
+  (3, 'Ropa');
 
 
   INSERT INTO iva_type(id,name)

@@ -66,10 +66,11 @@ public class Supplier {
 		this.deleted = false;
 	}
 	
-	public Supplier (String code, String cuit, String field, String website, 
+	public Supplier (String code,String businessName, String cuit, String field, String website, 
 			String phoneNumber, String email, String logo, Address address, 
 			IvaType iva, Contact contact) {
 		this.code = code;
+		this.businessName = businessName;
 		this.cuit = cuit;
 		this.field = field;
 		this.website = website;
@@ -166,6 +167,18 @@ public class Supplier {
 		return deleted;
 	}
 	
+	public String getBusinessName() {
+		return businessName;
+	}
+
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
+	}
+
+	public void setField(String field) {
+		this.field = field;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
