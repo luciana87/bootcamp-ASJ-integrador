@@ -12,3 +12,9 @@ img {
     width: 5vw;
     object-fit: cover;
 }
+
+table th {
+    background-color: #fe9990;
+    color: white;
+    font-weight: 600;
+}

@@ -12,10 +12,17 @@ export class PurchaseOrderListComponent implements OnInit {
 
   orderList: PurchaseOrder[] = [];
 
-  constructor(public service: PurchaseOrderServiceService) { }
+  constructor(public serviceOrder: PurchaseOrderServiceService) { }
 
   ngOnInit(): void {
-    // this.orderList = this.service.getPurchaseOrders();
+    this.serviceOrder.getPurchaseOrders().subscribe(
+      (data) => {
+        this.orderList = data;
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    )
   }
 
   delete(order: PurchaseOrder) {

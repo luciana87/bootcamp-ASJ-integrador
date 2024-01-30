@@ -11,13 +11,24 @@ import { SupplierUtils } from 'src/app/utils/supplier';
 })
 export class DetailSupplierComponent implements OnInit {
 
-  supplier!: Supplier;
-
-  constructor(public service: SupplierServiceService, private route: ActivatedRoute, private router: Router){}
+  supplier: Supplier= SupplierUtils.initializeSupplier();
+  id: number = -1;
+  constructor(public serviceSupplier: SupplierServiceService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((param: any) => {
-    //   const id = param.get('id');
+    this.route.paramMap.subscribe((param: any) => {
+    this.id = param.get('id');
+    console.log(this.id);
+    });
+
+    this.serviceSupplier.getSupplierById(this.id).subscribe(
+      (data) => {
+        this.supplier = data;
+        console.log(this.supplier);
+        
+      }
+    )
+
 
     //   if (id) {
     //     this.supplier = this.service.getSupplierById(parseInt(id)) || SupplierUtils.initializeSupplier();
@@ -31,7 +42,7 @@ export class DetailSupplierComponent implements OnInit {
     }
 
     cambiarImagen(event: Event) {
-      this.service.defaultImage(event);
+      this.serviceSupplier.defaultImage(event);
     }
 
 }

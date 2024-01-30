@@ -38,3 +38,11 @@ img {
     width: 5vw;
     object-fit: cover;
 }
+
+.td-acciones{
+    padding: 3.5%;
+}
+
+.th-acciones{
+    padding-left: 4%;
+}

@@ -11,27 +11,26 @@ import { OrderUtils } from 'src/app/utils/order';
 })
 export class DetailOrderComponent implements OnInit {
 
-  order!: PurchaseOrder;
-
-  constructor(public service: PurchaseOrderServiceService, private route: ActivatedRoute, private router: Router) {
+  order: PurchaseOrder = OrderUtils.initializeOrder();
+  id: number = -1;
+  constructor(public serviceOrder: PurchaseOrderServiceService,
+              private route: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((param: any) => {
-    //   const id = param.get('id');
+    this.route.paramMap.subscribe((param: any) => {
+      this.id = param.get('id');
+      console.log(this.id);      
+      });
 
-
-
-    //   if (id) {
-    //     this.order = this.service.getOrderById(parseInt(id)) || OrderUtils.initializeOrder(); // || si mandan un id que no se encuentra lo inicializo
-    //     console.log("Estoy aca");
+    this.serviceOrder.getOrderById(this.id).subscribe(
+      (data) => {
+        this.order = data;
+        console.log(this.order);
         
-    //     console.log(this.order);
-
-    //   }
-
-    // });
+      }
+    )
   }
 
   goBack() {
@@ -39,7 +38,7 @@ export class DetailOrderComponent implements OnInit {
     }
 
     cambiarImagen(event: Event) {
-      this.service.defaultImage(event);
+      this.serviceOrder.defaultImage(event);
     }
 
 

@@ -39,8 +39,8 @@ export class ProductServiceService {
   }
 
 
-  public getProductById(id: number): Observable<Object>{
-    return this.http.get(this.baseUrl + '/' + id);
+  public getProductById(id: number): Observable<Product>{
+    return this.http.get<Product>(this.baseUrl + '/' + id);
   }
 
   public createProduct(formData: NgForm): Observable<Product> {

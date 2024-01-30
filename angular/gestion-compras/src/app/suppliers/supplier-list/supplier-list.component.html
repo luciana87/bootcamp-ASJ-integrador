@@ -1,8 +1,9 @@
 <section class="container w-100">
 
-    <div class="d-flex justify-content-between ">
-        <h4 class="h4">Proveedores</h4>
-        <button class="button-add btn text-center btn-sm text-white" routerLink="/form-supplier">Agregar <i
+    <div class="d-flex justify-content-between align-items-center">
+        <!-- <h4 class="h4">Proveedores</h4> -->
+        <h3 class="h3" style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Proveedores</h3>
+        <button class="button-add btn text-center btn-sm text-white h-75" routerLink="/form-supplier">Agregar <i
                 class="fa-solid fa-plus fa-sm"></i></button>
     </div>
 
@@ -14,7 +15,7 @@
                 <th class="col-2">Razón Social</th>
                 <th class="col-3">Información</th>
                 <th class="col-2">Personal de Contacto</th>
-                <th class="col-2">Acciones</th>
+                <th class="col-2 th-acciones">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +25,7 @@
                         <img class="img-fluid " src="{{supplier.logo}}" (error)="cambiarImagen($event)">
                     </div>
                 </td>
-                <td class="col" class="border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
+                <td class="col border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
                 <td class="col border-bottom">{{ supplier.businessName }}</td>
                 <td class="col border-bottom ">
                     <ul class=" ">
@@ -34,7 +35,7 @@
                     </ul>
                 </td>
                 <td class="col border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname }}</td>
-                <td class="d-flex align-items-center justify-content-end me-2" class="col border-bottom">
+                <td class="td-acciones col border-bottom">
                     <button class="btn text-white me-2 btn-sm button-circle"
                         style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;"
                         id="edit-button{{ supplier.code }}" routerLink="/form-supplier/{{supplier.id}}"><i
@@ -47,7 +48,6 @@
                         style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
                         routerLink="/detail-supplier/{{supplier.id}}"><i
                             class="fa-solid fa-eye fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <!-- <button class="btn btn-outline-warning text-dark btn-sm" routerLink="/detail-supplier/{{supplier.id}}"><i class="fa-solid fa-eye fa-xs"></i></button> -->
                 </td>
             </tr>
 

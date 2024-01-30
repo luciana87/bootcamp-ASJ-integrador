@@ -27,6 +27,7 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderStatusPipe } from './pipes/order-status.pipe';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     DetailProductComponent,
     HomeComponent,
     DetailSupplierComponent,
-    LoginComponent
+    LoginComponent,
+    OrderStatusPipe
   ],
   imports: [
     BrowserModule,

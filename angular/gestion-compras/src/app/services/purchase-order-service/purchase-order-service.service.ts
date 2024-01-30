@@ -3,6 +3,8 @@ import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { DetailOrderComponent } from 'src/app/purchase-orders/detail-order/detail-order.component';
+import { DetailOrder } from 'src/app/models/DetailOrder';
 
 
 
@@ -23,15 +25,22 @@ getPurchaseOrders(): Observable<PurchaseOrder[]> {
 
 }
 
-getOrderById(id: number): Observable<Object>{
-  return this.http.get(this.baseUrl + '/' + id);
+getOrderById(id: number): Observable<PurchaseOrder>{
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.get<PurchaseOrder>(this.baseUrl + '/' + id, { headers });
+}
+
+public getDetailsOrder(): Observable<DetailOrder[]>{
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.get<DetailOrder[]>(this.baseUrl, { headers })
 }
 
 createOrder (formData: NgForm): Observable<PurchaseOrder> {
+  const headers = { 'Content-Type': 'application/json' };
   console.log("service");
   console.log(formData);
   const orderData = formData.value;
-  return this.http.post<PurchaseOrder>(this.baseUrl,orderData);
+  return this.http.post<PurchaseOrder>(this.baseUrl,orderData, { headers });
 }
 
 updateOrder(order: PurchaseOrder) {
