@@ -28,12 +28,16 @@ public class AddressRequestDTO {
 	@NotBlank(message = "City is required.")
     @Size (min = 4, max = 60, message = "City must be more than 4 and must be less than 60 characters long")    
 	private String city;
+    
+	@JsonProperty("province_id")
+	private Integer provinceId;
 	
-	public AddressRequestDTO(String street, Integer num, String postalCode, String city) {
+	public AddressRequestDTO(String street, Integer num, String postalCode, String city, Integer provinceId) {
 		this.street = street;
 		this.num = num;
 		this.postalCode = postalCode;
 		this.city = city;
+		this.provinceId = provinceId;
 	}
 
 	public String getStreet() {
@@ -66,6 +70,14 @@ public class AddressRequestDTO {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public Integer getProvinceId() {
+		return provinceId;
+	}
+
+	public void setProvinceId(Integer provinceId) {
+		this.provinceId = provinceId;
 	}
 
 	

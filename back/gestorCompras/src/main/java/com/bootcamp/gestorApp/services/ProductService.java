@@ -65,8 +65,8 @@ public class ProductService {
 		
 		checkForExistingProduct(productDTO.getSku());
 		
-		Category category = categoryService.retriveById(productDTO.getCategoryId());
 		Supplier supplier = supplierService.retriveById(productDTO.getSupplierId());
+		Category category = categoryService.retriveById(productDTO.getCategoryId());
 		
 		Product productSaved = mapToEntity(productDTO, category,supplier);
 		

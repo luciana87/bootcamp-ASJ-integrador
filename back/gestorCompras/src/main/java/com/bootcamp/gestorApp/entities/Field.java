@@ -1,6 +1,5 @@
 package com.bootcamp.gestorApp.entities;
 
-import com.bootcamp.gestorApp.services.FieldService;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
