@@ -1,66 +1,58 @@
 import { Injectable } from '@angular/core';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
-import { orders } from 'src/app/data/purchase-orders';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 
-const dataOrders: PurchaseOrder[] = orders;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseOrderServiceService {
 
-  id!: number;
 
-  constructor() {
-    let purchaseOrders = this.getPurchaseOrders(); // Le asigno lo que venga del localStorage
-    if (purchaseOrders.length === 0) { // Si está vacío el [], no hay elementos en el localStorage
-      purchaseOrders = dataOrders; //Le asigno mi JSON
-      localStorage.setItem("orders", JSON.stringify(dataOrders)) //Agrego al localStorage lo que tengo en mi JSON
-    }
-
-    let lastOrder = purchaseOrders[purchaseOrders.length -1]
-    this.id = lastOrder.id
+  constructor(private http: HttpClient) {
   }
 
-  getPurchaseOrders(): PurchaseOrder[] {
-    let orderList = localStorage.getItem('orders');
-    return (orderList !== null) ? JSON.parse(orderList!) : [];
-  }
+  private readonly baseUrl = "http://localhost:8080/purchase-orders";
 
-  getOrderById(id: number) {
-    let orders = this.getPurchaseOrders();
-    return orders.find((order) => order.id === id);
-  }
+getPurchaseOrders(): Observable<PurchaseOrder[]> {
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.get<PurchaseOrder[]>(this.baseUrl, { headers });
 
-  createOrder(order: PurchaseOrder) {
-    this.id += 1;
-    order.id = this.id;
-    let orderList = this.getPurchaseOrders();
-    orderList.push(order);
-    localStorage.setItem('orders', JSON.stringify(orderList));
+}
 
-  }
+getOrderById(id: number): Observable<Object>{
+  return this.http.get(this.baseUrl + '/' + id);
+}
 
-  updateOrder(order: PurchaseOrder) {
-    let orders = this.getPurchaseOrders();
-    let index = orders.findIndex(o => o.id === order.id);
-    orders[index] = order;
-    localStorage.setItem('orders', JSON.stringify(orders));
+createOrder (formData: NgForm): Observable<PurchaseOrder> {
+  console.log("service");
+  console.log(formData);
+  const orderData = formData.value;
+  return this.http.post<PurchaseOrder>(this.baseUrl,orderData);
+}
 
-  }
+updateOrder(order: PurchaseOrder) {
+  //   let orders = this.getPurchaseOrders();
+  //   let index = orders.findIndex(o => o.id === order.id);
+  //   orders[index] = order;
+  //   localStorage.setItem('orders', JSON.stringify(orders));
 
-  deleteOrder(order: PurchaseOrder){
-    let orderList = this.getPurchaseOrders();
-    const index = orderList.findIndex(o => o.id === order.id);
-    if (index > -1) {
-      orderList.splice(index, 1);
-      localStorage.setItem('orders', JSON.stringify(orderList));
-      
-    }
-  }
+}
 
-  defaultImage(event: Event) {
-    (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
-  }
+deleteOrder(order: PurchaseOrder){
+  //   let orderList = this.getPurchaseOrders();
+  //   const index = orderList.findIndex(o => o.id === order.id);
+  //   if (index > -1) {
+  //     orderList.splice(index, 1);
+  //     localStorage.setItem('orders', JSON.stringify(orderList));
+
+  //   }
+}
+
+defaultImage(event: Event) {
+  (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
+}
 }

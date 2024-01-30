@@ -1,7 +1,11 @@
+import { Country } from "./country";
+import { Province } from "./province";
+
 export interface Address {
+    id: number,
     street: String,
-    postal_code: String,
+    num: number,
+    postalCode: String,
     city: String,
-    departament: String,
-    country: String
+    province: Province
 }

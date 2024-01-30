@@ -1,16 +1,16 @@
-import { ItemPurchaseOrder } from "./itemPurchaseOrder";
-import { Product } from "./product";
+import { ItemDetail } from "./itemDetail";
 import { Supplier } from "./supplier";
 
 export interface PurchaseOrder {
 
     id: number
-    num_order: number,
-    supplier: Supplier,
-    issue_date: Date,
+    numOrder: number,
+    createdAt: Date,
+    updatedAt: Date,
     deadline: Date,
+    canceled: boolean,
     total: number,
-    items: ItemPurchaseOrder[],
-    description: String
-
+    description: String,
+    supplier: Supplier,
+    items: ItemDetail[]
 }

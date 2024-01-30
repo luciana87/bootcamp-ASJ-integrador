@@ -17,4 +17,25 @@ table th {
     background-color: #d8d8d8d2;
     color: rgb(0, 0, 0);
     font-weight: bold;
+
+}
+
+.button-add {
+    background-color: #4545e8d3;
+}
+
+.button-add:hover {
+    background-color: #7676f4d3;
+}
+
+
+table th {
+    background-color: #6e6ef4d3;
+    color: white;
+    font-weight: 600;
+}
+
+.button-circle {
+    height: 2rem;
+    width: 2rem;
 }

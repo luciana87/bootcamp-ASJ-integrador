@@ -3,11 +3,14 @@ import { Supplier } from "./supplier";
 
 export interface Product {
     id: number;
+    name: string;
     sku: string;
-    supplier: Supplier;
-    category: Category;
-    name: String;
-    description: String;
     price: number;
-    image: String;
+    description: string;
+    image: string;
+    supplier: Supplier;
+    createdAt: Date | string; // Puede ser Date o string
+    updatedAt: Date | string; // Puede ser Date o string
+    deleted: boolean;
+    category: Category;
 }

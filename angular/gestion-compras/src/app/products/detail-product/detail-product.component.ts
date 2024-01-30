@@ -16,14 +16,14 @@ export class DetailProductComponent implements OnInit{
   constructor(public service: ProductServiceService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param: any) => {
-      const id = param.get('id');
+    // this.route.paramMap.subscribe((param: any) => {
+    //   const id = param.get('id');
 
-      if (id) {
-        this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct();
-      }
+    //   if (id) {
+    //     this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct();
+    //   }
 
-    })
+    // })
   }
 
   goBack() {

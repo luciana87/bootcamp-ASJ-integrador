@@ -1,5 +1,5 @@
 #bg-text-footer {
-    background-color: #f4a8a7;
+    background-color: #dbe3fa ;
 }
 
 footer div a {
@@ -15,4 +15,8 @@ footer div a:hover {
 .texto {
     color: #211ca1;
     font-size: 1em;
+}
+
+.img-fluid {
+    color: ff8a80;
 }
