@@ -5,24 +5,25 @@ import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-ser
 @Component({
   selector: 'app-purchase-order-list',
   templateUrl: './purchase-order-list.component.html',
-  styleUrls: ['./purchase-order-list.component.css']
+  styleUrls: ['./purchase-order-list.component.css'],
+  providers: [PurchaseOrderServiceService] 
 })
-export class PurchaseOrderListComponent implements OnInit{
+export class PurchaseOrderListComponent implements OnInit {
 
   orderList: PurchaseOrder[] = [];
-  
-  constructor(public service: PurchaseOrderServiceService) {}
+
+  constructor(public service: PurchaseOrderServiceService) { }
 
   ngOnInit(): void {
-    this.orderList = this.service.getPurchaseOrders();
+    // this.orderList = this.service.getPurchaseOrders();
   }
 
-  delete(order: PurchaseOrder){
-    let confirmacion = confirm(`¿Desea cancelar la orden de compra #${order.num_order}?`);
-    if (confirmacion) {
-      this.service.deleteOrder(order);
-      this.orderList = this.service.getPurchaseOrders();
-    
-    }
+  delete(order: PurchaseOrder) {
+    //   let confirmacion = confirm(`¿Desea cancelar la orden de compra #${order.num_order}?`);
+    //   if (confirmacion) {
+    //     this.service.deleteOrder(order);
+    //     this.orderList = this.service.getPurchaseOrders();
+
+    //   }
   }
 }

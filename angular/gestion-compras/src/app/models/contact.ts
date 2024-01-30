@@ -1,7 +1,8 @@
 export interface Contact {
-    name: String,
-    lastname: String,
-    phone_number: number,
+    id?: number,
+    contactName: String,
+    contactLastname: String,
+    phoneNumber: number,
     email: String,
-    rol: String
+    position: String
 }

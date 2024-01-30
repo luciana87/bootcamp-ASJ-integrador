@@ -16,14 +16,14 @@ export class DetailSupplierComponent implements OnInit {
   constructor(public service: SupplierServiceService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param: any) => {
-      const id = param.get('id');
+    // this.route.paramMap.subscribe((param: any) => {
+    //   const id = param.get('id');
 
-      if (id) {
-        this.supplier = this.service.getSupplierById(parseInt(id)) || SupplierUtils.initializeSupplier();
-      }
+    //   if (id) {
+    //     this.supplier = this.service.getSupplierById(parseInt(id)) || SupplierUtils.initializeSupplier();
+    //   }
 
-    })
+    // })
   }
 
   goBack() {

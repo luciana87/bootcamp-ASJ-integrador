@@ -14,20 +14,25 @@
                     <th class=" ">Fecha entrega</th>
                     <th class=" ">Proveedor</th>
                     <th class=" ">Total</th>
+                    <th class=" ">Estado</th>
                     <th class=" ">Acciones</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let order of orderList" id="order-table-container">
+            <tbody >
+                <tr *ngFor="let order of orderList" id="order-table-container">
 
-                <td calss="">{{order.num_order}}</td>
-                <td class="">{{order.issue_date | date: "dd/MM/yyy"}}</td>
-                <td class="">{{order.deadline | date: "dd/MM/yyy"}}</td>
-                <td class="">{{order.supplier.business_name}}</td>
-                <td class="">{{order.total | currency:'$'}}</td>
-                <td class="d-flex justify-content-end me-2  ">
-                    <button class="btn btn-outline-warning me-3 btn-sm" id="detail-button{{order.id}}" routerLink="/detail-order/{{order.id}}">Ver...</button>
-                    <button class="btnbtn bg-danger text-white btn-sm" (click)="delete(order)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
-                </td>
+                    <td calss="">{{order.numOrder}}</td>
+                    <td class="">{{order.createdAt | date: "dd/MM/yyy"}}</td>
+                    <td class="">{{order.deadline | date: "dd/MM/yyy"}}</td>
+                    <td class="">{{order.supplier.businessName}}</td>
+                    <td class="">{{order.total | currency:'$'}}</td>
+                    <td class="">{{order.canceled}}</td>
+                    <td class="d-flex justify-content-end me-2  ">
+                        <button class="btn btn-outline-warning me-3 btn-sm" id="detail-button{{order.id}}" routerLink="/detail-order/{{order.id}}">Ver...</button>
+                        <button class="btnbtn bg-danger text-white btn-sm" (click)="delete(order)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                    </td>
+                </tr>
+
             </tbody>
         </table>
     </div>

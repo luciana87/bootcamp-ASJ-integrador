@@ -11,6 +11,7 @@ import { DetailOrderComponent } from './purchase-orders/detail-order/detail-orde
 import { DetailProductComponent } from './products/detail-product/detail-product.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   // {
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'detail-supplier/:id', component: DetailSupplierComponent},
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
+  { path: 'login', component: LoginComponent},
   { path: '', component: HomeComponent},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

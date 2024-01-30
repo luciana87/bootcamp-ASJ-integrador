@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'gestion-compras';
-  
-  constructor (private ruta: ActivatedRoute){}
+  isLoggedIn: boolean = true;
+
+  constructor(private ruta: ActivatedRoute, private router: Router) { }
+
+  onLoginSuccess() {
+    this.isLoggedIn = true;
+    this.router.navigate(['/']);
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
+  }
 }

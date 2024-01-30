@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Input } from '@angular/core';
-import { ItemPurchaseOrder } from 'src/app/models/itemPurchaseOrder';
-import { PurchaseOrder } from 'src/app/models/purchaseOrder';
+import { ItemDetail } from 'src/app/models/itemDetail';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-ser
 })
 export class ListComponent {
 
-  @Input() datoEnviado: ItemPurchaseOrder[] = [];
+  @Input() datoEnviado: ItemDetail[] = [];
 
   // orderList: PurchaseOrder[] = this.datoEnviado;
   constructor(public service: PurchaseOrderServiceService){

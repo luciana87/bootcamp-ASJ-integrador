@@ -18,20 +18,20 @@ export class DetailOrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param: any) => {
-      const id = param.get('id');
+    // this.route.paramMap.subscribe((param: any) => {
+    //   const id = param.get('id');
 
 
 
-      if (id) {
-        this.order = this.service.getOrderById(parseInt(id)) || OrderUtils.initializeOrder(); // || si mandan un id que no se encuentra lo inicializo
-        console.log("Estoy aca");
+    //   if (id) {
+    //     this.order = this.service.getOrderById(parseInt(id)) || OrderUtils.initializeOrder(); // || si mandan un id que no se encuentra lo inicializo
+    //     console.log("Estoy aca");
         
-        console.log(this.order);
+    //     console.log(this.order);
 
-      }
+    //   }
 
-    });
+    // });
   }
 
   goBack() {

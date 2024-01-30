@@ -1,67 +1,54 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { suppliers } from 'src/app/data/suppliers';
+import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Supplier } from 'src/app/models/supplier';
+import { SupplierRequestDTO } from 'src/app/models/supplierRequestDTO';
+import { MapsUtils } from 'src/app/utils/maps';
 
-const dataSuppliers: Supplier[] = suppliers;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierServiceService {
 
-  id: number;
-
-  constructor() {
-    let suppliers = this.getSuppliers(); // Le asigno lo que venga del localStorage
-    if (suppliers.length == 0) { // Si está vacío el [], no hay elementos en el localStorage
-      suppliers = dataSuppliers; //Le asigno mi JSON
-      localStorage.setItem("suppliers", JSON.stringify(dataSuppliers)) //Agrego al localStorage lo que tengo en mi JSON
-    }
-    let lastSupplier = suppliers[suppliers.length -1]
-    this.id = lastSupplier.id
-  }
-
-  mostrarData() {
-    console.log(dataSuppliers);
-  }
-
-  getSuppliers(): Supplier[] {
-    let suppliers = localStorage.getItem('suppliers')
-    return (suppliers !== null) ? JSON.parse(suppliers) : []; // Retorna lo que hay en localStorage o si no hay nada un []
+  constructor(private http: HttpClient) {
 
   }
+  private readonly baseUrl = "http://localhost:8080/suppliers";
 
-  getSupplierById(id: number) {
-    let suppliers = this.getSuppliers()
-    return suppliers.find((supplier) => supplier.id === id);
+  getSuppliers(): Observable<Supplier[]> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.get<Supplier[]>(this.baseUrl, { headers });
   }
 
-  createSupplier(supplier: Supplier) {
-    this.id += 1;
-    supplier.id = this.id;
-    let suppliers = this.getSuppliers();
-    suppliers.push(supplier);
-    localStorage.setItem('suppliers', JSON.stringify(suppliers));
-    this.mostrarData();
+
+  getSupplierById(id: number): Observable<Supplier> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.get<Supplier>(this.baseUrl + '/' + id, { headers });
+  }
+
+  createSupplier(formData: NgForm): Observable<Supplier> {
+    //const supplierData = formData.value;
+    console.log(formData.value);
+    
+    const requestData: SupplierRequestDTO = MapsUtils.mapToSupplierDTO(formData);
+    console.log(requestData);
+    
+    return this.http.post<Supplier>(this.baseUrl,requestData);
   }
 
   updateSupplier(supplier: Supplier) {
-    let suppliers = this.getSuppliers();
-    let index = suppliers.findIndex(sup => sup.id === supplier.id);
-    suppliers[index] = supplier;
-    localStorage.setItem('suppliers', JSON.stringify(suppliers));
+    // let suppliers = this.getSuppliers();
+    // let index = suppliers.findIndex(sup => sup.id === supplier.id);
+    // suppliers[index] = supplier;
+    // localStorage.setItem('suppliers', JSON.stringify(suppliers));
 
-    this.mostrarData();
+    //this.mostrarData();
   }
 
-  deleteSupplier(supplier: Supplier) {
-    let suppliers = this.getSuppliers();
-    const index = suppliers.findIndex(sup => sup.id === supplier.id);
-    if (index > -1) {
-      suppliers.splice(index, 1);
-      localStorage.setItem('suppliers', JSON.stringify(suppliers)); 
-    }
-    this.mostrarData();
+  deleteSupplier(id: number): Observable<Supplier> {
+    return this.http.delete<Supplier>(this.baseUrl + '/' + id);
   }
   
   defaultImage(event: Event) {
