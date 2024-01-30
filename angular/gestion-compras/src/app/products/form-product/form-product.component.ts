@@ -9,7 +9,9 @@ import { ProductUtils } from 'src/app/utils/product';
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 import { Category } from 'src/app/models/category';
-import { categories } from 'src/app/data/categories';
+import { CategoryService } from 'src/app/services/categoryService/category.service';
+import { CategoryUtils } from 'src/app/utils/category';
+import { CategoryRequestDTO } from 'src/app/models/categoryRequestDTO';
 
 
 @Component({
@@ -23,59 +25,69 @@ export class FormProductComponent implements OnInit {
 
   product: Product = ProductUtils.initializeProduct();
   suppliers: Supplier[] = [];
+  categoryList: Category[] = [];
+  category: CategoryRequestDTO = CategoryUtils.initializeCategory();
 
-  //categoryList: Category[] = categories;
-  categoryList!: Category[];
 
-  constructor(public service: ProductServiceService, public serviceSupplier: SupplierServiceService, private router: Router,
+
+  constructor(public serviceProduct: ProductServiceService, public serviceSupplier: SupplierServiceService, public serviceCategory: CategoryService, private router: Router,
     private route: ActivatedRoute, public builder: FormBuilder) { }
 
   ngOnInit() {
-    //this.serviceSupplier.getSuppliers();
-    // this.route.paramMap.subscribe((param: any) => {
-    //   const id = param.get('id');
-    //   if (id == null) { //Si es null es un nuevo producto
-    //     this.product = ProductUtils.initializeProduct(); //Lo inicializo
-    //   } else { //Si no es null lo edito
-    //     this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct(); // || si mandan un id que no se encuentra se tiene que inicializar como si fuese uno nuevo
-    //   }
+    this.serviceSupplier.getSuppliers().subscribe(
+      (data) => {
+        this.suppliers = data;
+        console.log(this.suppliers);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
 
-    // });
+    this.serviceCategory.getCategories().subscribe(
+      (data) => {
+        this.categoryList = data;
+        console.log(this.categoryList);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
 
-
   createProduct(form: NgForm) {
-    //   console.log(form.value);
-    //   if (!form.valid) {
-    //     console.log("Formulario inválido.");
-    //     return;
-    //   }
-    //   console.log(this.product);
+    console.log(form.value);
+    if (!form.valid) {
+      console.log("Formulario inválido.");
+      return;
+    }
 
-    //   let supplier = this.suppliers.find(supplier => supplier.id == form.value.supplier);
-    //   let category = this.categoryList.find(c => c.id == form.value.category);
-    //   this.product.supplier = supplier!;
-    //   this.product.category = category!;
+    if (this.product.id != -1) {
+      // Lo actualizo
+      this.serviceProduct.updateProduct(this.product.id, this.product);
+    } else {
+      //Lo creo
+      this.serviceProduct.createProduct(form).subscribe((data: Product) => {
+        console.log("Producto creado:", data);
+        this.router.navigate(['/product-list']);
+      }, (error) => {
+        console.error("Error al crear el producto:", error);
+      });
+    };
+  }
 
-    //   if (this.product.id != -1) {
-    //     // Lo actualizo
-    //     this.service.updateProduct(this.product);
-    //   } else {
-
-    // this.product = {
-    //   supplier: supplier!,
-    //   sku: form.value.sku,
-    //   name: form.value.name,
-    //   category: category!,
-    //   description: form.value.description,
-    //   price: form.value.price,
-    //   image: form.value.image,
-    //   id: -1
-    // };
-
-    //     this.service.createProduct(this.product);
-    //   }
-    //   this.router.navigate(['/product-list'])
+  addCategory() {
+    if (this.category.name.trim() !== '') {
+      this.serviceCategory.createCategory(this.category).subscribe(
+        response => {
+          console.log('Nueva categoría agregada:', response);
+          this.categoryList.push(response);
+        },
+        error => {
+          console.error('Error al agregar categoría:', error);
+        }
+      );
+    }
   }
 }

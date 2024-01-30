@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let supplier of supplierList" id="supplier-table-container" class="row-12 align-middle">
+            <tr *ngFor="let supplier of activeSuppliers" id="supplier-table-container" class="row-12 align-middle">
                 <td class="col tdImg">
                     <div class="imgContainer">
                         <img class="img-fluid " src="{{supplier.logo}}" (error)="cambiarImagen($event)">

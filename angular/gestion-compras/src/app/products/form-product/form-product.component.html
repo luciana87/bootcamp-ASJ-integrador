@@ -1,8 +1,8 @@
-<form #formProduct="ngForm" (ngSubmit)="createProduct(formProduct)"
-    class="form-control container w-75 border " id="product-form" action="">
+<form #formProduct="ngForm" (ngSubmit)="createProduct(formProduct)" class="form-control container w-75 border "
+    id="product-form" action="">
 
     <div class="container">
-        <h3 class="h3 text-secondary p-2">Cargar producto</h3>
+        <h3 class="h3 fw-medium  text-secondary p-2">Cargar producto</h3>
 
         <div class="container">
             <div class="row">
@@ -16,10 +16,10 @@
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="proveedor-input" class="form-label">Proveedor:</label>
-                        <select id="proveedor-input" name="supplier" class="form-select" required
+                        <label for="supplier" class="form-label">Proveedor:</label>
+                        <select id="supplier" name="supplier_id" class="form-select" required
                             [(ngModel)]="product.supplier.id">
-                            <option [ngValue]="null" selected>Seleccionar proveedor</option>
+                            <option value="" disabled selected>Seleccionar proveedor</option>
                             <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{ supplier.businessName
                                 }}</option>
                         </select>
@@ -68,49 +68,67 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="category-input" class="form-label">Categoría:</label>
-                    <select id="category-input" name="category" class="form-select" required [(ngModel)]="product.category.id">
-                        <option [ngValue]="null" selected>Seleccione una Categoría</option>
-                        <option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}</option>
-                    </select>
-                    <div *ngIf="formProduct.controls['category']?.invalid && (formProduct.controls['category']?.dirty || formProduct.controls['category']?.touched)"
-                        class="text-danger">
-                        <small *ngIf="formProduct.controls['category']?.errors?.['required']">Este campo es obligatorio.</small>
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="category-input" class="form-label">Categoría:</label>
+                        <select id="category-input" name="category_id" class="form-select" required
+                            [(ngModel)]="product.category.id">
+                            <option value="" disabled selected>Seleccione una Categoría:</option>
+                            <option *ngFor="let category of categoryList" [ngValue]="category.id">{{category.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="formProduct.controls['category']?.invalid && (formProduct.controls['category']?.dirty || formProduct.controls['category']?.touched)"
+                            class="text-danger">
+                            <small *ngIf="formProduct.controls['category']?.errors?.['required']">Este campo es
+                                obligatorio.</small>
+                        </div>
+                    </div>
+                    <!-- Input para agregar una nueva categoría -->
+                    <label for="new-category" class="form-label">¿Agregar nueva categoría?</label>
+                    <input type="text" class="form-control mb-3" id="new-category" placeholder="Nueva categoría"
+                        [(ngModel)]="category.name" name="category">
+
+                    <!-- Botón para agregar una nueva categoría -->
+                    <button type="button" class="btn btn-success    btn-sm  mb-3" (click)="addCategory()">Add Categoría</button>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="price-input" class="form-label">Precio:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" name="price" class="form-control" id="price-input" placeholder="Precio"
+                                min="1" [(ngModel)]="product.price">
+                        </div>
+                        <div *ngIf="formProduct.controls['price']?.invalid && (formProduct.controls['price']?.dirty || formProduct.controls['price']?.touched)"
+                            class="text-danger">
+                            <small *ngIf="formProduct.controls['price']?.errors?.['required']">Este campo es
+                                obligatorio.</small>
+                            <small *ngIf="formProduct.controls['price']?.hasError('min')">Precio debe ser mayor a
+                                0.</small>
+                        </div>
                     </div>
                 </div>
             </div>
-        
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="price-input" class="form-label">Precio:</label>
-                    <div class="input-group">
-                        <span class="input-group-text">$</span>
-                        <input type="number" name="price" class="form-control" id="price-input" placeholder="Precio" min="1" [(ngModel)]="product.price">
-                    </div>
-                    <div *ngIf="formProduct.controls['price']?.invalid && (formProduct.controls['price']?.dirty || formProduct.controls['price']?.touched)"
-                        class="text-danger">
-                        <small *ngIf="formProduct.controls['price']?.errors?.['required']">Este campo es obligatorio.</small>
-                        <small *ngIf="formProduct.controls['price']?.hasError('min')">Precio debe ser mayor a 0.</small>
-                    </div>
-                </div>
+
+
+
+            <div class="mb-3">
+                <label for="description-input" class="form-label">Descripción:</label>
+                <textarea class="form-control" name="description" id="description-input"
+                    placeholder="Ingrese su texto..." rows="3" [(ngModel)]="product.description"></textarea>
             </div>
-        </div>
-        
 
-
-        <div class="mb-3">
-            <label for="description-input" class="form-label">Descripción:</label>
-            <textarea class="form-control" name="description" id="description-input" placeholder="Ingrese su texto..."
-                rows="3" [(ngModel)]="product.description"></textarea>
-        </div>
-
-        <div class="col-12 d-flex  justify-content-center mb-3 py-3 ">
-            <button [disabled]=" !formProduct.valid" type="submit" class="button-add btn btn-sm me-4 text-white">Agregar</button>
-            <button type="button" (click)="formProduct.reset()" routerLink="/product-list"
-                class="btn btn-light btn-sm ">Cancelar</button>
+            <div class="col-12 d-flex  justify-content-center mb-3 py-3 ">
+                <button [disabled]=" !formProduct.valid" type="submit"
+                    class="button-add btn btn-sm me-4 text-white">Agregar</button>
+                <button type="button" (click)="formProduct.reset()" routerLink="/product-list"
+                    class="btn btn-light btn-sm ">Cancelar</button>
+            </div>
         </div>
     </div>
 

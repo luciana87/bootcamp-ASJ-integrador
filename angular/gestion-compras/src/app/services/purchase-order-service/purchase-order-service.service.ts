@@ -1,53 +1,37 @@
 import { Injectable } from '@angular/core';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
-import { orders } from 'src/app/data/purchase-orders';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 
-//const dataOrders: PurchaseOrder[] = orders;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseOrderServiceService {
 
-  id!: number;
 
   constructor(private http: HttpClient) {
-    // let purchaseOrders = this.getPurchaseOrders(); // Le asigno lo que venga del localStorage
-    // if (purchaseOrders.length === 0) { // Si está vacío el [], no hay elementos en el localStorage
-    //   purchaseOrders = dataOrders; //Le asigno mi JSON
-    //   localStorage.setItem("orders", JSON.stringify(dataOrders)) //Agrego al localStorage lo que tengo en mi JSON
-    // }
-
-    // let lastOrder = purchaseOrders[purchaseOrders.length -1]
-    // this.id = lastOrder.id
   }
 
-  // getPurchaseOrders(): PurchaseOrder[] {
-  //   let orderList = localStorage.getItem('orders');
-  //   return (orderList !== null) ? JSON.parse(orderList!) : [];
-//}
+  private readonly baseUrl = "http://localhost:8080/purchase-orders";
 
 getPurchaseOrders(): Observable<PurchaseOrder[]> {
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.get<PurchaseOrder[]>('http://localhost:8080/products', { headers })
+  return this.http.get<PurchaseOrder[]>(this.baseUrl, { headers });
 
 }
 
-getOrderById(id: number) {
-  //   let orders = this.getPurchaseOrders();
-  //   return orders.find((order) => order.id === id);
+getOrderById(id: number): Observable<Object>{
+  return this.http.get(this.baseUrl + '/' + id);
 }
 
-createOrder(order: PurchaseOrder) {
-  //   this.id += 1;
-  //   order.id = this.id;
-  //   let orderList = this.getPurchaseOrders();
-  //   orderList.push(order);
-  //   localStorage.setItem('orders', JSON.stringify(orderList));
-
+createOrder (formData: NgForm): Observable<PurchaseOrder> {
+  console.log("service");
+  console.log(formData);
+  const orderData = formData.value;
+  return this.http.post<PurchaseOrder>(this.baseUrl,orderData);
 }
 
 updateOrder(order: PurchaseOrder) {

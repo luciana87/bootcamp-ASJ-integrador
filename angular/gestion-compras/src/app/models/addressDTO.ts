@@ -1,11 +1,11 @@
 import { Country } from "./country";
 import { Province } from "./province";
 
-export interface Address {
-    id: number,
+export interface AddressDTO {
     street: String,
     num: number,
-    postalCode: String,
+    postal_code: String,
     city: String,
-    province: Province
+    province_id: number,
+    country_id:number
 }

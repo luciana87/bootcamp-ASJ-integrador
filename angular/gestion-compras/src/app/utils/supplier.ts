@@ -1,4 +1,5 @@
 import { Supplier } from "../models/supplier"
+import { SupplierRequestDTO } from "../models/supplierRequestDTO"
 
 export class SupplierUtils {
 
@@ -28,14 +29,13 @@ export class SupplierUtils {
                         id: -1,
                         name: ''
                     }
-                }
+                },
             },
             iva: {
                 id: -1,
                 name: ''
             },
             contact: {
-                id: -1,
                 contactName: '',
                 contactLastname: '',
                 phoneNumber: 0,
@@ -43,8 +43,8 @@ export class SupplierUtils {
                 position: ''
             },
             logo: '',
-            createdAt: new Date(),
-            updatedAt: new Date("2024-01-25"),
+            createdAt: new Date,
+            updatedAt: new Date,
             deleted: false
         }
     }
