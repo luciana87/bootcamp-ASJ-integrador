@@ -41,4 +41,9 @@ public class IvaService {
 		return ivaRepository.save(iva);
 	}
 
+	public Integer mapToDTO(IvaType iva) {
+
+		return null;
+	}
+
 }

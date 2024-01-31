@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bootcamp.gestorApp.DTO.request.PurchaseOrderRequestDTO;
+import com.bootcamp.gestorApp.DTO.response.PurchaseOrderResponseDTO;
 import com.bootcamp.gestorApp.entities.PurchaseOrder;
 import com.bootcamp.gestorApp.services.PurchaseOrderService;
 
@@ -31,13 +32,13 @@ public class PurchaseOrderController {
 	
 	
 	@GetMapping
-	public ResponseEntity<List<PurchaseOrder>> retrieve() {
-		return new ResponseEntity<List<PurchaseOrder>>(purchaseOrderService.retrieveAll(),HttpStatus.OK);
+	public ResponseEntity<List<PurchaseOrderResponseDTO>> retrieve() {
+	    return new ResponseEntity<>(purchaseOrderService.retrieveAll(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<PurchaseOrder> retriveById(@PathVariable Integer id) {
-		return new ResponseEntity<PurchaseOrder>(purchaseOrderService.retriveById(id), HttpStatus.OK);
+	public ResponseEntity<PurchaseOrderResponseDTO> retriveById(@PathVariable Integer id) {
+		return new ResponseEntity<PurchaseOrderResponseDTO>(purchaseOrderService.getById(id), HttpStatus.OK);
 	}
 	
 	 @PostMapping

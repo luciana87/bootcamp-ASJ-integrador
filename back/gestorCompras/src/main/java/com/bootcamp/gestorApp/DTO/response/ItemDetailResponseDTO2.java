@@ -1,42 +1,41 @@
-package com.bootcamp.gestorApp.entities;
+package com.bootcamp.gestorApp.DTO.response;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.bootcamp.gestorApp.entities.Product;
+import com.bootcamp.gestorApp.entities.PurchaseOrder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "item_detail")
-public class ItemDetail {
+public class ItemDetailResponseDTO2 {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
 	private double price;
 	private int amount;
 	private double total;
 	
-	@ManyToOne
-	@JoinColumn(name = "product_id")
+	@JsonProperty("product_nid")
 	private Product product;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "purchase_order_id")
-	private PurchaseOrder purchaseOrder;
+	@JsonProperty("purchase_order_id")
+	private PurchaseOrder purchaseOrder;	
 	
 	
-	public ItemDetail () {}
-	
-	public ItemDetail(double price, int amount, double total, Product product) {
+	public ItemDetailResponseDTO2() {}
+
+	public ItemDetailResponseDTO2(Integer id, double price, int amount, double total, Product product,
+			PurchaseOrder purchaseOrder) {
+		this.id = id;
 		this.price = price;
 		this.amount = amount;
 		this.total = total;
 		this.product = product;
+		this.purchaseOrder = purchaseOrder;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public double getPrice() {
@@ -77,10 +76,6 @@ public class ItemDetail {
 
 	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
 		this.purchaseOrder = purchaseOrder;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 	
 	

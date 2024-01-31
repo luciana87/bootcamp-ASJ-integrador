@@ -47,7 +47,7 @@ public class PurchaseOrder {
 	
 	public PurchaseOrder () {}
 
-	public PurchaseOrder(int numOrder, float total, String description, Supplier supplier) {
+	public PurchaseOrder(int numOrder, float total, String description, Supplier supplier,  List<ItemDetail> items) {
 
 		this.numOrder = numOrder;
 		this.createdAt = LocalDateTime.now();
@@ -58,10 +58,35 @@ public class PurchaseOrder {
 		this.canceled = false;
 		this.description = description;
 		this.supplier = supplier;
+		this.items = items;
 		
 		
 	}
 	
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public LocalDateTime getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(LocalDateTime deadline) {
+		this.deadline = deadline;
+	}
+
+	public List<ItemDetail> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ItemDetail> items) {
+		this.items = items;
+	}
+
 	public Integer getNumOrder() {
 		return numOrder;
 	}

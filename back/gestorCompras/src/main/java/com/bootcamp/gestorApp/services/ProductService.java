@@ -38,19 +38,25 @@ public class ProductService {
 	}
 
 
-	/*
-	 * public Optional<Product> retriveById(Integer id) { Optional<Product> product
-	 * = productRepository.findById(id); return product; }
-	 */
 	
-	public ProductResponseDTO retriveById(Integer id) {
-		Optional<Product> product = productRepository.findById(id);
-		
-        if (product.isEmpty()){
-            throw new ResourceNotFoundException("Producto no encontrado.");
-        }
-        return mapToDTO(product.get());
-	}
+	  public Product retriveById(Integer id) { 
+		  Optional<Product> productOptional = productRepository.findById(id); 
+		  
+		  if (productOptional.isEmpty()) {
+			  throw new ResourceNotFoundException("¨Producto no encontrado.");
+		  }
+		  return productOptional.get();
+	  }
+
+	
+	/*
+	 * public ProductResponseDTO retriveById(Integer id) { Optional<Product> product
+	 * = productRepository.findById(id);
+	 * 
+	 * if (product.isEmpty()){ throw new
+	 * ResourceNotFoundException("Producto no encontrado."); } return
+	 * mapToDTO(product.get()); }
+	 */
 
 	/*
 	 * public Product create(Product product) { //LLamar al servicio de category y

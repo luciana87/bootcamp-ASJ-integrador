@@ -38,8 +38,8 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ProductResponseDTO> retriveById(@PathVariable Integer id) {
-		return new ResponseEntity<ProductResponseDTO>(productService.retriveById(id), HttpStatus.OK);
+	public ResponseEntity<Product> retriveById(@PathVariable Integer id) {
+		return new ResponseEntity<Product>(productService.retriveById(id), HttpStatus.OK);
 	}
 	
 	/*

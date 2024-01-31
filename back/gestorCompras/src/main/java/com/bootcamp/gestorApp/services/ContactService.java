@@ -3,6 +3,7 @@ package com.bootcamp.gestorApp.services;
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ContactRequestDTO;
+import com.bootcamp.gestorApp.DTO.response.ItemDetailResponseDTO;
 import com.bootcamp.gestorApp.entities.Contact;
 import com.bootcamp.gestorApp.repositories.ContactRepository;
 import com.bootcamp.gestorApp.utils.Util;
@@ -28,6 +29,11 @@ public class ContactService {
 	private Contact mapToEntity(ContactRequestDTO contactDTO) {
 		Contact contact = Util.getModelMapper().map(contactDTO, Contact.class);
 		return contact;
+	}
+
+	public ContactRequestDTO mapToDTO(Contact contact) {
+		return new ContactRequestDTO(contact.getContactName(), contact.getContactLastname(), contact.getPhoneNumber(), 
+									  contact.getEmail(), contact.getPosition());
 	}	
 	
 }

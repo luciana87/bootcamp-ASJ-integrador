@@ -31,7 +31,10 @@ public class Supplier {
 	@Column(unique = true)
 	private String cuit;
 	
-	private String field;
+	@ManyToOne
+	@JoinColumn(name = "field_id")
+	private Field field;
+	
 	private String website;
 	private String phoneNumber;
 	private String email;
@@ -66,7 +69,7 @@ public class Supplier {
 		this.deleted = false;
 	}
 	
-	public Supplier (String code,String businessName, String cuit, String field, String website, 
+	public Supplier (String code,String businessName, String cuit, Field field, String website, 
 			String phoneNumber, String email, String logo, Address address, 
 			IvaType iva, Contact contact) {
 		this.code = code;
@@ -86,17 +89,29 @@ public class Supplier {
 		
 		
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
-	
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getCode() {
 		return code;
 	}
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getBusinessName() {
+		return businessName;
+	}
+
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
 	}
 
 	public String getCuit() {
@@ -107,11 +122,11 @@ public class Supplier {
 		this.cuit = cuit;
 	}
 
-	public String getField() {
+	public Field getField() {
 		return field;
 	}
 
-	public void setFlled(String field) {
+	public void setField(Field field) {
 		this.field = field;
 	}
 
@@ -151,6 +166,10 @@ public class Supplier {
 		return createdAt;
 	}
 
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
@@ -159,24 +178,12 @@ public class Supplier {
 		this.updatedAt = updatedAt;
 	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
-
-	public boolean getDeleted() {
+	public boolean isDeleted() {
 		return deleted;
 	}
-	
-	public String getBusinessName() {
-		return businessName;
-	}
 
-	public void setBusinessName(String businessName) {
-		this.businessName = businessName;
-	}
-
-	public void setField(String field) {
-		this.field = field;
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public Address getAddress() {
@@ -204,6 +211,4 @@ public class Supplier {
 	}
 	
 	
-	
-
 }

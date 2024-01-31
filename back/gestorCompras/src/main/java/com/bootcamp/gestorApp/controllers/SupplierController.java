@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bootcamp.gestorApp.DTO.request.SupplierRequestDTO;
+import com.bootcamp.gestorApp.DTO.response.SupplierResponseDTO;
 import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.services.SupplierService;
 
@@ -39,6 +40,11 @@ public class SupplierController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Supplier> retriveById(@PathVariable Integer id) {
 		return new ResponseEntity<Supplier>(supplierService.retriveById(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<SupplierResponseDTO> retriveDetailById(@PathVariable Integer id) {
+		return new ResponseEntity<SupplierResponseDTO>(supplierService.retriveDetailById(id), HttpStatus.OK);
 	}
 	
 	 @PostMapping
