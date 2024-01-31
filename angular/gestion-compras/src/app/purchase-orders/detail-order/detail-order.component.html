@@ -2,9 +2,9 @@
 
     <section class="w-100 mt-4  ">
         <div>
-            <h4 class="h4 fw-light"><strong>#{{ order.numOrder }}</strong></h4>
-            <h5 class="h5 text-uppercase ">{{order.supplier.businessName}}</h5>
-            <p>Fecha creación: {{order.createdAt | date:'dd/MM/yyyy'}}</p>
+            <h4 class="h4 fw-light"><strong>#{{ order.num_order }}</strong></h4>
+            <h5 class="h5 text-uppercase ">{{order.supplier_name}}</h5>
+            <p>Fecha creación: {{order.created_at | date:'dd/MM/yyyy'}}</p>
             <p>Fecha entrega estimada: {{order.deadline| date:'dd/MM/yyyy'}}</p>
         </div>
         <table class="table mt-3 text-center ">
@@ -22,16 +22,16 @@
                 <tr *ngFor="let item of order.items" class="row-12 align-middle">
                     <td class="col-1 tdImg">
                         <div class="imgContainer">
-                            <img src="{{item.product.image}}" (error)="cambiarImagen($event)" />
+                            <img src="{{item.product_image}}" (error)="cambiarImagen($event)" />
                         </div>
                     </td>
-                    <td class="col-auto border-bottom ">{{ item.product.name }} <a type="button"
-                            class="btn-lg btn-outline-light " ngbPopover="{{ item.product.description}}"
+                    <td class="col-auto border-bottom ">{{ item.product_name }} <a type="button"
+                            class="btn-lg btn-outline-light " ngbPopover="{{ order.description}}"
                             triggers="mouseenter:mouseleave" popoverTitle="Descripción">
                             <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
                         </a></td>
 
-                    <td class="col-auto border-bottom ">{{ item.product.price | currency:'$'}}</td>
+                    <td class="col-auto border-bottom ">{{ item.product_price | currency:'$'}}</td>
                     <td class="col-2 border-bottom ">{{ item.amount}}</td>
                     <td class="col-2 ">{{ item.total | currency:'$'}}</td>
                 </tr>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
+import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-ser
 })
 export class PurchaseOrderListComponent implements OnInit {
 
-  orderList: PurchaseOrder[] = [];
+  orderList: PurchaseOrderResponseDTO[] = [];
 
   constructor(public serviceOrder: PurchaseOrderServiceService) { }
 
@@ -25,7 +26,7 @@ export class PurchaseOrderListComponent implements OnInit {
     )
   }
 
-  delete(order: PurchaseOrder) {
+  delete(order: PurchaseOrderResponseDTO) {
     //   let confirmacion = confirm(`¿Desea cancelar la orden de compra #${order.num_order}?`);
     //   if (confirmacion) {
     //     this.service.deleteOrder(order);

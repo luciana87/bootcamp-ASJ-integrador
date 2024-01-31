@@ -1,5 +1,5 @@
 
-import { AddressDTO } from "./addressDTO"
+import { AddressRequestDTO } from "./addressRequestDTO"
 import { ContactDTO } from "./contactDTO"
 
 export interface SupplierRequestDTO {
@@ -10,7 +10,7 @@ export interface SupplierRequestDTO {
     website: String,
     phone_number: String,
     email: String,
-    address: AddressDTO,
+    address: AddressRequestDTO,
     iva_id: number,
     contact: ContactDTO,
     logo: String

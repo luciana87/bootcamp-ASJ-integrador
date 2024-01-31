@@ -1,13 +1,12 @@
-import { PurchaseOrderDTO } from "../models/PurchaseOrderRequestDTO"
+import { PurchaseOrderRequestDTO } from "../models/purchaseOrderRequestDTO"
 
-export class PurcharseOrderDTOUtils {
+export class PurcharseOrderRequestDTOUtils {
 
-    static initializePurchaseOrderDTO(): PurchaseOrderDTO {
+    static initializePurchaseOrderRequestDTO(): PurchaseOrderRequestDTO {
         return{ 
             num_order: 0,
             created_at: new Date,
             deadline: new Date,
-            canceled: false,
             total: 0,
             description: '',
             supplier_id: -1,

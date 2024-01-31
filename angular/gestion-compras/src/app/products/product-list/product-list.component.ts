@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
 import Swal from 'sweetalert2';

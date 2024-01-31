@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierRequestDTO } from 'src/app/models/supplierRequestDTO';
+import { SupplierResponseDTO } from 'src/app/models/supplierResponseDTO';
 import { MapsUtils } from 'src/app/utils/maps';
 
 
@@ -23,9 +24,14 @@ export class SupplierServiceService {
   }
 
 
-  getSupplierById(id: number): Observable<Supplier> {
+  getSupplierById(id: number): Observable<SupplierResponseDTO> {
     const headers = { 'Content-Type': 'application/json' };
-    return this.http.get<Supplier>(this.baseUrl + '/' + id, { headers });
+    return this.http.get<SupplierResponseDTO>(this.baseUrl + '/' + id, { headers });
+  }
+
+  getSupplierDetailById(id: number): Observable<SupplierResponseDTO> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.get<SupplierResponseDTO>(this.baseUrl + '/detail/' + id, { headers });
   }
 
   createSupplier(formData: NgForm): Observable<Supplier> {

@@ -12,7 +12,7 @@ import { IvaType } from 'src/app/models/ivaType';
 import { CountryService } from 'src/app/services/countryService/country.service';
 import { ProvinceService } from 'src/app/services/provinceService/province.service';
 import { SupplierRequestDTO } from 'src/app/models/supplierRequestDTO';
-import { SupplierDTOUtils } from 'src/app/utils/supplierDTO';
+import { SupplierRequestDTOUtils } from 'src/app/utils/supplierRequestDTO';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
 
 @Component({
@@ -22,7 +22,7 @@ import { CategoryService } from 'src/app/services/categoryService/category.servi
 })
 export class FormSupplierComponent implements OnInit {
 
-  supplier: SupplierRequestDTO = SupplierDTOUtils.initializeSupplierDTO();
+  supplier: SupplierRequestDTO = SupplierRequestDTOUtils.initializeSupplierDTO();
   countries: Country[] = [];
   provinces: Province[] = [];
   fields: Field[] = [];

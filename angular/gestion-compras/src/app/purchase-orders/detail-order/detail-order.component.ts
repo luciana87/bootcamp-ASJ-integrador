@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PurchaseOrder } from 'src/app/models/purchaseOrder';
+import { ItemDetailResponseDTO } from 'src/app/models/itemDetailResponseDTO';
+import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
-import { OrderUtils } from 'src/app/utils/order';
+import { PurcharseOrderResponseDTOUtils } from 'src/app/utils/purchaseOrderResponseDTO';
 
 @Component({
   selector: 'app-detail-order',
@@ -11,7 +12,8 @@ import { OrderUtils } from 'src/app/utils/order';
 })
 export class DetailOrderComponent implements OnInit {
 
-  order: PurchaseOrder = OrderUtils.initializeOrder();
+  order: PurchaseOrderResponseDTO = PurcharseOrderResponseDTOUtils.initializePurchaseOrderResponseDTO();
+  itemDetailList: ItemDetailResponseDTO[] = [];
   id: number = -1;
   constructor(public serviceOrder: PurchaseOrderServiceService,
               private route: ActivatedRoute, private router: Router) {
@@ -19,18 +21,23 @@ export class DetailOrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param: any) => {
-      this.id = param.get('id');
-      console.log(this.id);      
-      });
 
-    this.serviceOrder.getOrderById(this.id).subscribe(
-      (data) => {
-        this.order = data;
-        console.log(this.order);
-        
+    this.route.paramMap.subscribe((param: any) => {
+      const idString = param.get('id');
+      if (idString) {
+        this.id = +idString; //Convierte de cadena a numero
+        this.serviceOrder.getOrderById(this.id).subscribe(
+          (data) => {
+            this.order = data;
+            this.itemDetailList = data.items;
+            console.log(this.itemDetailList);
+            
+            console.log(this.order);
+          });
       }
-    )
+    });
+
+
   }
 
   goBack() {

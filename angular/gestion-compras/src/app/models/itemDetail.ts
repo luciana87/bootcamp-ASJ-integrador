@@ -3,7 +3,7 @@ import { PurchaseOrder } from "./purchaseOrder";
 
 export interface ItemDetail {
 
-    id?: number,
+    id: number,
     price: number,
     amount: number,
     total: number,

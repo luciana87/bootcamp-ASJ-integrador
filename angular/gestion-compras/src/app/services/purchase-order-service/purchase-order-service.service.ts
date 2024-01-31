@@ -3,8 +3,8 @@ import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { NgForm } from '@angular/forms';
-import { DetailOrderComponent } from 'src/app/purchase-orders/detail-order/detail-order.component';
-import { DetailOrder } from 'src/app/models/DetailOrder';
+import { ItemDetailResponseDTO } from 'src/app/models/itemDetailResponseDTO';
+import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
 
 
 
@@ -19,20 +19,20 @@ export class PurchaseOrderServiceService {
 
   private readonly baseUrl = "http://localhost:8080/purchase-orders";
 
-getPurchaseOrders(): Observable<PurchaseOrder[]> {
+getPurchaseOrders(): Observable<PurchaseOrderResponseDTO[]> {
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.get<PurchaseOrder[]>(this.baseUrl, { headers });
+  return this.http.get<PurchaseOrderResponseDTO[]>(this.baseUrl, { headers });
 
 }
 
-getOrderById(id: number): Observable<PurchaseOrder>{
+getOrderById(id: number): Observable<PurchaseOrderResponseDTO>{
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.get<PurchaseOrder>(this.baseUrl + '/' + id, { headers });
+  return this.http.get<PurchaseOrderResponseDTO>(this.baseUrl + '/' + id, { headers });
 }
 
-public getDetailsOrder(): Observable<DetailOrder[]>{
+public getPurchaseOrderDetails(): Observable<ItemDetailResponseDTO[]>{
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.get<DetailOrder[]>(this.baseUrl, { headers })
+  return this.http.get<ItemDetailResponseDTO[]>(this.baseUrl, { headers })
 }
 
 createOrder (formData: NgForm): Observable<PurchaseOrder> {

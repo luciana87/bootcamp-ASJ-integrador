@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PurchaseOrderDTO } from 'src/app/models/PurchaseOrderRequestDTO';
+import { PurchaseOrderRequestDTO } from 'src/app/models/purchaseOrderRequestDTO';
 import { ItemDetail } from 'src/app/models/itemDetail';
 import { Product } from 'src/app/models/product';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
@@ -12,7 +12,7 @@ import { SupplierServiceService } from 'src/app/services/supplier-service/suppli
 import { MapsUtils } from 'src/app/utils/maps';
 import { OrderUtils } from 'src/app/utils/order';
 import { ProductUtils } from 'src/app/utils/product';
-import { PurcharseOrderDTOUtils } from 'src/app/utils/purchaseOrderDTO';
+import { PurcharseOrderRequestDTOUtils } from 'src/app/utils/purchaseOrderRequestDTO';
 
 @Component({
   selector: 'app-form-purchase-order',
@@ -23,7 +23,7 @@ import { PurcharseOrderDTOUtils } from 'src/app/utils/purchaseOrderDTO';
 
 export class FormPurchaseOrderComponent implements OnInit {
 
-  order: PurchaseOrderDTO = PurcharseOrderDTOUtils.initializePurchaseOrderDTO();
+  order: PurchaseOrderRequestDTO = PurcharseOrderRequestDTOUtils.initializePurchaseOrderRequestDTO();
   supplierList: Supplier[] = [];
   productList: Product[] = [];
   filteredProducts: Product[] = [];

@@ -23,10 +23,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let order of orderList" id="order-table-container" class="row-12 align-middle">
-                    <td calss="col-1 border-bottom"><strong>#{{order.numOrder}}</strong></td>
-                    <td class="col-2 border-bottom ">{{order.createdAt | date: "dd/MM/yyy"}}</td>
+                    <td class="col-1 border-bottom"><strong>#{{order.num_order}}</strong></td>
+                    <td class="col-2 border-bottom ">{{order.created_at | date: "dd/MM/yyy"}}</td>
                     <td class="col-2 border-bottom ">{{order.deadline | date: "dd/MM/yyy"}}</td>
-                    <td class="col-2 border-bottom ">{{order.supplier.businessName}}</td>
+                    <td class="col-2 border-bottom ">{{order.supplier_name}}</td>
                     <td class="col-auto border-bottom ">{{order.total | currency:'$'}}</td>
                     <td class="col-1 border-bottom ">{{order.canceled | orderStatus}}</td>
                     <td class="col-auto d-flex align-items-center justify-content-end border-bottom" style="height: 72px;">
