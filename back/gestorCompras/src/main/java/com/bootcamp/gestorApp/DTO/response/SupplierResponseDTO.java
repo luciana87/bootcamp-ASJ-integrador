@@ -50,7 +50,7 @@ public class SupplierResponseDTO {
 	private AddressResponseDTO addressDTO;
 	
 	@JsonProperty("iva_name")
-	private Integer iva_name;
+	private String iva_name;
 	
 	@JsonProperty("contact")
 	private ContactRequestDTO contactDTO;
@@ -67,7 +67,7 @@ public class SupplierResponseDTO {
 
 
 	public SupplierResponseDTO(String code, String businessName, String cuit,String fieldName, String website, String phoneNumber,
-								String email, String logo, AddressResponseDTO addressDTO, Integer iva_name, ContactRequestDTO contactDTO, 
+								String email, String logo, AddressResponseDTO addressDTO, String iva_name, ContactRequestDTO contactDTO, 
 								String createdAt, String updatedAt, boolean deleted) {
 
 		this.code = code;
@@ -177,12 +177,12 @@ public class SupplierResponseDTO {
 	}
 
 
-	public Integer getIva_name() {
+	public String getIva_name() {
 		return iva_name;
 	}
 
 
-	public void setIva_name(Integer iva_name) {
+	public void setIva_name(String iva_name) {
 		this.iva_name = iva_name;
 	}
 

@@ -14,6 +14,7 @@ import com.bootcamp.gestorApp.exceptions.ExistingResourceException;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
 import com.bootcamp.gestorApp.repositories.ProductRepository;
 import com.bootcamp.gestorApp.utils.Util;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
 import jakarta.transaction.Transactional;
 
@@ -58,12 +59,6 @@ public class ProductService {
 	 * mapToDTO(product.get()); }
 	 */
 
-	/*
-	 * public Product create(Product product) { //LLamar al servicio de category y
-	 * de supplier, buscar y obtener las entidades por id para setearselas al
-	 * producto antes de guardarlo. SIno guarda null Product productSavedProduct =
-	 * productRepository.save(product); return productSavedProduct; }
-	 */
 	 
 	
 	@Transactional
@@ -98,6 +93,41 @@ public class ProductService {
     	ProductResponseDTO productDTO = Util.getModelMapper().map(product, ProductResponseDTO.class);
         return productDTO;
     }
+
+
+	public void delete(Integer id) {
+		Product product = this.retriveById(id);
+		product.setDeleted(true);
+		productRepository.save(product);
+		//productRepository.deleteById(id);
+	}
+	
+
+	public void replace(Integer id, Product product) {
+		
+		  Optional<Product> productOptional = productRepository.findById(id); 
+		  if (productOptional.isEmpty()) { 
+			  throw new ResourceNotFoundException("Product no encontrado."); 
+		  }
+		  Supplier supplier = supplierService.retriveById(product.getSupplier().getId());
+		  Category category = categoryService.retriveById(product.getCategory().getId());
+		  
+		  Product productToReplace = productOptional.get();
+		  
+	
+		  productToReplace.setName(product.getName());
+		  productToReplace.setSku(product.getSku());
+		  productToReplace.setPrice(product.getPrice());
+		  productToReplace.setName(product.getName());
+		  productToReplace.setDescription(product.getDescription());
+		  productToReplace.setImage(product.getImage());
+		  productToReplace.setCategory(category);
+		  productToReplace.setSupplier(supplier);
+		  
+		 
+	 
+        productRepository.save(productToReplace);
+	}
 
 
 }

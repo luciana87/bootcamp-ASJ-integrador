@@ -98,14 +98,15 @@ public class SupplierService {
 	private SupplierResponseDTO mapToDTO(Supplier supplier) {
 		SupplierResponseDTO supplierResponseDTO = Util.getModelMapper().map(supplier, SupplierResponseDTO.class);
 		
-		Field field = fieldService.findById(supplier.getField().getId()); 
+		Field field = fieldService.findById(supplier.getField().getId());
+		IvaType ivaType = ivaService.findById(supplier.getIva().getId());
 		AddressResponseDTO addressResponseDTO = addressService.mapToResponseDTO(supplier.getAddress());
 		ContactRequestDTO contactDTO =  contactService.mapToDTO(supplier.getContact());
 		 
 		supplierResponseDTO.setAddressDTO(addressResponseDTO);
 		supplierResponseDTO.setFieldName(field.getName());
+		supplierResponseDTO.setIva_name(ivaType.getName());
 		supplierResponseDTO.setContactDTO(contactDTO);
-		//supplierResponseDTO.setIva_name(ivaService.mapToDTO(supplier.getIva()));
 		
 		return supplierResponseDTO;
 	}
@@ -124,12 +125,11 @@ public class SupplierService {
         }
 	}
 
-
 	public void delete(Integer id) {
-		Supplier supplier = this.retriveById(id);
-		supplier.setDeleted(true);
-		supplierRepository.save(supplier);
-		//supplierRepository.deleteById(id);
+	    Supplier supplier = this.retriveById(id); 
+	    supplier.setDeleted(true);
+	    supplierRepository.save(supplier);
+	    //supplierRepository.deleteById(id);
 	}
 
 
