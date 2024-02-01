@@ -1,4 +1,4 @@
-<form #formProduct="ngForm" (ngSubmit)="createProduct(formProduct)" class="form-control container w-75 border "
+<form #formProduct="ngForm" (ngSubmit)="save(formProduct)" class="form-control container w-75 border "
     id="product-form" action="">
 
     <div class="container">
@@ -88,9 +88,9 @@
                         </div>
                     </div>
                     <!-- Input para agregar una nueva categoría -->
-                    <label for="new-category" class="form-label">¿Agregar nueva categoría?</label>
+                    <label for="new-category" class="form-label" >¿Agregar nueva categoría?</label>
                     <input type="text" class="form-control mb-3" id="new-category" placeholder="Nueva categoría"
-                        [(ngModel)]="category.name" name="category">
+                        [(ngModel)]="category.name" name="category" >
 
                     <!-- Botón para agregar una nueva categoría -->
                     <button type="button" class="btn btn-success    btn-sm  mb-3" (click)="addCategory()">Add Categoría</button>
@@ -125,7 +125,7 @@
 
             <div class="col-12 d-flex  justify-content-center mb-3 py-3 ">
                 <button [disabled]=" !formProduct.valid" type="submit"
-                    class="button-add btn btn-sm me-4 text-white">Agregar</button>
+                    class="button-add btn btn-sm me-4 text-white">Guardar</button>
                 <button type="button" (click)="formProduct.reset()" routerLink="/product-list"
                     class="btn btn-light btn-sm ">Cancelar</button>
             </div>

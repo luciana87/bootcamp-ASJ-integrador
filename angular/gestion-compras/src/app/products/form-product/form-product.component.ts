@@ -27,7 +27,8 @@ export class FormProductComponent implements OnInit {
   suppliers: Supplier[] = [];
   categoryList: Category[] = [];
   category: CategoryRequestDTO = CategoryUtils.initializeCategory();
-
+  id: number = -1;
+  // isUpdate: boolean = false;
 
 
   constructor(public serviceProduct: ProductServiceService, public serviceSupplier: SupplierServiceService, public serviceCategory: CategoryService, private router: Router,
@@ -53,10 +54,23 @@ export class FormProductComponent implements OnInit {
         console.error('Error:', error);
       }
     );
+
+    this.route.paramMap.subscribe((param: any) => {
+      const idString = param.get('id');
+      if (idString) {
+        this.id = +idString; //Convierte de cadena a numero
+        this.serviceProduct.getProductById(this.id).subscribe(
+          (data) => {
+            this.product = data;
+            // this.isUpdate = true; solo es necesario si el formulario se comparta distinto cuando es un update
+            console.log(this.product);
+          });
+      }
+    });    
   }
 
 
-  createProduct(form: NgForm) {
+  save(form: NgForm) {
     console.log(form.value);
     if (!form.valid) {
       console.log("Formulario inválido.");
@@ -65,7 +79,13 @@ export class FormProductComponent implements OnInit {
 
     if (this.product.id != -1) {
       // Lo actualizo
-      this.serviceProduct.updateProduct(this.product.id, this.product);
+      this.serviceProduct.updateProduct(this.product.id, this.product).subscribe(
+        (data: Product) => {
+          console.log("Producto modificado:", data);
+          alert("Modificado correctamente")
+          // this.router.navigate(['/product-list']);
+        }
+      );
     } else {
       //Lo creo
       this.serviceProduct.createProduct(form).subscribe((data: Product) => {

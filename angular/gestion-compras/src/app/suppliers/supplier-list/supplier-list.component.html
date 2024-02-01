@@ -11,36 +11,47 @@
         <thead class="row-12">
             <tr>
                 <th class="col-1">Logo</th>
-                <th class="col-2">Código</th>
+                <th class="col-1">Código</th>
                 <th class="col-2">Razón Social</th>
-                <th class="col-3">Información</th>
-                <th class="col-2">Personal de Contacto</th>
-                <th class="col-2 th-acciones">Acciones</th>
+                <th class="col-2">Información</th>
+                <th class="col-2">Ubicación</th>
+                <th class="col-1">Personal de Contacto</th>
+                <th class="col-3 th-acciones">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let supplier of activeSuppliers" id="supplier-table-container" class="row-12 align-middle">
-                <td class="col tdImg">
+            <tr *ngFor="let supplier of supplierList | activeSupplier" id="supplier-table-container" class="row-12 align-middle">
+                <td class="col-1 tdImg">
                     <div class="imgContainer">
                         <img class="img-fluid " src="{{supplier.logo}}" (error)="cambiarImagen($event)">
                     </div>
                 </td>
-                <td class="col border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
-                <td class="col border-bottom">{{ supplier.businessName }}</td>
-                <td class="col border-bottom ">
+                <td class="col-1 border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
+                <td class="col-2 border-bottom">{{ supplier.businessName }}</td>
+                <td class="col-2 border-bottom ">
                     <ul class=" ">
                         <li class="li-decoration">{{ supplier.website }}</li>
                         <li class="li-decoration">Tel: {{ supplier.phoneNumber }} </li>
                         <li class="li-decoration">{{ supplier.email}}</li>
                     </ul>
                 </td>
-                <td class="col border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname }}</td>
-                <td class="td-acciones col border-bottom">
-                    <button class="btn text-white me-2 btn-sm button-circle"
+                <td class="col-1 border-bottom">
+                    <ul class=" ">
+                        <li class="li-decoration">{{ supplier.address.province.country.name }}</li>
+                        <li class="li-decoration">{{supplier.address.province.name}} </li>
+                    </ul>
+                </td>
+                <td class="col-3 border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname }} <a type="button"
+                    class="btn-lg btn-outline-light " ngbPopover=" {{ supplier.contact.email}} | Tel: {{supplier.contact.phoneNumber}}"
+                    triggers="mouseenter:mouseleave" popoverTitle="Descripción">
+                    <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
+                </a></td>
+                <td class="col-2 td-acciones border-bottom">
+                    <button class="btn text-white me-1 btn-sm button-circle"
                         style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;"
                         id="edit-button{{ supplier.code }}" routerLink="/form-supplier/{{supplier.id}}"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button class="btn text-white me-2 btn-sm button-circle"
+                    <button class="btn text-white me-1 btn-sm button-circle"
                         style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
                         (click)="delete(supplier)"><i
                             class="fa-regular fa-trash-can fa-sm d-flex align-content-center justify-content-center"></i></button>

@@ -22,7 +22,8 @@ export class SupplierListComponent implements OnInit {
   constructor(public service: SupplierServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getActiveSuppliers();
+    // this.getActiveSuppliers();
+    this.getSuppliers();
   }
 
   public delete(supplier: Supplier) {
@@ -45,18 +46,17 @@ export class SupplierListComponent implements OnInit {
               'El proveedor ha sido eliminado.',
               'success'
             )
-            this.getActiveSuppliers()
+            // this.getActiveSuppliers()
+            this.getSuppliers();
           });
       };
     })
   };
 
-  public getActiveSuppliers() {
-    
+  public getSuppliers(){
     this.service.getSuppliers().subscribe(
       (suppliers: Supplier[]) => {
         this.supplierList = suppliers;
-        this.activeSuppliers = this.supplierList.filter(supplier => !supplier.deleted);
       },
       (error) => {
         console.error("Error al obtener proveedores:", error);
@@ -64,7 +64,20 @@ export class SupplierListComponent implements OnInit {
     );
   }
 
-  cambiarImagen(event: Event) {
+  // public getActiveSuppliers() {
+    
+  //   this.service.getSuppliers().subscribe(
+  //     (suppliers: Supplier[]) => {
+  //       this.supplierList = suppliers;
+  //       this.activeSuppliers = this.supplierList.filter(supplier => !supplier.deleted);
+  //     },
+  //     (error) => {
+  //       console.error("Error al obtener proveedores:", error);
+  //     }
+  //   );
+  // }
+
+  public cambiarImagen(event: Event) {
     this.service.defaultImage(event);
   }
 }
