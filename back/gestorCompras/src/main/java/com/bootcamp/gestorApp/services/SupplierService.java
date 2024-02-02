@@ -132,6 +132,41 @@ public class SupplierService {
 	    //supplierRepository.deleteById(id);
 	}
 
+	@Transactional
+	public void replace(Integer id, Supplier supplier) {
+		 Optional<Supplier> supplierOptional = supplierRepository.findById(id); 
+		  if (supplierOptional.isEmpty()) { 
+			  throw new ResourceNotFoundException("Proveedor no encontrado."); 
+		  }
+		  
+		  //Field field = fieldService.findById(supplier.getField().getId());
+		  //Address address = addressService.retriveById(supplier.getAddress().getId());
+		 // IvaType ivaType = ivaService.findById(supplier.getIva().getId());
+		  
+		  Supplier supplierToReplace = supplierOptional.get();
+		  
+		  Contact contact = supplierToReplace.getContact();
+		  Contact replaceContact = supplier.getContact();
+		  replaceContact.setId(contact.getId());
+		  
+		  
+		  
+		  supplierToReplace.setCode(supplier.getCode());
+		  supplierToReplace.setBusinessName(supplier.getBusinessName());
+		  supplierToReplace.setCuit(supplier.getCuit());
+		  supplierToReplace.setField(supplier.getField());
+		  supplierToReplace.setWebsite(supplier.getWebsite());
+		  supplierToReplace.setPhoneNumber(supplier.getPhoneNumber());
+		  supplierToReplace.setEmail(supplier.getEmail());
+		  supplierToReplace.setLogo(supplier.getLogo());
+		  supplierToReplace.setAddress(supplier.getAddress());
+		  supplierToReplace.setIva(supplier.getIva());
+		  supplierToReplace.setContact(replaceContact);
+		  
+		  supplierRepository.save(supplierToReplace);
+	
+	}
+
 
 
 	

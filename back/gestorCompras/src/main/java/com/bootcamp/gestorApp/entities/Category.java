@@ -3,6 +3,8 @@ package com.bootcamp.gestorApp.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.bootcamp.gestorApp.utils.Util;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
@@ -76,6 +79,11 @@ public class Category {
 		this.deleted = deleted;
 	}
 
-	
+	   @PreUpdate
+	    protected void onUpdate() {
+	        LocalDateTime now = LocalDateTime.now();
+	        String formattedDateTime = now.format(Util.getDateTimeFormatter());
+	        this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
+	    }
 
 }
