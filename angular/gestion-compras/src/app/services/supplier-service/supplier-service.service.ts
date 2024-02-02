@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { Observable } from 'rxjs';
+
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierRequestDTO } from 'src/app/models/supplierRequestDTO';
 import { SupplierResponseDTO } from 'src/app/models/supplierResponseDTO';
+
 import { MapsUtils } from 'src/app/utils/maps';
 
 
@@ -23,10 +26,9 @@ export class SupplierServiceService {
     return this.http.get<Supplier[]>(this.baseUrl, { headers });
   }
 
-
-  getSupplierById(id: number): Observable<SupplierResponseDTO> {
+  getSupplierById(id: number): Observable<Supplier> {
     const headers = { 'Content-Type': 'application/json' };
-    return this.http.get<SupplierResponseDTO>(this.baseUrl + '/' + id, { headers });
+    return this.http.get<Supplier>(this.baseUrl + '/' + id, { headers });
   }
 
   getSupplierDetailById(id: number): Observable<SupplierResponseDTO> {
@@ -44,14 +46,9 @@ export class SupplierServiceService {
     return this.http.post<Supplier>(this.baseUrl,requestData);
   }
 
-  updateSupplier(supplier: Supplier) {
-    // let suppliers = this.getSuppliers();
-    // let index = suppliers.findIndex(sup => sup.id === supplier.id);
-    // suppliers[index] = supplier;
-    // localStorage.setItem('suppliers', JSON.stringify(suppliers));
-
-    //this.mostrarData();
-  }
+  updateSupplier(id: number, supplier: Supplier): Observable<Supplier>{
+    return this.http.put<Supplier>(this.baseUrl + '/' + id, supplier);
+    }
 
   deleteSupplier(id: number): Observable<Supplier> {
     return this.http.delete<Supplier>(this.baseUrl + '/' + id);

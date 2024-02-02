@@ -1,7 +1,6 @@
 <section class="container w-100">
 
     <div class="d-flex justify-content-between align-items-center">
-        <!-- <h4 class="h4">Proveedores</h4> -->
         <h3 class="h3" style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Proveedores</h3>
         <button class="button-add btn text-center btn-sm text-white h-75" routerLink="/form-supplier">Agregar <i
                 class="fa-solid fa-plus fa-sm"></i></button>
@@ -14,9 +13,9 @@
                 <th class="col-1">Código</th>
                 <th class="col-2">Razón Social</th>
                 <th class="col-2">Información</th>
-                <th class="col-2">Ubicación</th>
-                <th class="col-1">Personal de Contacto</th>
-                <th class="col-3 th-acciones">Acciones</th>
+                <th class="col-1">Ubicación</th>
+                <th class="col-2">Contacto</th>
+                <th class="col-2 th-acciones">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +28,7 @@
                 <td class="col-1 border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
                 <td class="col-2 border-bottom">{{ supplier.businessName }}</td>
                 <td class="col-2 border-bottom ">
-                    <ul class=" ">
+                    <ul class="">
                         <li class="li-decoration">{{ supplier.website }}</li>
                         <li class="li-decoration">Tel: {{ supplier.phoneNumber }} </li>
                         <li class="li-decoration">{{ supplier.email}}</li>
@@ -41,9 +40,9 @@
                         <li class="li-decoration">{{supplier.address.province.name}} </li>
                     </ul>
                 </td>
-                <td class="col-3 border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname }} <a type="button"
-                    class="btn-lg btn-outline-light " ngbPopover=" {{ supplier.contact.email}} | Tel: {{supplier.contact.phoneNumber}}"
-                    triggers="mouseenter:mouseleave" popoverTitle="Descripción">
+                <td class="col-2 border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname }} <a type="button"
+                    class="btn-lg btn-outline-light " ngbPopover=" {{ supplier.contact.contactEmail}} | Tel: {{supplier.contact.phoneNumber}}"
+                    triggers="mouseenter:mouseleave" popoverTitle="Información de contacto">
                     <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
                 </a></td>
                 <td class="col-2 td-acciones border-bottom">

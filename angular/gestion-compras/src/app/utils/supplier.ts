@@ -36,10 +36,11 @@ export class SupplierUtils {
                 name: ''
             },
             contact: {
+                id:-1,
                 contactName: '',
                 contactLastname: '',
                 phoneNumber: 0,
-                email: '',
+                contactEmail: '',
                 position: ''
             },
             logo: '',

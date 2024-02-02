@@ -3,6 +3,7 @@ import { AddressRequestDTO } from "./addressRequestDTO"
 import { ContactDTO } from "./contactDTO"
 
 export interface SupplierRequestDTO {
+    id?: number,
     code: String,
     business_name: String,
     cuit: String,
