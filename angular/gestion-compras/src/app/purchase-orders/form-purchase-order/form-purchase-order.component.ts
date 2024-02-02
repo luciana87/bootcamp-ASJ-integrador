@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { PurchaseOrderRequestDTO } from 'src/app/models/purchaseOrderRequestDTO';
 import { ItemDetail } from 'src/app/models/itemDetail';
 import { Product } from 'src/app/models/product';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { Supplier } from 'src/app/models/supplier';
+
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
-import { MapsUtils } from 'src/app/utils/maps';
-import { OrderUtils } from 'src/app/utils/order';
-import { ProductUtils } from 'src/app/utils/product';
+
 import { PurcharseOrderRequestDTOUtils } from 'src/app/utils/purchaseOrderRequestDTO';
 
 @Component({
@@ -40,12 +40,20 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getSuppliers();
+    this.getProducts();
+
+  }
+
+  getSuppliers(){
     this.serviceSupplier.getSuppliers().subscribe(
       (data) => {
         this.supplierList = data;
         console.log(this.supplierList);
       });
+  }
 
+  getProducts(){
     this.serviceProduct.getProducts().subscribe(
       (data) => {
         this.productList = data;
@@ -56,11 +64,11 @@ export class FormPurchaseOrderComponent implements OnInit {
   onSupplierChange(value: any) {
 
     // Realiza el filtrado de productos cada vez que cambie el proveedor
-    if (value !== null) {
+    // if (value !== null) {
 
-    } else {
-      let confirmacion = confirm("Desea realmente modificar el proveedor? En ese caso se eliminaran los productos agregados.")
-    }
+    // } else {
+    //   let confirmacion = confirm("Desea realmente modificar el proveedor? En ese caso se eliminaran los productos agregados.")
+    // }
 
     if (value.supplier_id) {
       this.filteredProducts = this.filterProductsBySupplier(value.supplier_id);
@@ -76,6 +84,7 @@ export class FormPurchaseOrderComponent implements OnInit {
       console.log("Formulario inválido.");
       return;
   }
+  
   this.serviceOrder.createOrder(form).subscribe((data) => {
     console.log("Se creó una órden de compra:", data);
     this.router.navigate(['/purchase-order-list'])

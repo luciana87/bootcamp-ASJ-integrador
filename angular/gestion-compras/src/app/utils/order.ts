@@ -43,7 +43,7 @@ export class OrderUtils {
                     contactName: '',
                     contactLastname: '',
                     phoneNumber: 0,
-                    email: '',
+                    contactEmail: '',
                     position: ''
                 },
                 logo: '',
