@@ -42,7 +42,7 @@ export class ProductUtils {
                     contactName: '',
                     contactLastname: '',
                     phoneNumber: 0,
-                    email: '',
+                    contactEmail: '',
                     position: ''
                 },
                 logo: '',

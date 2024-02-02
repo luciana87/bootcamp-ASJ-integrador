@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
-import { ActiveOrderPipe } from 'src/app/pipes/active-order.pipe';
 import { ActiveProductPipe } from 'src/app/pipes/active-product.pipe';
 import { CategoryPipe } from 'src/app/pipes/category.pipe';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
@@ -62,27 +61,12 @@ export class ProductListComponent implements OnInit {
             }
             return false;
         });
-
-        // this.categories = new Set(this.productList.flatMap(product => product.category.id));
-
-        // this.serviceCategory.getCategories().subscribe(
-        //   (data) => {
-        //     this.uniqueCategories = data.filter(cat => this.categories.has(cat.id))
-        //     console.log(this.uniqueCategories);
-        //   },
-        //   (error) => {
-        //     console.error('Error:', error);
-        //   }
-        // );
         this.productList.sort(this.sortByName);
       },
       (error) => {
         console.error('Error:', error);
       }
     );
-
-
-    
   }
 
   applyCategoryFilter() {
@@ -96,11 +80,11 @@ export class ProductListComponent implements OnInit {
   
   applySearchFilter(){
 
-    if (this.input_search != "") {
-      this.activeProducts = this.searchPipe.transform(this.productList, this.input_search);
-    } else {
-      this.activeProducts = this.productList;
-    }
+    // if (this.input_search != "") {
+    //   this.activeProducts = this.searchPipe.transform(this.productList, this.input_search);
+    // } else {
+    //   this.activeProducts = this.productList;
+    // }
   }
 
   // public getActiveProducts() { 
@@ -130,11 +114,18 @@ export class ProductListComponent implements OnInit {
         this.service.deleteProduct(product.id).subscribe(
           (data) => {
             console.log(data);
-            Swal.fire(
-              '¡Eliminado!',
-              'El producto ha sido eliminado.',
-              'success'
-            )
+            // Swal.fire(
+            //   '¡Eliminado!',
+            //   'El producto ha sido eliminado.',
+            //   'success'
+            // )
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "El producto ha sido eliminado.",
+              showConfirmButton: false,
+              timer: 900
+            });
             this.getProducts();
           });
       };
@@ -142,7 +133,7 @@ export class ProductListComponent implements OnInit {
 
   };
 
-  cambiarImagen(event: Event) {
+  public changeImage(event: Event) {
     this.service.defaultImage(event);
   }
 

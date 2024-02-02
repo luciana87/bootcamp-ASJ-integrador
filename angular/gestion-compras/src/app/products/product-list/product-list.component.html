@@ -15,7 +15,7 @@
                 
                 <div class="d-flex ">
                     <label class="" for="category">Filtrar por categoría:</label>
-                    <select class="form-select" [(ngModel)]="category" (change)="applyCategoryFilter()" name="category" id="category">
+                    <select class="form-select" [(ngModel)]="category" name="category" id="category">
                         <option [ngValue]="nullCategory" selected>Filtrar por categoría</option>
                         <option *ngFor="let category of uniqueCategories" [ngValue]="category">{{category.name}}</option>
                     </select>
@@ -32,8 +32,8 @@
                 <tr>
                     <th class="col-1">Img</th>
                     <th class="col-1 ">SKU</th>
-                    <th class="col-4">Nombre</th>
-                    <th class="col-1">Categoría</th>
+                    <th class="col-3">Nombre</th>
+                    <th class="col-2">Categoría</th>
                     <th class="col-1">Proveedor</th>
                     <th class="col-1">Precio</th>
                     <th class="col-2">ACCIONES</th>
@@ -44,12 +44,12 @@
                     id="product-table-container" class="row-12 align-middle">
                     <td class="col-1 tdImg">
                         <div class="imgContainer">
-                            <img class="img-fluid " src="{{product.image}}" (error)="cambiarImagen($event)">
+                            <img class="img-fluid " src="{{product.image}}" (error)="changeImage($event)">
                         </div>
                     </td>
                     <td class="col-1" class="border-bottom">{{product.sku}}</td>
-                    <td class="col-4" class="border-bottom"> {{product.name}}</td>
-                    <td class="col-1 border-bottom py-2">{{ product.category.name }}</td>
+                    <td class="col-3" class="border-bottom"> {{product.name}}</td>
+                    <td class="col-2 border-bottom py-2">{{ product.category.name }}</td>
                     <td class="col-2 border-bottom">{{ product.supplier.businessName }}</td>
                     <td class="col-1 border-bottom">{{ product.price | currency: '$'}}</td>
                     <td class="col-2 align-items-center justify-content-end border-bottom">

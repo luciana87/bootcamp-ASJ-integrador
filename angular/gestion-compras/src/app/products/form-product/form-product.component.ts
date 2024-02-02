@@ -12,6 +12,7 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
 import { CategoryUtils } from 'src/app/utils/category';
 import { CategoryRequestDTO } from 'src/app/models/categoryRequestDTO';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -70,7 +71,7 @@ export class FormProductComponent implements OnInit {
   }
 
 
-  save(form: NgForm) {
+  public save(form: NgForm) {
     console.log(form.value);
     if (!form.valid) {
       console.log("Formulario inválido.");
@@ -82,8 +83,23 @@ export class FormProductComponent implements OnInit {
       this.serviceProduct.updateProduct(this.product.id, this.product).subscribe(
         (data: Product) => {
           console.log("Producto modificado:", data);
-          alert("Modificado correctamente")
-          // this.router.navigate(['/product-list']);
+          // alert("Modificado correctamente")
+          Swal.fire({
+            title: "Desea guardar los cambios?",
+            showCancelButton: true,
+            confirmButtonText: "Guardar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "El producto se editó correctamente",
+                showConfirmButton: false,
+                timer: 900
+              });
+              this.router.navigate(['/product-list']);
+            }
+          });
         }
       );
     } else {
@@ -97,7 +113,7 @@ export class FormProductComponent implements OnInit {
     };
   }
 
-  addCategory() {
+  public addCategory() {
     if (this.category.name.trim() !== '') {
       this.serviceCategory.createCategory(this.category).subscribe(
         response => {
