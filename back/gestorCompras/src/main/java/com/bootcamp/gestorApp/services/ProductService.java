@@ -128,4 +128,10 @@ public class ProductService {
 	}
 
 
+
+	public List<Product> getProductsBySupplier(Integer id) {
+		return productRepository.getProductsBySupplierIdAndDeletedFalse(id);
+	}
+
+
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
 import com.bootcamp.gestorApp.DTO.response.ProductResponseDTO;
+import com.bootcamp.gestorApp.DTO.response.PurchaseOrderResponseDTO;
 import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.Supplier;
@@ -43,6 +44,12 @@ public class ProductController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> retriveById(@PathVariable Integer id) {
 		return new ResponseEntity<Product>(productService.retriveById(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/supplier/{id}")
+	public ResponseEntity<List<Product>> getProductsBySupplier (@PathVariable Integer id) {
+		List<Product> productList = productService.getProductsBySupplier(id);
+		return new ResponseEntity<List<Product>> (productList,HttpStatus.OK);
 	}
 	
 	/*

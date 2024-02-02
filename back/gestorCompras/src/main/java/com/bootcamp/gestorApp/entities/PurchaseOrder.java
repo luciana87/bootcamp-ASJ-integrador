@@ -4,8 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.aspectj.weaver.bcel.FakeAnnotation;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.engine.transaction.jta.platform.internal.BitronixJtaPlatform;
 import org.modelmapper.internal.bytebuddy.asm.Advice.This;
+
+import com.bootcamp.gestorApp.utils.Util;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,6 +21,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,7 +35,9 @@ public class PurchaseOrder {
 	private int numOrder;
 	
 	@Column(nullable = false)
+
 	private LocalDateTime createdAt;
+	
 	
 	private LocalDateTime updatedAt;
 	private LocalDateTime deadline;
@@ -136,6 +143,10 @@ public class PurchaseOrder {
 	}
 	
 	
-	
+	  @PreUpdate protected void onUpdate() { LocalDateTime now =
+	  LocalDateTime.now(); String formattedDateTime =
+	  now.format(Util.getDateTimeFormatter()); this.updatedAt =
+	  LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter()); }
+	 
 
 }

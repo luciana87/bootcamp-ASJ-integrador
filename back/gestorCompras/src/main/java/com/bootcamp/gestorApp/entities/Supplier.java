@@ -2,6 +2,9 @@ package com.bootcamp.gestorApp.entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.bootcamp.gestorApp.utils.Util;
 
 import jakarta.persistence.CascadeType;
@@ -16,65 +19,63 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "suppliers")
 public class Supplier {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(unique = true, nullable = false)
 	private String code;
-	
+
 	@Column(unique = true)
 	private String businessName;
-	
+
 	@Column(unique = true)
 	private String cuit;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "field_id")
 	private Field field;
-	
+
 	private String website;
 	private String phoneNumber;
 	private String email;
 	private String logo;
-	
+
 	@Column(nullable = false)
 	private LocalDateTime createdAt;
-	
+
 	private LocalDateTime updatedAt;
 	private boolean deleted;
-	
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")
 	private Address address;
-    
+
 	@ManyToOne
 	@JoinColumn(name = "iva_id")
 	private IvaType iva;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contact_id")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "contact_id")
 	private Contact contact;
-	
+
 	/*
 	 * @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER) private
 	 * List<Product> products;
 	 */
-	
-	public Supplier () {
+
+	public Supplier() {
 		this.createdAt = LocalDateTime.now();
 		this.updatedAt = null;
 		this.deleted = false;
 	}
-	
-	public Supplier (String code,String businessName, String cuit, Field field, String website, 
-			String phoneNumber, String email, String logo, Address address, 
-			IvaType iva, Contact contact) {
+
+	public Supplier(String code, String businessName, String cuit, Field field, String website, String phoneNumber,
+			String email, String logo, Address address, IvaType iva, Contact contact) {
 		this.code = code;
 		this.businessName = businessName;
 		this.cuit = cuit;
@@ -89,8 +90,7 @@ public class Supplier {
 		this.address = address;
 		this.iva = iva;
 		this.contact = contact;
-		
-		
+
 	}
 
 	public Integer getId() {
@@ -212,11 +212,12 @@ public class Supplier {
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
-	
-   @PreUpdate
-    protected void onUpdate() {
-        LocalDateTime now = LocalDateTime.now();
-        String formattedDateTime = now.format(Util.getDateTimeFormatter());
-        this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
-    }
+
+	@PreUpdate
+	protected void onUpdate() {
+		LocalDateTime now = LocalDateTime.now();
+		String formattedDateTime = now.format(Util.getDateTimeFormatter());
+		this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
+	}
+
 }

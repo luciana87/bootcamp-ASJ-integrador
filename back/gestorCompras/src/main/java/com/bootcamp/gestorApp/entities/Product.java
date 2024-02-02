@@ -2,6 +2,9 @@ package com.bootcamp.gestorApp.entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.bootcamp.gestorApp.utils.Util;
 
 import jakarta.persistence.Entity;
@@ -17,42 +20,43 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "product")
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
 	private String sku;
 	private float price;
 	private String description;
 	private String image;
+
 	private LocalDateTime updatedAt;
+
 	private LocalDateTime createdAt;
+
 	private boolean deleted;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "supplier_id")
 	private Supplier supplier;
 
-	
-	
-	public Product () {}
-	
-	
-	public Product(String name, String sku, float price, String description, String image,
-					Category category, Supplier supplier) {
+	public Product() {
+	}
+
+	public Product(String name, String sku, float price, String description, String image, Category category,
+			Supplier supplier) {
 		this.name = name;
 		this.sku = sku;
 		this.price = price;
 		this.description = description;
 		this.image = image;
-		this.updatedAt = null;
 		this.createdAt = LocalDateTime.now();
+		this.updatedAt = null;
 		this.setDeleted(false);
 		this.category = category;
 		this.supplier = supplier;
@@ -122,30 +126,27 @@ public class Product {
 		this.supplier = supplier;
 	}
 
-
 	public boolean getDeleted() {
 		return deleted;
 	}
-
 
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
 
-
 	public String getSku() {
 		return sku;
 	}
 
-
 	public void setSku(String sku) {
 		this.sku = sku;
 	}
-	
-    @PreUpdate
-    protected void onUpdate() {
-        LocalDateTime now = LocalDateTime.now();
-        String formattedDateTime = now.format(Util.getDateTimeFormatter());
-        this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
-    }
+
+	@PreUpdate
+	protected void onUpdate() {
+		LocalDateTime now = LocalDateTime.now();
+		String formattedDateTime = now.format(Util.getDateTimeFormatter());
+		this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
+	}
+
 }
