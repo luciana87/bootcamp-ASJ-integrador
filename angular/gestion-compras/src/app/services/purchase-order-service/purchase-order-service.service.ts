@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { ItemDetailResponseDTO } from 'src/app/models/itemDetailResponseDTO';
 import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
+import { Product } from 'src/app/models/product';
 
 
 
@@ -43,7 +44,7 @@ createOrder (formData: NgForm): Observable<PurchaseOrder> {
   return this.http.post<PurchaseOrder>(this.baseUrl,orderData, { headers });
 }
 
-updateOrder(order: PurchaseOrder) {
+updateOrder (order: PurchaseOrder) {
   //   let orders = this.getPurchaseOrders();
   //   let index = orders.findIndex(o => o.id === order.id);
   //   orders[index] = order;
@@ -51,14 +52,8 @@ updateOrder(order: PurchaseOrder) {
 
 }
 
-deleteOrder(order: PurchaseOrder){
-  //   let orderList = this.getPurchaseOrders();
-  //   const index = orderList.findIndex(o => o.id === order.id);
-  //   if (index > -1) {
-  //     orderList.splice(index, 1);
-  //     localStorage.setItem('orders', JSON.stringify(orderList));
-
-  //   }
+deleteOrder (id: number): Observable<PurchaseOrder> {
+  return this.http.delete<PurchaseOrder>(this.baseUrl + '/' + id);
 }
 
 defaultImage(event: Event) {

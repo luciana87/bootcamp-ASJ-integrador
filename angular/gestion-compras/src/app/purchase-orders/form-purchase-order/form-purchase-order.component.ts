@@ -41,11 +41,13 @@ export class FormPurchaseOrderComponent implements OnInit {
   ngOnInit(): void {
 
     this.getSuppliers();
-    this.getProducts();
+    // this.getProducts();
 
   }
 
   getSuppliers(){
+    console.log("Llegue");
+    
     this.serviceSupplier.getSuppliers().subscribe(
       (data) => {
         this.supplierList = data;
@@ -61,8 +63,14 @@ export class FormPurchaseOrderComponent implements OnInit {
       });
   }
 
-  onSupplierChange(value: any) {
 
+  onSupplierChange(value: number) {
+    console.log(value);
+    return this.serviceProduct.getProductsBySupplier(value).subscribe(      
+      (data: Product[]) => {
+        this.filteredProducts = data;
+      }
+    )
     // Realiza el filtrado de productos cada vez que cambie el proveedor
     // if (value !== null) {
 
@@ -70,13 +78,15 @@ export class FormPurchaseOrderComponent implements OnInit {
     //   let confirmacion = confirm("Desea realmente modificar el proveedor? En ese caso se eliminaran los productos agregados.")
     // }
 
-    if (value.supplier_id) {
-      this.filteredProducts = this.filterProductsBySupplier(value.supplier_id);
-    }
   }
 
   filterProductsBySupplier(supplier_id: number) {
-    return this.productList.filter((product) => (product.supplier.id === supplier_id))
+    // return this.serviceOrder.getProductsBySupplier(supplier_id).subscribe(
+    //   (data: Product[]) => {
+    //     this.filteredProducts = data;
+    //   }
+    // )
+    // return this.productList.filter((product) => (product.supplier.id === supplier_id))
   }
 
   createOrder(form: NgForm) {
@@ -84,7 +94,7 @@ export class FormPurchaseOrderComponent implements OnInit {
       console.log("Formulario inválido.");
       return;
   }
-  
+
   this.serviceOrder.createOrder(form).subscribe((data) => {
     console.log("Se creó una órden de compra:", data);
     this.router.navigate(['/purchase-order-list'])

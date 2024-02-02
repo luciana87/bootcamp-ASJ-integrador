@@ -12,11 +12,11 @@
                         <input type="number" class="form-control " name="num_order" id="nro-input" required min="1"
                             [(ngModel)]="order.num_order">
                     </div>
-                    <div *ngIf="formOrder.controls['nro']?.invalid && (formOrder.controls['nro']?.dirty || formOrder.controls['nro']?.touched)"
+                    <div *ngIf="formOrder.controls['num_order']?.invalid && (formOrder.controls['num_order']?.dirty || formOrder.controls['num_order']?.touched)"
                         class="text-danger">
-                        <small *ngIf="formOrder.controls['nro']?.errors?.['required']">Este campo es
+                        <small *ngIf="formOrder.controls['num_order']?.errors?.['required']">Este campo es
                             obligatorio.</small>
-                        <small *ngIf="formOrder.controls['nro']?.hasError('min')">Nro de órden debe ser mayor a
+                        <small *ngIf="formOrder.controls['num_order']?.hasError('min')">Nro de órden debe ser mayor a
                             0.</small>
                     </div>
                 </div>

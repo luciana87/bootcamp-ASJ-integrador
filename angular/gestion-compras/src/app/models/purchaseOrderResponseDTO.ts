@@ -11,5 +11,5 @@ export interface PurchaseOrderResponseDTO {
     total: number,
     description: String,
     supplier_name: String,
-    items: ItemDetailResponseDTO[]
+    itemsDTO: ItemDetailResponseDTO[]
 }

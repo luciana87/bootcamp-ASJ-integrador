@@ -28,8 +28,10 @@ export class DetailOrderComponent implements OnInit {
         this.id = +idString; //Convierte de cadena a numero
         this.serviceOrder.getOrderById(this.id).subscribe(
           (data) => {
+            console.log(data);
+            
             this.order = data;
-            this.itemDetailList = data.items;
+            this.itemDetailList = data.itemsDTO;
             console.log(this.itemDetailList);
             
             console.log(this.order);

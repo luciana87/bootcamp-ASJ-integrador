@@ -19,7 +19,7 @@
             </thead>
 
             <tbody>
-                <tr *ngFor="let item of order.items" class="row-12 align-middle">
+                <tr *ngFor="let item of order.itemsDTO" class="row-12 align-middle">
                     <td class="col-1 tdImg">
                         <div class="imgContainer">
                             <img src="{{item.product_image}}" (error)="cambiarImagen($event)" />
@@ -46,4 +46,5 @@
         </table>
         <button class="btn btn-primary mt-3" (click)="goBack()">Volver</button>
     </section>
+
 </div>

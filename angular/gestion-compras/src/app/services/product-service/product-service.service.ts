@@ -61,5 +61,9 @@ export class ProductServiceService {
   defaultImage(event: Event) {
     (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
   }
+  
+  getProductsBySupplier(id: number): Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl + "/supplier/" + id);
+  }
 
 }
