@@ -68,10 +68,9 @@ public class ProductService {
 		
 		Supplier supplier = supplierService.retriveById(productDTO.getSupplierId());
 		Category category = categoryService.retriveById(productDTO.getCategoryId());
+		Product product = mapToEntity(productDTO, category,supplier);
 		
-		Product productSaved = mapToEntity(productDTO, category,supplier);
-		
-		return productRepository.save(productSaved);
+		return productRepository.save(product);
 	}
 	    
     private void checkForExistingProduct(String sku) {
@@ -99,15 +98,14 @@ public class ProductService {
 		Product product = this.retriveById(id);
 		product.setDeleted(true);
 		productRepository.save(product);
-		//productRepository.deleteById(id);
 	}
 	
-
+	@Transactional
 	public void replace(Integer id, Product product) {
 		
 		  Optional<Product> productOptional = productRepository.findById(id); 
 		  if (productOptional.isEmpty()) { 
-			  throw new ResourceNotFoundException("Product no encontrado."); 
+			  throw new ResourceNotFoundException("Producto no encontrado."); 
 		  }
 		  Supplier supplier = supplierService.retriveById(product.getSupplier().getId());
 		  Category category = categoryService.retriveById(product.getCategory().getId());

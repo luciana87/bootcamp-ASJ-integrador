@@ -2,6 +2,8 @@ package com.bootcamp.gestorApp.entities;
 
 import java.time.LocalDateTime;
 
+import com.bootcamp.gestorApp.utils.Util;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -142,7 +144,8 @@ public class Product {
 	
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt =LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.now();
+        String formattedDateTime = now.format(Util.getDateTimeFormatter());
+        this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
     }
-
 }
