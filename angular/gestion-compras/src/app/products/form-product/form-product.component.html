@@ -19,13 +19,13 @@
                         <label for="supplier" class="form-label">Proveedor:</label>
                         <select id="supplier" name="supplier_id" class="form-select" required
                             [(ngModel)]="product.supplier.id">
-                            <option value="" disabled selected>Seleccionar proveedor</option>
+                            <option value="-1" disabled selected>Seleccionar proveedor</option>
                             <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{ supplier.businessName
                                 }}</option>
                         </select>
-                        <div *ngIf="formProduct.controls['supplier']?.invalid && (formProduct.controls['supplier']?.dirty || formProduct.controls['supplier']?.touched)"
+                        <div *ngIf="formProduct.controls['supplier_id']?.invalid && (formProduct.controls['supplier_id']?.dirty || formProduct.controls['supplier_id']?.touched)"
                             class="text-danger">
-                            <small *ngIf="formProduct.controls['supplier']?.errors?.['required']">Este campo es
+                            <small *ngIf="formProduct.controls['supplier_id']?.errors?.['required']">Este campo es
                                 obligatorio.</small>
                         </div>
                     </div>
@@ -77,13 +77,13 @@
                         <label for="category-input" class="form-label">Categoría:</label>
                         <select id="category-input" name="category_id" class="form-select" required
                             [(ngModel)]="product.category.id">
-                            <option value="" disabled selected>Seleccione una Categoría:</option>
+                            <option value="-1" disabled selected>Seleccione una Categoría:</option>
                             <option *ngFor="let category of categoryList" [ngValue]="category.id">{{category.name}}
                             </option>
                         </select>
-                        <div *ngIf="formProduct.controls['category']?.invalid && (formProduct.controls['category']?.dirty || formProduct.controls['category']?.touched)"
+                        <div *ngIf="formProduct.controls['category_id']?.invalid && (formProduct.controls['category_id']?.dirty || formProduct.controls['category_id']?.touched)"
                             class="text-danger">
-                            <small *ngIf="formProduct.controls['category']?.errors?.['required']">Este campo es
+                            <small *ngIf="formProduct.controls['category_id']?.errors?.['required']">Este campo es
                                 obligatorio.</small>
                         </div>
                     </div>

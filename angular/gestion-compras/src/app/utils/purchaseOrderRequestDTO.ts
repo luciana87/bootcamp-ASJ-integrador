@@ -1,4 +1,5 @@
 import { PurchaseOrderRequestDTO } from "../models/purchaseOrderRequestDTO"
+import { ProductUtils } from "./product"
 
 export class PurcharseOrderRequestDTOUtils {
 
@@ -10,7 +11,7 @@ export class PurcharseOrderRequestDTOUtils {
             total: 0,
             description: '',
             supplier_id: -1,
-            product_id: -1
+            items: []
         }
     }
 }

@@ -22,17 +22,17 @@
                 <tr *ngFor="let item of order.itemsDTO" class="row-12 align-middle">
                     <td class="col-1 tdImg">
                         <div class="imgContainer">
-                            <img src="{{item.product_image}}" (error)="cambiarImagen($event)" />
+                            <img src="{{item.product.image}}" (error)="cambiarImagen($event)" />
                         </div>
                     </td>
-                    <td class="col-auto border-bottom ">{{ item.product_name }} <a type="button"
+                    <td class="col-auto border-bottom ">{{ item.product.name }} <a type="button"
                             class="btn-lg btn-outline-light " ngbPopover="{{ order.description}}"
                             triggers="mouseenter:mouseleave" popoverTitle="Descripción">
                             <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
                         </a>
                     </td>
 
-                    <td class="col-auto border-bottom ">{{ item.product_price | currency:'$'}}</td>
+                    <td class="col-auto border-bottom ">{{ item.product.price | currency:'$'}}</td>
                     <td class="col-2 border-bottom ">{{ item.amount}}</td>
                     <td class="col-2 ">{{ item.total | currency:'$'}}</td>
                 </tr>

@@ -13,6 +13,9 @@ import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-ser
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 
 import { PurcharseOrderRequestDTOUtils } from 'src/app/utils/purchaseOrderRequestDTO';
+import { ItemDetailDTO } from 'src/app/models/itemDetailDTO';
+import { ProductUtils } from 'src/app/utils/product';
+import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
 
 @Component({
   selector: 'app-form-purchase-order',
@@ -28,10 +31,10 @@ export class FormPurchaseOrderComponent implements OnInit {
   productList: Product[] = [];
   filteredProducts: Product[] = [];
   orderList: PurchaseOrder[] = [];
-  items: ItemDetail[] = [];
+  items: ItemDetailDTO[] = [];
   id_item: number = 0;
   amount: number = 1;
-  // product: Product = ProductUtils.initializeProduct();
+  product: Product = ProductUtils.initializeProduct();
 
 
   constructor(public serviceOrder: PurchaseOrderServiceService, public serviceSupplier: SupplierServiceService,
@@ -45,9 +48,9 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   }
 
-  getSuppliers(){
+  getSuppliers() {
     console.log("Llegue");
-    
+
     this.serviceSupplier.getSuppliers().subscribe(
       (data) => {
         this.supplierList = data;
@@ -55,7 +58,7 @@ export class FormPurchaseOrderComponent implements OnInit {
       });
   }
 
-  getProducts(){
+  getProducts() {
     this.serviceProduct.getProducts().subscribe(
       (data) => {
         this.productList = data;
@@ -66,7 +69,7 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   onSupplierChange(value: number) {
     console.log(value);
-    return this.serviceProduct.getProductsBySupplier(value).subscribe(      
+    return this.serviceProduct.getProductsBySupplier(value).subscribe(
       (data: Product[]) => {
         this.filteredProducts = data;
       }
@@ -93,13 +96,14 @@ export class FormPurchaseOrderComponent implements OnInit {
     if (!form.valid) {
       console.log("Formulario inválido.");
       return;
-  }
+    }
 
-  this.serviceOrder.createOrder(form).subscribe((data) => {
-    console.log("Se creó una órden de compra:", data);
-    this.router.navigate(['/purchase-order-list'])
-  });
-}
+    this.serviceOrder.createOrder(form, this.items).subscribe(
+      (data:PurchaseOrderResponseDTO) => {
+      console.log("Se creó una órden de compra:", data);
+      this.router.navigate(['/purchase-order-list'])
+    });
+  }
 
 
 
@@ -126,8 +130,48 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   // this.filteredProducts = this.filterProductsBySupplier();
   // console.log(this.filteredProducts);
+  // }
 
-  addProduct(form: NgForm) {
-    const formData = form.value;
+  addProduct() {
+
+    if (!this.product.id || this.amount < 1) {
+      console.log("Producto o cantidad no válidos.");
+      return;
+    } 
+
+    const selectedProduct = this.filteredProducts.find(product => product.id === +this.product.id);
+
+    if (selectedProduct) {
+      const existingItem = this.items.find(item => item.product.id === selectedProduct.id);
+      if (existingItem) {
+        existingItem.amount += this.amount;
+        existingItem.total = existingItem.amount * selectedProduct.price; 
+      } else {
+        const newItem: ItemDetailDTO = {
+          id: this.id_item++,
+          amount: this.amount,
+          total: selectedProduct.price * this.amount,
+          product: selectedProduct
+        };
+        this.items.push(newItem);
+      }
+    } else {
+      console.log("Producto no encontrado.");
+    }
+
+    // if (selectedProduct) {
+    //   const newItem: ItemDetailResponseDTO = {
+    //     id: this.id_item++,
+    //     amount: this.amount,
+    //     total: selectedProduct.price * this.amount, // Suponiendo que tengas un precio por producto
+    //     product_name: selectedProduct.name,
+    //     product_image: selectedProduct.image,
+    //     product_price: selectedProduct.price
+    //   };
+    //   this.items.push(newItem);
+    // } else {
+    //   console.log("Producto no encontrado.");
+    // }
   }
+
 }

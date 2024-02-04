@@ -2,6 +2,7 @@
 import { NgForm } from "@angular/forms";
 import { SupplierRequestDTO } from "../models/supplierRequestDTO";
 import { PurchaseOrderRequestDTO } from "../models/purchaseOrderRequestDTO";
+import { ItemDetailDTO } from "../models/itemDetailDTO";
 
 export class MapsUtils {
 
@@ -36,7 +37,7 @@ export class MapsUtils {
         };
     }
 
-    static mapToPurchaseOrderDTO(data: NgForm): PurchaseOrderRequestDTO {
+    static mapToPurchaseOrderDTO(data: NgForm, items: ItemDetailDTO[]): PurchaseOrderRequestDTO {
 
         return {
             num_order: data.value.num_order,
@@ -45,7 +46,7 @@ export class MapsUtils {
             total: data.value.total,
             description: data.value.description,
             supplier_id: data.value.supplier_id,
-            product_id: data.value.product_id
+            items: items
         };
     }
 }

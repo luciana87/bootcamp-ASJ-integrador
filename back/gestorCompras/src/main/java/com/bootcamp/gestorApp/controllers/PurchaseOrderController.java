@@ -26,8 +26,8 @@ public class PurchaseOrderController {
 	
 	private PurchaseOrderService purchaseOrderService;
 	
-	public PurchaseOrderController(PurchaseOrderService purhcOrderService) {
-		this.purchaseOrderService = purhcOrderService;
+	public PurchaseOrderController(PurchaseOrderService purchaseOrderService) {
+		this.purchaseOrderService = purchaseOrderService;
 	}
 	
 	
@@ -42,8 +42,8 @@ public class PurchaseOrderController {
 	}
 	
 	 @PostMapping
-	 public ResponseEntity<PurchaseOrder> create(@Valid @RequestBody PurchaseOrderRequestDTO orderDTO) { 
-		 return new	ResponseEntity<PurchaseOrder>(purchaseOrderService.create(orderDTO),HttpStatus.CREATED); 
+	 public ResponseEntity<PurchaseOrderResponseDTO> create(@Valid @RequestBody PurchaseOrderRequestDTO orderDTO) { 
+		 return new	ResponseEntity<PurchaseOrderResponseDTO>(purchaseOrderService.create(orderDTO),HttpStatus.CREATED); 
 	 }
 
 }

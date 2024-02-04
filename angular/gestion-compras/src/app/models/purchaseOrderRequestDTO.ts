@@ -1,3 +1,6 @@
+import { ItemDetailDTO } from "./itemDetailDTO";
+import { Product } from "./product";
+
 export interface PurchaseOrderRequestDTO {
 
     num_order: number,
@@ -6,6 +9,6 @@ export interface PurchaseOrderRequestDTO {
     created_at: Date,
     deadline: Date,
     supplier_id: number,
-    product_id: number,
+    items: ItemDetailDTO[],
 
 }

@@ -3,9 +3,10 @@ import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { NgForm } from '@angular/forms';
-import { ItemDetailResponseDTO } from 'src/app/models/itemDetailResponseDTO';
+import { ItemDetailDTO } from 'src/app/models/itemDetailDTO';
 import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
-import { Product } from 'src/app/models/product';
+import { PurchaseOrderRequestDTO } from 'src/app/models/purchaseOrderRequestDTO';
+import { MapsUtils } from 'src/app/utils/maps';
 
 
 
@@ -31,17 +32,17 @@ getOrderById(id: number): Observable<PurchaseOrderResponseDTO>{
   return this.http.get<PurchaseOrderResponseDTO>(this.baseUrl + '/' + id, { headers });
 }
 
-public getPurchaseOrderDetails(): Observable<ItemDetailResponseDTO[]>{
+public getPurchaseOrderDetails(): Observable<ItemDetailDTO[]>{
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.get<ItemDetailResponseDTO[]>(this.baseUrl, { headers })
+  return this.http.get<ItemDetailDTO[]>(this.baseUrl, { headers })
 }
 
-createOrder (formData: NgForm): Observable<PurchaseOrder> {
+createOrder (formData: NgForm, items: ItemDetailDTO[]): Observable<PurchaseOrderResponseDTO> {
   const headers = { 'Content-Type': 'application/json' };
   console.log("service");
   console.log(formData);
-  const orderData = formData.value;
-  return this.http.post<PurchaseOrder>(this.baseUrl,orderData, { headers });
+  const orderData = MapsUtils.mapToPurchaseOrderDTO(formData, items);
+  return this.http.post<PurchaseOrderResponseDTO>(this.baseUrl,orderData, { headers });
 }
 
 updateOrder (order: PurchaseOrder) {
@@ -60,3 +61,4 @@ defaultImage(event: Event) {
   (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
 }
 }
+

@@ -1,4 +1,4 @@
-import { ItemDetailResponseDTO } from "./itemDetailResponseDTO";
+import { ItemDetailDTO } from "./itemDetailDTO";
 
 export interface PurchaseOrderResponseDTO {
 
@@ -11,5 +11,5 @@ export interface PurchaseOrderResponseDTO {
     total: number,
     description: String,
     supplier_name: String,
-    itemsDTO: ItemDetailResponseDTO[]
+    itemsDTO: ItemDetailDTO[]
 }

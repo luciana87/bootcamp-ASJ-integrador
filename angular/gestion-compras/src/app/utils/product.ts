@@ -7,7 +7,7 @@ export class ProductUtils {
             id: -1,
             sku: '',
             supplier: {
-                id: 0,
+                id: -1,
                 code: '',
                 businessName: '',
                 cuit: '',
@@ -51,7 +51,7 @@ export class ProductUtils {
                 deleted: false
             },
             category: {
-                id: 0,
+                id: -1,
                 name: '',
                 createdAt: new Date("2024-01-04"),
                 updatedAt: new Date("2024-01-25"),

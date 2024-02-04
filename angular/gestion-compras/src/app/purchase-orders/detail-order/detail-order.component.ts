@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ItemDetailResponseDTO } from 'src/app/models/itemDetailResponseDTO';
+import { ItemDetailDTO } from 'src/app/models/itemDetailDTO';
 import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
 import { PurcharseOrderResponseDTOUtils } from 'src/app/utils/purchaseOrderResponseDTO';
@@ -13,7 +13,7 @@ import { PurcharseOrderResponseDTOUtils } from 'src/app/utils/purchaseOrderRespo
 export class DetailOrderComponent implements OnInit {
 
   order: PurchaseOrderResponseDTO = PurcharseOrderResponseDTOUtils.initializePurchaseOrderResponseDTO();
-  itemDetailList: ItemDetailResponseDTO[] = [];
+  itemDetailList: ItemDetailDTO[] = [];
   id: number = -1;
   constructor(public serviceOrder: PurchaseOrderServiceService,
               private route: ActivatedRoute, private router: Router) {

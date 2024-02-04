@@ -32,11 +32,12 @@ public class ItemDetail {
 	
 	public ItemDetail () {}
 	
-	public ItemDetail(double price, int amount, double total, Product product) {
+	public ItemDetail(double price, int amount, double total, Product product, PurchaseOrder purchaseOrder) {
 		this.price = price;
 		this.amount = amount;
 		this.total = total;
 		this.product = product;
+		this.purchaseOrder = purchaseOrder;
 	}
 
 	public double getPrice() {

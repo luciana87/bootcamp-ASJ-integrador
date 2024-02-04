@@ -35,13 +35,12 @@ public class PurchaseOrder {
 	private int numOrder;
 	
 	@Column(nullable = false)
-
 	private LocalDateTime createdAt;
 	
-	
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	private LocalDateTime deadline;
-	private float total;
+	private double total;
 	private boolean canceled;
 	private String description;
 	
@@ -54,22 +53,25 @@ public class PurchaseOrder {
 	
 	public PurchaseOrder () {}
 
-	public PurchaseOrder(int numOrder, float total, String description, Supplier supplier,  List<ItemDetail> items) {
-
+	
+	
+	public PurchaseOrder(Integer id, int numOrder, LocalDateTime createdAt, LocalDateTime updatedAt,
+			LocalDateTime deadline, double total, boolean canceled, String description, Supplier supplier,
+			List<ItemDetail> items) {
+		this.id = id;
 		this.numOrder = numOrder;
-		this.createdAt = LocalDateTime.now();
-		this.deadline = createdAt.plusDays(10);
-		this.updatedAt = null;
-		this.canceled= false;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.deadline = deadline;
 		this.total = total;
-		this.canceled = false;
+		this.canceled = canceled;
 		this.description = description;
 		this.supplier = supplier;
 		this.items = items;
-		
-		
 	}
-	
+
+
+
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
@@ -102,11 +104,11 @@ public class PurchaseOrder {
 		this.numOrder = numOrder;
 	}
 
-	public float getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(float total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 
@@ -141,12 +143,17 @@ public class PurchaseOrder {
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
-	
-	
-	  @PreUpdate protected void onUpdate() { LocalDateTime now =
-	  LocalDateTime.now(); String formattedDateTime =
-	  now.format(Util.getDateTimeFormatter()); this.updatedAt =
-	  LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter()); }
-	 
 
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	
+	/*
+	 * @PreUpdate protected void onUpdate() { LocalDateTime now =
+	 * LocalDateTime.now(); String formattedDateTime =
+	 * now.format(Util.getDateTimeFormatter()); this.updatedAt =
+	 * LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter()); }
+	 * 
+	 */
 }
