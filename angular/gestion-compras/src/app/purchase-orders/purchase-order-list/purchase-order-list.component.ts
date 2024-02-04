@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
 import { PurchaseOrderServiceService } from 'src/app/services/purchase-order-service/purchase-order-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-purchase-order-list',
   templateUrl: './purchase-order-list.component.html',
   styleUrls: ['./purchase-order-list.component.css'],
-  providers: [PurchaseOrderServiceService] 
+  providers: [PurchaseOrderServiceService]
 })
 export class PurchaseOrderListComponent implements OnInit {
 
@@ -16,6 +16,10 @@ export class PurchaseOrderListComponent implements OnInit {
   constructor(public serviceOrder: PurchaseOrderServiceService) { }
 
   ngOnInit(): void {
+    this.getOrders();
+  }
+
+  getOrders() {
     this.serviceOrder.getPurchaseOrders().subscribe(
       (data) => {
         this.orderList = data;
@@ -26,12 +30,30 @@ export class PurchaseOrderListComponent implements OnInit {
     )
   }
 
-  delete(order: PurchaseOrderResponseDTO) {
-    //   let confirmacion = confirm(`¿Desea cancelar la orden de compra #${order.num_order}?`);
-    //   if (confirmacion) {
-    //     this.service.deleteOrder(order);
-    //     this.orderList = this.service.getPurchaseOrders();
-
-    //   }
+  cancel(order: PurchaseOrderResponseDTO) {
+    Swal.fire({
+      title: `¿Está seguro que desea cancelar la órden #${order.num_order}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cancelar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serviceOrder.cancelOrder(order.id).subscribe(
+          (data) => {
+            console.log(data);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "La órden de compra ha sido cancelada.",
+              showConfirmButton: false,
+              timer: 900
+            });
+            this.getOrders();
+          });
+      }
+    })
   }
 }

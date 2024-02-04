@@ -54,8 +54,8 @@ export class ProductServiceService {
     return this.http.put<Product>(this.baseUrl + '/' + id, product);
   }
 
-  public deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(this.baseUrl + '/' + id);
+  public deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(this.baseUrl + '/' + id);
   }
 
   defaultImage(event: Event) {

@@ -16,6 +16,7 @@ import com.bootcamp.gestorApp.DTO.request.PurchaseOrderRequestDTO;
 import com.bootcamp.gestorApp.DTO.response.ItemDetailResponseDTO;
 import com.bootcamp.gestorApp.DTO.response.PurchaseOrderResponseDTO;
 import com.bootcamp.gestorApp.entities.ItemDetail;
+import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.PurchaseOrder;
 import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.exceptions.ExistingResourceException;
@@ -51,11 +52,15 @@ public class PurchaseOrderService {
 	}
 
 	public PurchaseOrderResponseDTO getById(Integer id) {
+		return mapToDTO(this.getEntityById(id));
+	}
+
+	public PurchaseOrder getEntityById(Integer id) {
 		Optional<PurchaseOrder> orderOptional = purchaseOrderRepository.findById(id);
 		if (orderOptional.isEmpty()) {
 			throw new ResourceNotFoundException("Órden de compra no encontrada.");
 		}
-		return mapToDTO(orderOptional.get());
+		return orderOptional.get();
 	}
 
 	@Transactional
@@ -92,6 +97,14 @@ public class PurchaseOrderService {
 	}
 	
 
+	public void delete(Integer id) {
+
+		PurchaseOrder order = this.getEntityById(id);
+		order.setCanceled(true);
+		purchaseOrderRepository.save(order);
+	
+	}
+
 
 	private PurchaseOrderResponseDTO mapToDTO(PurchaseOrder purchaseOrder) {
 		PurchaseOrderResponseDTO orderResponseDTO = Util.getModelMapper().map(purchaseOrder, PurchaseOrderResponseDTO.class);
@@ -120,6 +133,7 @@ public class PurchaseOrderService {
             throw new ExistingResourceException();
         }
 	}
+
 
 
 

@@ -114,11 +114,6 @@ export class ProductListComponent implements OnInit {
         this.service.deleteProduct(product.id).subscribe(
           (data) => {
             console.log(data);
-            // Swal.fire(
-            //   '¡Eliminado!',
-            //   'El producto ha sido eliminado.',
-            //   'success'
-            // )
             Swal.fire({
               position: "center",
               icon: "success",

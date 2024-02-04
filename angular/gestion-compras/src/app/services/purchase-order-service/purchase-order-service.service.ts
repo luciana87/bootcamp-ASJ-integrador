@@ -53,8 +53,8 @@ updateOrder (order: PurchaseOrder) {
 
 }
 
-deleteOrder (id: number): Observable<PurchaseOrder> {
-  return this.http.delete<PurchaseOrder>(this.baseUrl + '/' + id);
+cancelOrder (id: number): Observable<void> {
+  return this.http.delete<void>(this.baseUrl + '/' + id);
 }
 
 defaultImage(event: Event) {

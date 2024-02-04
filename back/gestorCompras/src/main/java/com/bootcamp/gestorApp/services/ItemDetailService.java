@@ -15,6 +15,8 @@ import com.bootcamp.gestorApp.entities.PurchaseOrder;
 import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.repositories.ItemDetailRepository;
 
+import jakarta.transaction.Transactional;
+
 
 @Service
 public class ItemDetailService {
@@ -29,6 +31,7 @@ public class ItemDetailService {
 		this.productService = productService;
 	}
 
+	@Transactional
 	public List<ItemDetail> create(List<ItemDetail> items, PurchaseOrder order) {
 		List<ItemDetail> itemList = new ArrayList<ItemDetail>();
 		ItemDetail item = null;
