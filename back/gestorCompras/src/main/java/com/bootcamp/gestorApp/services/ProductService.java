@@ -3,6 +3,10 @@ package com.bootcamp.gestorApp.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
@@ -14,7 +18,6 @@ import com.bootcamp.gestorApp.exceptions.ExistingResourceException;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
 import com.bootcamp.gestorApp.repositories.ProductRepository;
 import com.bootcamp.gestorApp.utils.Util;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
 import jakarta.transaction.Transactional;
 
@@ -131,6 +134,20 @@ public class ProductService {
 
 	public List<Product> getProductsBySupplier(Integer id) {
 		return productRepository.getProductsBySupplierIdAndDeletedFalse(id);
+	}
+
+
+	public List<Product> findAllById(Integer id) {
+		
+		//Pageable page = PageRequest.of(1, 10); //size = 10
+		Pageable sortedByName = PageRequest.of(1, 10, Sort.by("name"));
+		   return productRepository.findAllById(id, sortedByName);
+	}
+
+
+	public Integer calculateAmountProducts() {
+		Integer amount = productRepository.getAmountProducts();
+		return amount;
 	}
 
 

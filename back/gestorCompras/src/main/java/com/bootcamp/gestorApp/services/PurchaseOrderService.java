@@ -135,6 +135,12 @@ public class PurchaseOrderService {
 	}
 
 
+	public Integer calculateAmountOrders() {
+		Integer amount = purchaseOrderRepository.getAmountOrders();
+		return amount;
+	}
+
+
 
 
 

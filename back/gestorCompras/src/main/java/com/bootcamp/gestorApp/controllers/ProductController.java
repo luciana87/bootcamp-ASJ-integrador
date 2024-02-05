@@ -46,6 +46,16 @@ public class ProductController {
 		return new ResponseEntity<Product>(productService.retriveById(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/pageble/{id}")
+	public ResponseEntity <List<Product>> findAllById(@PathVariable Integer id) {
+		return new ResponseEntity<List<Product>>(productService.findAllById(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/amount")
+	public ResponseEntity<Integer> calculateAmountProducts() {
+		return new ResponseEntity<Integer>(productService.calculateAmountProducts(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/supplier/{id}")
 	public ResponseEntity<List<Product>> getProductsBySupplier (@PathVariable Integer id) {
 		List<Product> productList = productService.getProductsBySupplier(id);

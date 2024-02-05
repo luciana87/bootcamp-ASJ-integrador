@@ -168,6 +168,12 @@ public class SupplierService {
 	}
 
 
+	public Integer calculateAmountSuppliers() {
+		Integer amount = supplierRepository.getAmountProducts();
+		return amount;
+	}
+
+
 
 	
 	

@@ -43,6 +43,11 @@ public class PurchaseOrderController {
 		return new ResponseEntity<PurchaseOrderResponseDTO>(purchaseOrderService.getById(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/amount")
+	public ResponseEntity<Integer> calculateAmountProducts() {
+		return new ResponseEntity<Integer>(purchaseOrderService.calculateAmountOrders(), HttpStatus.OK);
+	}
+	
 	 @PostMapping
 	 public ResponseEntity<PurchaseOrderResponseDTO> create(@Valid @RequestBody PurchaseOrderRequestDTO orderDTO) { 
 		 return new	ResponseEntity<PurchaseOrderResponseDTO>(purchaseOrderService.create(orderDTO),HttpStatus.CREATED); 

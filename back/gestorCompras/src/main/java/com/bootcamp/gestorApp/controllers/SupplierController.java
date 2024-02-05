@@ -49,6 +49,11 @@ public class SupplierController {
 		return new ResponseEntity<SupplierResponseDTO>(supplierService.retriveDetailById(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/amount")
+	public ResponseEntity<Integer> calculateAmountSuppliers() {
+		return new ResponseEntity<Integer>(supplierService.calculateAmountSuppliers(), HttpStatus.OK);
+	}
+	
 	 @PostMapping
 	 public ResponseEntity<Supplier> create(@Valid @RequestBody SupplierRequestDTO supplierDTO) { 
 		 return new	ResponseEntity<Supplier>(supplierService.create(supplierDTO),HttpStatus.CREATED); 
