@@ -1,4 +1,50 @@
-h4 {
-    color: #484aed  ;
+h2 {
+    color: #8282ff;
     /* color: #fa786c; */
+}
+
+.div-card-supplier {
+    background-color: #aeaeff;
+    height: 60%;
+}
+
+.div-card-product {
+    background-color: #ffa39b;
+    height: 60%;
+}
+
+.div-card-order {
+    background-color: #a0bdfc;
+    height: 60%;
+}
+
+.card-title {
+    color: white;
+    font-size: 2rem;
+}
+
+.card-text {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+.card-num {
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-size: 1.5rem;
+}
+
+.btn-add {
+    color: white;
+    background-color: #5f62ff;
+    border-color: #585bff;
+    width: 15vh;
+    height: 5vh;
+    font-size: medium;
+}
+
+.btn-add:hover {
+    background-color: #6f71ff;
+    border-color: #6669ff;
 }
