@@ -2,7 +2,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h3 class="h3" style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Proveedores</h3>
-        <button class="button-add btn text-center btn-sm text-white h-75" routerLink="/form-supplier">Agregar <i
+        <button class="button-add btn text-center btn-sm text-white h-75" routerLink="/form-supplier" data-toggle="tooltip" data-placement="top" title="Agregar proveedor">Agregar <i
                 class="fa-solid fa-plus fa-sm"></i></button>
     </div>
 
@@ -47,15 +47,15 @@
                 </a></td>
                 <td class="col-2 td-acciones border-bottom">
                     <button class="btn text-white me-1 btn-sm button-circle"
-                        style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;"
+                        style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;" data-toggle="tooltip" data-placement="top" title="Editar"
                         id="edit-button{{ supplier.code }}" routerLink="/form-supplier/{{supplier.id}}"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex align-content-center justify-content-center"></i></button>
                     <button class="btn text-white me-1 btn-sm button-circle"
-                        style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
+                        style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;" data-toggle="tooltip" data-placement="top" title="Eliminar"
                         (click)="delete(supplier)"><i
                             class="fa-regular fa-trash-can fa-sm d-flex align-content-center justify-content-center"></i></button>
                     <button class="btn btn-sm button-circle"
-                        style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
+                        style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;" data-toggle="tooltip" data-placement="top" title="Detalle"
                         routerLink="/detail-supplier/{{supplier.id}}"><i
                             class="fa-solid fa-eye fa-sm d-flex align-content-center justify-content-center"></i></button>
                 </td>

@@ -5,27 +5,29 @@
         <h3 class="h3"
             style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
             Productos</h3>
-        
+
         <div class="mt-2 d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-start">
                 <div class="d-flex me-4">
                     <label class="" for="search">Buscar:</label>
-                    <input class="form-control" [(ngModel)]="input_search" type="text" name="search" id="search" >
+                    <input class="form-control" [(ngModel)]="input_search" type="text" name="search" id="search">
                 </div>
-                
+
                 <div class="d-flex ">
                     <label class="" for="category">Filtrar por categoría:</label>
                     <select class="form-select" [(ngModel)]="category" name="category" id="category">
-                        <option [ngValue]="nullCategory" selected>Filtrar por categoría</option>
-                        <option *ngFor="let category of uniqueCategories" [ngValue]="category">{{category.name}}</option>
+                        <option [ngValue]="nullCategory" selected>Mostrar todos</option>
+                        <option *ngFor="let category of uniqueCategories" [ngValue]="category">{{category.name}}
+                        </option>
                     </select>
                 </div>
             </div>
-        
-            <button class="button-add btn text-center btn-sm text-white" routerLink="/form-product">Agregar <i
+
+            <button class="button-add btn text-center btn-sm text-white" routerLink="/form-product"
+                data-toggle="tooltip" data-placement="top" title="Agregar producto">Agregar <i
                     class="fa-solid fa-plus fa-sm"></i></button>
         </div>
-        
+
 
         <table class="table mt-3 border">
             <thead class="row-12 align-middle ">
@@ -54,14 +56,15 @@
                     <td class="col-1 border-bottom">{{ product.price | currency: '$'}}</td>
                     <td class="col-2 align-items-center justify-content-end border-bottom">
                         <button class="col-2 btn text-white me-2 btn-sm button-circle button-circle-add"
-                            id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"><i
+                            id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"
+                            data-toggle="tooltip" data-placement="top" title="Editar"><i
                                 class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
                         <button class="btn text-white me-2 btn-sm button-circle button-circle-delete"
-                            (click)="delete(product)"><i
+                            data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete(product)"><i
                                 class="fa-regular fa-trash-can fa-sm d-flex  align-content-center justify-content-center"></i></button>
-                        <button class="btn me-2 btn-sm button-circle" routerLink="/detail-product/{{product.id}}"><i
+                        <button class="btn me-2 btn-sm button-circle" routerLink="/detail-product/{{product.id}}"
+                            data-toggle="tooltip" data-placement="top" title="Detalle"><i
                                 class="fa-regular fa-eye fa-sm d-flex  align-content-center justify-content-center"></i></button>
-                        <!-- <button class="btn-circle" routerLink="/detail-product/{{product.id}}"><i class="fa-solid fa-eye fa-xs"></i></button> -->
                     </td>
                 </tr>
             </tbody>

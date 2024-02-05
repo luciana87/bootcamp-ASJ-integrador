@@ -28,12 +28,15 @@ public class PurchaseOrderResponseDTO {
 	@JsonProperty("supplier_name")
 	private String supplierName;
 	
+	@JsonProperty("supplier_cuit")
+	private String supplierCuit;
+	
     private List<ItemDetailResponseDTO> itemsDTO;
     
     public PurchaseOrderResponseDTO() {}
     
 	public PurchaseOrderResponseDTO(Integer id, int numOrder, LocalDateTime createdAt, LocalDateTime updatedAt,
-			LocalDateTime deadline, float total, boolean canceled, String description, String supplierName,
+			LocalDateTime deadline, float total, boolean canceled, String description, String supplierName, String supplierCuit,
 			List<ItemDetailResponseDTO> itemsDTO) {
 		this.id = id;
 		this.numOrder = numOrder;
@@ -44,6 +47,7 @@ public class PurchaseOrderResponseDTO {
 		this.canceled = canceled;
 		this.description = description;
 		this.supplierName = supplierName;
+		this.supplierCuit = supplierCuit;
 		this.itemsDTO = itemsDTO;
 	}
 
@@ -126,6 +130,14 @@ public class PurchaseOrderResponseDTO {
 
 	public void setItemsDTO(List<ItemDetailResponseDTO> itemsDTO) {
 		this.itemsDTO = itemsDTO;
+	}
+
+	public String getSupplierCuit() {
+		return supplierCuit;
+	}
+
+	public void setSupplierCuit(String supplierCuit) {
+		this.supplierCuit = supplierCuit;
 	}
     
     

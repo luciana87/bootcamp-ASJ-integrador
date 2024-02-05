@@ -14,7 +14,52 @@ img {
 }
 
 table th {
-    background-color: #fe9990;
+    background-color: #8b8bff;
     color: white;
     font-weight: 600;
+}
+
+.btn-back {
+    background-color: #4848ffd3;
+    color: white;
+}
+
+.order-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.order-number {
+    font-size: 1.8rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.supplier-name, .supplier-cuit {
+    font-size: 1.8rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.supplier-name {
+    font-size: 1.8rem;
+}
+
+.supplier-cuit {
+    font-size: 1.2rem;
+}
+
+.order-info {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 5px;
+}
+.order-info-h2 {
+    font-family:"Archivo Black", sans-serif;
+    font-size: 2.3rem;
+    color: #8b8bff;
+    margin-bottom: 5px;
 }

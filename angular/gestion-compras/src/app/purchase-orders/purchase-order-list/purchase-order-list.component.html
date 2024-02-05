@@ -32,7 +32,7 @@
                     <td class="col-auto d-flex align-items-center justify-content-end border-bottom" style="height: 72px;">
 
                         <button class="btn text-white me-3 btn-sm button-circle"
-                            style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
+                            style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;" data-toggle="tooltip" data-placement="top" title="Cancelar"
                             (click)="cancel(order)">
                             <i class="fa-solid fa-ban fa-xs d-flex  align-content-center justify-content-center"></i>
                         </button>
@@ -40,7 +40,7 @@
 
                         <button class="btn btn-sm me-3 button-circle" id="detail-button{{order.id}}"
                             style="background-color: rgba(184, 184, 192, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
-                            routerLink="/detail-order/{{order.id}}">
+                            routerLink="/detail-order/{{order.id}}" data-toggle="tooltip" data-placement="top" title="Detalle">
                             <i class="fa-regular fa-eye fa-sm d-flex align-content-center justify-content-center"></i>
                         </button>
                     </td>

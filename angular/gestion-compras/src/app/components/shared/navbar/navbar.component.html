@@ -47,7 +47,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <button class="button-2 btn-logout btn btn-sm btn-logout-text" *ngIf="isLoggedIn" (click)="onLogout()" routerLink="/login"><i class="fa-solid fa-power-off fa-sm"></i></button>
+                <button class="button-2 btn-logout btn btn-sm btn-logout-text" *ngIf="isLoggedIn" (click)="onLogout()" routerLink="/login" data-toggle="tooltip" data-placement="top" title="Cerrar sesión"><i class="fa-solid fa-power-off fa-sm"></i></button>
             </li>
         </ul>
     </div>

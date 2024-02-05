@@ -13,6 +13,7 @@ export class PurcharseOrderResponseDTOUtils {
             total: 0,
             description: '',
             supplier_name: '',
+            supplier_cuit: '',
             itemsDTO: []
         }
     }

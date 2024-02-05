@@ -1,12 +1,20 @@
 <div class="container w-75 d-flex align-items-center mb-5">
 
-    <section class="w-100 mt-4  ">
-        <div>
-            <h4 class="h4 fw-light"><strong>#{{ order.num_order }}</strong></h4>
-            <h5 class="h5 text-uppercase ">{{order.supplier_name}}</h5>
-            <p>Fecha creación: {{order.created_at | date:'dd/MM/yyyy'}}</p>
-            <p>Fecha entrega estimada: {{order.deadline| date:'dd/MM/yyyy'}}</p>
+    <section class="order-container w-100 mt-4  ">
+        <div class="d-flex justify-content-center align-items-baseline  ">
+            <h2 class="h2 order-info-h2 mb-3">ÓRDEN DE COMPRA</h2>
+            <h4 class="order-number ms-4">#{{ order.num_order }}</h4>
         </div>
+        <h5 class="row justify-content-center align-content-center supplier-name">{{ order.supplier_name }}</h5>
+        <h3 class="row justify-content-center align-content-center supplier-cuit ">{{ order.supplier_cuit }}</h3>
+        <div class=" p-3 mb-4 mt-4">
+            <p class="order-info"><strong>Fecha creación: </strong>{{ order.created_at | date:'dd/MM/yyyy' }}</p>
+            <p class="order-info"><strong>Fecha entrega estimada: </strong>{{ order.deadline | date:'dd/MM/yyyy' }}</p>
+            <p class="order-info"><strong>Información adicional: </strong>{{ order.description }}</p>
+        </div>
+
+
+
         <table class="table mt-3 text-center ">
             <thead class="row-12">
                 <tr class="">
@@ -26,7 +34,7 @@
                         </div>
                     </td>
                     <td class="col-auto border-bottom ">{{ item.product.name }} <a type="button"
-                            class="btn-lg btn-outline-light " ngbPopover="{{ order.description}}"
+                            class="btn-lg btn-outline-light " ngbPopover="{{ item.product.description}}"
                             triggers="mouseenter:mouseleave" popoverTitle="Descripción">
                             <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
                         </a>
@@ -44,7 +52,7 @@
                 </tr>
             </tfoot>
         </table>
-        <button class="btn btn-primary mt-3" (click)="goBack()">Volver</button>
+        <button class="btn btn-back mt-3" (click)="goBack()">Volver</button>
     </section>
 
 </div>
