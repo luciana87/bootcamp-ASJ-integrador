@@ -119,7 +119,6 @@ public class ProductService {
 		  productToReplace.setName(product.getName());
 		  productToReplace.setSku(product.getSku());
 		  productToReplace.setPrice(product.getPrice());
-		  productToReplace.setName(product.getName());
 		  productToReplace.setDescription(product.getDescription());
 		  productToReplace.setImage(product.getImage());
 		  productToReplace.setCategory(category);

@@ -37,6 +37,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'category-list', component: CategoryListComponent },
   { path: 'form-category', component: FormCategoryComponent },
+  { path: 'form-category/:id', component: FormCategoryComponent },
   { path: '', component: HomeComponent},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

@@ -31,8 +31,10 @@ public class Category {
 	private String name;
 
 	@Column(nullable = false)
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	private boolean deleted;
 
@@ -46,10 +48,18 @@ public class Category {
 
 	public Category(String name) {
 		this.name = name;
-		this.createdAt = LocalDateTime.now();
-		this.updatedAt = null;
 		this.deleted = false;
 	}
+
+
+	public Category(String name, LocalDateTime createdAt, LocalDateTime updatedAt, boolean deleted) {
+		this.name = name;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.deleted = false;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -83,11 +93,5 @@ public class Category {
 		this.deleted = deleted;
 	}
 
-	@PreUpdate
-	protected void onUpdate() {
-		LocalDateTime now = LocalDateTime.now();
-		String formattedDateTime = now.format(Util.getDateTimeFormatter());
-		this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
-	}
 
 }

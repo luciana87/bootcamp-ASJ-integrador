@@ -1,1 +1,11 @@
-<p>form-category works!</p>
+<div class="container form-control w-75 border ">
+    <!-- Input para agregar una nueva categoría -->
+    <label for="new-category" class="form-label">Agregar nueva categoría</label>
+    <input type="text" class="form-control mb-3" id="new-category" placeholder="Ingrese su categoría"
+        [(ngModel)]="category.name" name="category">
+
+    <!-- Botón para agregar una nueva categoría -->
+    <button type="button" class="btn btn-add btn-sm mb-3" (click)="save()">Guardar</button>
+    <button type="button" routerLink="/category-list"
+    class="btn btn-light btn-sm ">Cancelar</button>
+</div>
