@@ -36,25 +36,9 @@ export class FormProductComponent implements OnInit {
     private route: ActivatedRoute, public builder: FormBuilder) { }
 
   ngOnInit() {
-    this.serviceSupplier.getSuppliers().subscribe(
-      (data) => {
-        this.suppliers = data;
-        console.log(this.suppliers);
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
 
-    this.serviceCategory.getCategories().subscribe(
-      (data) => {
-        this.categoryList = data;
-        console.log(this.categoryList);
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
+    this.getSuppliers();
+    this.getCategories();
 
     this.route.paramMap.subscribe((param: any) => {
       const idString = param.get('id');
@@ -67,9 +51,32 @@ export class FormProductComponent implements OnInit {
             console.log(this.product);
           });
       }
-    });    
+    });
   }
 
+  public getSuppliers() {
+    this.serviceSupplier.getSuppliers().subscribe(
+      (data) => {
+        this.suppliers = data;
+        console.log(this.suppliers);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  public getCategories() {
+    this.serviceCategory.getCategories().subscribe(
+      (data) => {
+        this.categoryList = data;
+        console.log(this.categoryList);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
 
   public save(form: NgForm) {
     console.log(form.value);

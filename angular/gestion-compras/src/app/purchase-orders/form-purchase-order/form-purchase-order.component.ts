@@ -16,6 +16,7 @@ import { PurcharseOrderRequestDTOUtils } from 'src/app/utils/purchaseOrderReques
 import { ItemDetailDTO } from 'src/app/models/itemDetailDTO';
 import { ProductUtils } from 'src/app/utils/product';
 import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-purchase-order',
@@ -101,6 +102,14 @@ export class FormPurchaseOrderComponent implements OnInit {
     this.serviceOrder.createOrder(form, this.items).subscribe(
       (data:PurchaseOrderResponseDTO) => {
       console.log("Se creó una órden de compra:", data);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "La órden de compra se creó correctamente.",
+        showConfirmButton: false,
+        timer: 900
+      });
+      
       this.router.navigate(['/purchase-order-list'])
     });
   }

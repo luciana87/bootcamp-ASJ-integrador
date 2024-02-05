@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class PurchaseOrderListComponent implements OnInit {
 
   orderList: PurchaseOrderResponseDTO[] = [];
+  input_search: String = '';
 
   constructor(public serviceOrder: PurchaseOrderServiceService) { }
 

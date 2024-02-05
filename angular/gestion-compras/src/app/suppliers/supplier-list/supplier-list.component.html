@@ -2,6 +2,10 @@
 
     <div class="d-flex justify-content-between align-items-center">
         <h3 class="h3" style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Proveedores</h3>
+        <div class="d-flex me-4">
+            <label class="" for="search">Buscar:</label>
+            <input class="form-control" [(ngModel)]="input_search" type="text" name="search" id="search">
+        </div>
         <button class="button-add btn text-center btn-sm text-white h-75" routerLink="/form-supplier" data-toggle="tooltip" data-placement="top" title="Agregar proveedor">Agregar <i
                 class="fa-solid fa-plus fa-sm"></i></button>
     </div>
@@ -19,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let supplier of supplierList | activeSupplier" id="supplier-table-container" class="row-12 align-middle">
+            <tr *ngFor="let supplier of (supplierList | activeSupplier | searchSupplier: input_search)" id="supplier-table-container" class="row-12 align-middle">
                 <td class="col-1 tdImg">
                     <div class="imgContainer">
                         <img class="img-fluid " src="{{supplier.logo}}" (error)="cambiarImagen($event)">

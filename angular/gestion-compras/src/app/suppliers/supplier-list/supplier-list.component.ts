@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Supplier } from 'src/app/models/supplier';
+import { SearchSupplierPipe } from 'src/app/pipes/search-supplier.pipe';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 import { SupplierUtils } from 'src/app/utils/supplier';
 import Swal from 'sweetalert2';
@@ -16,14 +17,18 @@ export class SupplierListComponent implements OnInit {
 
 
   supplierList: Supplier[] = [];
+  filteredSupplierList: Supplier[] = [];
   supplier: Supplier = SupplierUtils.initializeSupplier();
   activeSuppliers: Supplier[] = [];
+  input_search: String = '';
 
   constructor(public service: SupplierServiceService, private router: Router) { }
 
   ngOnInit(): void {
     // this.getActiveSuppliers();
     this.getSuppliers();
+
+
   }
 
   public delete(supplier: Supplier) {
@@ -53,7 +58,8 @@ export class SupplierListComponent implements OnInit {
     })
   };
 
-  public getSuppliers(){
+
+  public getSuppliers() {
     this.service.getSuppliers().subscribe(
       (suppliers: Supplier[]) => {
         this.supplierList = suppliers;
@@ -65,7 +71,7 @@ export class SupplierListComponent implements OnInit {
   }
 
   // public getActiveSuppliers() {
-    
+
   //   this.service.getSuppliers().subscribe(
   //     (suppliers: Supplier[]) => {
   //       this.supplierList = suppliers;
