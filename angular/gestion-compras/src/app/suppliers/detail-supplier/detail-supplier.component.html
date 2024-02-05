@@ -1,50 +1,58 @@
-<div class="container ">
-    <button class="btn btn-sm btn-primary mt-4" (click)="goBack()">Volver</button>
-    <section class="card mx-auto my-5 w-100">
-
-        <div class="">
-            <div class="tdImg w-50 ">
-                <div class="imgContainer ms-3 bg-image hover-overlay ripple " data-mdb-ripple-color="light">
-                    <img src="{{supplier.logo}}" class="img-fluid" (error)="cambiarImagen($event)"/>
-                </div>
-            </div>
-            
-            <div class="card-body w-50">
-                <h5 class="card-title font-weight-bold mt-2 h5"><a>{{supplier.business_name}}</a></h5>
-                <p class="mb-2 lead fs-6"><strong>Código #</strong> {{supplier.code}}</p>
-                <p class="card-text lead fs-6"><strong>Categoría: </strong>{{ supplier.field_name }}</p>
-            </div>
-            <hr class="mt-0 mb-0">
-            <div class="card-body d-flex flex-column ">
-                <p class="fst-italic ">Contacto:</p>
-                <p class="lead fs-6"><strong>Website:</strong> {{ supplier.website }}</p>
-                <p class="lead fs-6"><strong>Tél:</strong> {{ supplier.phone_number }}</p>
-                <p class="lead fs-6"><strong>Correo:</strong> {{ supplier.email }}</p>
-            </div>
-            <hr class="mt-0 mb-0">
-            <div class="card-body d-flex flex-column ">
-                <p class="fst-italic ">Datos fiscales:</p>
-                <p class="lead mt-0 fs-6"><strong>CUIT:</strong> {{ supplier.cuit }}</p>
-                <p class="fw-light mt-0 fs-6"><strong>Condición IVA:</strong> {{
-                    supplier.iva_name }}</p>
-            </div>
-            <hr class="mt-0 mb-0">
-            <div class="card-body d-flex flex-column ">
-                <p class="fst-italic ">Dirección:</p>
-                <p class="lead mt-0 fs-6"><strong></strong> {{ supplier.address.street }} {{ supplier.address.postal_code}} {{ supplier.address.city}}</p>
-                <p class="lead mt-0 fs-6"><strong></strong>CP: {{ supplier.address.postal_code}} | {{ supplier.address.city}} | {{ supplier.address.province_name }} | {{ supplier.address.country_name }}</p>
-            </div>
-            <hr class="mt-0 mb-0">
-            <div class="card-body d-flex flex-column ">
-                <p class="fst-italic ">Datos de contacto:</p>
-                <p class="lead mt-0 fs-6"><strong>Nombre y apellido:</strong> {{ supplier.contact.contact_name }} {{ supplier.contact.contact_lastname }}</p>
-                <p class="fw-light mt-0 fs-6"><strong>Rol: </strong> {{ supplier.contact.position}}</p>
-                <p class="fw-light mt-0 fs-6"><strong>Vías de contacto: </strong> {{ supplier.contact.phone_number}} | {{ supplier.contact.email}}</p>
+<div class="container bg-light ">
+    <div class=" d-flex justify-content-center align-items-center p-5 ">
+        <div class="tdImg w-50 ">
+            <div class="col-12 imgContainer ms-3 bg-image hover-overlay ripple " data-mdb-ripple-color="light">
+                <img src="{{supplier.logo}}" class="img-fluid" (error)="cambiarImagen($event)" />
             </div>
         </div>
+    </div>
+    <div class="d-flex justify-content-center ">
+        <section class="col-6 ps-5">
+            <div class="mt-3">
+                <p class="lead"><strong>Empresa: </strong>{{supplier.business_name}}</p>
+                <p class="lead"><strong>Código: #</strong> {{supplier.code}}</p>
+            </div>
+            <div class="mt-3">
+                <!-- <p class="lead"><strong>Datos fiscales:</strong></p> -->
+                <p class="lead "><strong>CUIT:</strong> {{ supplier.cuit }}</p>
+                <p class="lead"><strong>Condición IVA:</strong> {{
+                    supplier.iva_name }}</p>
+                <p class="lead"><strong>Categoría: </strong>{{ supplier.field_name }}</p>
+            </div>
+            <div class="mt-3">
+                <!-- <h5 class="">Contacto:</h5> -->
+                <p class="lead "><strong>Website:</strong> {{ supplier.website }}</p>
+                <p class="lead "><strong>Tél:</strong> {{ supplier.phone_number }}</p>
+                <p class="lead "><strong>Correo:</strong> {{ supplier.email }}</p>
+            </div>
 
-
-
-    </section>
-
+        </section>
+        <section class="col-6 ps-5">
+            <div class="mt-3">
+                <div class="d-flex ">
+                    <p class="lead me-4"><Strong>Dirección: </Strong>{{ supplier.address.street }}</p>
+                    <p class="lead"><strong>Altura: </strong>{{ supplier.address.num }}</p>
+                </div>
+                <div class="d-flex">
+                    <p class="lead me-4"><strong>Ciudad: </strong>{{ supplier.address.city }}</p>
+                    <p class="lead"><strong>CP: </strong>{{ supplier.address.postal_code }}</p>
+                </div>
+                <div class="d-flex">
+                    <p class="lead me-4"><strong>Provincia: </strong>{{ supplier.address.province_name }}</p>
+                    <p class="lead"><strong>País: </strong>{{ supplier.address.country_name }}</p>
+                </div>
+            </div>
+            <div class="">
+                <p class="lead"><strong>Persona de contacto: </strong></p>
+                <p class="lead"><strong>Nombre y apellido:</strong> {{ supplier.contact.contact_name }} {{
+                    supplier.contact.contact_lastname }}</p>
+                <p class="lead"><strong>Rol: </strong> {{ supplier.contact.position}}</p>
+                <p class="lead"><strong>Vías de contacto: </strong> {{ supplier.contact.phone_number}} |
+                    {{ supplier.contact.email}}</p>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="container mt-4 d-flex align-items-center">
+    <button class="btn btn-sm btn-back" (click)="goBack()">Volver</button>
 </div>

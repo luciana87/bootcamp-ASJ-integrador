@@ -1,18 +1,21 @@
-<div class="container w-75 d-flex align-items-center mb-5">
+<div class="container w-75 d-flex align-items-center">
 
-    <section class="order-container w-100 mt-4  ">
-        <div class="d-flex justify-content-center align-items-baseline  ">
-            <h2 class="h2 order-info-h2 mb-3">ÓRDEN DE COMPRA</h2>
+    <section class="order-container bg-light  border w-100 mb-4 ">
+        <div class="d-flex justify-content-center align-items-baseline mt-4  ">
+            <h2 class="order-info-h2 mb-3">ÓRDEN DE COMPRA</h2>
             <h4 class="order-number ms-4">#{{ order.num_order }}</h4>
         </div>
-        <h5 class="row justify-content-center align-content-center supplier-name">{{ order.supplier_name }}</h5>
-        <h3 class="row justify-content-center align-content-center supplier-cuit ">{{ order.supplier_cuit }}</h3>
-        <div class=" p-3 mb-4 mt-4">
-            <p class="order-info"><strong>Fecha creación: </strong>{{ order.created_at | date:'dd/MM/yyyy' }}</p>
-            <p class="order-info"><strong>Fecha entrega estimada: </strong>{{ order.deadline | date:'dd/MM/yyyy' }}</p>
-            <p class="order-info"><strong>Información adicional: </strong>{{ order.description }}</p>
-        </div>
 
+        <div class=" p-3">
+            <h5 class="supplier-name">{{ order.supplier_name }}</h5>
+            <h3 class="supplier-cuit mb-3"><strong>cuit: </strong>{{ order.supplier_cuit }}</h3>
+            <div class=" mt-2">
+                <p class="order-info"><strong>Fecha emisión: </strong>{{ order.created_at | date:'dd/MM/yyyy' }}</p>
+                <p class="order-info"><strong>Fecha entrega estimada: </strong>{{ order.deadline | date:'dd/MM/yyyy' }}
+                </p>
+                <p class="order-info"><strong>Información adicional: </strong>{{ order.description }}</p>
+            </div>
+        </div>
 
 
         <table class="table mt-3 text-center ">
@@ -52,7 +55,9 @@
                 </tr>
             </tfoot>
         </table>
-        <button class="btn btn-back mt-3" (click)="goBack()">Volver</button>
     </section>
-
+    
+</div>
+<div class="container w-75 d-flex  align-items-center">
+    <button class="btn btn-back btn-sm " (click)="goBack()">Volver</button>
 </div>

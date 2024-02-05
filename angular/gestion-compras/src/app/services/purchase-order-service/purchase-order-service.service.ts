@@ -15,7 +15,6 @@ import { MapsUtils } from 'src/app/utils/maps';
 })
 export class PurchaseOrderServiceService {
 
-
   constructor(private http: HttpClient) {
   }
 
@@ -35,6 +34,10 @@ getOrderById(id: number): Observable<PurchaseOrderResponseDTO>{
 public getPurchaseOrderDetails(): Observable<ItemDetailDTO[]>{
   const headers = { 'Content-Type': 'application/json' };
   return this.http.get<ItemDetailDTO[]>(this.baseUrl, { headers })
+}
+
+calculateAmountOrders(): Observable<any> {
+  return this.http.get<any>(this.baseUrl + "/amount");
 }
 
 createOrder (formData: NgForm, items: ItemDetailDTO[]): Observable<PurchaseOrderResponseDTO> {

@@ -6,14 +6,10 @@
     border-color: #f85a4b;
     border-width: 1px;
     border-style: solid;
-    /* color: #ffffff; */
-    color: #f85a4b;
+    color: #ff8277;
     cursor: pointer;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
-    /* box-shadow: 2px 3px #f8594b77; */
-    /* box-shadow: 0 0 20px #4f9; */
-    /* box-shadow: 0 0 20px #7b77eb; */
 }
 
 .div-box {
@@ -22,12 +18,12 @@
 }
 
 .button-dropdown{
-    color: #f85a4b;
+    color: #ff8277;
     background-color:rgb(42, 40, 40);
 }
 
 .button-dropdown:hover{
-    color: #ffada5;
+    color: #fbb8b2;
 }
 
 .bg-navbar {
@@ -37,17 +33,13 @@
 }
 
 .btn-logout{
-    border-color: #3939e0;
-    color: #3939e0;
+    border-color: rgb(67, 67, 251);
+    color: #5d5dfb;
     border-width: 2px;
     border-style: solid;
+    height: 4vh;
 }
 
-.btn-logout-dropdown{
-    color: #3939e0;
-    background-color: rgb(42, 40, 40);
-    white-space: nowrap;
-}
 .btn-logout-dropdown:hover{
     color: #b0b0f3;
 }
@@ -61,7 +53,7 @@
 }
 
 .button-texto:hover {
-    color:  #ffada5;
+    color:  #fbb8b2;
     border-color: #ff8a80;
 
 }

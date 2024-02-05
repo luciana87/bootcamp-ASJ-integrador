@@ -3,6 +3,10 @@ h2 {
     /* color: #fa786c; */
 }
 
+h1{
+    color: rgb(83, 80, 80);
+}
+
 .div-card-supplier {
     background-color: #aeaeff;
     height: 60%;
@@ -19,17 +23,18 @@ h2 {
 }
 
 .card-title {
-    color: white;
+    color: rgb(47, 46, 46);
     font-size: 2rem;
 }
 
 .card-text {
-    color: white;
+    color: rgb(47, 46, 46);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
 }
 
 .card-num {
+    /* color: rgb(47, 46, 46); */
     color: white;
     font-family: "Kanit", sans-serif;
     font-size: 1.5rem;

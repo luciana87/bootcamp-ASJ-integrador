@@ -38,6 +38,14 @@ export class ProductServiceService {
     );
   }
 
+  public getProductPageableById(id: number): Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl + '/pageable/' + id);
+  }
+
+  calculateAmountProducts(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/amount");
+}
+
 
   public getProductById(id: number): Observable<Product>{
     return this.http.get<Product>(this.baseUrl + '/' + id);

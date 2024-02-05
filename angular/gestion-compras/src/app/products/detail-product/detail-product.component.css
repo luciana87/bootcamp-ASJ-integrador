@@ -1,17 +1,36 @@
-.tdImg {
-    width: 5vw;
-}
+
 .imgContainer {
     width: 25vw;
     height: 25vw;
     overflow: hidden;
     border-radius: 5px;
+    padding: 15px;
 }
+
 img {
     width: 25vw;
     object-fit: cover;
 }
 
-.button-back {
-    background-color: #4545e8d3;
+.btn-back {
+    background-color: #4848ffd3;
+    color: white;
+}
+
+.btn-back:hover {
+    background-color: #7d7dfd;
+}
+
+.description {
+    text-align: justify;
+}
+
+.section-detail{
+    transition: transform 0.7s ease;
+    background-color: #eeeaea;
+    border-radius: 10px;
+}
+
+.section-detail:hover{
+    transform: scale(1.05);
 }

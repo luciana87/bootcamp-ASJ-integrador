@@ -36,6 +36,10 @@ export class SupplierServiceService {
     return this.http.get<SupplierResponseDTO>(this.baseUrl + '/detail/' + id, { headers });
   }
 
+  calculateAmountSuppliers(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/amount");
+  }
+  
   createSupplier(formData: NgForm): Observable<Supplier> {
     //const supplierData = formData.value;
     console.log(formData.value);

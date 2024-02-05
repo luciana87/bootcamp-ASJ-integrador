@@ -2,29 +2,29 @@
 
     <div class="row text-center justify-content-center align-content-center mt-0 mb-5">
 
-        <h1 class="text-white mb-4">Bienvenido</h1>
+        <h1 class="fw-bold mb-5">Bienvenido</h1>
         <div class="div-card-supplier col-3 me-3 p-3 border rounded">
             <h4 class="card-title text-center mb-2">Proveedores</h4>
             <p class="card-text text-center mb-0">Cantidad de proveedores activos:</p>
-            <p class="card-num text-center fw-bold">500 u</p>
+            <p class="card-num text-center fw-bold">{{amountSuppliers}} u</p>
             <div class="text-center">
-                <button class="btn-add btn">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
+                <button class="btn-add btn" routerLink="/form-supplier">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
             </div>
         </div>
         <div class="div-card-product col-3 me-3 p-3 border rounded">
             <h4 class="card-title text-center mb-2">Productos</h4>
             <p class="card-text text-center mb-0">Cantidad de productos activos:</p>
-            <p class="card-num text-center fw-bold">500 u</p>
+            <p class="card-num text-center fw-bold">{{amountProducts}} u</p>
             <div class="text-center">
-                <button class="btn-add btn">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
+                <button class="btn-add btn" routerLink="/form-product">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
             </div>
         </div>
         <div class="div-card-order col-3 me-3 p-3 border rounded">
             <h4 class="card-title text-center mb-2">Órdenes de compra</h4>
             <p class="card-text text-center mb-0">Cantidad de órdenes activas:</p>
-            <p class="card-num text-center fw-bold">500 u</p>
+            <p class="card-num text-center fw-bold">{{amountOrders}} u</p>
             <div class="text-center">
-                <button class="btn-add btn">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
+                <button class="btn-add btn" routerLink="/form-purchase-order">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
             </div>
         </div>
     </div>
@@ -32,16 +32,16 @@
     <div class="row align-items-center row ">
         <div class="col-6 text-md-start text-center">
             <h2 class="fw-bold mb-3">Sistema de Gestión Compras</h2>
-            <h1 class="text-white">Software pensado para automatizar y optimizar.</h1>
-            <p class="text-white mb-4 fw-medium text-start  ">Esta aplicación de gestión de compras es una herramienta
+            <h1 class="">Software pensado para automatizar y optimizar.</h1>
+            <p class=" mb-4 fw-medium text-start  ">Esta aplicación de gestión de compras es una herramienta
                 pensada para
                 automatizar y optimizar el proceso de adquisición de bienes y servicios en una empresa.</p>
-            <p class="text-white mb-4 fw-medium text-start  ">El sistema permite:</p>
+            <p class=" mb-4 fw-medium text-start  ">El sistema permite:</p>
             <ul>
-                <li class="text-white">Dar de alta, modificar y/o eliminar proveedores.</li>
-                <li class="text-white"> Crear, modificar y eliminar productos y o servicios, con su respectiva
+                <li class="">Dar de alta, modificar y/o eliminar proveedores.</li>
+                <li class=""> Crear, modificar y eliminar productos y o servicios, con su respectiva
                     información.</li>
-                <li class="text-white">Generar órdenes de compra para un proveedor con sus respectivos productos.</li>
+                <li class="">Generar órdenes de compra para un proveedor con sus respectivos productos.</li>
             </ul>
         </div>
         <div class="col-6 w-50">
