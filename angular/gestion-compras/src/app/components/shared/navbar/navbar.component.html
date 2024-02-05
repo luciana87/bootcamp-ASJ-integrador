@@ -35,13 +35,24 @@
                 </div>
             </li>
             <li class="nav-item">
-                <div class="ms-2 me-2">
+                <div class="ms-2">
                     <div ngbDropdown>
                         <button class="button-2 btn btn-sm button-mr button-texto" id="gfg" ngbDropdownToggle>Órden de
                             compra</button>
                         <div class="div-box " ngbDropdownMenu="gfg">
                             <button class="button-dropdown" ngbDropdownItem routerLink="/purchase-order-list">Listar órdenes</button>
                             <button class="button-dropdown" ngbDropdownItem routerLink="/form-purchase-order">Nuevo órden</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="ms-2 me-2">
+                    <div ngbDropdown>
+                        <button class="button-2 btn btn-sm button-mr button-texto" id="gfg" ngbDropdownToggle>Configuración</button>
+                        <div class="div-box " ngbDropdownMenu="gfg">
+                            <button class="button-dropdown" ngbDropdownItem routerLink="/category-list">Listar categorías</button>
+                            <button class="button-dropdown" ngbDropdownItem routerLink="/form-category">Nueva categoría</button>
                         </div>
                     </div>
                 </div>

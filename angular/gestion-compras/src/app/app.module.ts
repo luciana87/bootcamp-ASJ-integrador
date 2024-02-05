@@ -34,6 +34,8 @@ import { ActiveSupplierPipe } from './pipes/active-supplier.pipe';
 import { ActiveOrderPipe } from './pipes/active-order.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
+import { FormCategoryComponent } from './categories/form-category/form-category.component';
 
 
 @NgModule({
@@ -69,7 +71,9 @@ import { SearchPipe } from './pipes/search.pipe';
     ActiveSupplierPipe,
     ActiveOrderPipe,
     CategoryPipe,
-    SearchPipe
+    SearchPipe,
+    CategoryListComponent,
+    FormCategoryComponent
   ],
   imports: [
     BrowserModule,
