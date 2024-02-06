@@ -26,6 +26,11 @@ export class SupplierServiceService {
     return this.http.get<Supplier[]>(this.baseUrl, { headers });
   }
 
+  getDeletedSuppliers(): Observable<Supplier[]> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.get<Supplier[]>(this.baseUrl + "/deleted", { headers });
+  }
+
   getSupplierById(id: number): Observable<Supplier> {
     const headers = { 'Content-Type': 'application/json' };
     return this.http.get<Supplier>(this.baseUrl + '/' + id, { headers });

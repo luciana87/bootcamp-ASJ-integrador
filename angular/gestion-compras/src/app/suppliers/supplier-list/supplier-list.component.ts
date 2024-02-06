@@ -17,10 +17,12 @@ export class SupplierListComponent implements OnInit {
 
 
   supplierList: Supplier[] = [];
-  filteredSupplierList: Supplier[] = [];
+  deletedSuppliers: Supplier[] = [];
   supplier: Supplier = SupplierUtils.initializeSupplier();
   activeSuppliers: Supplier[] = [];
   input_search: String = '';
+
+  showDeleted: boolean = false;
 
   constructor(public service: SupplierServiceService, private router: Router) { }
 
@@ -70,18 +72,17 @@ export class SupplierListComponent implements OnInit {
     );
   }
 
-  // public getActiveSuppliers() {
+  public getDeletedSuppliers() {
 
-  //   this.service.getSuppliers().subscribe(
-  //     (suppliers: Supplier[]) => {
-  //       this.supplierList = suppliers;
-  //       this.activeSuppliers = this.supplierList.filter(supplier => !supplier.deleted);
-  //     },
-  //     (error) => {
-  //       console.error("Error al obtener proveedores:", error);
-  //     }
-  //   );
-  // }
+    this.service.getSuppliers().subscribe(
+      (deletedList: Supplier[]) => {
+        this.deletedSuppliers = deletedList;
+      },
+      (error) => {
+        console.error("Error al obtener proveedores:", error);
+      }
+    );
+  }
 
   public cambiarImagen(event: Event) {
     this.service.defaultImage(event);
