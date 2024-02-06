@@ -15,6 +15,7 @@ export class DetailOrderComponent implements OnInit {
   order: PurchaseOrderResponseDTO = PurcharseOrderResponseDTOUtils.initializePurchaseOrderResponseDTO();
   itemDetailList: ItemDetailDTO[] = [];
   id: number = -1;
+
   constructor(public serviceOrder: PurchaseOrderServiceService,
               private route: ActivatedRoute, private router: Router) {
 

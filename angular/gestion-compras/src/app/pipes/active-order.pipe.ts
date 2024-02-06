@@ -7,11 +7,11 @@ import { PurchaseOrderResponseDTO } from '../models/purchaseOrderResponseDTO';
 })
 export class ActiveOrderPipe implements PipeTransform {
 
-  transform(orderList: PurchaseOrderResponseDTO[]): PurchaseOrderResponseDTO[] {
+  transform(orderList: PurchaseOrderResponseDTO[], showCanceled: boolean): PurchaseOrderResponseDTO[] {
     if (!orderList) {
       return [];
     }
-    return orderList.filter(order => !order.canceled);
+    return orderList.filter(order => order.canceled === showCanceled);
   }
 
 }

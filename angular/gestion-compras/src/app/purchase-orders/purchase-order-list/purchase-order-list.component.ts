@@ -13,6 +13,7 @@ export class PurchaseOrderListComponent implements OnInit {
 
   orderList: PurchaseOrderResponseDTO[] = [];
   input_search: String = '';
+  showCanceled: boolean = false;
 
   constructor(public serviceOrder: PurchaseOrderServiceService) { }
 
