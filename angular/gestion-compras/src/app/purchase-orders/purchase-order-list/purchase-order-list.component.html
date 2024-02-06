@@ -5,14 +5,14 @@
                 style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
                 Órdenes de compra</h3>
                 <div class="row">
-                    <div class="col-md-2 d-flex align-items-center">
+                    <div class="col-md-6 d-flex align-items-center">
                         <div class="form-check form-switch">
-                            <label class="form-check-label" for="switch">Ver eliminados</label>
+                            <label *ngIf="!showCanceled" class="form-check-label" for="switch">Ver canceladas</label>
                             <input class="form-check-input" type="checkbox" id="switch" [(ngModel)]="showCanceled">
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
-                        <button class="button-add btn text-center btn-sm text-white h-75" routerLink="/form-purchase-order">Agregar
+                        <button class=" button-add btn text-center btn-sm text-white" routerLink="/form-purchase-order">Agregar
                             <i class="fa-solid fa-plus fa-sm"></i></button>
                     </div>
                 </div>

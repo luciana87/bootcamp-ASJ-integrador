@@ -34,7 +34,7 @@
                 <th class="col-2">Información</th>
                 <th class="col-1">Ubicación</th>
                 <th class="col-2">Contacto</th>
-                <th class="col-2 th-acciones">Acciones</th>
+                <th class="col-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -66,20 +66,20 @@
                         triggers="mouseenter:mouseleave" popoverTitle="Información de contacto">
                         <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
                     </a></td>
-                <td class="col-2 td-acciones border-bottom">
-                    <button class="btn text-white me-1 btn-sm button-circle"
-                        style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;"
+                <td class="col-2 border-bottom">
+                    <button class="col-4 btn text-white me-1 btn-sm button-circle"
+                        style="background-color: rgba(67, 200, 125, 0.999); border-radius: 50%;"
                         data-toggle="tooltip" data-placement="top" title="Editar" id="edit-button{{ supplier.code }}"
                         routerLink="/form-supplier/{{supplier.id}}"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button *ngIf="!showDeleted" class="btn text-white me-1 btn-sm button-circle"
-                        style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
+                    <button *ngIf="!showDeleted" class="col-4 btn text-white me-1 btn-sm button-circle"
+                        style="background-color: rgb(239, 88, 88); border-radius: 50%;"
                         data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete(supplier)"><i
                             class="fa-regular fa-trash-can fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button *ngIf="showDeleted" class="btn text-white me-1 btn-sm button-circle"
+                    <button *ngIf="showDeleted" class="col-4 btn text-white me-1 btn-sm button-circle"
                         style="background-color: rgb(79, 114, 255); border-radius: 50%;"
                         data-toggle="tooltip" data-placement="top" title="Activar" (click)="activateSupplier(supplier)"><i class="fa-regular fa-square-check fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button class="btn btn-sm button-circle"
+                    <button class="col-4 btn btn-sm button-circle"
                         style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
                         data-toggle="tooltip" data-placement="top" title="Detalle"
                         routerLink="/detail-supplier/{{supplier.id}}"><i
