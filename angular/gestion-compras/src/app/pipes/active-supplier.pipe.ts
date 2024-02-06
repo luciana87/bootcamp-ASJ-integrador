@@ -10,7 +10,7 @@ export class ActiveSupplierPipe implements PipeTransform {
     if (!suppliers) {
       return [];
     }
-    return suppliers.filter(supplier => supplier.deleted ==  !showDeleted);
+    return suppliers.filter(supplier => supplier.deleted == showDeleted);
   }
 
 }

@@ -27,7 +27,6 @@ export class SupplierListComponent implements OnInit {
   constructor(public service: SupplierServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.getActiveSuppliers();
     this.getSuppliers();
 
 
@@ -84,7 +83,7 @@ export class SupplierListComponent implements OnInit {
     );
   }
 
-  public cambiarImagen(event: Event) {
+  public defaultImage(event: Event) {
     this.service.defaultImage(event);
   }
 }

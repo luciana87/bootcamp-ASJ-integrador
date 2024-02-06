@@ -42,7 +42,7 @@
                 id="supplier-table-container" class="row-12 align-middle">
                 <td class="col-1 tdImg">
                     <div class="imgContainer">
-                        <img class="img-fluid " src="{{supplier.logo}}" (error)="cambiarImagen($event)">
+                        <img class="img-fluid " src="{{supplier.logo}}" (error)="defaultImage($event)">
                     </div>
                 </td>
                 <td class="col-1 border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
