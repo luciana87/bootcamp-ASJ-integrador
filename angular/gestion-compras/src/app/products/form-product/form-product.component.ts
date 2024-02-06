@@ -113,6 +113,13 @@ export class FormProductComponent implements OnInit {
       //Lo creo
       this.serviceProduct.createProduct(form).subscribe((data: Product) => {
         console.log("Producto creado:", data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "El producto se creó correctamente.",
+          showConfirmButton: false,
+          timer: 900
+        });
         this.router.navigate(['/product-list']);
       }, (error) => {
         console.error("Error al crear el producto:", error);

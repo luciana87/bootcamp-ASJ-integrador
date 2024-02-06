@@ -101,7 +101,7 @@
                         <label for="price-input" class="form-label">Precio:</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
-                            <input type="number" name="price" class="form-control" id="price-input" placeholder="Precio"
+                            <input type="number" name="price" class="form-control" id="price-input" placeholder="ej: 2850.25"
                                 min="1" [(ngModel)]="product.price">
                         </div>
                         <div *ngIf="formProduct.controls['price']?.invalid && (formProduct.controls['price']?.dirty || formProduct.controls['price']?.touched)"
@@ -120,8 +120,16 @@
             <div class="mb-3">
                 <label for="description-input" class="form-label">Descripción:</label>
                 <textarea class="form-control" name="description" id="description-input"
-                    placeholder="Ingrese su texto..." rows="3" [(ngModel)]="product.description"></textarea>
+                    placeholder="Ingrese su texto..." rows="5" maxlength="255" [(ngModel)]="product.description"></textarea>
+                    <div *ngIf="formProduct.controls['description']?.invalid && (formProduct.controls['description']?.dirty || formProduct.controls['description']?.touched)"
+                    class="text-danger">
+                    <div class="text-danger" *ngIf="product.description.length > 255">
+                        La descripción no debe exceder los 255 caracteres.
+                    </div>
+                </div>
             </div>
+            
+            
 
             <div class="col-12 d-flex  justify-content-center mb-3 py-3 ">
                 <button [disabled]=" !formProduct.valid" type="submit"

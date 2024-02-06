@@ -135,6 +135,13 @@ export class FormSupplierComponent implements OnInit {
       //Lo creo
       this.serviceSupplier.createSupplier(formData).subscribe((data: Supplier) => {
         console.log("Proveedor creado:", data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "El proveedor se creó correctamente",
+          showConfirmButton: false,
+          timer: 900
+        });
         this.router.navigate(['/supplier-list'])
       }, (error) => {
         console.error("Error al crear el producto:", error);

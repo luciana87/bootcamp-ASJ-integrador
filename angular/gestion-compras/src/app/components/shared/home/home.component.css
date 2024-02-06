@@ -19,12 +19,12 @@ h1{
 
 .div-card-order {
     background-color: #a0bdfc;
-    height: 60%;
+    height:60%;
 }
 
 .card-title {
     color: rgb(47, 46, 46);
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .card-text {
@@ -44,8 +44,8 @@ h1{
     color: white;
     background-color: #5f62ff;
     border-color: #585bff;
-    width: 15vh;
-    height: 5vh;
+    /* width: 15vh;
+    height: 5vh; */
     font-size: medium;
 }
 
