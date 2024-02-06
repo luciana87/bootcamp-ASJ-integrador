@@ -1,8 +1,9 @@
 
-import { AddressDTO } from "./addressDTO"
+import { AddressRequestDTO } from "./addressRequestDTO"
 import { ContactDTO } from "./contactDTO"
 
 export interface SupplierRequestDTO {
+    id?: number,
     code: String,
     business_name: String,
     cuit: String,
@@ -10,7 +11,7 @@ export interface SupplierRequestDTO {
     website: String,
     phone_number: String,
     email: String,
-    address: AddressDTO,
+    address: AddressRequestDTO,
     iva_id: number,
     contact: ContactDTO,
     logo: String

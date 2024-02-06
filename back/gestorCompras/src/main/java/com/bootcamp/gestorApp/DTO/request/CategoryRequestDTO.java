@@ -13,6 +13,7 @@ public class CategoryRequestDTO {
 
 	public CategoryRequestDTO(String name) {
 		this.name = name;
+		
 	}
 
 	public String getName() {

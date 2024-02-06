@@ -13,13 +13,6 @@ img {
     object-fit: cover;
 }
 
-table th {
-    background-color: #d8d8d8d2;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-
-}
-
 .button-add {
     background-color: #4545e8d3;
 }
@@ -38,4 +31,19 @@ table th {
 .button-circle {
     height: 2rem;
     width: 2rem;
+    background-color: rgba(184, 184, 192, 0.952);
+    color: rgb(255, 255, 255);  
+    border-radius: 50%;
+}
+
+.button-circle-add{
+    background-color: rgba(67, 200, 125, 0.999);
+}
+
+.button-circle-delete{
+    background-color: rgb(239, 88, 88);
+}
+
+.button-circle-activate{
+    background-color: rgb(79, 114, 255);
 }

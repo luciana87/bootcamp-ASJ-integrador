@@ -1,6 +1,7 @@
 package com.bootcamp.gestorApp.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class ItemDetail {
 	@JoinColumn(name = "product_id")
 	private Product product;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "purchase_order_id")
 	private PurchaseOrder purchaseOrder;
 	

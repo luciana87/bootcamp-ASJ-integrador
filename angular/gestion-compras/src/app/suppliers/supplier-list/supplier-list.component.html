@@ -1,53 +1,89 @@
 <section class="container w-100">
 
-    <div class="d-flex justify-content-between ">
-        <h4 class="h4">Proveedores</h4>
-        <button class="button-add btn text-center btn-sm text-white" routerLink="/form-supplier">Agregar <i
-                class="fa-solid fa-plus fa-sm"></i></button>
-    </div>
+    <section class="w-100 ">
+        <h3 class="row mb-3 h3"
+            style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
+            Proveedores</h3>
+        <div class="row">
+            <div class="col-md-2 d-flex align-items-center">
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="switch">Ver eliminados</label>
+                    <input class="form-check-input" type="checkbox" id="switch" [(ngModel)]="showDeleted">
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-center">
+                <label class="col-3" for="search">Buscar:</label>
+                <input class="col-9" [(ngModel)]="input_search" type="text" name="search" id="search">
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-end">
+                <button class="button-add btn text-center btn-sm text-white" routerLink="/form-supplier"
+                    data-toggle="tooltip" data-placement="top" title="Agregar proveedor">Agregar <i
+                        class="fa-solid fa-plus fa-sm"></i></button>
+            </div>
+        </div>
+    </section>
 
     <table class="table mt-3 border">
         <thead class="row-12">
             <tr>
                 <th class="col-1">Logo</th>
-                <th class="col-2">Código</th>
+                <th class="col-1">Código</th>
                 <th class="col-2">Razón Social</th>
-                <th class="col-3">Información</th>
-                <th class="col-2">Personal de Contacto</th>
+                <th class="col-2">Información</th>
+                <th class="col-1">Ubicación</th>
+                <th class="col-2">Contacto</th>
                 <th class="col-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let supplier of activeSuppliers" id="supplier-table-container" class="row-12 align-middle">
-                <td class="col tdImg">
+            <tr *ngFor="let supplier of (supplierList | activeSupplier: showDeleted | searchSupplier: input_search)"
+                id="supplier-table-container" class="row-12 align-middle">
+                <td class="col-1 tdImg">
                     <div class="imgContainer">
-                        <img class="img-fluid " src="{{supplier.logo}}" (error)="cambiarImagen($event)">
+                        <img class="img-fluid " src="{{supplier.logo}}" (error)="defaultImage($event)">
                     </div>
                 </td>
-                <td class="col" class="border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
-                <td class="col border-bottom">{{ supplier.businessName }}</td>
-                <td class="col border-bottom ">
-                    <ul class=" ">
+                <td class="col-1 border-bottom "><strong class=" ">{{ supplier.code }}</strong></td>
+                <td class="col-2 border-bottom">{{ supplier.businessName }}</td>
+                <td class="col-2 border-bottom ">
+                    <ul class="">
                         <li class="li-decoration">{{ supplier.website }}</li>
                         <li class="li-decoration">Tel: {{ supplier.phoneNumber }} </li>
                         <li class="li-decoration">{{ supplier.email}}</li>
                     </ul>
                 </td>
-                <td class="col border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname }}</td>
-                <td class="d-flex align-items-center justify-content-end me-2" class="col border-bottom">
-                    <button class="btn text-white me-2 btn-sm button-circle"
-                        style="background-color: rgba(67, 200, 125, 0.999); color: rgb(255, 255, 255); border-radius: 50%;"
-                        id="edit-button{{ supplier.code }}" routerLink="/form-supplier/{{supplier.id}}"><i
+                <td class="col-1 border-bottom">
+                    <ul class=" ">
+                        <li class="li-decoration">{{ supplier.address.province.country.name }}</li>
+                        <li class="li-decoration">{{supplier.address.province.name}} </li>
+                    </ul>
+                </td>
+                <td class="col-2 border-bottom ">{{ supplier.contact.contactName }} {{ supplier.contact.contactLastname
+                    }} <a type="button" class="btn-lg btn-outline-light "
+                        ngbPopover=" {{ supplier.contact.contactEmail}} | Tel: {{supplier.contact.phoneNumber}}"
+                        triggers="mouseenter:mouseleave" popoverTitle="Información de contacto">
+                        <i class="fa-solid fa-circle-exclamation" style="color: #cbcaca;"></i>
+                    </a></td>
+                <td class="col-2 border-bottom">
+                    <button class="col-4 btn text-white me-1 btn-sm button-circle"
+                        style="background-color: rgba(67, 200, 125, 0.999); border-radius: 50%;"
+                        data-toggle="tooltip" data-placement="top" title="Editar" id="edit-button{{ supplier.code }}"
+                        routerLink="/form-supplier/{{supplier.id}}"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button class="btn text-white me-2 btn-sm button-circle"
-                        style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
-                        (click)="delete(supplier)"><i
+                    <button *ngIf="!showDeleted" class="col-4 btn text-white me-1 btn-sm button-circle"
+                        style="background-color: rgb(239, 88, 88); border-radius: 50%;"
+                        data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete(supplier)"><i
                             class="fa-regular fa-trash-can fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button class="btn btn-sm button-circle"
+                    <button *ngIf="showDeleted" class="col-4 btn text-white me-1 btn-sm button-circle"
+                        style="background-color: rgb(79, 114, 255); border-radius: 50%;"
+                        data-toggle="tooltip" data-placement="top" title="Activar" (click)="activateSupplier(supplier)"><i class="fa-regular fa-square-check fa-sm d-flex align-content-center justify-content-center"></i></button>
+                    <button class="col-4 btn btn-sm button-circle"
                         style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
+                        data-toggle="tooltip" data-placement="top" title="Detalle"
                         routerLink="/detail-supplier/{{supplier.id}}"><i
                             class="fa-solid fa-eye fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <!-- <button class="btn btn-outline-warning text-dark btn-sm" routerLink="/detail-supplier/{{supplier.id}}"><i class="fa-solid fa-eye fa-xs"></i></button> -->
                 </td>
             </tr>
 

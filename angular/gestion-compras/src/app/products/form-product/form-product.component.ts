@@ -12,6 +12,7 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
 import { CategoryUtils } from 'src/app/utils/category';
 import { CategoryRequestDTO } from 'src/app/models/categoryRequestDTO';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,13 +28,33 @@ export class FormProductComponent implements OnInit {
   suppliers: Supplier[] = [];
   categoryList: Category[] = [];
   category: CategoryRequestDTO = CategoryUtils.initializeCategory();
-
+  id: number = -1;
+  // isUpdate: boolean = false;
 
 
   constructor(public serviceProduct: ProductServiceService, public serviceSupplier: SupplierServiceService, public serviceCategory: CategoryService, private router: Router,
     private route: ActivatedRoute, public builder: FormBuilder) { }
 
   ngOnInit() {
+
+    this.getSuppliers();
+    this.getCategories();
+
+    this.route.paramMap.subscribe((param: any) => {
+      const idString = param.get('id');
+      if (idString) {
+        this.id = +idString; //Convierte de cadena a numero
+        this.serviceProduct.getProductById(this.id).subscribe(
+          (data) => {
+            this.product = data;
+            // this.isUpdate = true; solo es necesario si el formulario se comparta distinto cuando es un update
+            console.log(this.product);
+          });
+      }
+    });
+  }
+
+  public getSuppliers() {
     this.serviceSupplier.getSuppliers().subscribe(
       (data) => {
         this.suppliers = data;
@@ -43,7 +64,9 @@ export class FormProductComponent implements OnInit {
         console.error('Error:', error);
       }
     );
+  }
 
+  public getCategories() {
     this.serviceCategory.getCategories().subscribe(
       (data) => {
         this.categoryList = data;
@@ -55,8 +78,7 @@ export class FormProductComponent implements OnInit {
     );
   }
 
-
-  createProduct(form: NgForm) {
+  public save(form: NgForm) {
     console.log(form.value);
     if (!form.valid) {
       console.log("Formulario inválido.");
@@ -65,11 +87,39 @@ export class FormProductComponent implements OnInit {
 
     if (this.product.id != -1) {
       // Lo actualizo
-      this.serviceProduct.updateProduct(this.product.id, this.product);
+      this.serviceProduct.updateProduct(this.product.id, this.product).subscribe(
+        (data: Product) => {
+          console.log("Producto modificado:", data);
+          // alert("Modificado correctamente")
+          Swal.fire({
+            title: "Desea guardar los cambios?",
+            showCancelButton: true,
+            confirmButtonText: "Guardar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "El producto se editó correctamente",
+                showConfirmButton: false,
+                timer: 900
+              });
+              this.router.navigate(['/product-list']);
+            }
+          });
+        }
+      );
     } else {
       //Lo creo
       this.serviceProduct.createProduct(form).subscribe((data: Product) => {
         console.log("Producto creado:", data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "El producto se creó correctamente.",
+          showConfirmButton: false,
+          timer: 900
+        });
         this.router.navigate(['/product-list']);
       }, (error) => {
         console.error("Error al crear el producto:", error);
@@ -77,7 +127,7 @@ export class FormProductComponent implements OnInit {
     };
   }
 
-  addCategory() {
+  public addCategory() {
     if (this.category.name.trim() !== '') {
       this.serviceCategory.createCategory(this.category).subscribe(
         response => {

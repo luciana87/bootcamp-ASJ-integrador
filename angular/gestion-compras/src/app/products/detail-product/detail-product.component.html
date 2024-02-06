@@ -1,27 +1,23 @@
-<div class="container">
-    <section class="card mx-auto my-5 w-75">
+<section class="section-detail container p-0 d-flex align-items-center w-75 bg-light ">
 
-        <div class=" d-flex ">
-            <div class="tdImg w-50">
-                <div class="imgContainer bg-image hover-overlay ripple " data-mdb-ripple-color="light">
-                    <img src="{{product.image}}" (error)="cambiarImagen($event)" class="img-fluid" />
-                </div>
-            </div>
+    <div class="col-6 imgContainer">
+        <img src="{{product.image}}" (error)="cambiarImagen($event)" class="img-fluid" />
+    </div>
 
-            <div class="card-body w-50">
-                <h5 class="card-title font-weight-bold mt-2"><a>{{product.name}}</a></h5>
-                <!-- <hr class="my-4" /> -->
-                <p class="mb-2">{{product.price | currency: '$'}}</p>
-                <p class="card-text">{{ product.description }}</p>
-                <div class="d-flex flex-column ">
-                    <p class="lead mb-0 me-3">Proveedor: {{ product.supplier.businessName }}</p>
-                    <p class="lead mt-0 fs-6">Categoría: {{ product.category.name }}</p>
-                </div>
-
-            </div>
+    <div class="col-6 p-3">
+        <h2 class=" mt-2"><strong>{{product.name}}</strong></h2>
+        <h3 class="mb-2">{{product.price | currency: '$'}}</h3>
+        <p class="description lead">{{ product.description }}</p>
+        <div class="d-flex ">
+            <p class="lead  me-4"><strong>Proveedor: </strong>{{ product.supplier.businessName }}</p>
+            <p class="lead "><strong>Categoría: </strong>{{ product.category.name }}</p>
         </div>
 
-        
-    </section>
-    <button class="button-back btn text-white btn-sm" (click)="goBack()">Volver</button>
+    </div>
+
+
+
+</section>
+<div class="container mt-4 d-flex align-items-center w-75">
+    <button class="btn-back btn" (click)="goBack()">Volver</button>
 </div>

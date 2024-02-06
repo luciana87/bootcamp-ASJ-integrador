@@ -1,16 +1,19 @@
 package com.bootcamp.gestorApp.DTO.request;
 
+import java.util.List;
+
+import org.springframework.boot.autoconfigure.condition.ConditionMessage.ItemsBuilder;
+
+import com.bootcamp.gestorApp.entities.ItemDetail;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 
 public class PurchaseOrderRequestDTO {
 
 
-    @NotEmpty (message = "Order number may not be empty")
-	@NotBlank(message = "Order number is required.")
+    @NotNull (message = "Order number may not be empty")
 	@JsonProperty("num_order")
 	private int numOrder;
     
@@ -25,22 +28,21 @@ public class PurchaseOrderRequestDTO {
 	@JsonProperty("supplier_id")
 	private Integer supplierId;
 	
-	@JsonProperty("product_id")
-	private Integer productId;
+	private List<ItemDetail> items;
 
 	public PurchaseOrderRequestDTO() {}
 
 
 
-	public PurchaseOrderRequestDTO(int numOrder, double total, String description, String createdAt, String deadline, Integer supplierId, Integer productId) {
-
+	public PurchaseOrderRequestDTO( int numOrder, double total,
+			String description, String createdAt, String deadline, Integer supplierId, List<ItemDetail> items) {
 		this.numOrder = numOrder;
 		this.total = total;
 		this.description = description;
 		this.createdAt = createdAt;
 		this.deadline = deadline;
 		this.supplierId = supplierId;
-		this.productId = productId;
+		this.items = items;
 	}
 
 
@@ -49,49 +51,34 @@ public class PurchaseOrderRequestDTO {
 		return numOrder;
 	}
 
+
+
 	public void setNumOrder(int numOrder) {
 		this.numOrder = numOrder;
 	}
+
+
 
 	public double getTotal() {
 		return total;
 	}
 
+
+
 	public void setTotal(double total) {
 		this.total = total;
 	}
+
+
 
 	public String getDescription() {
 		return description;
 	}
 
+
+
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Integer getSupplierId() {
-		return supplierId;
-	}
-
-	public void setSupplierId(Integer supplierId) {
-		this.supplierId = supplierId;
-	}
-
-	public Integer getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Integer productId) {
-		this.productId = productId;
-	}
-
-
-	public String getDeadline() {
-		return deadline;
-	}
-
-	public void setDeadline(String deadline) {
-		this.deadline = deadline;
 	}
 
 
@@ -101,10 +88,50 @@ public class PurchaseOrderRequestDTO {
 	}
 
 
+
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
-	
+
+
+
+	public String getDeadline() {
+		return deadline;
+	}
+
+
+
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+
+
+
+	public Integer getSupplierId() {
+		return supplierId;
+	}
+
+
+
+	public void setSupplierId(Integer supplierId) {
+		this.supplierId = supplierId;
+	}
+
+
+
+	public List<ItemDetail> getItems() {
+		return items;
+	}
+
+
+
+	public void setItems(List<ItemDetail> items) {
+		this.items = items;
+	}
+
+
+
+
 	
 
 }

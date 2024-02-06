@@ -17,17 +17,33 @@ public class Contact {
 	private String contactName;
 	private String contactLastname;
 	private String phoneNumber;
-	private String email;
+	private String contactEmail;
 	private String position;
 	
 	public Contact () {}
 
-	public Contact(String contactName, String contactLastname, String phoneNumber, String email, String position) {
+	public Contact(String contactName, String contactLastname, String phoneNumber, String contactEmail, String position) {
 		this.contactName = contactName;
 		this.contactLastname = contactLastname;
 		this.phoneNumber = phoneNumber;
-		this.email = email;
+		this.contactEmail = contactEmail;
 		this.position = position;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getContactName() {
+		return contactName;
+	}
+
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
 	}
 
 	public String getContactLastname() {
@@ -46,12 +62,12 @@ public class Contact {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getContactEmail() {
+		return contactEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
 	}
 
 	public String getPosition() {
@@ -62,17 +78,6 @@ public class Contact {
 		this.position = position;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public String getContactName() {
-		return contactName;
-	}
-
-	public void setContactName(String contactName) {
-		this.contactName = contactName;
-	}
 	
 	
 

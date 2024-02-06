@@ -3,6 +3,10 @@ import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { ItemDetailDTO } from 'src/app/models/itemDetailDTO';
+import { PurchaseOrderResponseDTO } from 'src/app/models/purchaseOrderResponseDTO';
+import { PurchaseOrderRequestDTO } from 'src/app/models/purchaseOrderRequestDTO';
+import { MapsUtils } from 'src/app/utils/maps';
 
 
 
@@ -11,30 +15,40 @@ import { NgForm } from '@angular/forms';
 })
 export class PurchaseOrderServiceService {
 
-
   constructor(private http: HttpClient) {
   }
 
   private readonly baseUrl = "http://localhost:8080/purchase-orders";
 
-getPurchaseOrders(): Observable<PurchaseOrder[]> {
+getPurchaseOrders(): Observable<PurchaseOrderResponseDTO[]> {
   const headers = { 'Content-Type': 'application/json' };
-  return this.http.get<PurchaseOrder[]>(this.baseUrl, { headers });
+  return this.http.get<PurchaseOrderResponseDTO[]>(this.baseUrl, { headers });
 
 }
 
-getOrderById(id: number): Observable<Object>{
-  return this.http.get(this.baseUrl + '/' + id);
+getOrderById(id: number): Observable<PurchaseOrderResponseDTO>{
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.get<PurchaseOrderResponseDTO>(this.baseUrl + '/' + id, { headers });
 }
 
-createOrder (formData: NgForm): Observable<PurchaseOrder> {
+public getPurchaseOrderDetails(): Observable<ItemDetailDTO[]>{
+  const headers = { 'Content-Type': 'application/json' };
+  return this.http.get<ItemDetailDTO[]>(this.baseUrl, { headers })
+}
+
+calculateAmountOrders(): Observable<any> {
+  return this.http.get<any>(this.baseUrl + "/amount");
+}
+
+createOrder (formData: NgForm, items: ItemDetailDTO[]): Observable<PurchaseOrderResponseDTO> {
+  const headers = { 'Content-Type': 'application/json' };
   console.log("service");
   console.log(formData);
-  const orderData = formData.value;
-  return this.http.post<PurchaseOrder>(this.baseUrl,orderData);
+  const orderData = MapsUtils.mapToPurchaseOrderDTO(formData, items);
+  return this.http.post<PurchaseOrderResponseDTO>(this.baseUrl,orderData, { headers });
 }
 
-updateOrder(order: PurchaseOrder) {
+updateOrder (order: PurchaseOrder) {
   //   let orders = this.getPurchaseOrders();
   //   let index = orders.findIndex(o => o.id === order.id);
   //   orders[index] = order;
@@ -42,17 +56,12 @@ updateOrder(order: PurchaseOrder) {
 
 }
 
-deleteOrder(order: PurchaseOrder){
-  //   let orderList = this.getPurchaseOrders();
-  //   const index = orderList.findIndex(o => o.id === order.id);
-  //   if (index > -1) {
-  //     orderList.splice(index, 1);
-  //     localStorage.setItem('orders', JSON.stringify(orderList));
-
-  //   }
+cancelOrder (id: number): Observable<void> {
+  return this.http.delete<void>(this.baseUrl + '/' + id);
 }
 
 defaultImage(event: Event) {
   (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
 }
 }
+

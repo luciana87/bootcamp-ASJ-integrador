@@ -6,12 +6,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.AddressRequestDTO;
-import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
-import com.bootcamp.gestorApp.DTO.response.ProductResponseDTO;
+import com.bootcamp.gestorApp.DTO.response.AddressResponseDTO;
 import com.bootcamp.gestorApp.entities.Address;
-import com.bootcamp.gestorApp.entities.Category;
-import com.bootcamp.gestorApp.entities.Product;
-import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
 import com.bootcamp.gestorApp.repositories.AddressRepository;
 import com.bootcamp.gestorApp.utils.Util;
@@ -48,6 +44,11 @@ public class AddressService {
 
 	public List<Address> retrieveAll() {
 		return addressRepository.findAll();
+	}
+	
+	public AddressResponseDTO mapToResponseDTO(Address address) {
+		return new AddressResponseDTO(address.getStreet(),address.getNum(), address.getPostalCode(), address.getCity(), 
+										address.getProvince().getName(), address.getProvince().getCountry().getName());
 	}
 
 	/*

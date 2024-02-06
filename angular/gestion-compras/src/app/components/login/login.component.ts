@@ -24,7 +24,7 @@ export class LoginComponent {
         title: "Inicio de sesión exitoso!",
         text: "Bienvenido",
         icon: "success",
-        timer: 1000,
+        timer: 900,
         showConfirmButton: false
       }).then(() => {
         this.loginSuccess.emit();

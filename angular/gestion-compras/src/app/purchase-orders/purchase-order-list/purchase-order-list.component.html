@@ -1,39 +1,60 @@
-<section class="w-100">
+<div class="container w-100">
 
-    <div class="m-3 mt-5 d-flex justify-content-between  ">
-        <h4 class="h4">Órdenes de compra</h4>
-        <button class="btn text-center bg-success btn-sm text-white" routerLink="/form-purchase-order">Agregar <i
-                class="fa-solid fa-plus fa-xs"></i></button>
-    </div>
-    <div class="container mt-4">
-        <table class="table table-striped text-center mt-3">
-            <thead  class="">
-                <tr class="">
-                    <th class="">Nro</th>
-                    <th class="">Fecha emisión</th>
-                    <th class=" ">Fecha entrega</th>
-                    <th class=" ">Proveedor</th>
-                    <th class=" ">Total</th>
-                    <th class=" ">Estado</th>
-                    <th class=" ">Acciones</th>
+    <section class="w-100">
+            <h3 class="row mb-3 h3"
+                style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
+                Órdenes de compra</h3>
+                <div class="row">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <label *ngIf="!showCanceled" class="form-check-label" for="switch">Ver canceladas</label>
+                            <input class="form-check-input" type="checkbox" id="switch" [(ngModel)]="showCanceled">
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <button class=" button-add btn text-center btn-sm text-white" routerLink="/form-purchase-order">Agregar
+                            <i class="fa-solid fa-plus fa-sm"></i></button>
+                    </div>
+                </div>
+
+        <table class="table mt-3 border">
+            <thead class="row-12">
+                <tr>
+                    <th class="col-1"><strong>Nro</strong></th>
+                    <th class="col-2">Fecha emisión</th>
+                    <th class="col-2">Fecha entrega</th>
+                    <th class="col-2">Proveedor</th>
+                    <th class="col-2">Total</th>
+                    <th class="col-1">Estado</th>
+                    <th class="col-1">Acciones</th>
                 </tr>
             </thead>
-            <tbody >
-                <tr *ngFor="let order of orderList" id="order-table-container">
+            <tbody>
+                <tr *ngFor="let order of orderList | activeOrder: showCanceled" id="order-table-container" class="row-12 align-middle">
+                    <td class="col-1 border-bottom"><strong>#{{order.num_order}}</strong></td>
+                    <td class="col-2 border-bottom ">{{order.created_at | date: "dd/MM/yyy"}}</td>
+                    <td class="col-2 border-bottom ">{{order.deadline | date: "dd/MM/yyy"}}</td>
+                    <td class="col-2 border-bottom ">{{order.supplier_name}}</td>
+                    <td class="col-auto border-bottom ">{{order.total | currency:'$'}}</td>
+                    <td class="col-1 border-bottom ">{{order.canceled | orderStatus}}</td>
+                    <td class="col-auto d-flex align-items-center justify-content-end border-bottom" style="height: 72px;">
 
-                    <td calss="">{{order.numOrder}}</td>
-                    <td class="">{{order.createdAt | date: "dd/MM/yyy"}}</td>
-                    <td class="">{{order.deadline | date: "dd/MM/yyy"}}</td>
-                    <td class="">{{order.supplier.businessName}}</td>
-                    <td class="">{{order.total | currency:'$'}}</td>
-                    <td class="">{{order.canceled}}</td>
-                    <td class="d-flex justify-content-end me-2  ">
-                        <button class="btn btn-outline-warning me-3 btn-sm" id="detail-button{{order.id}}" routerLink="/detail-order/{{order.id}}">Ver...</button>
-                        <button class="btnbtn bg-danger text-white btn-sm" (click)="delete(order)"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+                        <button *ngIf="!showCanceled" class="btn text-white me-3 btn-sm button-circle"
+                            style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;" data-toggle="tooltip" data-placement="top" title="Cancelar"
+                            (click)="cancel(order)">
+                            <i class="fa-solid fa-ban fa-xs d-flex  align-content-center justify-content-center"></i>
+                        </button>
+
+
+                        <button class="btn btn-sm me-3 button-circle" id="detail-button{{order.id}}"
+                            style="background-color: rgba(184, 184, 192, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
+                            routerLink="/detail-order/{{order.id}}" data-toggle="tooltip" data-placement="top" title="Detalle">
+                            <i class="fa-regular fa-eye fa-sm d-flex align-content-center justify-content-center"></i>
+                        </button>
                     </td>
                 </tr>
 
             </tbody>
         </table>
-    </div>
-</section>
+    </section>
+</div>
