@@ -20,13 +20,14 @@ export class ProductListComponent implements OnInit {
   productList: Product[] = [];
   activeProducts: Product[] = [];
   filteredProducts: Product[] = [];
-
   uniqueCategories: Category[] = [];
 
   //ngModels:
   input_search: String = '';
   nullCategory = {id:-1,name:'',createdAt: new Date, updatedAt: new Date, deleted: false};
   category: Category = this.nullCategory;
+
+  showDeleted: boolean = false;
 
 
   constructor(private service: ProductServiceService, private activeProductPipe: ActiveProductPipe,
@@ -46,8 +47,8 @@ export class ProductListComponent implements OnInit {
   public getProducts() {
     this.service.getProducts().subscribe(
       (products) => {
-        this.productList = this.activeProductPipe.transform(products); //pipe
-        this.activeProducts =  this.productList;
+        this.productList = products;
+        this.filterByDeleted();
         console.log(this.productList);
 
         let uniqueCategoriesById: { [id: number]: boolean } = {};
@@ -69,35 +70,34 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-  applyCategoryFilter() {
-    // if (this.category) {
-    //   // this.activeProducts = this.productList.filter(product => product.category.name === this.category.name);
-    //   this.activeProducts = this.categoryPipe.transform(this.productList, this.category);
-    // } else {
-    //   this.activeProducts = this.productList;
-    // }
+  public activateProduct(product: Product) {
+    Swal.fire({
+      title: `¿Está seguro que desea activar el producto ${product.name}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, activar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.activateProduct(product.id, product).subscribe(
+          (data) => {
+            console.log(data);
+            Swal.fire(
+              'Activado!',
+              'El producto está activo nuevamente.',
+              'success'
+            )
+            this.getProducts();
+          });
+      };
+    })
   }
-  
-  applySearchFilter(){
 
-    // if (this.input_search != "") {
-    //   this.activeProducts = this.searchPipe.transform(this.productList, this.input_search);
-    // } else {
-    //   this.activeProducts = this.productList;
-    // }
+  public filterByDeleted() {
+    this.activeProducts =  this.activeProductPipe.transform(this.productList, this.showDeleted); //pipe
   }
-
-  // public getActiveProducts() { 
-  //   this.service.getProducts().subscribe(
-  //     (products: Product[]) => {
-  //       this.productList = products;
-  //       this.activeProducts = this.productList.filter(product => !product.deleted);
-  //     },
-  //     (error) => {
-  //       console.error("Error al obtener proveedores:", error);
-  //     }
-  //   );
-  // }
 
   delete(product: Product) {
     Swal.fire({

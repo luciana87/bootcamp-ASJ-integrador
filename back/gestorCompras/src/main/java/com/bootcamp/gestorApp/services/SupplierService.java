@@ -137,8 +137,6 @@ public class SupplierService {
 		return amount;
 	}
 
-
-
 	private SupplierResponseDTO mapToDTO(Supplier supplier) {
 		SupplierResponseDTO supplierResponseDTO = Util.getModelMapper().map(supplier, SupplierResponseDTO.class);
 		

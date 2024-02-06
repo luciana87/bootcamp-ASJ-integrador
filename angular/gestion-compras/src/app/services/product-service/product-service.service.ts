@@ -13,14 +13,12 @@ import { NgForm } from '@angular/forms';
 
 export class ProductServiceService {
 
-
   constructor(private http: HttpClient) { }
 
   private readonly baseUrl = "http://localhost:8080/products";
-  
 
 
-  getProducts(): Observable<Product[]> {
+  public getProducts(): Observable<Product[]> {
     const headers = { 'Content-Type': 'application/json' };
     return this.http.get<Product[]>(this.baseUrl, { headers }).pipe(
       map(products => {
@@ -32,33 +30,32 @@ export class ProductServiceService {
             created_at: new Date(product.category.createdAt),
             updated_at: new Date(product.category.updatedAt),
           },
-          
+
         }));
       })
     );
   }
 
-  public getProductPageableById(id: number): Observable<Product[]>{
+  public getProductPageableById(id: number): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl + '/pageable/' + id);
   }
 
-  calculateAmountProducts(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + "/amount");
-}
-
-
-  public getProductById(id: number): Observable<Product>{
+  public getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(this.baseUrl + '/' + id);
+  }
+
+  public getProductsBySupplier(id: number): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + "/supplier/" + id);
   }
 
   public createProduct(formData: NgForm): Observable<Product> {
     console.log("service");
     console.log(formData);
     const productData = formData.value;
-    return this.http.post<Product>(this.baseUrl,productData);
+    return this.http.post<Product>(this.baseUrl, productData);
   }
 
-  public updateProduct(id: number, product: Product): Observable<Product>{
+  public updateProduct(id: number, product: Product): Observable<Product> {
     return this.http.put<Product>(this.baseUrl + '/' + id, product);
   }
 
@@ -66,12 +63,17 @@ export class ProductServiceService {
     return this.http.delete<void>(this.baseUrl + '/' + id);
   }
 
-  defaultImage(event: Event) {
+  public activateProduct(id: number, product: Product): Observable<Product> {
+    return this.http.patch<Product>(this.baseUrl + '/' + id, product);
+  }
+
+  public defaultImage(event: Event) {
     (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
   }
-  
-  getProductsBySupplier(id: number): Observable<Product[]>{
-    return this.http.get<Product[]>(this.baseUrl + "/supplier/" + id);
+
+  public calculateAmountProducts(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/amount");
   }
+
 
 }

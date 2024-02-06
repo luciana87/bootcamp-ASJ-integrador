@@ -6,11 +6,11 @@ import { Product } from '../models/product';
 })
 export class ActiveProductPipe implements PipeTransform {
 
-  transform(products: Product[]): Product[] {
+  transform(products: Product[], showDeleted: boolean): Product[] {
     if (!products) {
       return [];
     }
-    return products.filter(product => !product.deleted);
+    return products.filter(product => product.deleted === showDeleted);
   }
 
 }

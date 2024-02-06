@@ -1,5 +1,5 @@
 <div class="container w-100 ">
-    
+
     <section class="w-100 ">
         <h3 class="row mb-3 h3"
             style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
@@ -8,7 +8,7 @@
             <div class="col-md-2 d-flex align-items-center">
                 <div class="form-check form-switch">
                     <label class="col- form-check-label" for="switch">Ver eliminados</label>
-                    <input class="col- form-check-input" type="checkbox" id="switch">
+                    <input class="col- form-check-input" type="checkbox" id="switch" [(ngModel)]="showDeleted" (change)="filterByDeleted()">
                 </div>
             </div>
             <div class="col-md-3 d-flex align-items-center">
@@ -64,9 +64,14 @@
                             id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"
                             data-toggle="tooltip" data-placement="top" title="Editar"><i
                                 class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
-                        <button class="btn text-white me-2 btn-sm button-circle button-circle-delete"
-                            data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete(product)"><i
+                        <button *ngIf="!showDeleted"
+                            class="btn text-white me-2 btn-sm button-circle button-circle-delete" data-toggle="tooltip"
+                            data-placement="top" title="Eliminar" (click)="delete(product)"><i
                                 class="fa-regular fa-trash-can fa-sm d-flex  align-content-center justify-content-center"></i></button>
+                        <button *ngIf="showDeleted" class="btn text-white me-2 btn-sm button-circle-activate"
+                            data-toggle="tooltip" data-placement="top" title="Activar"
+                            (click)="activateProduct(product)"><i
+                                class="fa-regular fa-square-check fa-sm d-flex align-content-center justify-content-center"></i></button>
                         <button class="btn me-2 btn-sm button-circle" routerLink="/detail-product/{{product.id}}"
                             data-toggle="tooltip" data-placement="top" title="Detalle"><i
                                 class="fa-regular fa-eye fa-sm d-flex  align-content-center justify-content-center"></i></button>

@@ -150,4 +150,12 @@ public class ProductService {
 	}
 
 
+	public void activateProduct(Integer id, Product product) {
+		Product productFound = this.retriveById(id);
+		productFound.setDeleted(false);
+		productRepository.save(productFound);
+		
+	}
+
+
 }
