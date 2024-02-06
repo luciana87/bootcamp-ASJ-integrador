@@ -6,11 +6,11 @@ import { Supplier } from '../models/supplier';
 })
 export class ActiveSupplierPipe implements PipeTransform {
 
-  transform(suppliers: Supplier[]): Supplier[] {
+  transform(suppliers: Supplier[], showDeleted: boolean): Supplier[] {
     if (!suppliers) {
       return [];
     }
-    return suppliers.filter(supplier => !supplier.deleted);
+    return suppliers.filter(supplier => supplier.deleted ==  !showDeleted);
   }
 
 }

@@ -38,7 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let supplier of (supplierList | activeSupplier | searchSupplier: input_search)"
+            <tr *ngFor="let supplier of (supplierList | activeSupplier: showDeleted | searchSupplier: input_search)"
                 id="supplier-table-container" class="row-12 align-middle">
                 <td class="col-1 tdImg">
                     <div class="imgContainer">
