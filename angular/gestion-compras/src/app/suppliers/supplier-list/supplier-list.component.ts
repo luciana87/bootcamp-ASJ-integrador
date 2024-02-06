@@ -29,7 +29,6 @@ export class SupplierListComponent implements OnInit {
   ngOnInit(): void {
     this.getSuppliers();
 
-
   }
 
   public delete(supplier: Supplier) {
@@ -57,8 +56,32 @@ export class SupplierListComponent implements OnInit {
           });
       };
     })
-  };
+  }
 
+  public activateSupplier(supplier: Supplier) {
+    Swal.fire({
+      title: `¿Está seguro que desea activar el proveedor ${supplier.businessName}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, activar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.activateSupplier(supplier.id, supplier).subscribe(
+          (data) => {
+            console.log(data);
+            Swal.fire(
+              'Activado!',
+              'El proveedor está activo nuevamente.',
+              'success'
+            )
+            this.getSuppliers();
+          });
+      };
+    })
+  }
 
   public getSuppliers() {
     this.service.getSuppliers().subscribe(

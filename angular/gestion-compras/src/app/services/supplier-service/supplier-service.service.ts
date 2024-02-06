@@ -62,6 +62,10 @@ export class SupplierServiceService {
   deleteSupplier(id: number): Observable<Supplier> {
     return this.http.delete<Supplier>(this.baseUrl + '/' + id);
   }
+
+  activateSupplier(id: number, supplier: Supplier): Observable<Supplier> {
+    return this.http.patch<Supplier>(this.baseUrl + '/' + id, supplier);
+  }
   
   defaultImage(event: Event) {
     (event.target as HTMLImageElement).src = 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';

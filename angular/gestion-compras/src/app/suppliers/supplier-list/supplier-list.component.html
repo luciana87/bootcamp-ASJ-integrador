@@ -11,7 +11,7 @@
                     <input class="form-check-input" type="checkbox" id="switch" [(ngModel)]="showDeleted">
                 </div>
             </div>
-            
+
             <div class="col-md-3 d-flex align-items-center">
                 <label class="col-3" for="search">Buscar:</label>
                 <input class="col-9" [(ngModel)]="input_search" type="text" name="search" id="search">
@@ -72,10 +72,13 @@
                         data-toggle="tooltip" data-placement="top" title="Editar" id="edit-button{{ supplier.code }}"
                         routerLink="/form-supplier/{{supplier.id}}"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex align-content-center justify-content-center"></i></button>
-                    <button class="btn text-white me-1 btn-sm button-circle"
+                    <button *ngIf="!showDeleted" class="btn text-white me-1 btn-sm button-circle"
                         style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;"
                         data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="delete(supplier)"><i
                             class="fa-regular fa-trash-can fa-sm d-flex align-content-center justify-content-center"></i></button>
+                    <button *ngIf="showDeleted" class="btn text-white me-1 btn-sm button-circle"
+                        style="background-color: rgb(79, 114, 255); border-radius: 50%;"
+                        data-toggle="tooltip" data-placement="top" title="Activar" (click)="activateSupplier(supplier)"><i class="fa-regular fa-square-check fa-sm d-flex align-content-center justify-content-center"></i></button>
                     <button class="btn btn-sm button-circle"
                         style="background-color: rgba(143, 144, 140, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
                         data-toggle="tooltip" data-placement="top" title="Detalle"
