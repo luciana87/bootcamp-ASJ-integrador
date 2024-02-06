@@ -38,7 +38,6 @@ import { CategoryListComponent } from './categories/category-list/category-list.
 import { FormCategoryComponent } from './categories/form-category/form-category.component';
 import { ActiveCategoryPipe } from './pipes/active-category.pipe';
 import { SearchSupplierPipe } from './pipes/search-supplier.pipe';
-import { CuitPipe } from './pipes/cuit.pipe';
 
 
 @NgModule({
@@ -64,7 +63,9 @@ import { CuitPipe } from './pipes/cuit.pipe';
     ListComponent,
     DetailOrderComponent,
     
-
+    //Otros componentes
+    CategoryListComponent,
+    FormCategoryComponent,
     HomeComponent,
     LoginComponent,
 
@@ -75,11 +76,8 @@ import { CuitPipe } from './pipes/cuit.pipe';
     ActiveOrderPipe,
     CategoryPipe,
     SearchPipe,
-    CategoryListComponent,
-    FormCategoryComponent,
     ActiveCategoryPipe,
     SearchSupplierPipe,
-    CuitPipe
   ],
   imports: [
     BrowserModule,
