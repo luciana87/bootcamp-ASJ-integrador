@@ -1,22 +1,31 @@
 #bg-text-footer {
-    background-color: #dbe3fa ;
+    /* background-color: #dbe3fa ; */
+    background-color: rgb(61, 59, 59);   
+}
+
+footer{
+    box-sizing: border-box; /* Incluir padding en el ancho */
+    width: 100%;
 }
 
 footer div a {
-    color: #211ca1;
-    border-color: #211ca1;
+    color: #ff8a80;
+    /* color: #211ca1; */
+    /* border-color: #211ca1; */
+    border-color: #f85a4b;
 }
 
 footer div a:hover {
-    /* color: #7a425b; */
-    color: #6474e7;
+    color: #7a425b;
+    /* color: #6474e7; */
 }
 
 .texto {
-    color: #211ca1;
+    color: #ff8a80;
+    /* color: #211ca1; */
     font-size: 1em;
 }
 
 .img-fluid {
-    color: ff8a80;
+    color: #ff8a80;
 }

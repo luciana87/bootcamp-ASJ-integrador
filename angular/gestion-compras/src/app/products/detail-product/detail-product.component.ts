@@ -9,28 +9,33 @@ import { ProductUtils } from 'src/app/utils/product';
   templateUrl: './detail-product.component.html',
   styleUrls: ['./detail-product.component.css']
 })
-export class DetailProductComponent implements OnInit{
+export class DetailProductComponent implements OnInit {
 
-  product!: Product;
+  product: Product = ProductUtils.initializeProduct();
+  id: number | null = -1;
 
-  constructor(public service: ProductServiceService, private route: ActivatedRoute, private router: Router){}
+  constructor(public service: ProductServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((param: any) => {
-    //   const id = param.get('id');
+    this.route.paramMap.subscribe((param: any) => {
+      const idString = param.get('id');
+      if (idString) {
+        this.id = +idString; //Convierte de cadena a numero
+        this.service.getProductById(this.id).subscribe(
+          (data) => {
+            this.product = data;
+            console.log(this.product);
+          });
+      }
+    });
 
-    //   if (id) {
-    //     this.product = this.service.getProductById(parseInt(id)) || ProductUtils.initializeProduct();
-    //   }
-
-    // })
   }
 
   goBack() {
     this.router.navigate(['/product-list']);
-    }
-    
-    cambiarImagen(event: Event) {
-      this.service.defaultImage(event);
-    }
+  }
+
+  cambiarImagen(event: Event) {
+    this.service.defaultImage(event);
+  }
 }

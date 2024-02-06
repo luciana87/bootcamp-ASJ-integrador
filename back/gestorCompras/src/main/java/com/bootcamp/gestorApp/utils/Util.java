@@ -7,8 +7,8 @@ import org.modelmapper.ModelMapper;
 public class Util {
 
     private static final ModelMapper MODEL_MAPPER = new ModelMapper();
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+   
     public static ModelMapper getModelMapper() {
         return MODEL_MAPPER;
     }

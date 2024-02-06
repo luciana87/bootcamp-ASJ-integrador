@@ -4,8 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.aspectj.weaver.bcel.FakeAnnotation;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.engine.transaction.jta.platform.internal.BitronixJtaPlatform;
 import org.modelmapper.internal.bytebuddy.asm.Advice.This;
+
+import com.bootcamp.gestorApp.utils.Util;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,6 +21,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,9 +37,10 @@ public class PurchaseOrder {
 	@Column(nullable = false)
 	private LocalDateTime createdAt;
 	
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	private LocalDateTime deadline;
-	private float total;
+	private double total;
 	private boolean canceled;
 	private String description;
 	
@@ -47,21 +53,49 @@ public class PurchaseOrder {
 	
 	public PurchaseOrder () {}
 
-	public PurchaseOrder(int numOrder, float total, String description, Supplier supplier) {
-
+	
+	
+	public PurchaseOrder(Integer id, int numOrder, LocalDateTime createdAt, LocalDateTime updatedAt,
+			LocalDateTime deadline, double total, boolean canceled, String description, Supplier supplier,
+			List<ItemDetail> items) {
+		this.id = id;
 		this.numOrder = numOrder;
-		this.createdAt = LocalDateTime.now();
-		this.deadline = createdAt.plusDays(10);
-		this.updatedAt = null;
-		this.canceled= false;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.deadline = deadline;
 		this.total = total;
-		this.canceled = false;
+		this.canceled = canceled;
 		this.description = description;
 		this.supplier = supplier;
-		
-		
+		this.items = items;
 	}
-	
+
+
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public LocalDateTime getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(LocalDateTime deadline) {
+		this.deadline = deadline;
+	}
+
+	public List<ItemDetail> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ItemDetail> items) {
+		this.items = items;
+	}
+
 	public Integer getNumOrder() {
 		return numOrder;
 	}
@@ -70,11 +104,11 @@ public class PurchaseOrder {
 		this.numOrder = numOrder;
 	}
 
-	public float getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(float total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 
@@ -109,8 +143,17 @@ public class PurchaseOrder {
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
-	
-	
-	
 
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	
+	/*
+	 * @PreUpdate protected void onUpdate() { LocalDateTime now =
+	 * LocalDateTime.now(); String formattedDateTime =
+	 * now.format(Util.getDateTimeFormatter()); this.updatedAt =
+	 * LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter()); }
+	 * 
+	 */
 }

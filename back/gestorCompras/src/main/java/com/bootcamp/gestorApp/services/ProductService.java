@@ -3,6 +3,10 @@ package com.bootcamp.gestorApp.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
@@ -38,26 +42,26 @@ public class ProductService {
 	}
 
 
-	/*
-	 * public Optional<Product> retriveById(Integer id) { Optional<Product> product
-	 * = productRepository.findById(id); return product; }
-	 */
 	
-	public ProductResponseDTO retriveById(Integer id) {
-		Optional<Product> product = productRepository.findById(id);
-		
-        if (product.isEmpty()){
-            throw new ResourceNotFoundException("Producto no encontrado.");
-        }
-        return mapToDTO(product.get());
-	}
+	  public Product retriveById(Integer id) { 
+		  Optional<Product> productOptional = productRepository.findById(id); 
+		  
+		  if (productOptional.isEmpty()) {
+			  throw new ResourceNotFoundException("¨Producto no encontrado.");
+		  }
+		  return productOptional.get();
+	  }
 
+	
 	/*
-	 * public Product create(Product product) { //LLamar al servicio de category y
-	 * de supplier, buscar y obtener las entidades por id para setearselas al
-	 * producto antes de guardarlo. SIno guarda null Product productSavedProduct =
-	 * productRepository.save(product); return productSavedProduct; }
+	 * public ProductResponseDTO retriveById(Integer id) { Optional<Product> product
+	 * = productRepository.findById(id);
+	 * 
+	 * if (product.isEmpty()){ throw new
+	 * ResourceNotFoundException("Producto no encontrado."); } return
+	 * mapToDTO(product.get()); }
 	 */
+
 	 
 	
 	@Transactional
@@ -67,10 +71,9 @@ public class ProductService {
 		
 		Supplier supplier = supplierService.retriveById(productDTO.getSupplierId());
 		Category category = categoryService.retriveById(productDTO.getCategoryId());
+		Product product = mapToEntity(productDTO, category,supplier);
 		
-		Product productSaved = mapToEntity(productDTO, category,supplier);
-		
-		return productRepository.save(productSaved);
+		return productRepository.save(product);
 	}
 	    
     private void checkForExistingProduct(String sku) {
@@ -92,6 +95,67 @@ public class ProductService {
     	ProductResponseDTO productDTO = Util.getModelMapper().map(product, ProductResponseDTO.class);
         return productDTO;
     }
+
+
+	public void delete(Integer id) {
+		Product product = this.retriveById(id);
+		product.setDeleted(true);
+		productRepository.save(product);
+	}
+	
+	@Transactional
+	public void replace(Integer id, Product product) {
+		
+		  Optional<Product> productOptional = productRepository.findById(id); 
+		  if (productOptional.isEmpty()) { 
+			  throw new ResourceNotFoundException("Producto no encontrado."); 
+		  }
+		  Supplier supplier = supplierService.retriveById(product.getSupplier().getId());
+		  Category category = categoryService.retriveById(product.getCategory().getId());
+		  
+		  Product productToReplace = productOptional.get();
+		  
+	
+		  productToReplace.setName(product.getName());
+		  productToReplace.setSku(product.getSku());
+		  productToReplace.setPrice(product.getPrice());
+		  productToReplace.setDescription(product.getDescription());
+		  productToReplace.setImage(product.getImage());
+		  productToReplace.setCategory(category);
+		  productToReplace.setSupplier(supplier);
+		  
+		 
+	 
+        productRepository.save(productToReplace);
+	}
+
+
+
+	public List<Product> getProductsBySupplier(Integer id) {
+		return productRepository.getProductsBySupplierIdAndDeletedFalse(id);
+	}
+
+
+	public List<Product> findAllById(Integer id) {
+		
+		//Pageable page = PageRequest.of(1, 10); //size = 10
+		Pageable sortedByName = PageRequest.of(1, 10, Sort.by("name"));
+		   return productRepository.findAllById(id, sortedByName);
+	}
+
+
+	public Integer calculateAmountProducts() {
+		Integer amount = productRepository.getAmountProducts();
+		return amount;
+	}
+
+
+	public void activateProduct(Integer id, Product product) {
+		Product productFound = this.retriveById(id);
+		productFound.setDeleted(false);
+		productRepository.save(productFound);
+		
+	}
 
 
 }

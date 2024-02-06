@@ -32,6 +32,8 @@ public class AddressRequestDTO {
 	@JsonProperty("province_id")
 	private Integer provinceId;
 	
+	public AddressRequestDTO() {}
+	
 	public AddressRequestDTO(String street, Integer num, String postalCode, String city, Integer provinceId) {
 		this.street = street;
 		this.num = num;

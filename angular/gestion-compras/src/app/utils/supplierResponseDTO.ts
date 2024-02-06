@@ -1,35 +1,38 @@
-import { Supplier } from "../models/supplier"
-import { SupplierRequestDTO } from "../models/supplierRequestDTO"
 
-export class SupplierDTOUtils {
+import { SupplierResponseDTO } from "../models/supplierResponseDTO";
 
-    static initializeSupplierDTO(): SupplierRequestDTO {
+export class SupplierResponseDTOUtils {
+
+    static initializeSupplierResponseDTO(): SupplierResponseDTO {
         return {
+            id: -1,
             code: '',
             business_name: '',
             cuit:'',
-            field_id: -1,
+            field_name: '',
             website: '',
             phone_number: '',
             email: '',
-            iva_id: -1,
-            logo: '',
             address: {
                 street: '',
                 num: 0,
                 postal_code: '',
                 city: '',
-                province_id: -1,
-                country_id: -1
+                province_name: '',
+                country_name: ''
             },
+            iva_name: '',
             contact: {
                 contact_name: '',
                 contact_lastname: '',
                 phone_number: 0,
                 email: '',
                 position: ''
-
-            }
+            },
+            logo: '',
+            created_at: new Date,
+            updated_at: new Date,
+            deleted: false
         };
     }
 }
