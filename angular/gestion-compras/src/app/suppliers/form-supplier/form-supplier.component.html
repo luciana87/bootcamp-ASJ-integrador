@@ -134,19 +134,6 @@
                     <small *ngIf="formSupplier.controls['email']?.hasError('pattern')">Correo inválido.</small>
                 </div>
             </div>
-<!-- 
-            <div class="col-12">
-                <div class="mb-3">
-                    <label class="form-label" for="website-input">Sitio web:</label>
-                    <input name="website" type="url" class="form-control" id="website-input" placeholder="ej: https://sitioweb.com.ar/"
-                        pattern="[https?://].*" [(ngModel)]="supplier.website">
-                </div>
-                <div *ngIf="formSupplier.controls['website']?.invalid && (formSupplier.controls['website']?.dirty || formSupplier.controls['website']?.touched)"
-                    class="text-danger">
-                    <small *ngIf="formSupplier.controls['website']?.errors?.['pattern']">La url ingresada no es
-                        válida.</small>
-                </div>
-            </div> -->
 
             <div class="col-12">
                 <div class="mb-3">
