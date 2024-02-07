@@ -155,6 +155,14 @@ export class FormSupplierComponent implements OnInit {
         response => {
           console.log('Nuevo rubro agregado:', response);
           this.fields.push(response)
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Se agregó el rubro con éxito.",
+            showConfirmButton: false,
+            timer: 900
+          });
+          this.field.name= '';
         },
         error => {
           console.error('Error al agregar rubro:', error);

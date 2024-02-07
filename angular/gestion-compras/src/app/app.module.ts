@@ -35,9 +35,10 @@ import { ActiveOrderPipe } from './pipes/active-order.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
-import { FormCategoryComponent } from './categories/form-category/form-category.component';
+import { FormCategoryComponent } from './categories/category/form-category.component';
 import { ActiveCategoryPipe } from './pipes/active-category.pipe';
 import { SearchSupplierPipe } from './pipes/search-supplier.pipe';
+import { SortCategoriesPipe } from './pipes/sort-categories.pipe';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { SearchSupplierPipe } from './pipes/search-supplier.pipe';
     SearchPipe,
     ActiveCategoryPipe,
     SearchSupplierPipe,
+    SortCategoriesPipe,
   ],
   imports: [
     BrowserModule,

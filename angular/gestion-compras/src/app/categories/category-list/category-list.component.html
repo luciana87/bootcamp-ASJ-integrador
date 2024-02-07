@@ -1,14 +1,14 @@
 <section class="container">
-    <div class="d-flex justify-content-between align-items-center">
+    <!-- <div class="d-flex justify-content-between align-items-center">
         <h3 class="h3"
             style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">Categorías</h3>
         <button class="btn-add btn text-center btn-sm text-white" routerLink="/form-category" data-toggle="tooltip"
             data-placement="top" title="Agregar producto">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
-    </div>
+    </div> -->
 
 
 
-    <table class="table mt-4 border">
+    <table class="table mt-2 border">
         <thead class="row-12 align-middle ">
             <tr>
                 <th class="col-10">Nombre</th>
@@ -16,12 +16,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let category of categories | activeCategory" id="product-table-container"
+            <tr *ngFor="let category of categories | activeCategory | sortCategories" id="product-table-container"
                 class="row-12 align-middle">
                 <td class="col-10" class="border-bottom"> {{category.name}}</td>
                 <td class="col-2 align-items-center justify-content-end border-bottom">
                     <button class="col-2 btn text-white me-2 btn-sm button-circle button-circle-add"
-                        id="edit-button{{ category.id }}" routerLink="/form-category/{{category.id}}"
+                        id="edit-button{{ category.id }}"  (click)="updateCategory(category)"
                         data-toggle="tooltip" data-placement="top" title="Editar"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
                     <button class="btn text-white me-2 btn-sm button-circle button-circle-delete" data-toggle="tooltip"

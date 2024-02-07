@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
-import { CategoryRequestDTO } from 'src/app/models/categoryRequestDTO';
 import { CategoryService } from 'src/app/services/categoryService/category.service';
-import { CategoryUtils } from 'src/app/utils/category';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,16 +9,21 @@ import Swal from 'sweetalert2';
   templateUrl: './form-category.component.html',
   styleUrls: ['./form-category.component.css']
 })
-export class FormCategoryComponent {
+export class FormCategoryComponent implements OnInit {
 
   category: Category = { id: -1, name: '', createdAt: new Date, updatedAt: new Date, deleted: false }
-  category_name = '';
-  constructor(private seviceCategory: CategoryService, private router: Router) { }
+  categories: Category[] = [];
 
+  constructor(private serviceCategory: CategoryService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.getCategories();
+    this.reset();
+  }
   public save() {
     if (this.category.id != -1) {
       // Lo actualizo
-      this.seviceCategory.updateCategory(this.category.id, this.category).subscribe(
+      this.serviceCategory.updateCategory(this.category.id, this.category).subscribe(
         (data: Category) => {
           console.log("Producto modificado:", data);
           Swal.fire({
@@ -36,14 +39,15 @@ export class FormCategoryComponent {
                 showConfirmButton: false,
                 timer: 900
               });
-              this.router.navigate(['/category-list']);
+              this.getCategories();
+              this.reset();
             }
           });
         }
       );
     } else {
       //Lo creo
-      this.seviceCategory.createCategory(this.category).subscribe(
+      this.serviceCategory.createCategory(this.category).subscribe(
         (data) => {
           this.category = data;
           this.category.name = '';
@@ -54,14 +58,42 @@ export class FormCategoryComponent {
             showConfirmButton: false,
             timer: 900
           });
-          this.router.navigate(['/category-list'])
+          this.getCategories();
+          this.category.name = '';
         }
       )
     }
   }
 
+  public getCategories() {
+    this.serviceCategory.getCategories().subscribe(
+      (data) => {
+        this.categories = data;
+      }
+    )
+  }
+
   reset() {
-    this.router.navigate(['/category-list'])
+    this.category = { id: -1, name: '', createdAt: new Date, updatedAt: new Date, deleted: false };
+  }
+
+  updateCategoryEvent(category: Category) {
+    this.category = category;
+  }
+
+  deleteCategoryEvent(category: Category) {
+    this.serviceCategory.delete(category.id).subscribe(
+      (data) => {
+        console.log(data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "El producto ha sido eliminado.",
+          showConfirmButton: false,
+          timer: 900
+        });
+        this.getCategories();
+      });
   }
 
 

@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="h3 mb-3"
+        style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
+        Categorías</h3>
+
+    <div class="row flex flex-column mb-4">
+        <label class="col-5 form-label mb-3" for="new-category">Agregar nueva categoría</label>
+        <div class="col-7 d-flex justify-content-start align-items-center">
+            <input type="text" class="col-10" id="new-category" placeholder="Ingrese su texto..."
+                [(ngModel)]="category.name" name="category">
+            <button type="button" class="col-2 btn btn-add btn-sm ms-5" (click)="save()" data-toggle="tooltip"
+                data-placement="top" title="Agregar categoría">Guardar</button>
+            <button type="button" (click)="reset()"
+                class="btn btn-light btn-sm ">Cancelar</button>
+        </div>
+
+    </div>
+
+</div>
+<app-category-list [categories]="categories" (updateCategoryEvent)="updateCategoryEvent($event)"
+    (deleteCategoryEvent)="deleteCategoryEvent($event)"></app-category-list>

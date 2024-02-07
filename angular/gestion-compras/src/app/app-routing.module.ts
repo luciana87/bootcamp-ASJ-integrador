@@ -13,7 +13,7 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
 import { LoginComponent } from './components/login/login.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
-import { FormCategoryComponent } from './categories/form-category/form-category.component';
+import { FormCategoryComponent } from './categories/category/form-category.component';
 
 const routes: Routes = [
   // {
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'category-list', component: CategoryListComponent },
+  // { path: 'category-list', component: CategoryListComponent },
   { path: 'form-category', component: FormCategoryComponent },
   { path: 'form-category/:id', component: FormCategoryComponent },
   { path: '', component: HomeComponent},
