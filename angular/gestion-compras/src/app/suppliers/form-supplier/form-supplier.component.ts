@@ -130,7 +130,15 @@ export class FormSupplierComponent implements OnInit {
               });
               this.router.navigate(['/supplier-list'])
             }
-          });
+          }, error => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: error.error,
+              showConfirmButton: true
+            });
+          }
+          );
         }
       );
     } else {
@@ -146,7 +154,12 @@ export class FormSupplierComponent implements OnInit {
         });
         this.router.navigate(['/supplier-list'])
       }, (error) => {
-        console.error("Error al crear el producto:", error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error.error,
+          showConfirmButton: true
+        });
       });
     };
   }
