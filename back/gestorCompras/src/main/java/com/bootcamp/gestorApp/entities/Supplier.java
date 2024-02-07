@@ -77,7 +77,7 @@ public class Supplier {
 	}
 
 	public Supplier(String code, String businessName, String cuit, Field field, String website, String phoneNumber,
-			String email, String logo, LocalDateTime createdAt, Address address, IvaType iva, Contact contact) {
+			String email, String logo, Address address, IvaType iva, Contact contact) {
 		this.code = code;
 		this.businessName = businessName;
 		this.cuit = cuit;
@@ -86,7 +86,7 @@ public class Supplier {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.logo = logo;
-		this.createdAt = createdAt;
+		this.createdAt = null;
 		this.updatedAt = null;
 		this.deleted = false;
 		this.address = address;

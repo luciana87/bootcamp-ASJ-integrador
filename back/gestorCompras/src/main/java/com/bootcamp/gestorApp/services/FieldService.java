@@ -25,7 +25,7 @@ public class FieldService {
 	public Field findById(Integer id) {
 		Optional<Field> fieldOptional = fieldRepository.findById(id);
 		if (fieldOptional.isEmpty()) {
-			throw new ResourceNotFoundException("Rubro no encontrada.");
+			throw new ResourceNotFoundException("Rubro no encontrado.");
 		}
 		return fieldOptional.get();
 	}
