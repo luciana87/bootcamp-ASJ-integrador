@@ -49,48 +49,60 @@
 
         <div class="row">
             <h5 class="col-12 h5 text-secondary mb-4 mt-4">Agregar productos:</h5>
-        
+
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="supplier-input" class="form-label">Proveedor:</label>
-                    <select id="supplier-input" name="supplier_id" class="form-select form-select-sm mb-3" required [(ngModel)]="order.supplier_id" (ngModelChange)="onSupplierChange($event)">
+                    <select id="supplier-input" name="supplier_id" class="form-select form-select-sm mb-3" required
+                        [(ngModel)]="order.supplier_id" (ngModelChange)="onSupplierChange($event)">
                         <option [ngValue]="-1" selected>Proveedor</option>
-                        <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{ supplier.businessName }}</option>
+                        <option *ngFor="let supplier of supplierList" value="{{supplier.id}}">{{ supplier.businessName
+                            }}</option>
                     </select>
-                    <div *ngIf="formOrder.controls['supplier_id']?.invalid && (formOrder.controls['supplier_id']?.dirty || formOrder.controls['supplier_id']?.touched)" class="text-danger">
-                        <small *ngIf="formOrder.controls['supplier_id']?.errors?.['required']" class="text-sm-start">Este campo es obligatorio.</small>
+                    <div *ngIf="formOrder.controls['supplier_id']?.invalid && (formOrder.controls['supplier_id']?.dirty || formOrder.controls['supplier_id']?.touched)"
+                        class="text-danger">
+                        <small *ngIf="formOrder.controls['supplier_id']?.errors?.['required']"
+                            class="text-sm-start">Este campo es obligatorio.</small>
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="product-input" class="form-label">Productos:</label>
-                    <select id="product-input" name="product_id" class="form-select form-select-sm mb-3" required [(ngModel)]="product.id" [disabled]="!order.supplier_id">
+                    <select id="product-input" name="product_id" class="form-select form-select-sm mb-3" required
+                        [(ngModel)]="product.id" [disabled]="!order.supplier_id">
                         <option [ngValue]="-1" selected>Productos</option>
-                        <option *ngFor="let product of filteredProducts" value="{{product.id}}">{{ product.name }}</option>
+                        <option *ngFor="let product of filteredProducts" value="{{product.id}}">{{ product.name }}
+                        </option>
                     </select>
-                    <div *ngIf="formOrder.controls['product_id']?.invalid && (formOrder.controls['product_id']?.dirty || formOrder.controls['product_id']?.touched)" class="text-danger">
-                        <small *ngIf="formOrder.controls['product_id']?.errors?.['required']" class="text-sm-start">Este campo es obligatorio.</small>
+                    <div *ngIf="formOrder.controls['product_id']?.invalid && (formOrder.controls['product_id']?.dirty || formOrder.controls['product_id']?.touched)"
+                        class="text-danger">
+                        <small *ngIf="formOrder.controls['product_id']?.errors?.['required']" class="text-sm-start">Este
+                            campo es obligatorio.</small>
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="amount-input" class="form-label">Cantidad:</label>
-                    <input type="number" class="form-control" name="amount" id="amount-input" min="1" [(ngModel)]="amount">
-                    <div *ngIf="formOrder.controls['amount']?.invalid && (formOrder.controls['amount']?.dirty || formOrder.controls['amount']?.touched)" class="text-danger">
-                        <small *ngIf="formOrder.controls['amount']?.hasError('min')">La cantidad debe ser mayor a 0.</small>
+                    <input type="number" class="form-control" name="amount" id="amount-input" min="1"
+                        [(ngModel)]="amount">
+                    <div *ngIf="formOrder.controls['amount']?.invalid && (formOrder.controls['amount']?.dirty || formOrder.controls['amount']?.touched)"
+                        class="text-danger">
+                        <small *ngIf="formOrder.controls['amount']?.hasError('min')">La cantidad debe ser mayor a
+                            0.</small>
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-md-1 mt-3">
-                <button [disabled]="isDisableAddProductButton()" class="btn btn-success  text-white btn-sm" type="button" (click)="addProduct()">Agregar</button>
+                <button [disabled]="isDisableAddProductButton()" class="btn btn-success  text-white btn-sm"
+                    type="button" (click)="addProduct()">Agregar</button>
             </div>
         </div>
-        
+
 
         <div class="col-12 mt-4">
             <app-list [datoEnviado]="items"></app-list>
@@ -104,9 +116,9 @@
             </div>
         </div>
 
-            <button [disabled]="!formOrder.valid" type="submit" class="btn btn-add text-white me-3">Guardar</button>
-            <button type="button" (click)="formOrder.reset()" routerLink="/purchase-order-list"
-                class="btn btn-cancel">Cancelar</button>
+        <button [disabled]="!formOrder.valid" type="submit" class="btn btn-add text-white me-3">Guardar</button>
+        <button type="button" (click)="formOrder.reset()" routerLink="/purchase-order-list"
+            class="btn btn-cancel">Cancelar</button>
 
     </div>
 
