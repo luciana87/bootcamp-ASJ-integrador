@@ -7,16 +7,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let category of categories | activeCategory | sortByName" id="category-table-container"
+            <tr *ngFor="let field of fields | sortByName" id="field-table-container"
                 class="row-12 align-middle">
-                <td class="border-bottom col-10"> {{category.name}}</td>
+                <td class="border-bottom col-10"> {{field.name}}</td>
                 <td class="col-2 align-items-center justify-content-end border-bottom">
                     <button class="col-2 btn text-white me-2 btn-sm button-circle button-circle-add"
-                        id="edit-button{{ category.id }}"  (click)="updateCategory(category)"
+                        id="edit-button{{ field.id }}"  (click)="updateField(field)"
                         data-toggle="tooltip" data-placement="top" title="Editar"><i
                             class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
                     <button class="btn text-white me-2 btn-sm button-circle button-circle-delete" data-toggle="tooltip"
-                        data-placement="top" title="Eliminar" (click)="delete(category)"><i
+                        data-placement="top" title="Eliminar" (click)="delete(field)"><i
                             class="fa-regular fa-trash-can fa-sm d-flex  align-content-center justify-content-center"></i></button>
                 </td>
             </tr>

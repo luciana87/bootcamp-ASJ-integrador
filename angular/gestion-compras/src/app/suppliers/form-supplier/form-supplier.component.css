@@ -6,4 +6,11 @@
 .button-add:hover {
     background-color: #7676f4d3;
 }
+.btn-cancel {
+    background-color: #e9e9f3d3;
+    text-align: center;
+}
 
+.btn-cancel:hover {
+    background-color: #cdcdd1e8;
+}

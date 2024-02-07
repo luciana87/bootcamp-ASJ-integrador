@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let order of orderList | activeOrder: showCanceled" id="order-table-container" class="row-12 align-middle">
+                <tr *ngFor="let order of (orderList | activeOrder: showCanceled | sortOrdersByNumber)" id="order-table-container" class="row-12 align-middle">
                     <td class="col-1 border-bottom"><strong>#{{order.num_order}}</strong></td>
                     <td class="col-2 border-bottom ">{{order.created_at | date: "dd/MM/yyy"}}</td>
                     <td class="col-2 border-bottom ">{{order.deadline | date: "dd/MM/yyy"}}</td>

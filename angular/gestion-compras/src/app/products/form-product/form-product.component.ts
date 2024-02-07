@@ -104,9 +104,17 @@ export class FormProductComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 900
               });
-              this.router.navigate(['/product-list']);
+              this.router.navigate(['/product-list'])
             }
-          });
+          }, error => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: error.error,
+              showConfirmButton: true
+            });
+          }
+          );
         }
       );
     } else {
@@ -122,7 +130,12 @@ export class FormProductComponent implements OnInit {
         });
         this.router.navigate(['/product-list']);
       }, (error) => {
-        console.error("Error al crear el producto:", error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error.error,
+          showConfirmButton: true
+        })        
       });
     };
   }
@@ -132,7 +145,15 @@ export class FormProductComponent implements OnInit {
       this.serviceCategory.createCategory(this.category).subscribe(
         response => {
           console.log('Nueva categoría agregada:', response);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Se agregó la categoría con éxito.",
+            showConfirmButton: false,
+            timer: 900
+          });
           this.categoryList.push(response);
+          this.category.name = '';
         },
         error => {
           console.error('Error al agregar categoría:', error);

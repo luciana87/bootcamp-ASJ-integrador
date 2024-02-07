@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { PurchaseOrderRequestDTO } from 'src/app/models/purchaseOrderRequestDTO';
-import { ItemDetail } from 'src/app/models/itemDetail';
 import { Product } from 'src/app/models/product';
 import { PurchaseOrder } from 'src/app/models/purchaseOrder';
 import { Supplier } from 'src/app/models/supplier';
@@ -45,7 +44,6 @@ export class FormPurchaseOrderComponent implements OnInit {
   ngOnInit(): void {
 
     this.getSuppliers();
-    // this.getProducts();
 
   }
 
@@ -84,15 +82,6 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   }
 
-  filterProductsBySupplier(supplier_id: number) {
-    // return this.serviceOrder.getProductsBySupplier(supplier_id).subscribe(
-    //   (data: Product[]) => {
-    //     this.filteredProducts = data;
-    //   }
-    // )
-    // return this.productList.filter((product) => (product.supplier.id === supplier_id))
-  }
-
   createOrder(form: NgForm) {
     if (!form.valid) {
       console.log("Formulario inválido.");
@@ -100,53 +89,31 @@ export class FormPurchaseOrderComponent implements OnInit {
     }
 
     this.serviceOrder.createOrder(form, this.items).subscribe(
-      (data:PurchaseOrderResponseDTO) => {
-      console.log("Se creó una órden de compra:", data);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "La órden de compra se creó correctamente.",
-        showConfirmButton: false,
-        timer: 900
+      (data: PurchaseOrderResponseDTO) => {
+        console.log("Se creó una órden de compra:", data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "La órden de compra se creó correctamente.",
+          showConfirmButton: false,
+          timer: 900
+        })
+        this.router.navigate(['/purchase-order-list'])
+      }, error => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error.error,
+          showConfirmButton: true
+        }
+        );
       });
-      
-      this.router.navigate(['/purchase-order-list'])
-    });
   }
 
-
-
-  //let supplierFound = this.supplierList.find(supplier => supplier.id === parseInt(form.value.supplier));
-  // let productFound = this.productList.find((product) => product.id === parseInt(form.value.product));
-
-  //   this.order.items = this.items;
-  //   this.order.total = this.items.reduce(function(a, b){
-  //     return a + b.total;
-  // }, 0);
-  //   this.order.supplier = supplierFound!;
-  //   this.order.createdAt = new Date(form.value.issueDate);
-  //   this.order.deadline = new Date(form.value.deadline);
-
-  //   if (this.order.id != -1) {
-  //     this.service.updateOrder(this.order);
-  //   } else {
-
-  //     this.service.createOrder(this.order);
-  //   }
-  //   this.router.navigate(['/purchase-order-list'])
-  // this.orderList.push(this.order);
-
-
-  // this.filteredProducts = this.filterProductsBySupplier();
-  // console.log(this.filteredProducts);
-  // }
-
   addProduct() {
-
     if (!this.product.id || this.amount < 1) {
       console.log("Producto o cantidad no válidos.");
-      return;
-    } 
+    }
 
     const selectedProduct = this.filteredProducts.find(product => product.id === +this.product.id);
 
@@ -154,7 +121,7 @@ export class FormPurchaseOrderComponent implements OnInit {
       const existingItem = this.items.find(item => item.product.id === selectedProduct.id);
       if (existingItem) {
         existingItem.amount += this.amount;
-        existingItem.total = existingItem.amount * selectedProduct.price; 
+        existingItem.total = existingItem.amount * selectedProduct.price;
       } else {
         const newItem: ItemDetailDTO = {
           id: this.id_item++,
@@ -167,20 +134,10 @@ export class FormPurchaseOrderComponent implements OnInit {
     } else {
       console.log("Producto no encontrado.");
     }
+  }
 
-    // if (selectedProduct) {
-    //   const newItem: ItemDetailResponseDTO = {
-    //     id: this.id_item++,
-    //     amount: this.amount,
-    //     total: selectedProduct.price * this.amount, // Suponiendo que tengas un precio por producto
-    //     product_name: selectedProduct.name,
-    //     product_image: selectedProduct.image,
-    //     product_price: selectedProduct.price
-    //   };
-    //   this.items.push(newItem);
-    // } else {
-    //   console.log("Producto no encontrado.");
-    // }
+  public isDisableAddProductButton(){
+    return !(this.order.supplier_id != -1 && this.product.id != -1 && this.amount > 0);
   }
 
 }

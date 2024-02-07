@@ -73,7 +73,7 @@ public class SupplierService {
 
 		Optional<Supplier> supplierOptional = supplierRepository.findById(id);
 		 if (supplierOptional.isEmpty()){
-	            throw new ResourceNotFoundException("¨Proveedor no encontrado.");
+	            throw new ResourceNotFoundException("Proveedor no encontrado.");
 	        }
 		return supplierOptional.get();
 	}

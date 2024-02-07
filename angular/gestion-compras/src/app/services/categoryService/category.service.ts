@@ -26,8 +26,8 @@ export class CategoryService {
     return this.http.delete<void>(this.baseUrl + '/' + id);
   }
 
-  updateCategory(id: number, categoryE: Category): Observable<Category> {
-    return this.http.put<Category>(this.baseUrl + '/' + id, categoryE);
+  updateCategory(id: number, category: Category): Observable<Category> {
+    return this.http.put<Category>(this.baseUrl + '/' + id, category);
   }
 
 }

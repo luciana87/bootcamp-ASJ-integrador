@@ -31,8 +31,10 @@ public class Product {
 	private String description;
 	private String image;
 
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
-
+	
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
 	private boolean deleted;
@@ -48,14 +50,14 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(String name, String sku, float price, String description, String image, Category category,
+	public Product(String name, String sku, float price, String description, String image, LocalDateTime createdAt, Category category,
 			Supplier supplier) {
 		this.name = name;
 		this.sku = sku;
 		this.price = price;
 		this.description = description;
 		this.image = image;
-		this.createdAt = LocalDateTime.now();
+		this.createdAt = createdAt;
 		this.updatedAt = null;
 		this.setDeleted(false);
 		this.category = category;
@@ -140,13 +142,6 @@ public class Product {
 
 	public void setSku(String sku) {
 		this.sku = sku;
-	}
-
-	@PreUpdate
-	protected void onUpdate() {
-		LocalDateTime now = LocalDateTime.now();
-		String formattedDateTime = now.format(Util.getDateTimeFormatter());
-		this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
 	}
 
 }

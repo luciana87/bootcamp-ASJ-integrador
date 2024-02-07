@@ -1,4 +1,5 @@
 export interface Field {
-    id?: number,
+    id: number,
     name: string
+    deleted: boolean
 }

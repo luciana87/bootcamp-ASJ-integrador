@@ -33,7 +33,7 @@
                 <tr *ngFor="let item of order.itemsDTO" class="row-12 align-middle">
                     <td class="col-1 tdImg">
                         <div class="imgContainer">
-                            <img src="{{item.product.image}}" (error)="cambiarImagen($event)" />
+                            <img src="{{item.product.image}}" (error)="defaultImage($event)" />
                         </div>
                     </td>
                     <td class="col-auto border-bottom ">{{ item.product.name }} <a type="button"

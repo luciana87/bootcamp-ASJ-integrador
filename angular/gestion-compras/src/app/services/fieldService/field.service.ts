@@ -23,4 +23,12 @@ export class FieldService {
     console.log(field);    
     return this.http.post<Field>(this.baseUrl,field);
   }
+
+  updateField(id: number, field: Field): Observable<Field> {
+    return this.http.put<Field>(this.baseUrl + '/' + id, field);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(this.baseUrl + '/' + id);
+  }
 }

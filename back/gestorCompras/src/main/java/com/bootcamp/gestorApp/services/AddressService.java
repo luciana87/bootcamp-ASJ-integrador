@@ -26,7 +26,7 @@ public class AddressService {
 	public Address retriveById(Integer id) {
 		Optional<Address> addressOptional = addressRepository.findById(id);
 		if (addressOptional.isEmpty()) {
-			throw new ResourceNotFoundException("Dirección no encontrado.");
+			throw new ResourceNotFoundException("Dirección no encontrada.");
 		}
 		return addressOptional.get();
 	}

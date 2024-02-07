@@ -85,7 +85,8 @@ public class PurchaseOrderService {
 	
 
 	private double calculateTotal(List<ItemDetail> items) {
-		return items.stream().mapToDouble(item -> item.getTotal()).sum();
+		
+		return Math.round(items.stream().mapToDouble(item -> item.getTotal()).sum() * 100.0) / 100.0;
 		
 	}
 

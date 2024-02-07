@@ -26,7 +26,7 @@ public class IvaService {
 	public IvaType findById(Integer id) {
 		Optional<IvaType> ivaOptional = ivaRepository.findById(id);
 		if (ivaOptional.isEmpty()) {
-			throw new ResourceNotFoundException("COndición de iva no encontrada.");		
+			throw new ResourceNotFoundException("Condición de iva no encontrada.");		
 		}
 		return ivaOptional.get();
 	}
