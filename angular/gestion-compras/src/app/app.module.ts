@@ -41,6 +41,7 @@ import { SearchSupplierPipe } from './pipes/search-supplier.pipe';
 import { SortCategoriesPipe } from './pipes/sort-categories.pipe';
 import { FormFieldComponent } from './fields/form-field/form-field.component';
 import { FieldListComponent } from './fields/field-list/field-list.component';
+import { SortProductsPipe } from './pipes/sort-products.pipe';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { FieldListComponent } from './fields/field-list/field-list.component';
     SortCategoriesPipe,
     FormFieldComponent,
     FieldListComponent,
+    SortProductsPipe,
   ],
   imports: [
     BrowserModule,

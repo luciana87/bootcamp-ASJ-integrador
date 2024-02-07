@@ -37,13 +37,6 @@ export class ProductListComponent implements OnInit {
     this.getProducts();
   }
 
-  public sortByName(productA: Product, productB: Product) {
-    if (productA.name < productB.name) {
-      return -1;
-    }
-    return (productA.name > productB.name) ? 1 : 0;
-  }
-
   public getProducts() {
     this.service.getProducts().subscribe(
       (products) => {
@@ -62,7 +55,6 @@ export class ProductListComponent implements OnInit {
             }
             return false;
         });
-        this.productList.sort(this.sortByName);
       },
       (error) => {
         console.error('Error:', error);
