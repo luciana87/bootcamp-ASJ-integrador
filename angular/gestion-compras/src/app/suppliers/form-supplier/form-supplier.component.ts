@@ -32,7 +32,9 @@ export class FormSupplierComponent implements OnInit {
   filteredProvinces: Province[] = [];
   selectedCountry: Country | null = null;
   field: Field = {
-    name: ''
+    id: -1,
+    name: '',
+    deleted: false
   }
   id: number = -1;
 

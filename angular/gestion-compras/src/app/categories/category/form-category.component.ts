@@ -20,12 +20,13 @@ export class FormCategoryComponent implements OnInit {
     this.getCategories();
     this.reset();
   }
+
   public save() {
     if (this.category.id != -1) {
       // Lo actualizo
       this.serviceCategory.updateCategory(this.category.id, this.category).subscribe(
         (data: Category) => {
-          console.log("Producto modificado:", data);
+          console.log("Categoría modificado:", data);
           Swal.fire({
             title: "Desea guardar los cambios?",
             showCancelButton: true,
@@ -88,7 +89,7 @@ export class FormCategoryComponent implements OnInit {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "El producto ha sido eliminado.",
+          title: "La categoría ha sido eliminado.",
           showConfirmButton: false,
           timer: 900
         });

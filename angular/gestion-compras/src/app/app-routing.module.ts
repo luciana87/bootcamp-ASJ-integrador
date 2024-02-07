@@ -12,8 +12,8 @@ import { DetailProductComponent } from './products/detail-product/detail-product
 import { HomeComponent } from './components/shared/home/home.component';
 import { DetailSupplierComponent } from './suppliers/detail-supplier/detail-supplier.component';
 import { LoginComponent } from './components/login/login.component';
-import { CategoryListComponent } from './categories/category-list/category-list.component';
 import { FormCategoryComponent } from './categories/category/form-category.component';
+import { FormFieldComponent } from './fields/form-field/form-field.component';
 
 const routes: Routes = [
   // {
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'supplier-list', component: SupplierListComponent },
   { path: 'purchase-order-list', component: PurchaseOrderListComponent },
   { path: 'login', component: LoginComponent},
-  // { path: 'category-list', component: CategoryListComponent },
+  { path: 'form-field', component: FormFieldComponent },
   { path: 'form-category', component: FormCategoryComponent },
   { path: 'form-category/:id', component: FormCategoryComponent },
   { path: '', component: HomeComponent},
