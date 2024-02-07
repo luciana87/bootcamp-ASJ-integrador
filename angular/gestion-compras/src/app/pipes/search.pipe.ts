@@ -10,7 +10,7 @@ export class SearchPipe implements PipeTransform {
     if(input === '' || input === undefined) {
       return value;
     }
-    return value.filter((item: Product) => item.name.includes(input));
+    return value.filter((item: Product) => item.name.includes(input) || item.sku.includes(input));
   }
 
 }

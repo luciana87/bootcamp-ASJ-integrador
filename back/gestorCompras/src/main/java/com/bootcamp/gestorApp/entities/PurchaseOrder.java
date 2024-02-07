@@ -35,6 +35,7 @@ public class PurchaseOrder {
 	private int numOrder;
 	
 	@Column(nullable = false)
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 	
 	@UpdateTimestamp

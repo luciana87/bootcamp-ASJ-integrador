@@ -25,7 +25,7 @@ public class ProvinceService {
 	public Province findById(Integer id) {
 		Optional<Province> provinceOptional = provinceRepository.findById(id);
 		if (provinceOptional.isEmpty()) {
-			throw new ResourceNotFoundException("COndición de iva no encontrada.");		
+			throw new ResourceNotFoundException("Provincia no encontrada.");		
 		}
 		return provinceOptional.get();
 	}

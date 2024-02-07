@@ -68,7 +68,7 @@ public class SupplierController {
 	 
 	 @PutMapping("/{id}")
 	 public ResponseEntity<Supplier> activateSupplier(@PathVariable Integer id, @RequestBody Supplier supplier){
-		 supplierService.activateSupplier(id,supplier);
+		 supplierService.replace(id,supplier);
 		 return new ResponseEntity<Supplier>(HttpStatus.OK);
 	 }
 	 

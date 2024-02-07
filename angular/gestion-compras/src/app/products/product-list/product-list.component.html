@@ -47,7 +47,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of (activeProducts | search: input_search | category: category)"
+                <tr *ngFor="let product of (activeProducts | search: input_search | category: category | sortProducts)"
                     id="product-table-container" class="row-12 align-middle">
                     <td class="col-1 tdImg">
                         <div class="imgContainer">

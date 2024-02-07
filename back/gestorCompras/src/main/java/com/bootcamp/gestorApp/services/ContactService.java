@@ -33,7 +33,7 @@ public class ContactService {
 	public Contact findById(Integer id) {
 		Optional<Contact> contactOptional =contactRepository.findById(id);
 		 if (contactOptional.isEmpty()){
-	            throw new ResourceNotFoundException("Contacto no encontrada.");
+	            throw new ResourceNotFoundException("Contacto no encontrado.");
 	        }
 		return contactOptional.get();
 	}	

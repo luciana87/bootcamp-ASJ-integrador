@@ -11,7 +11,8 @@ export class SupplierUtils {
             cuit: '',
             field: {
                 id: -1,
-                name: ''
+                name: '',
+                deleted: false
             },
             website: '',
             phoneNumber: '',

@@ -35,9 +35,15 @@ import { ActiveOrderPipe } from './pipes/active-order.pipe';
 import { CategoryPipe } from './pipes/category.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
-import { FormCategoryComponent } from './categories/form-category/form-category.component';
+import { FormCategoryComponent } from './categories/category/form-category.component';
 import { ActiveCategoryPipe } from './pipes/active-category.pipe';
 import { SearchSupplierPipe } from './pipes/search-supplier.pipe';
+import { SortByNamePipe } from './pipes/sort-by-name.pipe';
+import { FormFieldComponent } from './fields/form-field/form-field.component';
+import { FieldListComponent } from './fields/field-list/field-list.component';
+import { SortProductsPipe } from './pipes/sort-products.pipe';
+import { SortSuppliersPipe } from './pipes/sort-suppliers.pipe';
+import { SortOrdersByNumberPipe } from './pipes/sort-orders-by-number.pipe';
 
 
 @NgModule({
@@ -78,6 +84,12 @@ import { SearchSupplierPipe } from './pipes/search-supplier.pipe';
     SearchPipe,
     ActiveCategoryPipe,
     SearchSupplierPipe,
+    SortByNamePipe,
+    FormFieldComponent,
+    FieldListComponent,
+    SortProductsPipe,
+    SortSuppliersPipe,
+    SortOrdersByNumberPipe,
   ],
   imports: [
     BrowserModule,

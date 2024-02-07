@@ -46,8 +46,10 @@ public class Supplier {
 	private String logo;
 
 	@Column(nullable = false)
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	private boolean deleted;
 
@@ -84,7 +86,7 @@ public class Supplier {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.logo = logo;
-		this.createdAt = LocalDateTime.now();
+		this.createdAt = null;
 		this.updatedAt = null;
 		this.deleted = false;
 		this.address = address;
@@ -213,11 +215,11 @@ public class Supplier {
 		this.contact = contact;
 	}
 
-	@PreUpdate
-	protected void onUpdate() {
-		LocalDateTime now = LocalDateTime.now();
-		String formattedDateTime = now.format(Util.getDateTimeFormatter());
-		this.updatedAt = LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter());
-	}
+	/*
+	 * @PreUpdate protected void onUpdate() { LocalDateTime now =
+	 * LocalDateTime.now(); String formattedDateTime =
+	 * now.format(Util.getDateTimeFormatter()); this.updatedAt =
+	 * LocalDateTime.parse(formattedDateTime, Util.getDateTimeFormatter()); }
+	 */
 
 }

@@ -32,7 +32,9 @@ export class FormSupplierComponent implements OnInit {
   filteredProvinces: Province[] = [];
   selectedCountry: Country | null = null;
   field: Field = {
-    name: ''
+    id: -1,
+    name: '',
+    deleted: false
   }
   id: number = -1;
 
@@ -128,7 +130,15 @@ export class FormSupplierComponent implements OnInit {
               });
               this.router.navigate(['/supplier-list'])
             }
-          });
+          }, error => {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: error.error,
+              showConfirmButton: true
+            });
+          }
+          );
         }
       );
     } else {
@@ -144,7 +154,12 @@ export class FormSupplierComponent implements OnInit {
         });
         this.router.navigate(['/supplier-list'])
       }, (error) => {
-        console.error("Error al crear el producto:", error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error.error,
+          showConfirmButton: true
+        });
       });
     };
   }
@@ -155,6 +170,14 @@ export class FormSupplierComponent implements OnInit {
         response => {
           console.log('Nuevo rubro agregado:', response);
           this.fields.push(response)
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Se agregó el rubro con éxito.",
+            showConfirmButton: false,
+            timer: 900
+          });
+          this.field.name= '';
         },
         error => {
           console.error('Error al agregar rubro:', error);

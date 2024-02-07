@@ -4,7 +4,7 @@
         <table class=" table text-center table-striped ">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col"></th>
                     <th scope="col">Producto</th>
                     <th scope="col">Precio Unitario</th>
                     <th scope="col">Cantidad</th>
@@ -14,7 +14,11 @@
 
             <tbody>
                 <tr *ngFor="let item of datoEnviado" class="fs-6 text-sm-center ">
-                    <td>{{item.id}}</td>
+                    <td class="col-1 tdImg">
+                        <div class="imgContainer">
+                            <img src="{{item.product.image}}" />
+                        </div>
+                    </td>
                     <td>{{ item.product.name }}</td>
                     <td>{{ item.product.price | currency:'ARS'}}</td>
                     <td>{{ item.amount}}</td>

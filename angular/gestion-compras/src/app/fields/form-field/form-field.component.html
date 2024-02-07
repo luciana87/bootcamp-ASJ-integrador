@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="h3 mb-3"
+        style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
+        Rubros</h3>
+
+    <div class="row flex flex-column mb-4">
+        <label class="col-5 form-label mb-3" for="new-field">Agregar nuevo rubro</label>
+        <div class="col-7 d-flex justify-content-start align-items-center">
+            <input type="text" class="col-10" id="new-category" placeholder="Ingrese su texto..."
+                [(ngModel)]="field.name" name="category">
+            <button type="button" class="col-2 btn btn-add btn-sm ms-5 me-3" (click)="save()" data-toggle="tooltip"
+                data-placement="top" title="Agregar rubro">Guardar</button>
+            <button type="button" (click)="reset()"
+                class="col-2 btn btn-cancel btn-sm ">Cancelar</button>
+        </div>
+
+    </div>
+
+</div>
+<app-field-list [fields]="fields" (updateFieldEvent)="updateFieldEvent($event)"
+    (deleteFieldEvent)="deleteFieldEvent($event)"></app-field-list>
