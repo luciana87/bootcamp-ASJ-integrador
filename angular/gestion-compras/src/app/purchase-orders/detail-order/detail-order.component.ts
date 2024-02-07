@@ -47,7 +47,7 @@ export class DetailOrderComponent implements OnInit {
     this.router.navigate(['/purchase-order-list']);
     }
 
-    cambiarImagen(event: Event) {
+    defaultImage(event: Event) {
       this.serviceOrder.defaultImage(event);
     }
 

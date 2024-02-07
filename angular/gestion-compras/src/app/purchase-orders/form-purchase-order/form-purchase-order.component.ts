@@ -113,7 +113,6 @@ export class FormPurchaseOrderComponent implements OnInit {
   addProduct() {
     if (!this.product.id || this.amount < 1) {
       console.log("Producto o cantidad no válidos.");
-      return;
     }
 
     const selectedProduct = this.filteredProducts.find(product => product.id === +this.product.id);
@@ -135,6 +134,10 @@ export class FormPurchaseOrderComponent implements OnInit {
     } else {
       console.log("Producto no encontrado.");
     }
+  }
+
+  public isDisableAddProductButton(){
+    return !(this.order.supplier_id != -1 && this.product.id != -1 && this.amount > 0);
   }
 
 }
