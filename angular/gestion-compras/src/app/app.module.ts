@@ -48,7 +48,6 @@ import { ProductsComponent } from './products/products.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { OrdersComponent } from './purchase-orders/orders.component';
 import { BreadcrumbModule, BreadcrumbService } from 'xng-breadcrumb';
-import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -106,8 +105,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     CommonModule,
     HttpClientModule,
-    BreadcrumbModule,
-    MatIconModule
+    BreadcrumbModule
   ],
   providers: [
     ProductServiceService,

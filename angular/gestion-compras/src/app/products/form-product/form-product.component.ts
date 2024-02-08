@@ -21,6 +21,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./form-product.component.css'],
   providers: [ProductServiceService]
 })
+
 export class FormProductComponent implements OnInit {
 
 
@@ -71,7 +72,7 @@ export class FormProductComponent implements OnInit {
 
   public getCategories() {
     this.serviceCategory.getCategories().subscribe(
-      (data) => {
+      (data: Category[]) => {
         this.categoryList = data;
         console.log(this.categoryList);
       },
@@ -93,7 +94,6 @@ export class FormProductComponent implements OnInit {
       this.serviceProduct.updateProduct(this.product.id, this.product).subscribe(
         (data: Product) => {
           console.log("Producto modificado:", data);
-          // alert("Modificado correctamente")
           Swal.fire({
             title: "Desea guardar los cambios?",
             showCancelButton: true,
@@ -159,6 +159,12 @@ export class FormProductComponent implements OnInit {
           this.category.name = '';
         },
         error => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: error.error,
+            showConfirmButton: true
+          })
           console.error('Error al agregar categoría:', error);
         }
       );
