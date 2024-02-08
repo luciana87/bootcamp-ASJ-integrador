@@ -22,6 +22,7 @@ import Swal from 'sweetalert2';
   templateUrl: './form-supplier.component.html',
   styleUrls: ['./form-supplier.component.css']
 })
+
 export class FormSupplierComponent implements OnInit {
 
   supplier: Supplier = SupplierUtils.initializeSupplier();
@@ -31,15 +32,17 @@ export class FormSupplierComponent implements OnInit {
   ivaList: IvaType[] = [];
   filteredProvinces: Province[] = [];
   selectedCountry: Country | null = null;
-  field: Field = {
-    id: -1,
-    name: '',
-    deleted: false
-  }
+  field: Field = { id: -1, name: '', deleted: false }
   id: number = -1;
 
-  constructor(public serviceSupplier: SupplierServiceService, public serviceField: FieldService, public serviceIva: IvaService,
-    public serviceCountry: CountryService, public serviceProvince: ProvinceService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    public serviceSupplier: SupplierServiceService,
+    public serviceField: FieldService,
+    public serviceIva: IvaService,
+    public serviceCountry: CountryService,
+    public serviceProvince: ProvinceService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getCountries();
@@ -56,14 +59,12 @@ export class FormSupplierComponent implements OnInit {
             console.log(this.supplier);
           });
       }
-    });  
+    });
     this.getFields();
     this.getIvaConditions();
-  
   }
 
-  getProvinces(){
-    
+  public getProvinces() {
     this.serviceProvince.getProvinces().subscribe((data) => {
       this.provinces = data;
       console.log(this.provinces);
@@ -73,7 +74,7 @@ export class FormSupplierComponent implements OnInit {
       });
   }
 
-  getCountries() {
+  public getCountries() {
     this.serviceCountry.getCountries().subscribe((data) => {
       this.countries = data;
       console.log(this.countries);
@@ -83,7 +84,7 @@ export class FormSupplierComponent implements OnInit {
       });
   }
 
-  getIvaConditions() {
+  public getIvaConditions() {
     this.serviceIva.getIvaConditions().subscribe((data) => {
       this.ivaList = data;
       console.log(this.ivaList);
@@ -103,7 +104,7 @@ export class FormSupplierComponent implements OnInit {
       });
   }
 
-  save(formData: NgForm) {
+  public save(formData: NgForm) {
     console.log(formData.value);
     if (!formData.valid) {
       console.log("Formulario inválido.");
@@ -164,7 +165,7 @@ export class FormSupplierComponent implements OnInit {
     };
   }
 
-  addField() {
+  public addField() {
     if (this.field.name.trim() !== '') {
       this.serviceField.createField(this.field).subscribe(
         response => {
@@ -177,7 +178,7 @@ export class FormSupplierComponent implements OnInit {
             showConfirmButton: false,
             timer: 900
           });
-          this.field.name= '';
+          this.field.name = '';
         },
         error => {
           console.error('Error al agregar rubro:', error);
@@ -186,7 +187,7 @@ export class FormSupplierComponent implements OnInit {
     }
   }
 
-  onCountryChange(): void {
+  public onCountryChange(): void {
     console.log('País seleccionado:', this.supplier.address.province.country.id);
     console.log('Todas las provincias:', this.provinces);
     const selectedCountryId = this.supplier.address.province.country.id;
@@ -200,7 +201,6 @@ export class FormSupplierComponent implements OnInit {
       this.filteredProvinces = [];
     }
   }
-
 }
 
 

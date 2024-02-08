@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Supplier } from 'src/app/models/supplier';
-import { SearchSupplierPipe } from 'src/app/pipes/search-supplier.pipe';
 import { SupplierServiceService } from 'src/app/services/supplier-service/supplier-service.service';
 import { SupplierUtils } from 'src/app/utils/supplier';
 import Swal from 'sweetalert2';
@@ -15,20 +13,18 @@ import Swal from 'sweetalert2';
 
 export class SupplierListComponent implements OnInit {
 
-
   supplierList: Supplier[] = [];
   deletedSuppliers: Supplier[] = [];
   supplier: Supplier = SupplierUtils.initializeSupplier();
   activeSuppliers: Supplier[] = [];
   input_search: String = '';
-
   showDeleted: boolean = false;
 
-  constructor(public service: SupplierServiceService, private router: Router) { }
+  constructor(
+    public service: SupplierServiceService) { }
 
   ngOnInit(): void {
     this.getSuppliers();
-
   }
 
   public delete(supplier: Supplier) {

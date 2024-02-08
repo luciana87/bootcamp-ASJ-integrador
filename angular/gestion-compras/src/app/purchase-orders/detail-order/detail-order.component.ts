@@ -17,10 +17,10 @@ export class DetailOrderComponent implements OnInit {
   itemDetailList: ItemDetailDTO[] = [];
   id: number = -1;
 
-  constructor(public serviceOrder: PurchaseOrderServiceService,
-    private route: ActivatedRoute, private router: Router) {
-
-  }
+  constructor (
+    public serviceOrder: PurchaseOrderServiceService,
+    private route: ActivatedRoute, 
+    private router: Router ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: any) => {

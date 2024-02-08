@@ -17,9 +17,7 @@ export class LoginComponent {
   password: string = '';
 
   onLogin() {
-
     if (this.username === this.usuario && this.password === this.contrasena) {
-
       Swal.fire({
         title: "Inicio de sesión exitoso!",
         text: "Bienvenido",
@@ -29,9 +27,7 @@ export class LoginComponent {
       }).then(() => {
         this.loginSuccess.emit();
       });
-
     } else {
-
       Swal.fire({
         title: "¡Inicio de sesión fallido!",
         text: "Verifica tus credenciales",

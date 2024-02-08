@@ -9,12 +9,15 @@ import Swal from 'sweetalert2';
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.css']
 })
+
 export class FormFieldComponent implements OnInit {
 
   field: Field = { id: -1, name: '', deleted: false }
   fields: Field[] = [];
 
-  constructor(private serviceField: FieldService, private router: Router) { }
+  constructor(
+    private serviceField: FieldService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getFields();
@@ -74,15 +77,15 @@ export class FormFieldComponent implements OnInit {
     )
   }
 
-  reset() {
+  public reset() {
     this.field = { id: -1, name: '', deleted: false };
   }
 
-  updateFieldEvent(field: Field) {
+  public updateFieldEvent(field: Field) {
     this.field = field;
   }
 
-  deleteFieldEvent(field: Field) {
+  public deleteFieldEvent(field: Field) {
     this.serviceField.delete(field.id).subscribe(
       (data) => {
         console.log(data);
@@ -95,5 +98,5 @@ export class FormFieldComponent implements OnInit {
         });
         this.getFields();
       });
-    }
+  }
 }

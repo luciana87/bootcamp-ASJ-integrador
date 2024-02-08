@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +10,7 @@ export class NavbarComponent {
   @Input() isLoggedIn: boolean = false;
   @Output() logout = new EventEmitter<void>();
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   onLogout() {
     this.logout.emit();

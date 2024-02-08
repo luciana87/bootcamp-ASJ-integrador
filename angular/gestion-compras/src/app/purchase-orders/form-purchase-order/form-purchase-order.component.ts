@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { PurchaseOrderRequestDTO } from 'src/app/models/purchaseOrderRequestDTO';
 import { Product } from 'src/app/models/product';
@@ -36,20 +36,18 @@ export class FormPurchaseOrderComponent implements OnInit {
   amount: number = 1;
   product: Product = ProductUtils.initializeProduct();
 
-
-  constructor(public serviceOrder: PurchaseOrderServiceService, public serviceSupplier: SupplierServiceService,
-    public serviceProduct: ProductServiceService, private route: ActivatedRoute,
+  constructor (
+    public serviceOrder: PurchaseOrderServiceService, 
+    public serviceSupplier: SupplierServiceService,
+    public serviceProduct: ProductServiceService,
     private router: Router) { }
 
   ngOnInit(): void {
-
     this.getSuppliers();
-
   }
 
-  getSuppliers() {
+  public getSuppliers() {
     console.log("Llegue");
-
     this.serviceSupplier.getSuppliers().subscribe(
       (data) => {
         this.supplierList = data;
@@ -57,7 +55,7 @@ export class FormPurchaseOrderComponent implements OnInit {
       });
   }
 
-  getProducts() {
+  public getProducts() {
     this.serviceProduct.getProducts().subscribe(
       (data) => {
         this.productList = data;
@@ -66,7 +64,7 @@ export class FormPurchaseOrderComponent implements OnInit {
   }
 
 
-  onSupplierChange(value: number) {
+  public onSupplierChange(value: number) {
     console.log(value);
     return this.serviceProduct.getProductsBySupplier(value).subscribe(
       (data: Product[]) => {
@@ -82,7 +80,7 @@ export class FormPurchaseOrderComponent implements OnInit {
 
   }
 
-  createOrder(form: NgForm) {
+  public createOrder(form: NgForm) {
     if (!form.valid) {
       console.log("Formulario inválido.");
       return;
@@ -110,7 +108,7 @@ export class FormPurchaseOrderComponent implements OnInit {
       });
   }
 
-  addProduct() {
+  public addProduct() {
     if (!this.product.id || this.amount < 1) {
       console.log("Producto o cantidad no válidos.");
     }
@@ -139,5 +137,4 @@ export class FormPurchaseOrderComponent implements OnInit {
   public isDisableAddProductButton(){
     return !(this.order.supplier_id != -1 && this.product.id != -1 && this.amount > 0);
   }
-
 }

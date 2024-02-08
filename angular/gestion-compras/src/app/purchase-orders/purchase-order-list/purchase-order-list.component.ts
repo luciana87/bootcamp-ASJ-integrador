@@ -15,13 +15,14 @@ export class PurchaseOrderListComponent implements OnInit {
   input_search: String = '';
   showCanceled: boolean = false;
 
-  constructor(public serviceOrder: PurchaseOrderServiceService) { }
+  constructor ( 
+    public serviceOrder: PurchaseOrderServiceService ) { }
 
   ngOnInit(): void {
     this.getOrders();
   }
 
-  getOrders() {
+  public getOrders() {
     this.serviceOrder.getPurchaseOrders().subscribe(
       (data) => {
         this.orderList = data;
@@ -32,7 +33,7 @@ export class PurchaseOrderListComponent implements OnInit {
     )
   }
 
-  cancel(order: PurchaseOrderResponseDTO) {
+  public cancel(order: PurchaseOrderResponseDTO) {
     Swal.fire({
       title: `¿Está seguro que desea cancelar la órden #${order.num_order}?`,
       icon: 'warning',
