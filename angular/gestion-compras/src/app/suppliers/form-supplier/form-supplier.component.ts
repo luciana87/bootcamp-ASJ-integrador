@@ -162,13 +162,8 @@ export class FormSupplierComponent implements OnInit {
           this.errorMessage = error.error;
           this.showErrorMessage = true;
         }
-        // Swal.fire({
-        //   position: "center",
-        //   icon: "error",
-        //   title: error.error,
-        //   showConfirmButton: true
-        // });
       });
+      this.showErrorMessage = false;
     };
   }
 

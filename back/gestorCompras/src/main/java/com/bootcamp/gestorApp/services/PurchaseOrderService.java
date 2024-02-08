@@ -131,7 +131,7 @@ public class PurchaseOrderService {
 	
 	private void checkForExistingOrder(int numOrder) {
         if (purchaseOrderRepository.existsByNumOrder(numOrder)) {
-            throw new ExistingResourceException();
+            throw new ExistingResourceException("Ya existe una órden de compra con el número de órden #" + numOrder);
         }
 	}
 

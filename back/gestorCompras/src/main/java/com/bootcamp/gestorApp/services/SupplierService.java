@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.bootcamp.gestorApp.DTO.request.AddressRequestDTO;
 import com.bootcamp.gestorApp.DTO.request.ContactRequestDTO;
@@ -56,7 +57,7 @@ public class SupplierService {
 	
 	@Transactional
 	public Supplier create(SupplierRequestDTO supplierDTO) {
-		checkForExistingSupplier(supplierDTO.getCode());
+		checkForExistingSupplier(supplierDTO.getCode(),supplierDTO.getCuit());
 		
 		Address address = addressService.create(supplierDTO.getAddressDTO());
 		Contact contact = contactService.create(supplierDTO.getContactDTO());
@@ -65,7 +66,7 @@ public class SupplierService {
 		Province province = provinceService.findById(supplierDTO.getAddressDTO().getProvinceId());
 		
 		Supplier supplier = mapToEntity(supplierDTO,address,contact,ivaType,field,province);
-	
+		
 		return supplierRepository.save(supplier);
 	}
 
@@ -161,9 +162,14 @@ public class SupplierService {
 		return supplier;
 	}
 
-	private void checkForExistingSupplier(String code) {
-        if (supplierRepository.existsByCode(code)) {
-            throw new ExistingResourceException();
+	private void checkForExistingSupplier(String code, String cuit) {
+		
+        if (supplierRepository.existsByCode(code)){
+            throw new ExistingResourceException("Ya existe un proveedor con ese código. El código debe ser único.");
+        } 
+        
+        if (supplierRepository.existsByCuit(cuit)){
+            throw new ExistingResourceException("Ya existe un proveedor con ese CUIT. El CUIT debe ser único.");
         }
 	}
 

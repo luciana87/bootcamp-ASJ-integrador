@@ -36,6 +36,10 @@ export class FormPurchaseOrderComponent implements OnInit {
   amount: number = 1;
   product: Product = ProductUtils.initializeProduct();
 
+  
+  errorMessage: string | null = null;
+  showErrorMessage: boolean = false;
+
   constructor (
     public serviceOrder: PurchaseOrderServiceService, 
     public serviceSupplier: SupplierServiceService,
@@ -98,13 +102,10 @@ export class FormPurchaseOrderComponent implements OnInit {
         })
         this.router.navigate(['/orders'])
       }, error => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: error.error,
-          showConfirmButton: true
+        if (error.status !== 201) {
+          this.errorMessage = error.error;
+          this.showErrorMessage = true;
         }
-        );
       });
   }
 

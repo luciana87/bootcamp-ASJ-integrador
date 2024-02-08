@@ -30,7 +30,6 @@ public class Supplier {
 	@Column(unique = true, nullable = false)
 	private String code;
 
-	@Column(unique = true)
 	private String businessName;
 
 	@Column(unique = true)
@@ -64,11 +63,6 @@ public class Supplier {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "contact_id")
 	private Contact contact;
-
-	/*
-	 * @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER) private
-	 * List<Product> products;
-	 */
 
 	public Supplier() {
 		this.createdAt = LocalDateTime.now();

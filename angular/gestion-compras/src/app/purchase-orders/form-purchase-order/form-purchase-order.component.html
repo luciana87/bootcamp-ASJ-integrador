@@ -121,6 +121,10 @@
             </div>
         </div>
 
+        <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+        </div>
+        
         <button [disabled]="!formOrder.valid" type="submit" class="btn btn-add text-white me-3">Guardar</button>
         <button type="button" routerLink="/orders"
             class="btn btn-cancel">Cancelar</button>

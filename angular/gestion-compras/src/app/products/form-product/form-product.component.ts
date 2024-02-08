@@ -147,6 +147,7 @@ export class FormProductComponent implements OnInit {
         //   showConfirmButton: true
         // })
       });
+      this.showErrorMessage = false;
     };
   }
 

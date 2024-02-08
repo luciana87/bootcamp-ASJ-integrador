@@ -78,7 +78,7 @@ public class ProductService {
 	    
     private void checkForExistingProduct(String sku) {
         if (productRepository.existsBySku(sku)) {
-            throw new ExistingResourceException();
+            throw new ExistingResourceException("El SKU ya existe.");
         }
     }
     

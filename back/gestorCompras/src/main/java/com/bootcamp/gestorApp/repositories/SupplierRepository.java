@@ -12,4 +12,8 @@ public interface SupplierRepository extends JpaRepository<Supplier, Integer>{
 	@Query("SELECT COUNT(s) FROM Supplier s WHERE s.deleted = false")
 	Integer getAmountProducts();
 
+	boolean existsByBusinessName(String businessName);
+
+	boolean existsByCuit(String cuit);
+
 }
