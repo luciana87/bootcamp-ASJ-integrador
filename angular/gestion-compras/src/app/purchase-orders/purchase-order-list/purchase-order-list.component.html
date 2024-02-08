@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end">
-                        <button class=" button-add btn text-center btn-sm text-white" routerLink="/form-purchase-order">Agregar
+                        <button class=" button-add btn text-center btn-sm text-white" routerLink="/orders/create">Agregar
                             <i class="fa-solid fa-plus fa-sm"></i></button>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 
                         <button class="btn btn-sm me-3 button-circle" id="detail-button{{order.id}}"
                             style="background-color: rgba(184, 184, 192, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
-                            routerLink="/detail-order/{{order.id}}" data-toggle="tooltip" data-placement="top" title="Detalle">
+                            routerLink="detail/{{order.id}}" data-toggle="tooltip" data-placement="top" title="Detalle">
                             <i class="fa-regular fa-eye fa-sm d-flex align-content-center justify-content-center"></i>
                         </button>
                     </td>

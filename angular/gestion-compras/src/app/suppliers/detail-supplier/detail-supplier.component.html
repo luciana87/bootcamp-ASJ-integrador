@@ -2,7 +2,7 @@
     <div class=" d-flex justify-content-center align-items-center p-5 ">
         <div class="tdImg w-50 ">
             <div class="col-12 imgContainer ms-3 bg-image hover-overlay ripple " data-mdb-ripple-color="light">
-                <img src="{{supplier.logo}}" class="img-fluid" (error)="cambiarImagen($event)" />
+                <img src="{{supplier.logo}}" class="img-fluid" (error)="defaultImage($event)" />
             </div>
         </div>
     </div>
@@ -54,5 +54,5 @@
     </div>
 </div>
 <div class="container mt-4 d-flex align-items-center">
-    <button class="btn btn-sm btn-back" (click)="goBack()">Volver</button>
+    <button class="btn btn-back" (click)="goBack()">Volver</button>
 </div>

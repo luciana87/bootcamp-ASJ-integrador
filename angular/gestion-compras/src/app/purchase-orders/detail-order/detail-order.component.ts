@@ -10,6 +10,7 @@ import { PurcharseOrderResponseDTOUtils } from 'src/app/utils/purchaseOrderRespo
   templateUrl: './detail-order.component.html',
   styleUrls: ['./detail-order.component.css']
 })
+
 export class DetailOrderComponent implements OnInit {
 
   order: PurchaseOrderResponseDTO = PurcharseOrderResponseDTOUtils.initializePurchaseOrderResponseDTO();
@@ -17,12 +18,11 @@ export class DetailOrderComponent implements OnInit {
   id: number = -1;
 
   constructor(public serviceOrder: PurchaseOrderServiceService,
-              private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe((param: any) => {
       const idString = param.get('id');
       if (idString) {
@@ -30,26 +30,22 @@ export class DetailOrderComponent implements OnInit {
         this.serviceOrder.getOrderById(this.id).subscribe(
           (data) => {
             console.log(data);
-            
+
             this.order = data;
             this.itemDetailList = data.itemsDTO;
             console.log(this.itemDetailList);
-            
+
             console.log(this.order);
           });
       }
     });
-
-
   }
 
   goBack() {
-    this.router.navigate(['/purchase-order-list']);
-    }
+    this.router.navigate(['/orders']);
+  }
 
-    defaultImage(event: Event) {
-      this.serviceOrder.defaultImage(event);
-    }
-
-
+  defaultImage(event: Event) {
+    this.serviceOrder.defaultImage(event);
+  }
 }

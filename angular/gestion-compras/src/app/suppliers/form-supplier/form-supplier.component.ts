@@ -128,7 +128,7 @@ export class FormSupplierComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 900
               });
-              this.router.navigate(['/supplier-list'])
+              this.router.navigate(['/suppliers'])
             }
           }, error => {
             Swal.fire({
@@ -152,7 +152,7 @@ export class FormSupplierComponent implements OnInit {
           showConfirmButton: false,
           timer: 900
         });
-        this.router.navigate(['/supplier-list'])
+        this.router.navigate(['/suppliers'])
       }, (error) => {
         Swal.fire({
           position: "center",

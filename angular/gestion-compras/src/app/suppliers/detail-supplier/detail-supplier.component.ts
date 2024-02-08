@@ -31,10 +31,10 @@ export class DetailSupplierComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/supplier-list']);
+    this.router.navigate(['/suppliers']);
     }
 
-    cambiarImagen(event: Event) {
+    defaultImage(event: Event) {
       this.serviceSupplier.defaultImage(event);
     }
 

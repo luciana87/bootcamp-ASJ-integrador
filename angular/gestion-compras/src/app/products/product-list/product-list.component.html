@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-md-2 d-flex justify-content-end">
-                <button class="button-add btn text-center btn-sm text-white" routerLink="/form-product"
+                <button class="button-add btn text-center btn-sm text-white" routerLink="create"
                     data-toggle="tooltip" data-placement="top" title="Agregar producto">
                     Agregar <i class="fa-solid fa-plus fa-sm"></i>
                 </button>
@@ -61,7 +61,7 @@
                     <td class="col-1 border-bottom">{{ product.price | currency: '$'}}</td>
                     <td class="col-2 align-items-center justify-content-end border-bottom">
                         <button class="col-2 btn text-white me-2 btn-sm button-circle button-circle-add"
-                            id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"
+                            id="edit-button{{ product.id }}" routerLink="edit/{{product.id}}"
                             data-toggle="tooltip" data-placement="top" title="Editar"><i
                                 class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
                         <button *ngIf="!showDeleted"
@@ -72,7 +72,7 @@
                             data-toggle="tooltip" data-placement="top" title="Activar"
                             (click)="activateProduct(product)"><i
                                 class="fa-regular fa-square-check fa-sm d-flex align-content-center justify-content-center"></i></button>
-                        <button class="btn me-2 btn-sm button-circle" routerLink="/detail-product/{{product.id}}"
+                        <button class="btn me-2 btn-sm button-circle" routerLink="detail/{{product.id}}"
                             data-toggle="tooltip" data-placement="top" title="Detalle"><i
                                 class="fa-regular fa-eye fa-sm d-flex  align-content-center justify-content-center"></i></button>
                     </td>

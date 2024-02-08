@@ -104,7 +104,7 @@ export class FormProductComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 900
               });
-              this.router.navigate(['/product-list'])
+              this.router.navigate(['/products'])
             }
           }, error => {
             Swal.fire({
@@ -128,7 +128,7 @@ export class FormProductComponent implements OnInit {
           showConfirmButton: false,
           timer: 900
         });
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/products']);
       }, (error) => {
         Swal.fire({
           position: "center",

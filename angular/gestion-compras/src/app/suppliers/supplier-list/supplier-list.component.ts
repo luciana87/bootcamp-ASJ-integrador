@@ -51,7 +51,6 @@ export class SupplierListComponent implements OnInit {
               'El proveedor ha sido eliminado.',
               'success'
             )
-            // this.getActiveSuppliers()
             this.getSuppliers();
           });
       };

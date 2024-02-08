@@ -44,6 +44,9 @@ import { FieldListComponent } from './fields/field-list/field-list.component';
 import { SortProductsPipe } from './pipes/sort-products.pipe';
 import { SortSuppliersPipe } from './pipes/sort-suppliers.pipe';
 import { SortOrdersByNumberPipe } from './pipes/sort-orders-by-number.pipe';
+import { ProductsComponent } from './products/products.component';
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { OrdersComponent } from './purchase-orders/orders.component';
 
 
 @NgModule({
@@ -57,11 +60,13 @@ import { SortOrdersByNumberPipe } from './pipes/sort-orders-by-number.pipe';
     FormProductComponent,
     ProductListComponent,
     DetailProductComponent,
+    ProductsComponent,
 
     //Proveedores
     FormSupplierComponent,
     SupplierListComponent,
     DetailSupplierComponent,
+    SuppliersComponent,
 
     //Ordenes de compra
     PurchaseOrderListComponent,
@@ -73,7 +78,7 @@ import { SortOrdersByNumberPipe } from './pipes/sort-orders-by-number.pipe';
     CategoryListComponent,
     FormCategoryComponent,
     HomeComponent,
-    LoginComponent,
+    LoginComponent,    
 
     //Pipes
     OrderStatusPipe,
@@ -90,6 +95,7 @@ import { SortOrdersByNumberPipe } from './pipes/sort-orders-by-number.pipe';
     SortProductsPipe,
     SortSuppliersPipe,
     SortOrdersByNumberPipe,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

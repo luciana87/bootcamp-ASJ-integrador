@@ -98,7 +98,7 @@ export class FormPurchaseOrderComponent implements OnInit {
           showConfirmButton: false,
           timer: 900
         })
-        this.router.navigate(['/purchase-order-list'])
+        this.router.navigate(['/orders'])
       }, error => {
         Swal.fire({
           position: "center",
