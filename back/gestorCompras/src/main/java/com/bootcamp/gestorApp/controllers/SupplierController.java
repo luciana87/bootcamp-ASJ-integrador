@@ -1,7 +1,6 @@
 package com.bootcamp.gestorApp.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bootcamp.gestorApp.DTO.request.SupplierRequestDTO;
 import com.bootcamp.gestorApp.DTO.response.SupplierResponseDTO;
-import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.services.SupplierService;
 

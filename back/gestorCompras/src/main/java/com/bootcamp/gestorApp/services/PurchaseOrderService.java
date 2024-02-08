@@ -1,14 +1,11 @@
 package com.bootcamp.gestorApp.services;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -16,7 +13,6 @@ import com.bootcamp.gestorApp.DTO.request.PurchaseOrderRequestDTO;
 import com.bootcamp.gestorApp.DTO.response.ItemDetailResponseDTO;
 import com.bootcamp.gestorApp.DTO.response.PurchaseOrderResponseDTO;
 import com.bootcamp.gestorApp.entities.ItemDetail;
-import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.PurchaseOrder;
 import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.exceptions.ExistingResourceException;
@@ -24,7 +20,6 @@ import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
 import com.bootcamp.gestorApp.repositories.PurchaseOrderRepository;
 import com.bootcamp.gestorApp.utils.Util;
 
-import jakarta.persistence.criteria.Order;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

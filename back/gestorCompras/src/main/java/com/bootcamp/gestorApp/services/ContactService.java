@@ -5,8 +5,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ContactRequestDTO;
-import com.bootcamp.gestorApp.DTO.response.ItemDetailResponseDTO;
-import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Contact;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
 import com.bootcamp.gestorApp.repositories.ContactRepository;

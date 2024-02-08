@@ -3,10 +3,6 @@ package com.bootcamp.gestorApp.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
@@ -24,7 +20,6 @@ import jakarta.transaction.Transactional;
 @Service
 public class ProductService {
 	
-
 	
 	private ProductRepository productRepository;
 	private CategoryService categoryService;
@@ -42,7 +37,6 @@ public class ProductService {
 	}
 
 
-	
 	  public Product retriveById(Integer id) { 
 		  Optional<Product> productOptional = productRepository.findById(id); 
 		  
@@ -51,17 +45,6 @@ public class ProductService {
 		  }
 		  return productOptional.get();
 	  }
-
-	
-	/*
-	 * public ProductResponseDTO retriveById(Integer id) { Optional<Product> product
-	 * = productRepository.findById(id);
-	 * 
-	 * if (product.isEmpty()){ throw new
-	 * ResourceNotFoundException("Producto no encontrado."); } return
-	 * mapToDTO(product.get()); }
-	 */
-
 	 
 	
 	@Transactional
@@ -133,14 +116,6 @@ public class ProductService {
 
 	public List<Product> getProductsBySupplier(Integer id) {
 		return productRepository.getProductsBySupplierIdAndDeletedFalse(id);
-	}
-
-
-	public List<Product> findAllById(Integer id) {
-		
-		//Pageable page = PageRequest.of(1, 10); //size = 10
-		Pageable sortedByName = PageRequest.of(1, 10, Sort.by("name"));
-		   return productRepository.findAllById(id, sortedByName);
 	}
 
 
