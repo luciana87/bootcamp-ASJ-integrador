@@ -18,7 +18,11 @@ import { SuppliersComponent } from './suppliers/suppliers.component';
 import { OrdersComponent } from './purchase-orders/orders.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  {
+    path: '',
+    component: HomeComponent,
+    data: { breadcrumb: 'Home' }
+  },
   {
     path: 'products',
     component: ProductsComponent,
@@ -32,17 +36,17 @@ const routes: Routes = [
       {
         path: 'detail/:id',
         component: DetailProductComponent,
-        data: { breadcrumb: 'detalle' },
+        data: { breadcrumb: 'Detalle' },
       },
       {
         path: 'edit/:id',
         component: FormProductComponent,
-        data: { breadcrumb: 'editar' },
+        data: { breadcrumb: 'Editar' },
       },
       {
         path: 'create',
         component: FormProductComponent,
-        data: { breadcrumb: 'crear' },
+        data: { breadcrumb: 'Crear' },
       }
     ]
   },
@@ -59,44 +63,39 @@ const routes: Routes = [
       {
         path: 'detail/:id',
         component: DetailSupplierComponent,
-        data: { breadcrumb: 'detalle'},
+        data: { breadcrumb: 'Detalle' },
       },
       {
         path: 'edit/:id',
         component: FormSupplierComponent,
-        data: { breadcrumb: 'editar'}
+        data: { breadcrumb: 'Editar' }
       },
       {
         path: 'create',
         component: FormSupplierComponent,
-        data: { breadcrumb: 'crear'}
+        data: { breadcrumb: 'Crear' }
       }
     ]
   },
   {
     path: 'orders',
     component: OrdersComponent,
-    data: { breadcrumbs: 'ordenes'},
+    data: { breadcrumb: 'Órdenes' },
     children: [
       {
         path: '',
         component: PurchaseOrderListComponent,
-        data: { breadcrumbs: '' }
+        data: { breadcrumb: '' }
       },
       {
         path: 'detail/:id',
         component: DetailOrderComponent,
-        data: { breadcrumbs: 'detalle' }
-      },
-      {
-        path: 'edit/:id',
-        component: FormPurchaseOrderComponent,
-        data: { breadcrumbs: 'editar' }
+        data: { breadcrumb: 'Detalle' },
       },
       {
         path: 'create',
         component: FormPurchaseOrderComponent,
-        data: { breadcrumbs: 'crear'}
+        data: { breadcrumb: 'Crear' },
       }
     ]
   },
@@ -107,15 +106,15 @@ const routes: Routes = [
   {
     path: 'categories',
     component: FormCategoryComponent,
-    data: { breadcrumbs: 'categorías' }
+    data: { breadcrumb: 'Categorías' },
   },
   {
     path: 'fields',
     component: FormFieldComponent,
-    data: { breadcrumbs: 'rubros' }
+    data: { breadcrumb: 'Rubros' },
   },
   { path: '**', pathMatch: 'full', redirectTo: '' }
-  
+
 ]
 
 @NgModule({

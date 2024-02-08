@@ -1,4 +1,9 @@
-<div class="container bg-light ">
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <mat-icon>chevron_right</mat-icon>
+</ng-template>
+
+<div class="container bg-light mt-4">
     <div class=" d-flex justify-content-center align-items-center p-5 ">
         <div class="tdImg w-50 ">
             <div class="col-12 imgContainer ms-3 bg-image hover-overlay ripple " data-mdb-ripple-color="light">

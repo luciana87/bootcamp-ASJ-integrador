@@ -1,5 +1,10 @@
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <mat-icon>chevron_right</mat-icon>
+</ng-template>
+
 <form #formSupplier="ngForm" (ngSubmit)="save(formSupplier)"
-    class="form-control border d-flex justify-content-center align-items-center container w-75" id="supplier-form">
+    class="form-control border d-flex justify-content-center align-items-center container w-75 mt-4" id="supplier-form">
     <div class="container ">
         <h3 class="h3 fw-medium  text-secondary p-2 ">Carga de proveedor</h3>
 

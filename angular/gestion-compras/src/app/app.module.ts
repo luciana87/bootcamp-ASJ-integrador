@@ -47,6 +47,8 @@ import { SortOrdersByNumberPipe } from './pipes/sort-orders-by-number.pipe';
 import { ProductsComponent } from './products/products.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { OrdersComponent } from './purchase-orders/orders.component';
+import { BreadcrumbModule, BreadcrumbService } from 'xng-breadcrumb';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -103,7 +105,9 @@ import { OrdersComponent } from './purchase-orders/orders.component';
     NgbModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    BreadcrumbModule,
+    MatIconModule
   ],
   providers: [
     ProductServiceService,
@@ -113,7 +117,8 @@ import { OrdersComponent } from './purchase-orders/orders.component';
     CategoryPipe,
     ActiveProductPipe,
     ActiveSupplierPipe,
-    SearchPipe],
+    SearchPipe,
+    BreadcrumbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

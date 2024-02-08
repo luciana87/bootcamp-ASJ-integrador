@@ -1,5 +1,10 @@
-<form #formProduct="ngForm" (ngSubmit)="save(formProduct)" class="form-control container w-75 border "
-    id="product-form" action="">
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <mat-icon>chevron_right</mat-icon>
+</ng-template>
+
+<form #formProduct="ngForm" (ngSubmit)="save(formProduct)" class="form-control container w-75 border mt-4" id="product-form"
+    action="">
 
     <div class="container">
         <h3 class="h3 fw-medium  text-secondary p-2">Cargar producto</h3>
@@ -88,12 +93,13 @@
                         </div>
                     </div>
                     <!-- Input para agregar una nueva categoría -->
-                    <label for="new-category" class="form-label" >¿Agregar nueva categoría?</label>
+                    <label for="new-category" class="form-label">¿Agregar nueva categoría?</label>
                     <input type="text" class="form-control mb-3" id="new-category" placeholder="Nueva categoría"
-                        [(ngModel)]="category.name" name="category" >
+                        [(ngModel)]="category.name" name="category">
 
                     <!-- Botón para agregar una nueva categoría -->
-                    <button type="button" class="btn btn-success    btn-sm  mb-3" (click)="addCategory()">Agregar Categoría</button>
+                    <button type="button" class="btn btn-success    btn-sm  mb-3" (click)="addCategory()">Agregar
+                        Categoría</button>
                 </div>
 
                 <div class="col-md-6">
@@ -101,8 +107,8 @@
                         <label for="price-input" class="form-label">Precio:</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
-                            <input type="number" name="price" class="form-control" id="price-input" placeholder="ej: 2850.25"
-                                min="1" [(ngModel)]="product.price">
+                            <input type="number" name="price" class="form-control" id="price-input"
+                                placeholder="ej: 2850.25" min="1" [(ngModel)]="product.price">
                         </div>
                         <div *ngIf="formProduct.controls['price']?.invalid && (formProduct.controls['price']?.dirty || formProduct.controls['price']?.touched)"
                             class="text-danger">
@@ -120,22 +126,22 @@
             <div class="mb-3">
                 <label for="description-input" class="form-label">Descripción:</label>
                 <textarea class="form-control" name="description" id="description-input"
-                    placeholder="Ingrese su texto..." rows="5" maxlength="255" [(ngModel)]="product.description"></textarea>
-                    <div *ngIf="formProduct.controls['description']?.invalid && (formProduct.controls['description']?.dirty || formProduct.controls['description']?.touched)"
+                    placeholder="Ingrese su texto..." rows="5" maxlength="255"
+                    [(ngModel)]="product.description"></textarea>
+                <div *ngIf="formProduct.controls['description']?.invalid && (formProduct.controls['description']?.dirty || formProduct.controls['description']?.touched)"
                     class="text-danger">
                     <div class="text-danger" *ngIf="product.description.length > 255">
                         La descripción no debe exceder los 255 caracteres.
                     </div>
                 </div>
             </div>
-            
-            
+
+
 
             <div class="col-12 d-flex  justify-content-center mb-3 py-3 ">
                 <button [disabled]=" !formProduct.valid" type="submit"
                     class="button-add btn btn-sm me-4 text-white">Guardar</button>
-                <button type="button" routerLink="/products"
-                    class="btn btn-cancel btn-sm ">Cancelar</button>
+                <button type="button" routerLink="/products" class="btn btn-cancel btn-sm ">Cancelar</button>
             </div>
         </div>
     </div>

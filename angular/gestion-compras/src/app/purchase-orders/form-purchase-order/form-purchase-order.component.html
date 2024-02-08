@@ -1,4 +1,9 @@
-<form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control border container w-75"
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <mat-icon>chevron_right</mat-icon>
+</ng-template>
+
+<form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control border container w-75 mt-4"
     id="product-form">
 
     <div class="container">

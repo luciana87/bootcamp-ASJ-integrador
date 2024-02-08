@@ -32,14 +32,17 @@ export class FormProductComponent implements OnInit {
   // isUpdate: boolean = false;
 
 
-  constructor(public serviceProduct: ProductServiceService, public serviceSupplier: SupplierServiceService, public serviceCategory: CategoryService, private router: Router,
-    private route: ActivatedRoute, public builder: FormBuilder) { }
+  constructor(
+    public serviceProduct: ProductServiceService, 
+    public serviceSupplier: SupplierServiceService, 
+    public serviceCategory: CategoryService, 
+    private router: Router,
+    private route: ActivatedRoute, 
+    public builder: FormBuilder) { }
 
   ngOnInit() {
-
     this.getSuppliers();
     this.getCategories();
-
     this.route.paramMap.subscribe((param: any) => {
       const idString = param.get('id');
       if (idString) {
@@ -135,7 +138,7 @@ export class FormProductComponent implements OnInit {
           icon: "error",
           title: error.error,
           showConfirmButton: true
-        })        
+        })
       });
     };
   }
