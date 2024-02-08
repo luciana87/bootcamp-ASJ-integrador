@@ -35,6 +35,9 @@ export class FormSupplierComponent implements OnInit {
   field: Field = { id: -1, name: '', deleted: false }
   id: number = -1;
 
+  errorMessage: string | null = null;
+  showErrorMessage: boolean = false;
+
   constructor(
     public serviceSupplier: SupplierServiceService,
     public serviceField: FieldService,
@@ -155,12 +158,16 @@ export class FormSupplierComponent implements OnInit {
         });
         this.router.navigate(['/suppliers'])
       }, (error) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: error.error,
-          showConfirmButton: true
-        });
+        if (error.status !== 201) {
+          this.errorMessage = error.error;
+          this.showErrorMessage = true;
+        }
+        // Swal.fire({
+        //   position: "center",
+        //   icon: "error",
+        //   title: error.error,
+        //   showConfirmButton: true
+        // });
       });
     };
   }

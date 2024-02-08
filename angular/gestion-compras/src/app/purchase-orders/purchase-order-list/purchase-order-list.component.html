@@ -43,18 +43,13 @@
                     <td class="col-auto border-bottom ">{{order.total | currency:'$'}}</td>
                     <td class="col-1 border-bottom ">{{order.canceled | orderStatus}}</td>
                     <td class="col-auto d-flex align-items-center justify-content-end border-bottom" style="height: 72px;">
-
-                        <button *ngIf="!showCanceled" class="btn text-white me-3 btn-sm button-circle"
-                            style="background-color: rgb(239, 88, 88); color: rgb(255, 255, 255); border-radius: 50%;" data-toggle="tooltip" data-placement="top" title="Cancelar"
+                        <button class="btn btn-sm me-2 button-circle button-circle-detail" id="detail-button{{order.id}}"
+                            routerLink="detail/{{order.id}}" data-toggle="tooltip" data-placement="top" title="Detalle">
+                            <i class="fa-solid fa-eye fa-sm d-flex align-content-center justify-content-center"></i>
+                        </button>
+                        <button *ngIf="!showCanceled" class="btn text-white me-2 btn-sm button-circle button-circle-delete" data-toggle="tooltip" data-placement="top" title="Cancelar"
                             (click)="cancel(order)">
                             <i class="fa-solid fa-ban fa-xs d-flex  align-content-center justify-content-center"></i>
-                        </button>
-
-
-                        <button class="btn btn-sm me-3 button-circle" id="detail-button{{order.id}}"
-                            style="background-color: rgba(184, 184, 192, 0.952); color: rgb(255, 255, 255);  border-radius: 50%;"
-                            routerLink="detail/{{order.id}}" data-toggle="tooltip" data-placement="top" title="Detalle">
-                            <i class="fa-regular fa-eye fa-sm d-flex align-content-center justify-content-center"></i>
                         </button>
                     </td>
                 </tr>

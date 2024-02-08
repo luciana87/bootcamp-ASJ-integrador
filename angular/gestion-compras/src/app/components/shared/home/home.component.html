@@ -3,41 +3,16 @@
     <i class="fa-solid fa-chevron-right fa-sm"></i>
 </ng-template>
 
+<div class="row text-center justify-content-center align-content-center mt-0">
+    <h1 class="fw-bold mb-3">Bienvenido</h1>
+</div>
 <section class="container mb-0">
 
-    <div class="row text-center justify-content-center align-content-center mt-0 mb-5">
-
-        <h1 class="fw-bold mb-5">Bienvenido</h1>
-        <div class="div-card-supplier col-3 me-3 p-3 border rounded">
-            <h4 class="card-title text-center mb-2">Proveedores</h4>
-            <p class="card-text text-center mb-0">Cantidad de proveedores activos:</p>
-            <p class="card-num text-center fw-bold">{{amountSuppliers}} </p>
-            <div class="text-center">
-                <button class="btn-add btn" routerLink="/suppliers/create">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
-            </div>
-        </div>
-        <div class="div-card-product col-3 me-3 p-3 border rounded">
-            <h4 class="card-title text-center mb-2">Productos</h4>
-            <p class="card-text text-center mb-0">Cantidad de productos activos:</p>
-            <p class="card-num text-center fw-bold">{{amountProducts}}</p>
-            <div class="text-center">
-                <button class="btn-add btn" routerLink="/products/create">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
-            </div>
-        </div>
-        <div class="div-card-order col-3 me-3 p-3 border rounded">
-            <h4 class="card-title text-center mb-2">Órdenes</h4>
-            <p class="card-text text-center mb-0">Cantidad de órdenes activas:</p>
-            <p class="card-num text-center fw-bold">{{amountOrders}}</p>
-            <div class="text-center">
-                <button class="btn-add btn" routerLink="/orders/create">Agregar <i class="fa-solid fa-plus fa-sm"></i></button>
-            </div>
-        </div>
-    </div>
-
     <div class="row align-items-center row ">
+
         <div class="col-6 text-md-start text-center">
-            <h2 class="fw-bold mb-3">Sistema de Gestión Compras</h2>
-            <h1 class="">Software pensado para automatizar y optimizar.</h1>
+            <h3 class="fw-bold mb-3">Sistema de Gestión Compras</h3>
+            <h2 class="">Software pensado para automatizar y optimizar.</h2>
             <p class=" mb-4 fw-medium text-start  ">Esta aplicación de gestión de compras es una herramienta
                 pensada para
                 automatizar y optimizar el proceso de adquisición de bienes y servicios en una empresa.</p>
@@ -55,5 +30,34 @@
         </div>
     </div>
 
+    <div class="row text-center justify-content-center align-content-center mt-5 mb-0">
 
+        <div class="div-card-supplier col-3 me-3 p-3 border rounded">
+            <h4 class="card-title text-center mb-2">Proveedores</h4>
+            <p class="card-text text-center mb-0">Cantidad de proveedores activos:</p>
+            <p class="card-num text-center fw-bold">{{amountSuppliers}} </p>
+            <div class="text-center">
+                <button class="btn-add btn" routerLink="/suppliers/create">Agregar <i
+                        class="fa-solid fa-plus fa-sm"></i></button>
+            </div>
+        </div>
+        <div class="div-card-product col-3 me-3 p-3 border rounded">
+            <h4 class="card-title text-center mb-2">Productos</h4>
+            <p class="card-text text-center mb-0">Cantidad de productos activos:</p>
+            <p class="card-num text-center fw-bold">{{amountProducts}}</p>
+            <div class="text-center">
+                <button class="btn-add btn" routerLink="/products/create">Agregar <i
+                        class="fa-solid fa-plus fa-sm"></i></button>
+            </div>
+        </div>
+        <div class="div-card-order col-3 me-3 p-3 border rounded">
+            <h4 class="card-title text-center mb-2">Órdenes</h4>
+            <p class="card-text text-center mb-0">Cantidad de órdenes activas:</p>
+            <p class="card-num text-center fw-bold">{{amountOrders}}</p>
+            <div class="text-center">
+                <button class="btn-add btn" routerLink="/orders/create">Agregar <i
+                        class="fa-solid fa-plus fa-sm"></i></button>
+            </div>
+        </div>
+    </div>
 </section>

@@ -32,6 +32,9 @@ export class FormProductComponent implements OnInit {
   id: number = -1;
   // isUpdate: boolean = false;
 
+  errorMessage: string | null = null;
+  showErrorMessage: boolean = false;
+
 
   constructor(
     public serviceProduct: ProductServiceService, 
@@ -133,12 +136,16 @@ export class FormProductComponent implements OnInit {
         });
         this.router.navigate(['/products']);
       }, (error) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: error.error,
-          showConfirmButton: true
-        })
+        if (error.status !== 201) {
+          this.errorMessage = error.error;
+          this.showErrorMessage = true;
+        }
+        // Swal.fire({
+        //   position: "center",
+        //   icon: "error",
+        //   title: error.error,
+        //   showConfirmButton: true
+        // })
       });
     };
   }

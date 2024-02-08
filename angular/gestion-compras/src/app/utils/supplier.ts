@@ -20,7 +20,7 @@ export class SupplierUtils {
             address: {
                 id: -1,
                 street: '',
-                num: -1,
+                num: undefined,
                 postalCode: '',
                 city: '',
                 province: {
@@ -40,7 +40,7 @@ export class SupplierUtils {
                 id:-1,
                 contactName: '',
                 contactLastname: '',
-                phoneNumber: 0,
+                phoneNumber: undefined,
                 contactEmail: '',
                 position: ''
             },
