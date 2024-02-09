@@ -3,40 +3,36 @@
     /* background-color:  #4343eb ; */
     /* background-color: #ec8e8d; */
     border-radius: 8px;
-    border-color: #f85a4b;
+    border-color: #fff;
     border-width: 1px;
     border-style: solid;
-    color: #ff8277;
+    color: #fff;
     cursor: pointer;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
 }
 
 .div-box {
-    background-color: rgb(42, 40, 40);
+    background-color: #05054c;
 
 }
 
 .button-dropdown{
-    color: #ff8277;
-    background-color:rgb(42, 40, 40);
+    color: #fff;
+    background-color:#05054c;
 }
 
 .button-dropdown:hover{
-    color: #fbb8b2;
+    color: #53aae3;
 }
 
 .bg-navbar {
-    /* background-color: #dbe3fa   ; */
-    /* background-color: rgb(219, 227, 250); */
-    /* background-color: rgb(42, 40, 40); */
-    
-    background-color: rgb(61, 59, 59); 
+    background-color: #05054c; 
 }
 
 .btn-logout{
-    border-color: rgb(67, 67, 251);
-    color: #5d5dfb;
+    border-color: #9ad7ff;
+    color: #9ad7ff;
     border-width: 2px;
     border-style: solid;
     height: 4vh;
@@ -55,8 +51,8 @@
 }
 
 .button-texto:hover {
-    color:  #fbb8b2;
-    border-color: #ff8a80;
+    color:  #53aae3;
+    border-color: #53aae3;
 
 }
 

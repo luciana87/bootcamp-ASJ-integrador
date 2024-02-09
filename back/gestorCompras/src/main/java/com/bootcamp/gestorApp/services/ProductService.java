@@ -62,7 +62,10 @@ public class ProductService {
 	public void delete(Integer id) {
 		
 		Product product = this.retriveById(id);
-		
+		if(product.getSupplier().isDeleted() != false) {
+			throw new ValidateErrors(
+					"El proveedor del producto que está intentando eliminar no se encuentra activo.");
+		} else {}
 		product.setDeleted(true);
 		productRepository.save(product);
 	}
