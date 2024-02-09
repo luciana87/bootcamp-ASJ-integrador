@@ -9,12 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent {
 
   title = 'gestion-compras';
-  isLoggedIn: boolean = true;
+  isLoggedIn: boolean = false;
 
   constructor(private ruta: ActivatedRoute, private router: Router) { }
 
   onLoginSuccess() {
-    this.isLoggedIn = false;
+    this.isLoggedIn = true;
     this.router.navigate(['/']);
   }
 
