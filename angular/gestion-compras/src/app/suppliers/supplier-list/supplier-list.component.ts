@@ -42,13 +42,15 @@ export class SupplierListComponent implements OnInit {
         this.service.deleteSupplier(supplier.id).subscribe(
           (data) => {
             console.log(data);
-            Swal.fire(
-              '¡Eliminado!',
-              'El proveedor ha sido eliminado.',
-              'success'
-            )
             this.getSuppliers();
+          }, (error) => {
+            Swal.fire({
+              icon: "error",
+              title: "Acción denegada.",
+              text: error.error
           });
+            }
+          );
       };
     })
   }

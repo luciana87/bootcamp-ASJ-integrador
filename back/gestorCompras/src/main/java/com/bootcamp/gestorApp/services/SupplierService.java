@@ -92,7 +92,7 @@ public class SupplierService {
 
 		if (purchaseOrderService.findActiveOrderBySupplier(id)) {
 			throw new ValidateErrors(
-					"El proveedor que está intentando eliminar posee órdenes de compra activas. Acción denegada.");
+					"El proveedor que está intentando eliminar posee órdenes de compra activas.");
 		} else {
 			supplier.setDeleted(true);
 			productService.deleteBySupplier(id);
