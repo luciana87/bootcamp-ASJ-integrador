@@ -1,24 +1,28 @@
 <nav class="bg-navbar navbar navbar-expand-lg">
-    <div class="w-50">
-        <a class="ms-4 navbar-brand d-flex align-items-center " href="#"><img class="img-fluid " src="../../../../assets/img/supplier_logo_color.png"
-                alt="Logo" width="8%" height="5%"></a>
+    <div class="w-50 d-flex row">
+        <a class="ms-4 navbar-brand d-flex align-items-center " href="#"><img class="img-fluid "
+                src="../../../../assets/img/logo7.png" alt="Logo" width="18%" height="5%"></a>
     </div>
     <div class="div-btn w-50 d-flex justify-content-end">
         <ul class="navbar-nav d-flex justify-content-end ">
             <li class="nav-item">
                 <div class="col">
                     <div>
-                        <button class="button-2 btn btn-sm text-uppercase button-mr button-texto" routerLink="">Home</button>
+                        <button class="button-2 btn btn-sm text-uppercase button-mr button-texto"
+                            routerLink="">Home</button>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
                 <div class="ms-2">
                     <div ngbDropdown>
-                        <button class="button-2 btn btn-sm  btn-floating button-mr button-texto" id="gfg" ngbDropdownToggle>Productos</button>
+                        <button class="button-2 btn btn-sm  btn-floating button-mr button-texto" id="gfg"
+                            ngbDropdownToggle>Productos</button>
                         <div class="div-box" ngbDropdownMenu="gfg">
-                            <button class="button-dropdown button-bg" ngbDropdownItem routerLink="/products">Listar productos</button>
-                            <button class="button-dropdown button-bg" ngbDropdownItem routerLink="/products/create">Nuevo producto</button>
+                            <button class="button-dropdown button-bg" ngbDropdownItem routerLink="/products">Listar
+                                productos</button>
+                            <button class="button-dropdown button-bg" ngbDropdownItem
+                                routerLink="/products/create">Nuevo producto</button>
                         </div>
                     </div>
                 </div>
@@ -26,10 +30,13 @@
             <li class="nav-item">
                 <div class="ms-2">
                     <div ngbDropdown>
-                        <button class="button-2 btn btn-sm button-mr button-texto" id="gfg" ngbDropdownToggle>Proveedores</button>
+                        <button class="button-2 btn btn-sm button-mr button-texto" id="gfg"
+                            ngbDropdownToggle>Proveedores</button>
                         <div class="div-box" ngbDropdownMenu="gfg">
-                            <button class="button-dropdown" ngbDropdownItem routerLink="/suppliers">Listar proveedores</button>
-                            <button class="button-dropdown" ngbDropdownItem routerLink="/suppliers/create">Nuevo proveedor</button>
+                            <button class="button-dropdown" ngbDropdownItem routerLink="/suppliers">Listar
+                                proveedores</button>
+                            <button class="button-dropdown" ngbDropdownItem routerLink="/suppliers/create">Nuevo
+                                proveedor</button>
                         </div>
                     </div>
                 </div>
@@ -41,7 +48,8 @@
                             compra</button>
                         <div class="div-box " ngbDropdownMenu="gfg">
                             <button class="button-dropdown" ngbDropdownItem routerLink="/orders">Listar órdenes</button>
-                            <button class="button-dropdown" ngbDropdownItem routerLink="/orders/create">Nueva órden</button>
+                            <button class="button-dropdown" ngbDropdownItem routerLink="/orders/create">Nueva
+                                órden</button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +57,8 @@
             <li class="nav-item">
                 <div class="ms-2 me-2">
                     <div ngbDropdown>
-                        <button class="button-2 btn btn-sm button-mr button-texto" id="gfg" ngbDropdownToggle>Configuración</button>
+                        <button class="button-2 btn btn-sm button-mr button-texto" id="gfg"
+                            ngbDropdownToggle>Configuración</button>
                         <div class="div-box " ngbDropdownMenu="gfg">
                             <button class="button-dropdown" ngbDropdownItem routerLink="/categories">Categorías</button>
                             <button class="button-dropdown" ngbDropdownItem routerLink="/fields">Rubros</button>
@@ -58,7 +67,9 @@
                 </div>
             </li>
             <li class="nav-item">
-                <button class="d-flex button-2 btn-logout btn btn-logout-text" *ngIf="isLoggedIn" (click)="onLogout()" routerLink="/login" data-toggle="tooltip" data-placement="top" title="Cerrar sesión"><i class="fa-solid fa-power-off fa-sm align-self-center "></i></button>
+                <button class="d-flex button-2 btn-logout btn btn-logout-text" *ngIf="isLoggedIn" (click)="onLogout()"
+                    routerLink="/login" data-toggle="tooltip" data-placement="top" title="Cerrar sesión"><i
+                        class="fa-solid fa-power-off fa-sm align-self-center "></i></button>
             </li>
         </ul>
     </div>
