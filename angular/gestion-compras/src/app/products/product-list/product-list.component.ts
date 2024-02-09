@@ -21,14 +21,14 @@ export class ProductListComponent implements OnInit {
 
   //ngModels:
   input_search: String = '';
-  nullCategory = {id:-1,name:'',createdAt: new Date, updatedAt: new Date, deleted: false};
+  nullCategory = { id: -1, name: '', createdAt: new Date, updatedAt: new Date, deleted: false };
   category: Category = this.nullCategory;
 
   showDeleted: boolean = false;
 
 
   constructor(
-    private service: ProductServiceService, 
+    private service: ProductServiceService,
     private activeProductPipe: ActiveProductPipe) { }
 
   ngOnInit(): void {
@@ -47,11 +47,11 @@ export class ProductListComponent implements OnInit {
 
         // Filtro las categorías para obtener solo las únicas por su id
         this.uniqueCategories = categories.filter(category => {
-            if (!uniqueCategoriesById[category.id]) {
-                uniqueCategoriesById[category.id] = true;
-                return true;
-            }
-            return false;
+          if (!uniqueCategoriesById[category.id]) {
+            uniqueCategoriesById[category.id] = true;
+            return true;
+          }
+          return false;
         });
       },
       (error) => {
@@ -80,19 +80,24 @@ export class ProductListComponent implements OnInit {
               'success'
             )
             this.getProducts();
+          }, (error) => {
+            Swal.fire({
+              icon: "error",
+              title: "Acción denegada.",
+              text: error.error
+            });
           });
       };
     })
   }
 
   public filterByDeleted() {
-    this.activeProducts =  this.activeProductPipe.transform(this.productList, this.showDeleted); //pipe
+    this.activeProducts = this.activeProductPipe.transform(this.productList, this.showDeleted); //pipe
   }
 
   public delete(product: Product) {
     Swal.fire({
       title: `¿Está seguro que desea eliminar el producto ${product.name}?`,
-      text: " Tenga en cuenta que esta acción no podrá deshacerse.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
