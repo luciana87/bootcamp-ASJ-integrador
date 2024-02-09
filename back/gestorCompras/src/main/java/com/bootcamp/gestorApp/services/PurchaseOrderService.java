@@ -78,13 +78,11 @@ public class PurchaseOrderService {
 		return mapToDTO(order);
 	}
 	
-
 	private double calculateTotal(List<ItemDetail> items) {
 		
 		return Math.round(items.stream().mapToDouble(item -> item.getTotal()).sum() * 100.0) / 100.0;
 		
 	}
-
 
 	public List<PurchaseOrderResponseDTO> mapToDTOS(List<PurchaseOrder> orders) {
 		return orders.stream()
@@ -92,7 +90,6 @@ public class PurchaseOrderService {
                 .collect(Collectors.toList());
 	}
 	
-
 	public void delete(Integer id) {
 
 		PurchaseOrder order = this.getEntityById(id);
@@ -100,7 +97,6 @@ public class PurchaseOrderService {
 		purchaseOrderRepository.save(order);
 	
 	}
-
 
 	private PurchaseOrderResponseDTO mapToDTO(PurchaseOrder purchaseOrder) {
 		PurchaseOrderResponseDTO orderResponseDTO = Util.getModelMapper().map(purchaseOrder, PurchaseOrderResponseDTO.class);
@@ -130,14 +126,14 @@ public class PurchaseOrderService {
         }
 	}
 
-
 	public Integer calculateAmountOrders() {
 		Integer amount = purchaseOrderRepository.getAmountOrders();
 		return amount;
 	}
 
-
-
-
+	public boolean findActiveOrderBySupplier(Integer id) {
+		return purchaseOrderRepository.findActiveOrderBySupplier(id);
+		
+	}
 
 }

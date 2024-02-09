@@ -18,4 +18,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 	@Query("SELECT COUNT(p) FROM Product p WHERE p.deleted = false")
 	Integer getAmountProducts();
 
+
+	List<Product> findProductsBySupplierId(Integer supplierId);
+
+
 }
