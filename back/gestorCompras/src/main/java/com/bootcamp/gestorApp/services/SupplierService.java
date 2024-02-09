@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.context.properties.bind.validation.ValidationErrors;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ContactRequestDTO;

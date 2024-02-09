@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -29,15 +30,13 @@ public class PurchaseOrderService {
 	private PurchaseOrderRepository purchaseOrderRepository;
 	private ItemDetailService itemDetailService;
 	private SupplierService supplierService;
-	private ProductService productService;
 
 	public PurchaseOrderService(PurchaseOrderRepository purchaseOrderRepository, ItemDetailService itemDetailService,
-			SupplierService supplierService, ProductService productService) {
+			@Lazy SupplierService supplierService) {
 
 		this.purchaseOrderRepository = purchaseOrderRepository;
 		this.itemDetailService = itemDetailService;
 		this.supplierService = supplierService;
-		this.productService = productService;
 	}
 
 

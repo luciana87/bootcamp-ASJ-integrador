@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
@@ -26,7 +27,7 @@ public class ProductService {
 	private SupplierService supplierService;
 
 	public ProductService(ProductRepository productRepository, CategoryService categoryService,
-			SupplierService supplierService) {
+			@Lazy SupplierService supplierService) {
 		this.productRepository = productRepository;
 		this.categoryService = categoryService;
 		this.supplierService = supplierService;
@@ -102,18 +103,9 @@ public class ProductService {
 
 	}
 
+	@Transactional
 	public void deleteBySupplier(Integer supplierId) {
-
-		List<Product> productListToSaveList = new ArrayList<Product>();
-		List<Product> productsBySupplierList = productRepository.findProductsBySupplierId(supplierId);
-
-		if (productsBySupplierList != null) {
-			for (Product product : productsBySupplierList) {
-				product.setDeleted(true);
-				productListToSaveList.add(product);
-			}
-			productRepository.saveAll(productListToSaveList);
-		}
+		productRepository.deleteProductsBySupplierId(supplierId);
 	}
 
 	private void checkForExistingProduct(String sku) {
