@@ -12,7 +12,6 @@ export class FieldService {
 
   private readonly baseUrl = "http://localhost:8080/fields"
 
-
   
   getFields(): Observable<Field[]> {
     const headers = { 'Content-Type': 'application/json' };

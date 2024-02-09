@@ -1,8 +1,7 @@
-<div id="login" *ngIf="!isLoggedIn" class="bg-black  ">
+<div id="login" *ngIf="!isLoggedIn">
   <app-login (loginSuccess)="onLoginSuccess()"></app-login>
 </div>
 
-<!-- <app-navbar *ngIf="!isLoggedIn"></app-navbar> -->
 <app-navbar class="p-0" *ngIf="isLoggedIn" [isLoggedIn]="isLoggedIn" (logout)="logout()"></app-navbar>
 <app-main *ngIf="isLoggedIn"></app-main>
 <app-footer *ngIf="isLoggedIn"></app-footer>

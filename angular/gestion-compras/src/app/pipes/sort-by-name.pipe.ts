@@ -7,7 +7,7 @@ import { Category } from '../models/category';
 export class SortByNamePipe implements PipeTransform {
 
   transform(array: any[]): any[] {
-    array.sort((strA: Category, strB: Category) => {
+    array.sort((strA: any, strB: any) => {
       if (strA.name < strB.name) {
         return -1;
       }

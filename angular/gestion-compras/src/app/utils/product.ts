@@ -62,8 +62,8 @@ export class ProductUtils {
             description: '',
             price: 0,
             image: '',
-            createdAt: new Date("2024-01-14"),
-            updatedAt: new Date("2024-01-25"),
+            createdAt: new Date(),
+            updatedAt: new Date(),
             deleted: false
         }
     }

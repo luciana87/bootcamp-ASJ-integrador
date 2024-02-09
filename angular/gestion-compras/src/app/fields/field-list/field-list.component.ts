@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
 })
 export class FieldListComponent {
 
-  
   @Input() fields: Field[] = [];
   @Output() updateFieldEvent = new EventEmitter<Field>();
   @Output() deleteFieldEvent = new EventEmitter<Field>();
 
-  constructor(private serviceField: FieldService) { }
+  constructor(
+    private serviceField: FieldService) { }
 
   public getFields() {
     this.serviceField.getFields().subscribe(
@@ -25,7 +25,7 @@ export class FieldListComponent {
     )
   }
 
-  updateField(field: Field) {
+  public updateField(field: Field) {
     this.updateFieldEvent.emit(field);
   }
 
@@ -45,7 +45,4 @@ export class FieldListComponent {
       };
     })
   }
-
-
-
 }

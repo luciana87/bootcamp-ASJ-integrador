@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bootcamp.gestorApp.DTO.request.PurchaseOrderRequestDTO;
 import com.bootcamp.gestorApp.DTO.response.PurchaseOrderResponseDTO;
-import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.PurchaseOrder;
 import com.bootcamp.gestorApp.services.PurchaseOrderService;
 

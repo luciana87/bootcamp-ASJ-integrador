@@ -1,6 +1,11 @@
-<div class="container w-100 ">
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <i class="fa-solid fa-chevron-right fa-sm"></i>
+</ng-template>
 
-    <section class="w-100 ">
+<div class="container w-100 mt-4">
+
+    <section class="w-100">
         <h3 class="row mb-3 h3"
             style="font-family: 'Roboto', sans-serif; color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px;">
             Productos</h3>
@@ -8,12 +13,13 @@
             <div class="col-md-2 d-flex align-items-center">
                 <div class="form-check form-switch">
                     <label class="col- form-check-label" for="switch">Ver eliminados</label>
-                    <input class="col- form-check-input" type="checkbox" id="switch" [(ngModel)]="showDeleted" (change)="filterByDeleted()">
+                    <input class="col- form-check-input" type="checkbox" id="switch" [(ngModel)]="showDeleted"
+                        (change)="filterByDeleted()">
                 </div>
             </div>
             <div class="col-md-3 d-flex align-items-center">
                 <label class="col-3" for="search">Buscar:</label>
-                <input class="col-9" [(ngModel)]="input_search" type="text" name="search" id="search">
+                <input class="col-9 custom-input" [(ngModel)]="input_search" type="text" name="search" id="search" placeholder="Buscar por nombre ó sku...">
             </div>
 
             <div class="col-md-5 d-flex align-items-center">
@@ -26,8 +32,8 @@
             </div>
 
             <div class="col-md-2 d-flex justify-content-end">
-                <button class="button-add btn text-center btn-sm text-white" routerLink="/form-product"
-                    data-toggle="tooltip" data-placement="top" title="Agregar producto">
+                <button class="button-add btn text-center btn-sm text-white" routerLink="create" data-toggle="tooltip"
+                    data-placement="top" title="Agregar producto">
                     Agregar <i class="fa-solid fa-plus fa-sm"></i>
                 </button>
             </div>
@@ -59,22 +65,23 @@
                     <td class="col-2 border-bottom py-2">{{ product.category.name }}</td>
                     <td class="col-2 border-bottom">{{ product.supplier.businessName }}</td>
                     <td class="col-1 border-bottom">{{ product.price | currency: '$'}}</td>
-                    <td class="col-2 align-items-center justify-content-end border-bottom">
-                        <button class="col-2 btn text-white me-2 btn-sm button-circle button-circle-add"
-                            id="edit-button{{ product.id }}" routerLink="/form-product/{{product.id}}"
-                            data-toggle="tooltip" data-placement="top" title="Editar"><i
+                    <td class="col-2 border-bottom">
+                        <button class="btn me-2 btn-sm button-circle button-circle-detail" routerLink="detail/{{product.id}}"
+                        data-toggle="tooltip" data-placement="top" title="Detalle">
+                        <i class="fa-solid fa-eye fa-sm d-flex align-content-center justify-content-center"></i>
+                    </button>
+                        <button class="col-2 btn text-white me-2 btn-sm button-circle button-circle-edit"
+                            id="edit-button{{ product.id }}" routerLink="edit/{{product.id}}" data-toggle="tooltip"
+                            data-placement="top" title="Editar"><i
                                 class="fa-regular fa-pen-to-square fa-sm d-flex  align-content-center justify-content-center "></i></button>
                         <button *ngIf="!showDeleted"
                             class="btn text-white me-2 btn-sm button-circle button-circle-delete" data-toggle="tooltip"
                             data-placement="top" title="Eliminar" (click)="delete(product)"><i
                                 class="fa-regular fa-trash-can fa-sm d-flex  align-content-center justify-content-center"></i></button>
-                        <button *ngIf="showDeleted" class="btn text-white me-2 btn-sm button-circle-activate"
+                        <button *ngIf="showDeleted" class="btn button-circle me-2 btn-sm button-circle-activate"
                             data-toggle="tooltip" data-placement="top" title="Activar"
                             (click)="activateProduct(product)"><i
                                 class="fa-regular fa-square-check fa-sm d-flex align-content-center justify-content-center"></i></button>
-                        <button class="btn me-2 btn-sm button-circle" routerLink="/detail-product/{{product.id}}"
-                            data-toggle="tooltip" data-placement="top" title="Detalle"><i
-                                class="fa-regular fa-eye fa-sm d-flex  align-content-center justify-content-center"></i></button>
                     </td>
                 </tr>
             </tbody>

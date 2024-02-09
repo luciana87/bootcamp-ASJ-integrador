@@ -21,6 +21,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./form-product.component.css'],
   providers: [ProductServiceService]
 })
+
 export class FormProductComponent implements OnInit {
 
 
@@ -31,15 +32,21 @@ export class FormProductComponent implements OnInit {
   id: number = -1;
   // isUpdate: boolean = false;
 
+  errorMessage: string | null = null;
+  showErrorMessage: boolean = false;
 
-  constructor(public serviceProduct: ProductServiceService, public serviceSupplier: SupplierServiceService, public serviceCategory: CategoryService, private router: Router,
-    private route: ActivatedRoute, public builder: FormBuilder) { }
+
+  constructor(
+    public serviceProduct: ProductServiceService, 
+    public serviceSupplier: SupplierServiceService, 
+    public serviceCategory: CategoryService, 
+    private router: Router,
+    private route: ActivatedRoute, 
+    public builder: FormBuilder) { }
 
   ngOnInit() {
-
     this.getSuppliers();
     this.getCategories();
-
     this.route.paramMap.subscribe((param: any) => {
       const idString = param.get('id');
       if (idString) {
@@ -68,7 +75,7 @@ export class FormProductComponent implements OnInit {
 
   public getCategories() {
     this.serviceCategory.getCategories().subscribe(
-      (data) => {
+      (data: Category[]) => {
         this.categoryList = data;
         console.log(this.categoryList);
       },
@@ -90,7 +97,6 @@ export class FormProductComponent implements OnInit {
       this.serviceProduct.updateProduct(this.product.id, this.product).subscribe(
         (data: Product) => {
           console.log("Producto modificado:", data);
-          // alert("Modificado correctamente")
           Swal.fire({
             title: "Desea guardar los cambios?",
             showCancelButton: true,
@@ -104,7 +110,7 @@ export class FormProductComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 900
               });
-              this.router.navigate(['/product-list'])
+              this.router.navigate(['/products'])
             }
           }, error => {
             Swal.fire({
@@ -128,15 +134,20 @@ export class FormProductComponent implements OnInit {
           showConfirmButton: false,
           timer: 900
         });
-        this.router.navigate(['/product-list']);
+        this.router.navigate(['/products']);
       }, (error) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: error.error,
-          showConfirmButton: true
-        })        
+        if (error.status !== 201) {
+          this.errorMessage = error.error;
+          this.showErrorMessage = true;
+        }
+        // Swal.fire({
+        //   position: "center",
+        //   icon: "error",
+        //   title: error.error,
+        //   showConfirmButton: true
+        // })
       });
+      this.showErrorMessage = false;
     };
   }
 
@@ -156,6 +167,12 @@ export class FormProductComponent implements OnInit {
           this.category.name = '';
         },
         error => {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: error.error,
+            showConfirmButton: true
+          })
           console.error('Error al agregar categoría:', error);
         }
       );

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bootcamp.gestorApp.DTO.request.FieldRequestDTO;
-import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Field;
 import com.bootcamp.gestorApp.services.FieldService;
 

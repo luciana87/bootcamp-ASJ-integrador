@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
 import { ActiveProductPipe } from 'src/app/pipes/active-product.pipe';
-import { CategoryPipe } from 'src/app/pipes/category.pipe';
-import { SearchPipe } from 'src/app/pipes/search.pipe';
-import { CategoryService } from 'src/app/services/categoryService/category.service';
 import { ProductServiceService } from 'src/app/services/product-service/product-service.service';
 import Swal from 'sweetalert2';
 
@@ -30,8 +27,9 @@ export class ProductListComponent implements OnInit {
   showDeleted: boolean = false;
 
 
-  constructor(private service: ProductServiceService, private activeProductPipe: ActiveProductPipe,
-                private categoryPipe: CategoryPipe ,private searchPipe: SearchPipe, private serviceCategory: CategoryService) { }
+  constructor(
+    private service: ProductServiceService, 
+    private activeProductPipe: ActiveProductPipe) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -47,7 +45,7 @@ export class ProductListComponent implements OnInit {
         let uniqueCategoriesById: { [id: number]: boolean } = {};
         let categories: Category[] = this.productList.flatMap(product => product.category);
 
-        // Filtramos las categorías para obtener solo las únicas por su id
+        // Filtro las categorías para obtener solo las únicas por su id
         this.uniqueCategories = categories.filter(category => {
             if (!uniqueCategoriesById[category.id]) {
                 uniqueCategoriesById[category.id] = true;
@@ -91,7 +89,7 @@ export class ProductListComponent implements OnInit {
     this.activeProducts =  this.activeProductPipe.transform(this.productList, this.showDeleted); //pipe
   }
 
-  delete(product: Product) {
+  public delete(product: Product) {
     Swal.fire({
       title: `¿Está seguro que desea eliminar el producto ${product.name}?`,
       text: " Tenga en cuenta que esta acción no podrá deshacerse.",
@@ -123,5 +121,4 @@ export class ProductListComponent implements OnInit {
   public changeImage(event: Event) {
     this.service.defaultImage(event);
   }
-
 }

@@ -43,5 +43,9 @@ public class ControllerExceptionHandler {
     public ResponseEntity handleException(SQLIntegrityConstraintViolationException e) {
         return new ResponseEntity(e.getMessage(), HttpStatus.CONFLICT);
     }
-
+    
+    @ExceptionHandler(ValidateErrors.class)
+    public ResponseEntity<String> handleValidationErrors(ValidateErrors ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
 }

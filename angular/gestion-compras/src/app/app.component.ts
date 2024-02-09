@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private ruta: ActivatedRoute, private router: Router) { }
 
   onLoginSuccess() {
-    this.isLoggedIn = true;
+    this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
 

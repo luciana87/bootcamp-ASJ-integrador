@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bootcamp.gestorApp.DTO.request.CategoryRequestDTO;
 import com.bootcamp.gestorApp.entities.Category;
-import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.services.CategoryService;
 
 

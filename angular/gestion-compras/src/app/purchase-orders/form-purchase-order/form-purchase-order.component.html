@@ -1,4 +1,9 @@
-<form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control border container w-75"
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <i class="fa-solid fa-chevron-right fa-sm"></i>
+</ng-template>
+
+<form #formOrder="ngForm" (ngSubmit)="createOrder(formOrder)" class="form-control border container w-75 mt-4"
     id="product-form">
 
     <div class="container">
@@ -7,7 +12,7 @@
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="nro-input" class="form-label">Nro. de orden:</label>
-                    <input type="number" class="form-control" name="num_order" id="nro-input" required min="1"
+                    <input type="number" class="form-control custom-input" placeholder="Ingrese el nro de órden" name="num_order" id="nro-input" required min="1"
                         [(ngModel)]="order.num_order">
                     <div *ngIf="formOrder.controls['num_order']?.invalid && (formOrder.controls['num_order']?.dirty || formOrder.controls['num_order']?.touched)"
                         class="text-danger">
@@ -87,8 +92,8 @@
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="amount-input" class="form-label">Cantidad:</label>
-                    <input type="number" class="form-control" name="amount" id="amount-input" min="1"
-                        [(ngModel)]="amount">
+                    <input type="number" class="form-control custom-input" name="amount" id="amount-input" min="1"
+                        [(ngModel)]="amount" placeholder="Ingrese la cantidad">
                     <div *ngIf="formOrder.controls['amount']?.invalid && (formOrder.controls['amount']?.dirty || formOrder.controls['amount']?.touched)"
                         class="text-danger">
                         <small *ngIf="formOrder.controls['amount']?.hasError('min')">La cantidad debe ser mayor a
@@ -105,19 +110,23 @@
 
 
         <div class="col-12 mt-4">
-            <app-list [datoEnviado]="items"></app-list>
+            <app-list [datoEnviado]="items" ></app-list>
         </div>
 
         <div class="col-12">
             <div class="mb-3">
                 <label for="info-input" class="col-7 form-label">Información adicional:</label>
-                <textarea class="col-5 form-control" id="info-input" rows="3" name="description"
+                <textarea class="col-5 form-control" id="info-input" rows="3" name="description" placeholder="Ingrese su texto aquí..."
                     [(ngModel)]="order.description"></textarea>
             </div>
         </div>
 
+        <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+        </div>
+        
         <button [disabled]="!formOrder.valid" type="submit" class="btn btn-add text-white me-3">Guardar</button>
-        <button type="button" (click)="formOrder.reset()" routerLink="/purchase-order-list"
+        <button type="button" routerLink="/orders"
             class="btn btn-cancel">Cancelar</button>
 
     </div>

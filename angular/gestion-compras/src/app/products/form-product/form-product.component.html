@@ -1,4 +1,9 @@
-<form #formProduct="ngForm" (ngSubmit)="save(formProduct)" class="form-control container w-75 border "
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <i class="fa-solid fa-chevron-right fa-sm"></i>
+</ng-template>
+
+<form #formProduct="ngForm" (ngSubmit)="save(formProduct)" class="form-control container w-75 border mt-4"
     id="product-form" action="">
 
     <div class="container">
@@ -9,8 +14,8 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="imagen" class="form-label">URL imagen:</label>
-                        <input type="url" class="form-control" id="imagen" name="image"
-                            placeholder="Ingrese URL de la imagen" [(ngModel)]="product.image">
+                        <input type="url" class="form-control custom-input" id="imagen" name="image"
+                            placeholder="Ingrese una URL..." [(ngModel)]="product.image">
                     </div>
                 </div>
 
@@ -33,14 +38,13 @@
             </div>
         </div>
 
-
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="name-input" class="form-label">Nombre:</label>
-                        <input type="text" name="name" class="form-control" id="name-input" placeholder="Nombre"
-                            required minlength="4" [(ngModel)]="product.name">
+                        <input type="text" name="name" class="form-control custom-input" id="name-input"
+                            placeholder="Ingrese un nombre..." required minlength="4" [(ngModel)]="product.name">
                         <div *ngIf="formProduct.controls['name']?.invalid && (formProduct.controls['name']?.dirty || formProduct.controls['name']?.touched)"
                             class="text-danger">
                             <small *ngIf="formProduct.controls['name']?.errors?.['required']">Este campo es
@@ -54,8 +58,8 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="sku-input" class="form-label">SKU:</label>
-                        <input type="text" name="sku" class="form-control" id="sku-input" placeholder="Sku"
-                            minlength="3" required [(ngModel)]="product.sku" />
+                        <input type="text" name="sku" class="form-control custom-input" id="sku-input"
+                            placeholder="Ingrese un SKU..." minlength="3" required [(ngModel)]="product.sku" />
                         <div *ngIf="formProduct.controls['sku']?.invalid && (formProduct.controls['sku']?.dirty || formProduct.controls['sku']?.touched)"
                             class="text-danger">
                             <small *ngIf="formProduct.controls['sku']?.errors?.['required']">Este campo es
@@ -69,7 +73,6 @@
         </div>
 
         <div class="container">
-
 
             <div class="row">
                 <div class="col-md-6">
@@ -88,12 +91,13 @@
                         </div>
                     </div>
                     <!-- Input para agregar una nueva categoría -->
-                    <label for="new-category" class="form-label" >¿Agregar nueva categoría?</label>
-                    <input type="text" class="form-control mb-3" id="new-category" placeholder="Nueva categoría"
-                        [(ngModel)]="category.name" name="category" >
+                    <label for="new-category" class="form-label">¿Agregar nueva categoría?</label>
+                    <input type="text" class="form-control mb-3 custom-input" id="new-category"
+                        placeholder="Ingrese una nueva categoría..." [(ngModel)]="category.name" name="category">
 
                     <!-- Botón para agregar una nueva categoría -->
-                    <button type="button" class="btn btn-success    btn-sm  mb-3" (click)="addCategory()">Agregar Categoría</button>
+                    <button type="button" class="btn btn-success btn-sm mb-3" (click)="addCategory()">Agregar
+                        Categoría</button>
                 </div>
 
                 <div class="col-md-6">
@@ -101,8 +105,8 @@
                         <label for="price-input" class="form-label">Precio:</label>
                         <div class="input-group">
                             <span class="input-group-text">$</span>
-                            <input type="number" name="price" class="form-control" id="price-input" placeholder="ej: 2850.25"
-                                min="1" [(ngModel)]="product.price">
+                            <input type="number" name="price" class="form-control custom-input" id="price-input"
+                                placeholder="ej: 1850.25" min="1" [(ngModel)]="product.price">
                         </div>
                         <div *ngIf="formProduct.controls['price']?.invalid && (formProduct.controls['price']?.dirty || formProduct.controls['price']?.touched)"
                             class="text-danger">
@@ -115,29 +119,28 @@
                 </div>
             </div>
 
-
-
             <div class="mb-3">
                 <label for="description-input" class="form-label">Descripción:</label>
                 <textarea class="form-control" name="description" id="description-input"
-                    placeholder="Ingrese su texto..." rows="5" maxlength="255" [(ngModel)]="product.description"></textarea>
-                    <div *ngIf="formProduct.controls['description']?.invalid && (formProduct.controls['description']?.dirty || formProduct.controls['description']?.touched)"
+                    placeholder="Ingrese su texto..." rows="5" maxlength="255"
+                    [(ngModel)]="product.description"></textarea>
+                <div *ngIf="formProduct.controls['description']?.invalid && (formProduct.controls['description']?.dirty || formProduct.controls['description']?.touched)"
                     class="text-danger">
                     <div class="text-danger" *ngIf="product.description.length > 255">
                         La descripción no debe exceder los 255 caracteres.
                     </div>
                 </div>
             </div>
-            
-            
+
+            <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
+                {{ errorMessage }}
+            </div>
 
             <div class="col-12 d-flex  justify-content-center mb-3 py-3 ">
                 <button [disabled]=" !formProduct.valid" type="submit"
                     class="button-add btn btn-sm me-4 text-white">Guardar</button>
-                <button type="button" (click)="formProduct.reset()" routerLink="/product-list"
-                    class="btn btn-cancel btn-sm ">Cancelar</button>
+                <button type="button" routerLink="/products" class="btn btn-cancel btn-sm ">Cancelar</button>
             </div>
         </div>
     </div>
-
 </form>
