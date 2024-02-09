@@ -6,4 +6,8 @@ import com.bootcamp.gestorApp.entities.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
+	boolean existsByName(String name);
+
+	Category findByName(String name);
+
 }
