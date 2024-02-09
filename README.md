@@ -9,6 +9,8 @@
 
 - [Ejecutar localmente](#ejecutar-localmente)
 
+- [Entidades mandatorias](#entidades-mandatorias)
+
 - [Aclaraciones sobre Login](#aclaraciones-sobre-login)
 
 - [Desarrolladora](#desarrollado-por)
@@ -146,19 +148,23 @@ VALUES
 
    _Tanto las categorías como los rubros pueden ingresarse desde el **panel de configuración general** ó desde
    el formulario de productos y proveedores respectivamente._
- 
 
-- Insertar algunos **Proveedores** desde el FRONT
-  
-  *Proveedores > Nuevo provedor*
+## Entidades mandatorias
+El sistema cuenta con entidades mandatorias. Una vez insertados los países con sus provincias, las condiciones de IVA y/o las categorías y rubros, lo siguiente que se debe crear son los **PROVEEDORES**. 
+Una vez creado el/los proveedores puedo crear **PRODUCTOS**, ya que se necesita de la entidad Proveedor para tal fin.
+Por último ya puedo generar **ÓRDENES DE COMPRA**.
 
-- Insertar algunos **Productos** desde el FRONT
+1. Insertar algunos **Proveedores** desde los formularios del FRONT
   
-  *Productos > Nuevo producto*
+      *Proveedores > Nuevo provedor*
 
-- Insertar algunas **Ordenes de Compra** desde el FRON
+2. Insertar algunos **Productos** desde los formularios del FRONT
   
-  *Órdenes de compra > Nueva órden*
+      *Productos > Nuevo producto*
+
+3. Insertar algunas **Ordenes de Compra** desde los formularios del FRON
+  
+      *Órdenes de compra > Nueva órden*
 
 
 ## Aclaraciones sobre **Login**
