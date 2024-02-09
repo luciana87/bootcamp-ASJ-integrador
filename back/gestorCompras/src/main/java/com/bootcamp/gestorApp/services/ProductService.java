@@ -14,6 +14,7 @@ import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.exceptions.ExistingResourceException;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
+import com.bootcamp.gestorApp.exceptions.ValidateErrors;
 import com.bootcamp.gestorApp.repositories.ProductRepository;
 import com.bootcamp.gestorApp.utils.Util;
 
@@ -59,7 +60,9 @@ public class ProductService {
 	}
 
 	public void delete(Integer id) {
+		
 		Product product = this.retriveById(id);
+		
 		product.setDeleted(true);
 		productRepository.save(product);
 	}
@@ -97,10 +100,16 @@ public class ProductService {
 	}
 
 	public void activateProduct(Integer id, Product product) {
+		
 		Product productFound = this.retriveById(id);
-		productFound.setDeleted(false);
-		productRepository.save(productFound);
+		if(product.getSupplier().isDeleted() != false) {
+			throw new ValidateErrors(
+					"El proveedor del producto que está intentando eliminar no se encuentra activo.");
+		} else {
 
+			productFound.setDeleted(false);
+			productRepository.save(productFound);
+		}
 	}
 
 	@Transactional
