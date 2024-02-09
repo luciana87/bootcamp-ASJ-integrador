@@ -1,4 +1,7 @@
-# Proyecto Integrador Final 
+
+<img src="angular/gestion-compras/src/assets/img/logo7.png" alt="Logo" title="Imágen gestor de compras" width="170" height="120" />
+
+# Proyecto Integrador Final
 
 <p>Desarrollo de un <em>Sistema de Gestión Compras</em> para manejar información de Proveedores, Productos y Órdenes de compra simplificando la administración de los inventarios.</p>
 
