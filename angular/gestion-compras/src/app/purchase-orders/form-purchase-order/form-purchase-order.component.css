@@ -34,3 +34,8 @@ img {
 .btn-cancel:hover {
     background-color: #cdcdd1e8;
 }
+.custom-input::placeholder {
+    color: #8b8a8a;
+    font-weight: 3400;
+    font-size: 0.91em;
+}

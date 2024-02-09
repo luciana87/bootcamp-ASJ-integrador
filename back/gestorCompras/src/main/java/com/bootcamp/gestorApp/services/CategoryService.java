@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bootcamp.gestorApp.DTO.request.CategoryRequestDTO;
 import com.bootcamp.gestorApp.entities.Category;
-import com.bootcamp.gestorApp.entities.Product;
-import com.bootcamp.gestorApp.entities.Supplier;
+import com.bootcamp.gestorApp.exceptions.ExistingResourceException;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
 import com.bootcamp.gestorApp.repositories.CategoryRepository;
 
@@ -33,7 +32,13 @@ public class CategoryService {
 
 	@Transactional
 	public Category create(CategoryRequestDTO categoryDTO) {
-		Category category = new Category(categoryDTO.getName());
+		Category category = categoryRepository.findByName(categoryDTO.getName());
+	
+		if (category != null) {
+			category.setDeleted(false);			
+		} else {
+			category = new Category(categoryDTO.getName());
+		}
 		return categoryRepository.save(category);
 	}
 

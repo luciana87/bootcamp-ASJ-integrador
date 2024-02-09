@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 public class CategoryRequestDTO {
+	
+	 private Integer id;
 
 	 @NotEmpty (message = "Name may not be empty.")
 	 @NotBlank(message = "Name is required.")
@@ -23,5 +25,14 @@ public class CategoryRequestDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	 
 }

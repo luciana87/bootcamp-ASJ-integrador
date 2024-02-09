@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bootcamp.gestorApp.entities.Country;
 import com.bootcamp.gestorApp.entities.Province;
 import com.bootcamp.gestorApp.services.ProvinceService;
 

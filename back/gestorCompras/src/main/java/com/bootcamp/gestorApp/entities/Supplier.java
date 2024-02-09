@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.bootcamp.gestorApp.utils.Util;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,7 +27,6 @@ public class Supplier {
 	@Column(unique = true, nullable = false)
 	private String code;
 
-	@Column(unique = true)
 	private String businessName;
 
 	@Column(unique = true)
@@ -64,11 +60,6 @@ public class Supplier {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "contact_id")
 	private Contact contact;
-
-	/*
-	 * @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER) private
-	 * List<Product> products;
-	 */
 
 	public Supplier() {
 		this.createdAt = LocalDateTime.now();

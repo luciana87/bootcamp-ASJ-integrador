@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.bootcamp.gestorApp.DTO.request.FieldRequestDTO;
 import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Field;
 import com.bootcamp.gestorApp.exceptions.ResourceNotFoundException;
@@ -36,7 +35,14 @@ public class FieldService {
 
 	@Transactional
 	public Field create(Field field) {
-		Field fieldToCreate = new Field(field.getName());
+
+		Field fieldToCreate = fieldRepository.findByName(field.getName());
+
+		if (fieldToCreate != null) {
+			fieldToCreate.setDeleted(false);
+		} else {
+			fieldToCreate = new Field(field.getName());
+		}
 		return fieldRepository.save(fieldToCreate);
 	}
 

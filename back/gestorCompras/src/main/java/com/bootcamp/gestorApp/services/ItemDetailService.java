@@ -1,7 +1,6 @@
 package com.bootcamp.gestorApp.services;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import java.util.stream.Collectors;
@@ -12,7 +11,6 @@ import com.bootcamp.gestorApp.DTO.response.ItemDetailResponseDTO;
 import com.bootcamp.gestorApp.entities.ItemDetail;
 import com.bootcamp.gestorApp.entities.Product;
 import com.bootcamp.gestorApp.entities.PurchaseOrder;
-import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.repositories.ItemDetailRepository;
 
 import jakarta.transaction.Transactional;

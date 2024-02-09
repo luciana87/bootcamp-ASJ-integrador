@@ -32,7 +32,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/product-list']);
+    this.router.navigate(['/products']);
   }
 
   cambiarImagen(event: Event) {

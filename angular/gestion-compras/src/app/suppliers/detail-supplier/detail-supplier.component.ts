@@ -13,10 +13,13 @@ export class DetailSupplierComponent implements OnInit {
 
   supplier: SupplierResponseDTO = SupplierResponseDTOUtils.initializeSupplierResponseDTO();
   id: number = -1;
-  constructor(public serviceSupplier: SupplierServiceService, private route: ActivatedRoute, private router: Router){}
+
+  constructor(
+    public serviceSupplier: SupplierServiceService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe((param: any) => {
       const idString = param.get('id');
       if (idString) {
@@ -30,12 +33,12 @@ export class DetailSupplierComponent implements OnInit {
     });
   }
 
-  goBack() {
-    this.router.navigate(['/supplier-list']);
-    }
+  public goBack() {
+    this.router.navigate(['/suppliers']);
+  }
 
-    cambiarImagen(event: Event) {
-      this.serviceSupplier.defaultImage(event);
-    }
+  public defaultImage(event: Event) {
+    this.serviceSupplier.defaultImage(event);
+  }
 
 }

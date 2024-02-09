@@ -14,7 +14,8 @@ export class CategoryListComponent {
   @Output() updateCategoryEvent = new EventEmitter<Category>();
   @Output() deleteCategoryEvent = new EventEmitter<Category>();
 
-  constructor(private serviceCategory: CategoryService) { }
+  constructor(
+    private serviceCategory: CategoryService) { }
 
   public getCategories() {
     this.serviceCategory.getCategories().subscribe(
@@ -24,7 +25,7 @@ export class CategoryListComponent {
     )
   }
 
-  updateCategory(category: Category) {
+  public updateCategory(category: Category) {
     this.updateCategoryEvent.emit(category);
   }
 

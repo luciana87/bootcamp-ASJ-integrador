@@ -1,4 +1,9 @@
-<div class="container w-75 d-flex align-items-center">
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <i class="fa-solid fa-chevron-right fa-sm"></i>
+</ng-template>
+
+<div class="container w-75 d-flex align-items-center mt-4">
 
     <section class="order-container bg-light  border w-100 mb-4 ">
         <div class="d-flex justify-content-center align-items-baseline mt-4  ">
@@ -56,8 +61,8 @@
             </tfoot>
         </table>
     </section>
-    
+
 </div>
 <div class="container w-75 d-flex  align-items-center">
-    <button class="btn btn-back btn-sm " (click)="goBack()">Volver</button>
+    <button class="btn btn-back" (click)="goBack()">Volver</button>
 </div>

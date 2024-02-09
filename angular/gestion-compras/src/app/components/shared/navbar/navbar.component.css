@@ -29,7 +29,9 @@
 .bg-navbar {
     /* background-color: #dbe3fa   ; */
     /* background-color: rgb(219, 227, 250); */
-    background-color: rgb(42, 40, 40);
+    /* background-color: rgb(42, 40, 40); */
+    
+    background-color: rgb(61, 59, 59); 
 }
 
 .btn-logout{

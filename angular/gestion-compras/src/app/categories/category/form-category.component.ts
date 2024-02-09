@@ -14,7 +14,9 @@ export class FormCategoryComponent implements OnInit {
   category: Category = { id: -1, name: '', createdAt: new Date, updatedAt: new Date, deleted: false }
   categories: Category[] = [];
 
-  constructor(private serviceCategory: CategoryService, private router: Router) { }
+  constructor(
+    private serviceCategory: CategoryService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -74,15 +76,15 @@ export class FormCategoryComponent implements OnInit {
     )
   }
 
-  reset() {
+  public reset() {
     this.category = { id: -1, name: '', createdAt: new Date, updatedAt: new Date, deleted: false };
   }
 
-  updateCategoryEvent(category: Category) {
+  public updateCategoryEvent(category: Category) {
     this.category = category;
   }
 
-  deleteCategoryEvent(category: Category) {
+  public deleteCategoryEvent(category: Category) {
     this.serviceCategory.delete(category.id).subscribe(
       (data) => {
         console.log(data);
@@ -96,6 +98,4 @@ export class FormCategoryComponent implements OnInit {
         this.getCategories();
       });
   }
-
-
 }

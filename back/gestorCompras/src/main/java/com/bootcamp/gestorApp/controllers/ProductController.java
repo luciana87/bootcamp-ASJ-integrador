@@ -1,7 +1,6 @@
 package com.bootcamp.gestorApp.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.PatchExchange;
 
 import com.bootcamp.gestorApp.DTO.request.ProductRequestDTO;
-import com.bootcamp.gestorApp.DTO.response.ProductResponseDTO;
-import com.bootcamp.gestorApp.DTO.response.PurchaseOrderResponseDTO;
-import com.bootcamp.gestorApp.entities.Category;
 import com.bootcamp.gestorApp.entities.Product;
-import com.bootcamp.gestorApp.entities.Supplier;
 import com.bootcamp.gestorApp.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -48,11 +42,6 @@ public class ProductController {
 		return new ResponseEntity<Product>(productService.retriveById(id), HttpStatus.OK);
 	}
 
-	@GetMapping("/pageble/{id}")
-	public ResponseEntity<List<Product>> findAllById(@PathVariable Integer id) {
-		return new ResponseEntity<List<Product>>(productService.findAllById(id), HttpStatus.OK);
-	}
-
 	@GetMapping("/amount")
 	public ResponseEntity<Integer> calculateAmountProducts() {
 		return new ResponseEntity<Integer>(productService.calculateAmountProducts(), HttpStatus.OK);
@@ -63,14 +52,6 @@ public class ProductController {
 		List<Product> productList = productService.getProductsBySupplier(id);
 		return new ResponseEntity<List<Product>>(productList, HttpStatus.OK);
 	}
-
-	/*
-	 * @PostMapping public ResponseEntity<Product> create(@RequestBody Product
-	 * product) { return new
-	 * ResponseEntity<Product>(productService.create(product),HttpStatus.CREATED);
-	 * 
-	 * }
-	 */
 
 	@PostMapping
 	public ResponseEntity<Product> create(@Valid @RequestBody ProductRequestDTO productDTO) {
